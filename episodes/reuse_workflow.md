@@ -1,5 +1,5 @@
 ---
-title: "Introduction"
+title: "Reuse another workflow"
 teaching: 10
 exercises: 2
 ---
@@ -16,5 +16,5 @@ exercises: 2
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Introduction
 
+TODO
