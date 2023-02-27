@@ -59,4 +59,4 @@ The First rule in a Snakefile is the default target.
 snakemake -c1 filter/multimedia.csv
 ```
 
-```
+
