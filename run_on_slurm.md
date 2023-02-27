@@ -1,20 +1,9 @@
 ---
-title: "Run scalably with SLURM"
+title: "Run at Scale"
 teaching: 10
 exercises: 2
 ---
 
-:::::::::::::::::::::::::::::::::::::: questions 
-
-- TODO
-
-::::::::::::::::::::::::::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::: objectives
-
-- TODO
-
-::::::::::::::::::::::::::::::::::::::::::::::::
-
-
-TODO
+```bash
+snakemake -c10 --profile slurm_profile
+```
