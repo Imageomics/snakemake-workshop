@@ -1,5 +1,5 @@
 ---
-title: "Introduction"
+title: "Add a Pattern rule"
 teaching: 10
 exercises: 2
 ---
@@ -16,5 +16,5 @@ exercises: 2
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Introduction
 
+TODO
