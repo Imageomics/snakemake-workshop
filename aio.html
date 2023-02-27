@@ -213,7 +213,7 @@
 <div class="accordion accordion-flush" id="accordionFlush5">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading5">
-        <a href="scatter_rule.html">4. Add a Pattern rule</a>
+        <a href="scatter_rule.html">4. Download multiple images from a CSV</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -261,7 +261,7 @@
 <div class="accordion accordion-flush" id="accordionFlush9">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading9">
-        <a href="run_on_slurm.html">8. Run scalably with SLURM</a>
+        <a href="run_on_slurm.html">8. Run at Scale</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -593,12 +593,11 @@ target.</p>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> filter/multimedia.csv</span></code></pre>
 </div>
-<p>```</p>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
  -->
-</section></section><section id="aio-scatter_rule"><p>Content from <a href="scatter_rule.html">Add a Pattern rule</a></p>
+</section></section><section id="aio-scatter_rule"><p>Content from <a href="scatter_rule.html">Download multiple images from a CSV</a></p>
 <hr>
 <p> Last updated on 2023-02-27 | 
         
@@ -606,32 +605,60 @@ any links that you are not going to use.
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
-<div class="overview card">
-<h2 class="card-header">Overview</h2>
-<div class="row g-0">
-<div class="col-md-4">
-<div class="card-body">
-<div class="inner">
-<h3 class="card-title">Questions</h3>
-<ul>
-<li>TODO</li>
-</ul>
+<p>First add a rule to download a single image that uses a function
+param:</p>
+<pre><code>rule download_image:
+  input: "filter/images.csv"
+  output:'images/bj373514.jpg'
+  params: download_uri = "https://bgnn.tulane.edu/hdr-share/ftp/ark/89609/GLIN/FMNH/bj373514.jpg"
+  shell: "wget -O {output} {params.download_uri}"</code></pre>
+<p>Run this rule:</p>
+<div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> images/bj373514.jpg</span></code></pre>
 </div>
+<p>Change this rule to be a pattern rule:</p>
+<pre><code>rule download_image:
+  input: "filter/images.csv"
+  output:'images/{arkID}.jpg'
+  params: download_uri="https://bgnn.tulane.edu/hdr-share/ftp/ark/89609/GLIN/FMNH/{arkID}.jpg"
+  shell: "wget -O {output} {params.download_uri}"</code></pre>
+<p>Run this rule:</p>
+<div class="codewrapper sourceCode" id="cb4">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> images/bj373514.jpg</span></code></pre>
 </div>
+<p>Make rule handle all our images with a function based param. Add
+import to the top of <code>Snakefile</code>:</p>
+<pre><code>import pandas as pd</code></pre>
+<p>Replace the <code>download_image</code> rule with the following:</p>
+<pre><code>def download_image_url(wildcards):
+  df = pd.read_csv("filter/images.csv")
+  row = df[df["arkID"] == wildcards.ark_id]
+  url = row["accessURI"].item()
+  return url
+
+rule download_image:
+  input: "filter/images.csv"
+  output:'images/{ark_id}.jpg'
+  params: download_uri=download_image_url
+  shell: "wget -O {output} {params.download_uri}"</code></pre>
+<p>Run this rule for a couple files:</p>
+<div class="codewrapper sourceCode" id="cb7">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> images/bj373514.jpg images/hd529k3h.jpg</span></code></pre>
 </div>
-<div class="col-md-8">
-<div class="card-body">
-<div class="inner bordered">
-<h3 class="card-title">Objectives</h3>
-<ul>
-<li>TODO</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-<p>TODO</p></section><section id="aio-container_rule"><p>Content from <a href="container_rule.html">Use a container with a Rule</a></p>
+<p>TODO: Decide if we should create all rule here:</p>
+<pre><code>def get_workflow_targets():
+    df = pd.read_csv("filter/images.csv")
+    ark_ids = df["arkID"].tolist()
+    return expand("images/{ark_id}.jpg", ark_id=ark_ids)
+
+rule all:
+   input: get_workflow_targets</code></pre></section><section id="aio-container_rule"><p>Content from <a href="container_rule.html">Use a container with a Rule</a></p>
 <hr>
 <p> Last updated on 2023-02-27 | 
         
@@ -639,32 +666,19 @@ any links that you are not going to use.
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
-<div class="overview card">
-<h2 class="card-header">Overview</h2>
-<div class="row g-0">
-<div class="col-md-4">
-<div class="card-body">
-<div class="inner">
-<h3 class="card-title">Questions</h3>
-<ul>
-<li>TODO</li>
-</ul>
+<pre><code>rule object_detection:
+  input: 'images/{arkID}.jpg'
+  output: metadata='object_detection/metadata_{arkID}.json',
+  container: "docker://ghcr.io/hdr-bgnn/drexel_metadata:0.5"
+  shell: "gen_metadata.py --device cpu --outfname {output.metadata} {input}"</code></pre>
+<div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> object_detection/metdata_bj373514.json</span></code></pre>
 </div>
-</div>
-</div>
-<div class="col-md-8">
-<div class="card-body">
-<div class="inner bordered">
-<h3 class="card-title">Objectives</h3>
-<ul>
-<li>TODO</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-<p>TODO</p></section><section id="aio-reuse_workflow"><p>Content from <a href="reuse_workflow.html">Reuse another workflow</a></p>
+<p>Expected output: Fails to find command :(</p>
+<p>Pass the –use-singularity flag</p>
+<pre><code>snakemake -c1 object_detection/metdata_bj373514.json --use-singularity</code></pre></section><section id="aio-reuse_workflow"><p>Content from <a href="reuse_workflow.html">Reuse another workflow</a></p>
 <hr>
 <p> Last updated on 2023-02-27 | 
         
@@ -672,32 +686,37 @@ any links that you are not going to use.
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
-<div class="overview card">
-<h2 class="card-header">Overview</h2>
-<div class="row g-0">
-<div class="col-md-4">
-<div class="card-body">
-<div class="inner">
-<h3 class="card-title">Questions</h3>
-<ul>
-<li>TODO</li>
-</ul>
+<section id="replace-object-detection-with-the-object-detection-rule-from-the-bgnn_core_workflow"><h2 class="section-heading">Replace object detection with the object detection rule from the
+BGNN_Core_Workflow<a class="anchor" aria-label="anchor" href="#replace-object-detection-with-the-object-detection-rule-from-the-bgnn_core_workflow"></a>
+</h2>
+<hr class="half-width">
+<pre><code>module segmentation:
+    snakefile:
+        github("hdr-bgnn/BGNN_Core_Workflow",   path="workflow/Snakefile", tag="1.0.0")
+use rule generate_metadata from segmentation as object_detection with:
+    input:'images/{image}.jpg'</code></pre>
+<div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--use-singularity</span> DrexelMetadata/bj373514.json</span></code></pre>
 </div>
+</section><section id="bring-in-additional-rules-from-bgnn_core_workflow"><h2 class="section-heading">Bring in additional rules from BGNN_Core_Workflow<a class="anchor" aria-label="anchor" href="#bring-in-additional-rules-from-bgnn_core_workflow"></a>
+</h2>
+<hr class="half-width">
+<pre><code>use rule generate_metadata from segmentation
+use rule transform_metadata from segmentation
+use rule crop_image from segmentation
+use rule segment_image from segmentation</code></pre>
+<div class="codewrapper sourceCode" id="cb4">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--use-singularity</span> Segmented/bj373514_segmented.png </span></code></pre>
 </div>
-</div>
-<div class="col-md-8">
-<div class="card-body">
-<div class="inner bordered">
-<h3 class="card-title">Objectives</h3>
-<ul>
-<li>TODO</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-<p>TODO</p></section><section id="aio-final_analysis_rule"><p>Content from <a href="final_analysis_rule.html">Add final analysis Rule</a></p>
+<!-- 
+Place links that you need to refer to multiple times across pages here. Delete
+any links that you are not going to use. 
+ -->
+</section></section><section id="aio-final_analysis_rule"><p>Content from <a href="final_analysis_rule.html">Add final analysis Rule</a></p>
 <hr>
 <p> Last updated on 2023-02-27 | 
         
@@ -705,32 +724,19 @@ any links that you are not going to use.
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
-<div class="overview card">
-<h2 class="card-header">Overview</h2>
-<div class="row g-0">
-<div class="col-md-4">
-<div class="card-body">
-<div class="inner">
-<h3 class="card-title">Questions</h3>
-<ul>
-<li>TODO</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="col-md-8">
-<div class="card-body">
-<div class="inner bordered">
-<h3 class="card-title">Objectives</h3>
-<ul>
-<li>TODO</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-<p>TODO</p></section><section id="aio-run_on_slurm"><p>Content from <a href="run_on_slurm.html">Run scalably with SLURM</a></p>
+<pre><code>def get_analyze_results_inputs(wildcards):
+  df = pd.read_csv("filter/images.csv")
+  ark_ids = df["arkID"].tolist()
+  return {
+     "script": "AnalyzeResults.R",
+     
+     "morphology": expand('Morphology/{arkID}_presence.json', arkID=ark_ids) + ["FishSummary.Rmd"]
+  }
+
+rule analyze_results:
+  input: get_analyze_results_inputs
+  output: "results/summary.csv"
+  shell: "RScript {input.script}"</code></pre></section><section id="aio-run_on_slurm"><p>Content from <a href="run_on_slurm.html">Run at Scale</a></p>
 <hr>
 <p> Last updated on 2023-02-27 | 
         
@@ -738,32 +744,11 @@ any links that you are not going to use.
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
-<div class="overview card">
-<h2 class="card-header">Overview</h2>
-<div class="row g-0">
-<div class="col-md-4">
-<div class="card-body">
-<div class="inner">
-<h3 class="card-title">Questions</h3>
-<ul>
-<li>TODO</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="col-md-8">
-<div class="card-body">
-<div class="inner bordered">
-<h3 class="card-title">Objectives</h3>
-<ul>
-<li>TODO</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-<p>TODO</p></section>
+<div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c10</span> <span class="at">--profile</span> slurm_profile</span></code></pre>
+</div></section>
 </div>
     </main>
 </div>

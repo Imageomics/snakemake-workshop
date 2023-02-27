@@ -171,7 +171,7 @@
 <div class="accordion accordion-flush" id="accordionFlush5">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading5">
-        <a href="scatter_rule.html">4. Add a Pattern rule</a>
+        <a href="scatter_rule.html">4. Download multiple images from a CSV</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -211,7 +211,7 @@
 <div class="accordion accordion-flush" id="accordionFlush9">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading9">
-        <a href="run_on_slurm.html">8. Run scalably with SLURM</a>
+        <a href="run_on_slurm.html">8. Run at Scale</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -263,7 +263,7 @@
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
-        <a class="chapter-link" href="scatter_rule.html" rel="prev"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous: Add a Pattern rule</a>
+        <a class="chapter-link" href="scatter_rule.html" rel="prev"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous: Download multiple</a>
         <a class="chapter-link float-end" href="reuse_workflow.html" rel="next">Next: Reuse another... <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
@@ -280,28 +280,19 @@
 
         
 
-<div class="overview card">
-<h2 class="card-header">Overview</h2>
-<div class="row g-0">
-<div class="col-md-4">
-<div class="card-body">
-<div class="inner">
-<h3 class="card-title">Questions</h3>
-<ul><li>TODO</li>
-</ul></div>
+<pre><code>rule object_detection:
+  input: 'images/{arkID}.jpg'
+  output: metadata='object_detection/metadata_{arkID}.json',
+  container: "docker://ghcr.io/hdr-bgnn/drexel_metadata:0.5"
+  shell: "gen_metadata.py --device cpu --outfname {output.metadata} {input}"</code></pre>
+<div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> object_detection/metdata_bj373514.json</span></code></pre>
 </div>
-</div>
-<div class="col-md-8">
-<div class="card-body">
-<div class="inner bordered">
-<h3 class="card-title">Objectives</h3>
-<ul><li>TODO</li>
-</ul></div>
-</div>
-</div>
-</div>
-</div>
-<p>TODO</p>
+<p>Expected output: Fails to find command :(</p>
+<p>Pass the –use-singularity flag</p>
+<pre><code>snakemake -c1 object_detection/metdata_bj373514.json --use-singularity</code></pre>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
@@ -316,7 +307,7 @@ any links that you are not going to use.
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
-        <a class="chapter-link" href="scatter_rule.html" rel="prev"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous: Add a Pattern rule</a>
+        <a class="chapter-link" href="scatter_rule.html" rel="prev"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous: Download multiple</a>
         <a class="chapter-link float-end" href="reuse_workflow.html" rel="next">Next: Reuse another... <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
     </nav></div> <!-- / div.primary-content.col-xs-12 -->
