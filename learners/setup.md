@@ -50,25 +50,21 @@ Expected Output:
 R version 4.2.1 ...
 ```
 
-## Files
+## Copy lesson Files
+Four input files are provided for this lesson.
+An input csv file and some R scripts to filter and create the final analysis. 
+These files need to be copied into the "SnakemakeWorkflow" subdirectory within your home directory.
 
-Run the following steps from within your osc ondemand terminal created earlier.
-
-
-```
-pwd
-```
-
+Run the following command to copy these files into the appropriate directory:
 ```bash
-cp /fs/ess/PAS2136/Workshops/Snakemake/files/* .
+cp /fs/ess/PAS2136/Workshops/Snakemake/files/* ~/SnakemakeWorkflow/.
 ```
 
-
+Next run the `ls` command to ensure you have all the needed files:
 ```bash
 ls
 ```
 Expected Output:
 ```
-R version 4.2.1 ...
+AnalyzeResults.R  FilterImages.R  FishSummary.Rmd  multimedia.csv
 ```
-
