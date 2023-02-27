@@ -2,48 +2,73 @@
 title: Setup
 ---
 
-Setup instructions live in this document. Please specify the tools and the data
-sets the Learner needs to have installed.
-
-## Data Sets
-
-Download the [data zip file](data/data.zip) and unzip it to your Desktop
-
-## Software Setup
-
-::::::::::::::::::::::::::::::::::::::: discussion
-
-### Details
-
-Setup for different systems can be presented in dropdown menus via a `solution`
-tag. They will join to this discussion block, so you can give a general overview
-of the software used in this lesson here and fill out the individual operating
-systems (and potentially add more, e.g. online setup) in the solutions blocks.
-
-:::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::: solution
-
-### Windows
-
-Use PuTTY
-
-:::::::::::::::::::::::::
-
-:::::::::::::::: solution
-
-### MacOS
-
-Use Terminal.app
-
-:::::::::::::::::::::::::
+## Log into OSC
+- Visit https://ondemand.osc.edu/.
+- Login with yor credentials.
+- From the top menu select __Files__ -> __Home Directory__
+- Click the __New Directory__ button
+  - Enter `SnakemakeWorkflow` for the directory name
+- Click "SnakemakeWorkflow" in the __Name__ column the list of files and folders
+- Click "open in terminal"
 
 
-:::::::::::::::: solution
+## Software Environment Setup
 
-### Linux
+Run the following steps from within your osc ondemand terminal created earlier.
 
-Use Terminal
 
-:::::::::::::::::::::::::
+Activate the Snakemake environment
+```bash
+. /fs/ess/PAS2136/Workshops/Snakemake/setup_env.sh
+```
+
+Expected Output:
+```
+Activating minconda3 environment with snakemake installed.
+Activating R module that can be used with R scripts.
+This module will switch Compiler environment to gnu/11.2.0 and load mkl/2021.3.0 for R/4.2.1
+Configuring singularity to use a cache to speed up pulling containers.
+```
+
+Test snakemake with the --version flag
+```bash
+snakemake --version
+```
+
+Expected Output:
+```
+7.22.0
+```
+
+Test R --version flag
+```bash
+R --version
+```
+
+Expected Output:
+```
+R version 4.2.1 ...
+```
+
+## Files
+
+Run the following steps from within your osc ondemand terminal created earlier.
+
+
+```
+pwd
+```
+
+```bash
+cp /fs/ess/PAS2136/Workshops/Snakemake/files/* .
+```
+
+
+```bash
+ls
+```
+Expected Output:
+```
+R version 4.2.1 ...
+```
 
