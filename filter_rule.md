@@ -5,7 +5,7 @@ exercises: 2
 ---
 
 
-## Add a RStudio friendly Rule
+## RStudio friendly Rules
 Next we want to add an R script that will filter an input CSV file for the species of our choosing.
 We want this R script to be easily runnable within RStudio. To accomplish this we want to avoid 
 passing command line arguments to the R script as this is difficult to accommodate within Rstudio.
@@ -18,6 +18,12 @@ Create a file named `config/config.yaml`:
 ```
 reduced_multimedia <- "reduce/multimedia.csv"
 filtered_multimedia <- "filter/multimedia.csv"
+```
+
+## Setup config.yaml in Snakefile
+Add the following to the top of `Snakefile`:
+```
+configfile: "config/config.yaml"
 ```
 
 ## Create a filter rule that uses the config file:
@@ -51,4 +57,6 @@ The First rule in a Snakefile is the default target.
 ## Run snakemake specifying a specific target
 ```bash
 snakemake -c1 filter/multimedia.csv
+```
+
 ```

@@ -4,7 +4,7 @@ title: Setup
 
 ## Log into OSC
 - Visit https://ondemand.osc.edu/.
-- Login with yor credentials.
+- Login with your credentials.
 - From the top menu select __Files__ -> __Home Directory__
 - Click the __New Directory__ button
   - Enter `SnakemakeWorkflow` for the directory name
@@ -14,7 +14,7 @@ title: Setup
 
 ## Software Environment Setup
 
-Run the following steps from within your osc ondemand terminal created earlier.
+Run the following steps from within an OSC ondemand terminal within the "SnakemakeWorkflow" subdirectory.
 
 
 Activate the Snakemake environment
