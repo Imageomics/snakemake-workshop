@@ -540,7 +540,7 @@ any links that you are not going to use.
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
-<section id="add-a-rstudio-friendly-rule"><h2 class="section-heading">Add a RStudio friendly Rule<a class="anchor" aria-label="anchor" href="#add-a-rstudio-friendly-rule"></a>
+<section id="rstudio-friendly-rules"><h2 class="section-heading">RStudio friendly Rules<a class="anchor" aria-label="anchor" href="#rstudio-friendly-rules"></a>
 </h2>
 <hr class="half-width">
 <p>Next we want to add an R script that will filter an input CSV file
@@ -556,6 +556,11 @@ used to store configuration values that often change.</p>
 <p>Create a file named <code>config/config.yaml</code>:</p>
 <pre><code><span><span class="va">reduced_multimedia</span> <span class="op">&lt;-</span> <span class="st">"reduce/multimedia.csv"</span></span>
 <span><span class="va">filtered_multimedia</span> <span class="op">&lt;-</span> <span class="st">"filter/multimedia.csv"</span></span></code></pre>
+</section><section id="setup-config.yaml-in-snakefile"><h2 class="section-heading">Setup config.yaml in Snakefile<a class="anchor" aria-label="anchor" href="#setup-config.yaml-in-snakefile"></a>
+</h2>
+<hr class="half-width">
+<p>Add the following to the top of <code>Snakefile</code>:</p>
+<pre><code><span><span class="va">configfile</span><span class="op">:</span> <span class="st">"config/config.yaml"</span></span></code></pre>
 </section><section id="create-a-filter-rule-that-uses-the-config-file"><h2 class="section-heading">Create a filter rule that uses the config file:<a class="anchor" aria-label="anchor" href="#create-a-filter-rule-that-uses-the-config-file"></a>
 </h2>
 <hr class="half-width">
@@ -569,15 +574,15 @@ used to store configuration values that often change.</p>
 </section><section id="see-how-the-r-script-will-also-read-from-the-config-file"><h2 class="section-heading">See how the R script will also read from the config file:<a class="anchor" aria-label="anchor" href="#see-how-the-r-script-will-also-read-from-the-config-file"></a>
 </h2>
 <hr class="half-width">
-<div class="codewrapper sourceCode" id="cb3">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> FilterImages.R</span></code></pre>
-</div>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> FilterImages.R</span></code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb5">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span></span></code></pre>
 </div>
 <p>Expected Output:</p>
 <pre><code>NOTHING happened</code></pre>
@@ -586,11 +591,12 @@ target.</p>
 </section><section id="run-snakemake-specifying-a-specific-target"><h2 class="section-heading">Run snakemake specifying a specific target<a class="anchor" aria-label="anchor" href="#run-snakemake-specifying-a-specific-target"></a>
 </h2>
 <hr class="half-width">
-<div class="codewrapper sourceCode" id="cb6">
+<div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> filter/multimedia.csv</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> filter/multimedia.csv</span></code></pre>
 </div>
+<p>```</p>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
