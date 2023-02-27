@@ -13,5 +13,5 @@
 "episodes/final_analysis_rule.md" "d225b0d40a288d8a1c1f07a9d209a220" "site/built/final_analysis_rule.md" "2023-02-27"
 "episodes/run_on_slurm.md" "001933529a62307722e98df6b8c32519" "site/built/run_on_slurm.md" "2023-02-27"
 "instructors/instructor-notes.md" "60b93493cf1da06dfd63255d73854461" "site/built/instructor-notes.md" "2022-04-22"
-"learners/setup.md" "58f349a9dacef83eb00c219fb562c672" "site/built/setup.md" "2023-02-27"
+"learners/setup.md" "0a7ee00c8983c6e970db5ba412a831e4" "site/built/setup.md" "2023-02-27"
 "profiles/learner-profiles.md" "60b93493cf1da06dfd63255d73854461" "site/built/learner-profiles.md" "2022-04-22"
