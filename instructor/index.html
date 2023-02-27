@@ -406,23 +406,28 @@ Configuring singularity to use a cache to speed up pulling containers.</code></p
 </div>
 <p>Expected Output:</p>
 <pre><code>R version 4.2.1 ...</code></pre>
-</section><section id="files"><h2 class="section-heading">Files<a class="anchor" aria-label="anchor" href="#files"></a>
+</section><section id="copy-lesson-files"><h2 class="section-heading">Copy lesson Files<a class="anchor" aria-label="anchor" href="#copy-lesson-files"></a>
 </h2>
-<hr class="half-width"><p>Run the following steps from within your osc ondemand terminal
-created earlier.</p>
-<pre><code><span><span class="va">pwd</span></span></code></pre>
+<hr class="half-width"><p>Four input files are provided for this lesson. An input csv file and
+some R scripts to filter and create the final analysis. These files need
+to be copied into the “SnakemakeWorkflow” subdirectory within your home
+directory.</p>
+<p>Run the following command to copy these files into the appropriate
+directory:</p>
+<div class="codewrapper sourceCode" id="cb7">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> /fs/ess/PAS2136/Workshops/Snakemake/files/<span class="pp">*</span> ~/SnakemakeWorkflow/.</span></code></pre>
+</div>
+<p>Next run the <code>ls</code> command to ensure you have all the
+needed files:</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> /fs/ess/PAS2136/Workshops/Snakemake/files/<span class="pp">*</span> .</span></code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb9">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre>
 </div>
 <p>Expected Output:</p>
-<pre><code>R version 4.2.1 ...</code></pre>
+<pre><code>AnalyzeResults.R  FilterImages.R  FishSummary.Rmd  multimedia.csv</code></pre>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
