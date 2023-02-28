@@ -6,8 +6,8 @@ exercises: 2
 
 ## Goals
 - Create a Snakemake Workflow
-  - Uses R scripts for pre-processing and post processing
-  - Uses Machine Learning Components
+  - Runs R scripts for filtering and final analysis
+  - Runs Machine Learning Components
   - Process many files at the same time
 - Learn how to run a Snakemake workflow
 

@@ -11,18 +11,24 @@ exercises: 2
 - Click the __New Directory__ button
   - Enter `SnakemakeWorkflow` for the directory name
 - Click "SnakemakeWorkflow" in the __Name__ column the list of files and folders
-- Click "open in terminal"
+- Click "Open in Terminal"
 
-## Copy lesson Files
+## Copy Lesson Files
 Some files are provided for this lesson.
 These files need to be copied into the "SnakemakeWorkflow" subdirectory within your home directory.
 You should be within the `SnakemakeWorkflow` directory before running this step.
-Run the following command
+
+### Verify Directory
+Run the following command to ensure you are in the appropriate directory:
 ```bash
 pwd
 ```
+The output should look similar to the following:
+```output
+/users/PAS2136/jbradley/SnakemakeWorkflow
+```
 
-
+### Copy Files
 Run the following command to copy these files into your current directory (SnakemakeWorkflow):
 ```bash
 cp -r /fs/ess/PAS2136/Workshops/Snakemake/files/* .
@@ -36,6 +42,14 @@ Expected Output:
 ```output
 AnalyzeResults.R  FilterImages.R  FishSummary.Rmd  multimedia.csv  setup_env.sh  slurm
 ```
+
+### Lesson Files
+- __setup_env.sh__ - Used to activates snakemake conda environment and other utilities
+- __multimedia.csv__ - Main input file of fish images used by the workflow
+- __FilterImages.R__ - R script that filters a CSV for a target species.
+- __AnalyzeResults.R__ - R script that builds a summary report of the workflow outputs
+- __FishSummary.Rmd__ - R markdown script used by __AnalyzeResults.R to create a report
+- __slurm__ - Directory containing a config file used by Snakemake to run SLURM jobs
 
 ## Software Environment Setup
 
@@ -82,8 +96,18 @@ R version 4.2.1 ...
 
 
 ## Start Interactive Session
+Since we will be running some heavy processing starting an interactive job is important.
+Otherwise this processing would occcur on a login node and cause issues for other cluster users.
+
 Start an interactive session that will remain active for 1 hour of by running:
 ```bash
 sinteractive -t 01:00:00 -A PAS2136
 ```
 
+## New Terminal Sessions
+If you close your terminal and create a new one you will need to setup your environment again.
+To do so rerun the following two steps:
+```
+. setup_env.sh
+sinteractive -t 01:00:00 -A PAS2136
+```
