@@ -1,5 +1,5 @@
 ---
-title: "Creating a Snakefile"
+title: "Create a Workflow"
 teaching: 10
 exercises: 2
 ---
@@ -28,7 +28,7 @@ Run the following command in your terminal to see the first 21 lines printed out
 ```bash
 head -n 21 multimedia.csv
 ```
-To save this output we will append ` > reduce/multimedia.csv` to the command like so:
+To save this output we will change the command like so:
 
 `head -n 21 multimedia.csv > reduce/multimedia.csv`
 
@@ -133,6 +133,31 @@ rule reduce:
 ```
 
 Try running the workflow again:
+```bash
+snakemake -c1
+```
+
+## Add a config file
+A better option to allow easy changes to the rows param is to store this value in a config file.
+Snakemake comes with support for parsing and using a YAML config file.
+
+Create a new file named `config.yaml` with the following contents:
+```
+reduce_rows: 21
+```
+
+Then update your `Snakefile` to specify the config file location and use the "reduce_rows" config option:
+```
+configfile: "config.yaml"
+
+rule reduce:
+  input: "multimedia.csv"
+  output: "reduce/multimedia.csv"
+  params: rows=config["reduce_rows"]
+  shell: "head -n {params.rows} {input} > {output}"
+```
+
+Running the workflow again:
 ```bash
 snakemake -c1
 ```

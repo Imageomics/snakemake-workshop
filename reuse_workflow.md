@@ -30,3 +30,5 @@ use rule segment_image from segmentation
 ```bash
 snakemake -c1 --use-singularity Segmented/bj373514_segmented.png 
 ```
+
+

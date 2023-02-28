@@ -1,5 +1,5 @@
 ---
-title: "Use a container with a Rule"
+title: "Use a container"
 teaching: 10
 exercises: 2
 ---
