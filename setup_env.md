@@ -41,10 +41,13 @@ AnalyzeResults.R  FilterImages.R  FishSummary.Rmd  multimedia.csv  setup_env.sh 
 
 Run the following steps from within an OSC ondemand terminal within the "SnakemakeWorkflow" subdirectory.
 
-Activate the Snakemake environment
+Activate the Snakemake environment:
 ```bash
 . setup_env.sh
 ```
+NOTE: The leading dot followed by a space is important. This causes the settings in setup_env.sh to be applied
+to your current terminal session.
+
 
 Expected Output:
 ```output
