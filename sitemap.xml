@@ -91,6 +91,9 @@
     <loc>https://Imageomics.github.io/snakemake-workshop/instructor/setup_env.html</loc>
   </url>
   <url>
+    <loc>https://Imageomics.github.io/snakemake-workshop/instructor/setup_project.html</loc>
+  </url>
+  <url>
     <loc>https://Imageomics.github.io/snakemake-workshop/instructor-notes.html</loc>
   </url>
   <url>
@@ -113,5 +116,8 @@
   </url>
   <url>
     <loc>https://Imageomics.github.io/snakemake-workshop/setup_env.html</loc>
+  </url>
+  <url>
+    <loc>https://Imageomics.github.io/snakemake-workshop/setup_project.html</loc>
   </url>
 </urlset>
