@@ -1,5 +1,5 @@
 ---
-title: "Add a filtering Rule"
+title: "Add an R Script"
 teaching: 10
 exercises: 2
 ---

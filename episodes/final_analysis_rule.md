@@ -1,5 +1,5 @@
 ---
-title: "Add final analysis Rule"
+title: "Add Summary Analysis"
 teaching: 10
 exercises: 2
 ---

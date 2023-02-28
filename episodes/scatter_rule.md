@@ -1,5 +1,5 @@
 ---
-title: "Download multiple images from a CSV"
+title: "Process multiple files"
 teaching: 10
 exercises: 2
 ---
