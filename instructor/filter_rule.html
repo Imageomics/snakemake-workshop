@@ -187,6 +187,7 @@
 <li><a href="#create-a-filter-rule-that-uses-the-config-file">Create a filter rule that uses the config file:</a></li>
 <li><a href="#see-how-the-r-script-will-also-read-from-the-config-file">See how the R script will also read from the config file:</a></li>
 <li><a href="#run-snakemake-specifying-a-specific-target">Run snakemake specifying a specific target</a></li>
+<li><a href="#run-snakemake-specifying-a-non-existant-target">Run snakemake specifying a non-existant target</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
         
@@ -343,7 +344,11 @@ used to store configuration values that often change.</p>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span></span></code></pre>
 </div>
 <p>Expected Output:</p>
-<pre><code>NOTHING happened</code></pre>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>NOTHING happened: TODO get exact content</code></pre>
+</div>
 <p>Explain All rule: The First rule in a Snakefile is the default
 target.</p>
 </section><section id="run-snakemake-specifying-a-specific-target"><h2 class="section-heading">Run snakemake specifying a specific target<a class="anchor" aria-label="anchor" href="#run-snakemake-specifying-a-specific-target"></a>
@@ -352,6 +357,18 @@ target.</p>
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> filter/multimedia.csv</span></code></pre>
+</div>
+</section><section id="run-snakemake-specifying-a-non-existant-target"><h2 class="section-heading">Run snakemake specifying a non-existant target<a class="anchor" aria-label="anchor" href="#run-snakemake-specifying-a-non-existant-target"></a>
+</h2>
+<hr class="half-width"><div class="codewrapper sourceCode" id="cb8">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> winninglotterynumbers.txt</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>MissingRuleException: TODO get content</code></pre>
 </div>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete

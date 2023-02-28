@@ -322,10 +322,6 @@
 <li>Provides support for specifying containers for each rule</li>
 <li>Provides support for many HPC Clusters including SLURM</li>
 </ul></div>
-<div class="section level3">
-<h3 id="snakemake-overview-video">Snakemake Overview Video<a class="anchor" aria-label="anchor" href="#snakemake-overview-video"></a></h3>
-<p><a href="https://youtu.be/UOKxta3061g" class="external-link uri">https://youtu.be/UOKxta3061g</a></p>
-</div>
 </section><section id="what-is-a-snakemake-rule"><h2 class="section-heading">What is a Snakemake Rule?<a class="anchor" aria-label="anchor" href="#what-is-a-snakemake-rule"></a>
 </h2>
 <hr class="half-width"><p>A Snakemake Rule specifies</p>
@@ -338,13 +334,14 @@ files</li>
     input: 'books/isles.txt'
     output: 'isles.dat'
     shell: 'python wordcount.py books/isles.txt isles.dat'</code></pre>
-<p>Taken from <a href="https://carpentries-incubator.github.io/hpc-workflows/02-snakefiles/index.html" class="external-link">carpentries
-incubator hpc-workflows lesson</a>.</p>
+<p><em>This rule was copied from the <a href="https://carpentries-incubator.github.io/hpc-workflows/02-snakefiles/index.html" class="external-link">carpentries
+incubator hpc-workflows lesson</a>.</em></p>
 </section><section id="workflow-steps"><h2 class="section-heading">Workflow Steps<a class="anchor" aria-label="anchor" href="#workflow-steps"></a>
 </h2>
 <hr class="half-width"><div class="section level3">
 <h3 id="input-csv">Input CSV<a class="anchor" aria-label="anchor" href="#input-csv"></a></h3>
-<figure><img src="files/multimedia.png" alt="" class="figure mx-auto d-block"><figcaption>multimedia CSV screenshot</figcaption></figure></div>
+<p>The input CSV (<code>multimedia.csv</code>) was downloaded from <a href="https://bgnn.tulane.edu/" class="external-link uri">https://bgnn.tulane.edu/</a>.</p>
+<figure>When viewed within RStudio the data looks like this: <img src="files/multimedia.png" alt="multimedia CSV screenshot" class="figure mx-auto d-block"></figure></div>
 <div class="section level3">
 <h3 id="step-1-reduce-the-size-of-our-input-csv">Step 1: Reduce the size of our input CSV<a class="anchor" aria-label="anchor" href="#step-1-reduce-the-size-of-our-input-csv"></a></h3>
 <p>Reduce the total size of the input CSV using a simple command line
@@ -353,8 +350,9 @@ and output command line arguments.</p>
 </div>
 <div class="section level3">
 <h3 id="step-2-filter-csv-for-our-target-species">Step 2: Filter CSV for our target species<a class="anchor" aria-label="anchor" href="#step-2-filter-csv-for-our-target-species"></a></h3>
-<figure>Next we run an R script to filtering our CSV for
-<code>Notropis nazas</code> species. <img src="files/filtered.png" alt="filtered CSV screenshot" class="figure mx-auto d-block"></figure></div>
+<p>Next we run an R script to filtering our CSV for
+<code>Notropis nazas</code> species.</p>
+<figure>When viewed within RStudio the data looks like this: <img src="files/filtered.png" alt="filtered CSV screenshot" class="figure mx-auto d-block"></figure></div>
 <div class="section level3">
 <h3 id="step-3-download-images">Step 3: Download images<a class="anchor" aria-label="anchor" href="#step-3-download-images"></a></h3>
 <figure>Next download each image from the filtered CSV. <img src="files/bj373514.png" alt="minnow image" class="figure mx-auto d-block"></figure></div>
@@ -377,8 +375,9 @@ determine a presence absence matrix.</p>
 </div>
 <div class="section level3">
 <h3 id="step-8--final-analysis">Step 8. final analysis<a class="anchor" aria-label="anchor" href="#step-8--final-analysis"></a></h3>
-<figure>Finally we create a report using another R script that summarizes the
-results of our processing. <img src="files/report.png" alt="final report screenshot" class="figure mx-auto d-block"></figure><!-- 
+<p>Finally we create a report using another R script that summarizes the
+results of our processing.</p>
+<figure>The HTML report will look something like this: <img src="files/report.png" alt="final report screenshot" class="figure mx-auto d-block"></figure><!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
  --></div>

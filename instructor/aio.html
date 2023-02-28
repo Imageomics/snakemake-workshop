@@ -378,11 +378,6 @@
 <li>Provides support for many HPC Clusters including SLURM</li>
 </ul>
 </div>
-<div class="section level3">
-<h3 id="snakemake-overview-video">Snakemake Overview Video<a class="anchor" aria-label="anchor" href="#snakemake-overview-video"></a>
-</h3>
-<p><a href="https://youtu.be/UOKxta3061g" class="external-link uri">https://youtu.be/UOKxta3061g</a></p>
-</div>
 </section><section id="what-is-a-snakemake-rule"><h2 class="section-heading">What is a Snakemake Rule?<a class="anchor" aria-label="anchor" href="#what-is-a-snakemake-rule"></a>
 </h2>
 <hr class="half-width">
@@ -398,15 +393,16 @@ files</li>
     input: 'books/isles.txt'
     output: 'isles.dat'
     shell: 'python wordcount.py books/isles.txt isles.dat'</code></pre>
-<p>Taken from <a href="https://carpentries-incubator.github.io/hpc-workflows/02-snakefiles/index.html" class="external-link">carpentries
-incubator hpc-workflows lesson</a>.</p>
+<p><em>This rule was copied from the <a href="https://carpentries-incubator.github.io/hpc-workflows/02-snakefiles/index.html" class="external-link">carpentries
+incubator hpc-workflows lesson</a>.</em></p>
 </section><section id="workflow-steps"><h2 class="section-heading">Workflow Steps<a class="anchor" aria-label="anchor" href="#workflow-steps"></a>
 </h2>
 <hr class="half-width">
 <div class="section level3">
 <h3 id="input-csv">Input CSV<a class="anchor" aria-label="anchor" href="#input-csv"></a>
 </h3>
-<figure><img src="../files/multimedia.png" alt="" class="figure mx-auto d-block"><figcaption>multimedia CSV screenshot</figcaption></figure>
+<p>The input CSV (<code>multimedia.csv</code>) was downloaded from <a href="https://bgnn.tulane.edu/" class="external-link uri">https://bgnn.tulane.edu/</a>.</p>
+<figure>When viewed within RStudio the data looks like this: <img src="../files/multimedia.png" alt="multimedia CSV screenshot" class="figure mx-auto d-block"></figure>
 </div>
 <div class="section level3">
 <h3 id="step-1-reduce-the-size-of-our-input-csv">Step 1: Reduce the size of our input CSV<a class="anchor" aria-label="anchor" href="#step-1-reduce-the-size-of-our-input-csv"></a>
@@ -418,8 +414,9 @@ and output command line arguments.</p>
 <div class="section level3">
 <h3 id="step-2-filter-csv-for-our-target-species">Step 2: Filter CSV for our target species<a class="anchor" aria-label="anchor" href="#step-2-filter-csv-for-our-target-species"></a>
 </h3>
-<figure>Next we run an R script to filtering our CSV for
-<code>Notropis nazas</code> species. <img src="../files/filtered.png" alt="filtered CSV screenshot" class="figure mx-auto d-block"></figure>
+<p>Next we run an R script to filtering our CSV for
+<code>Notropis nazas</code> species.</p>
+<figure>When viewed within RStudio the data looks like this: <img src="../files/filtered.png" alt="filtered CSV screenshot" class="figure mx-auto d-block"></figure>
 </div>
 <div class="section level3">
 <h3 id="step-3-download-images">Step 3: Download images<a class="anchor" aria-label="anchor" href="#step-3-download-images"></a>
@@ -452,8 +449,9 @@ determine a presence absence matrix.</p>
 <div class="section level3">
 <h3 id="step-8--final-analysis">Step 8. final analysis<a class="anchor" aria-label="anchor" href="#step-8--final-analysis"></a>
 </h3>
-<figure>Finally we create a report using another R script that summarizes the
-results of our processing. <img src="../files/report.png" alt="final report screenshot" class="figure mx-auto d-block"></figure><!-- 
+<p>Finally we create a report using another R script that summarizes the
+results of our processing.</p>
+<figure>The HTML report will look something like this: <img src="../files/report.png" alt="final report screenshot" class="figure mx-auto d-block"></figure><!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
  -->
@@ -571,11 +569,15 @@ rule created a specific file.</p>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span></span></code></pre>
 </div>
 <p>Expected Error Output:</p>
-<pre><code>Error: you need to specify the maximum number of CPU cores 
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>Error: you need to specify the maximum number of CPU cores 
 to be used at the same time. If you want to use N cores, 
 say --cores N or -cN. For all cores on your system 
 (be sure that this is appropriate) use --cores all. 
 For no parallelization use --cores 1 or -c1....</code></pre>
+</div>
 <p>The <code>snakemake</code> command has a single required argument
 that specifies how manu CPU cores to use when running a workflow. Until
 we want to scale up our workflow we are fine using 1 core.</p>
@@ -586,7 +588,10 @@ we want to scale up our workflow we are fine using 1 core.</p>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span></span></code></pre>
 </div>
 <p>Expected Output:</p>
-<pre><code>Building DAG of jobs...
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>Building DAG of jobs...
 Using shell: /usr/bin/bash
 Provided cores: 1 (use --cores to define parallelism)
 Rules claiming more threads will be scaled down.
@@ -607,6 +612,7 @@ rule reduce:
 Finished job 0.
 1 of 1 steps (100%) done
 Complete log: .snakemake/log/2023-02-27T112816.505955.snakemake.log</code></pre>
+</div>
 <p>Try running the workflow again:</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -730,7 +736,11 @@ used to store configuration values that often change.</p>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span></span></code></pre>
 </div>
 <p>Expected Output:</p>
-<pre><code>NOTHING happened</code></pre>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>NOTHING happened: TODO get exact content</code></pre>
+</div>
 <p>Explain All rule: The First rule in a Snakefile is the default
 target.</p>
 </section><section id="run-snakemake-specifying-a-specific-target"><h2 class="section-heading">Run snakemake specifying a specific target<a class="anchor" aria-label="anchor" href="#run-snakemake-specifying-a-specific-target"></a>
@@ -740,6 +750,19 @@ target.</p>
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> filter/multimedia.csv</span></code></pre>
+</div>
+</section><section id="run-snakemake-specifying-a-non-existant-target"><h2 class="section-heading">Run snakemake specifying a non-existant target<a class="anchor" aria-label="anchor" href="#run-snakemake-specifying-a-non-existant-target"></a>
+</h2>
+<hr class="half-width">
+<div class="codewrapper sourceCode" id="cb8">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> winninglotterynumbers.txt</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>MissingRuleException: TODO get content</code></pre>
 </div>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete

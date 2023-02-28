@@ -364,11 +364,15 @@ rule created a specific file.</p>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span></span></code></pre>
 </div>
 <p>Expected Error Output:</p>
-<pre><code>Error: you need to specify the maximum number of CPU cores 
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>Error: you need to specify the maximum number of CPU cores 
 to be used at the same time. If you want to use N cores, 
 say --cores N or -cN. For all cores on your system 
 (be sure that this is appropriate) use --cores all. 
 For no parallelization use --cores 1 or -c1....</code></pre>
+</div>
 <p>The <code>snakemake</code> command has a single required argument
 that specifies how manu CPU cores to use when running a workflow. Until
 we want to scale up our workflow we are fine using 1 core.</p>
@@ -379,7 +383,10 @@ we want to scale up our workflow we are fine using 1 core.</p>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span></span></code></pre>
 </div>
 <p>Expected Output:</p>
-<pre><code>Building DAG of jobs...
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>Building DAG of jobs...
 Using shell: /usr/bin/bash
 Provided cores: 1 (use --cores to define parallelism)
 Rules claiming more threads will be scaled down.
@@ -400,6 +407,7 @@ rule reduce:
 Finished job 0.
 1 of 1 steps (100%) done
 Complete log: .snakemake/log/2023-02-27T112816.505955.snakemake.log</code></pre>
+</div>
 <p>Try running the workflow again:</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
