@@ -61,6 +61,7 @@ contact: 'john.bradley@duke.edu'
 episodes:
 - introduction.md
 - filename_plan.md
+- setup_project.md
 - setup_env.md
 - create_snakefile.md
 - filter_rule.md
