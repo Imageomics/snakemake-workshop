@@ -189,7 +189,7 @@
 <div class="accordion accordion-flush" id="accordionFlush3">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading3">
-        <a href="filename_plan.html">2. Create a filename plan</a>
+        <a href="filename_plan.html">2. Filename plan</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -467,7 +467,7 @@ Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
  -->
 </div>
-</section></section><section id="aio-filename_plan"><p>Content from <a href="filename_plan.html">Create a filename plan</a></p>
+</section></section><section id="aio-filename_plan"><p>Content from <a href="filename_plan.html">Filename plan</a></p>
 <hr>
 <p> Last updated on 2023-02-28 | 
         
@@ -475,34 +475,42 @@ any links that you are not going to use.
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
-<section id="input-filename"><h2 class="section-heading">Input filename<a class="anchor" aria-label="anchor" href="#input-filename"></a>
-</h2>
-<hr class="half-width"></section><section id="initial-rule-filenames"><h2 class="section-heading">Initial Rule filenames<a class="anchor" aria-label="anchor" href="#initial-rule-filenames"></a>
+<section id="use-directories-to-organize-files"><h2 class="section-heading">Use directories to organize files<a class="anchor" aria-label="anchor" href="#use-directories-to-organize-files"></a>
 </h2>
 <hr class="half-width">
-<pre><code><span><span class="va">reduce</span><span class="op">/</span><span class="va">multimedia.csv</span></span></code></pre>
-<pre><code><span><span class="va">filter</span><span class="op">/</span><span class="va">multimedia.csv</span></span></code></pre>
-</section><section id="image-filenaming"><h2 class="section-heading">Image filenaming<a class="anchor" aria-label="anchor" href="#image-filenaming"></a>
+<p>When working with Snakemake it is important to have a plan for how to
+organize your files. One good practice that Snakemake supports is to
+store each rule’s output files in subdirectories. This makes it easy to
+tell where the input files used in a rule came from. This helps
+determining which rule that created a file.</p>
+<p>For our first step where we reduce the input file
+<code>multimedia.csv</code> we will save output filename as
+<code>reduce/multimedia.csv</code>.</p>
+</section><section id="name-image-files-based-on-a-unique-id"><h2 class="section-heading">Name image files based on a unique ID<a class="anchor" aria-label="anchor" href="#name-image-files-based-on-a-unique-id"></a>
 </h2>
 <hr class="half-width">
-<p>We need to determine a good naming convention for downloading
-images.</p>
-<figure>Here is a screenshot of our main input file: <img src="files/multimedia.png" alt="multimedia.csv screenshot" class="figure mx-auto d-block"></figure><p>The <a href="https://bgnn.tulane.edu/" class="external-link">Tulane multimedia.csv
+<p>Additionally since we will be downloading many images from multiple
+locations having a plan for how to name these files is important.</p>
+<figure>Looking at our main input file (multimedia.csv) we can see details
+about the files: <img src="files/multimedia.png" alt="multimedia.csv screenshot" class="figure mx-auto d-block"></figure><p>The <a href="https://bgnn.tulane.edu/" class="external-link">Tulane multimedia.csv
 documentation</a> describes the <code>arkID</code> column as:</p>
 <blockquote>
 <p>Multimedia unique identifier number</p>
 </blockquote>
-<p><code>arkID</code> seems like a good identifier to use in our image
-filenames. So for the multimedia row with an arkID of
-<code>dd216t3d</code> we will save the image as:</p>
+<p><strong>arkID</strong> seems like a good identifier to use in our
+image filenames.</p>
+<p>For the multimedia row with arkID <code>dd216t3d</code> we will save
+the downloaded image as:</p>
 <pre><code><span><span class="va">images</span><span class="op">/</span><span class="va">dd216t3d.jpg</span></span></code></pre>
-</section><section id="image-processing-filenaming"><h2 class="section-heading">Image processing filenaming<a class="anchor" aria-label="anchor" href="#image-processing-filenaming"></a>
-</h2>
-<hr class="half-width">
+<p>For subsequent rules that process images the <code>arkID</code> value
+will be re-used. For example the object detection rule would create an
+output file named:</p>
+<pre><code><span><span class="va">object_detection</span><span class="op">/</span><span class="va">metadata_dd216t3d.json</span></span></code></pre>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
- --></section></section><section id="aio-setup_env"><p>Content from <a href="setup_env.html">Project Setup</a></p>
+ -->
+</section></section><section id="aio-setup_env"><p>Content from <a href="setup_env.html">Project Setup</a></p>
 <hr>
 <p> Last updated on 2023-02-28 | 
         
@@ -527,16 +535,48 @@ Directory</strong>
 <li>Click “SnakemakeWorkflow” in the <strong>Name</strong> column the
 list of files and folders</li>
 <li>Click “open in terminal”</li>
-</ul></section><section id="software-environment-setup"><h2 class="section-heading">Software Environment Setup<a class="anchor" aria-label="anchor" href="#software-environment-setup"></a>
+</ul></section><section id="copy-lesson-files"><h2 class="section-heading">Copy lesson Files<a class="anchor" aria-label="anchor" href="#copy-lesson-files"></a>
+</h2>
+<hr class="half-width">
+<p>Some files are provided for this lesson. These files need to be
+copied into the “SnakemakeWorkflow” subdirectory within your home
+directory. You should be within the <code>SnakemakeWorkflow</code>
+directory before running this step. Run the following command</p>
+<div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span></code></pre>
+</div>
+<p>Run the following command to copy these files into your current
+directory (SnakemakeWorkflow):</p>
+<div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> /fs/ess/PAS2136/Workshops/Snakemake/files/<span class="pp">*</span> .</span></code></pre>
+</div>
+<p>Next run the <code>ls</code> command to ensure you have all the
+needed files:</p>
+<div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre>
+</div>
+<p>Expected Output:</p>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>AnalyzeResults.R  FilterImages.R  FishSummary.Rmd  multimedia.csv  setup_env.sh  slurm</code></pre>
+</div>
+</section><section id="software-environment-setup"><h2 class="section-heading">Software Environment Setup<a class="anchor" aria-label="anchor" href="#software-environment-setup"></a>
 </h2>
 <hr class="half-width">
 <p>Run the following steps from within an OSC ondemand terminal within
 the “SnakemakeWorkflow” subdirectory.</p>
 <p>Activate the Snakemake environment</p>
-<div class="codewrapper sourceCode" id="cb1">
+<div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span> /fs/ess/PAS2136/Workshops/Snakemake/setup_env.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span> setup_env.sh</span></code></pre>
 </div>
 <p>Expected Output:</p>
 <div class="codewrapper">
@@ -551,10 +591,10 @@ Configuring R to use the yaml package.
 Configuring singularity to use a cache to speed up pulling containers.</code></pre>
 </div>
 <p>Test snakemake with the –version flag</p>
-<div class="codewrapper sourceCode" id="cb3">
+<div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">--version</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">--version</span></span></code></pre>
 </div>
 <p>Expected Output:</p>
 <div class="codewrapper">
@@ -563,10 +603,10 @@ Configuring singularity to use a cache to speed up pulling containers.</code></p
 <pre class="output" tabindex="0"><code>7.22.0</code></pre>
 </div>
 <p>Test R –version flag</p>
-<div class="codewrapper sourceCode" id="cb5">
+<div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> <span class="at">--version</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> <span class="at">--version</span></span></code></pre>
 </div>
 <p>Expected Output:</p>
 <div class="codewrapper">
@@ -574,42 +614,15 @@ Configuring singularity to use a cache to speed up pulling containers.</code></p
 </h3>
 <pre class="output" tabindex="0"><code>R version 4.2.1 ...</code></pre>
 </div>
-</section><section id="copy-lesson-files"><h2 class="section-heading">Copy lesson Files<a class="anchor" aria-label="anchor" href="#copy-lesson-files"></a>
-</h2>
-<hr class="half-width">
-<p>Four input files are provided for this lesson. An input csv file and
-some R scripts to filter and create the final analysis. These files need
-to be copied into the “SnakemakeWorkflow” subdirectory within your home
-directory.</p>
-<p>Run the following command to copy these files into your new
-SnakemakeWorkflow directory:</p>
-<div class="codewrapper sourceCode" id="cb7">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> /fs/ess/PAS2136/Workshops/Snakemake/files/<span class="pp">*</span> ~/SnakemakeWorkflow/.</span></code></pre>
-</div>
-<p>Next run the <code>ls</code> command to ensure you have all the
-needed files:</p>
-<div class="codewrapper sourceCode" id="cb8">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre>
-</div>
-<p>Expected Output:</p>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>AnalyzeResults.R  FilterImages.R  FishSummary.Rmd  multimedia.csv</code></pre>
-</div>
 </section><section id="start-interactive-session"><h2 class="section-heading">Start Interactive Session<a class="anchor" aria-label="anchor" href="#start-interactive-session"></a>
 </h2>
 <hr class="half-width">
 <p>Start an interactive session that will remain active for 1 hour of by
 running:</p>
-<div class="codewrapper sourceCode" id="cb10">
+<div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sinteractive</span> <span class="at">-t</span> 01:00:00 <span class="at">-A</span> PAS2136</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sinteractive</span> <span class="at">-t</span> 01:00:00 <span class="at">-A</span> PAS2136</span></code></pre>
 </div>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
