@@ -60,6 +60,7 @@ contact: 'john.bradley@duke.edu'
 # Order of episodes in your lesson
 episodes:
 - introduction.md
+- filename_plan.md
 - create_snakefile.md
 - filter_rule.md
 - scatter_rule.md

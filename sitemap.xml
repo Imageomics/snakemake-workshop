@@ -19,6 +19,9 @@
     <loc>https://Imageomics.github.io/snakemake-workshop/create_snakefile.html</loc>
   </url>
   <url>
+    <loc>https://Imageomics.github.io/snakemake-workshop/filename_plan.html</loc>
+  </url>
+  <url>
     <loc>https://Imageomics.github.io/snakemake-workshop/filter_rule.html</loc>
   </url>
   <url>
@@ -47,6 +50,9 @@
   </url>
   <url>
     <loc>https://Imageomics.github.io/snakemake-workshop/instructor/create_snakefile.html</loc>
+  </url>
+  <url>
+    <loc>https://Imageomics.github.io/snakemake-workshop/instructor/filename_plan.html</loc>
   </url>
   <url>
     <loc>https://Imageomics.github.io/snakemake-workshop/instructor/filter_rule.html</loc>
