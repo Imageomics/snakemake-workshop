@@ -343,40 +343,62 @@
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
-<div class="overview card">
-<h2 class="card-header">Overview</h2>
-<div class="row g-0">
-<div class="col-md-4">
-<div class="card-body">
-<div class="inner">
-<h3 class="card-title">Questions</h3>
-<ul>
-<li>TODO</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="col-md-8">
-<div class="card-body">
-<div class="inner bordered">
-<h3 class="card-title">Objectives</h3>
-<ul>
-<li>TODO</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-<section id="introduction"><h2 class="section-heading">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+<section id="goals"><h2 class="section-heading">Goals<a class="anchor" aria-label="anchor" href="#goals"></a>
 </h2>
 <hr class="half-width">
-<p>Explain why one would use a workflow language when developing a
-workflow Show high level view of the workflow we going building Show
-challenges when using bash or another scripting language not re-running
-the entire process every time scaling Explain how Snakemake works to
-addresses these challenges snakemake rule: input, output, shell can use
-python in Snakefile</p>
+<ul>
+<li>Create a Snakemake Workflow
+<ul>
+<li>Uses R scripts for pre-processing and post processing</li>
+<li>Uses Machine Learning Components</li>
+<li>Process many files at the same time</li>
+</ul>
+</li>
+<li>Learn how to run a Snakemake workflow</li>
+</ul></section><section id="why-use-a-workflow-language"><h2 class="section-heading">Why use a Workflow Language?<a class="anchor" aria-label="anchor" href="#why-use-a-workflow-language"></a>
+</h2>
+<hr class="half-width">
+<div class="section level3">
+<h3 id="workflow-challenges">Workflow Challenges<a class="anchor" aria-label="anchor" href="#workflow-challenges"></a>
+</h3>
+<ul>
+<li>Reproducibility</li>
+<li>Not re-running the entire workflow on every change</li>
+<li>Dependency management</li>
+<li>Efficiently scaling the workflow using a HPC Cluster</li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="snakemake">Snakemake<a class="anchor" aria-label="anchor" href="#snakemake"></a>
+</h3>
+<ul>
+<li>Breaks up workflow into rules and runs only the parts necessary</li>
+<li>Provides support for specifying containers for each rule</li>
+<li>Provides support for many HPC Clusters including SLURM</li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="snakemake-overview-video">Snakemake Overview Video<a class="anchor" aria-label="anchor" href="#snakemake-overview-video"></a>
+</h3>
+<p><a href="https://youtu.be/UOKxta3061g" class="external-link uri">https://youtu.be/UOKxta3061g</a></p>
+</div>
+</section><section id="what-is-a-snakemake-rule"><h2 class="section-heading">What is a Snakemake Rule?<a class="anchor" aria-label="anchor" href="#what-is-a-snakemake-rule"></a>
+</h2>
+<hr class="half-width">
+<p>A Snakemake Rule specifies</p>
+<ul>
+<li>input files</li>
+<li>output files</li>
+<li>shell command that reads the input file and writes the output
+files</li>
+</ul>
+<p>Example rule</p>
+<pre><code>rule count_words:
+    input: 'books/isles.txt'
+    output: 'isles.dat'
+    shell: 'python wordcount.py books/isles.txt isles.dat'</code></pre>
+<p>Taken from <a href="https://carpentries-incubator.github.io/hpc-workflows/02-snakefiles/index.html" class="external-link">carpentries
+incubator hpc-workflows lesson</a>.</p>
 </section><section id="workflow-steps"><h2 class="section-heading">Workflow Steps<a class="anchor" aria-label="anchor" href="#workflow-steps"></a>
 </h2>
 <hr class="half-width">
@@ -388,39 +410,49 @@ python in Snakefile</p>
 <div class="section level3">
 <h3 id="step-1-reduce-the-size-of-our-input-csv">Step 1: Reduce the size of our input CSV<a class="anchor" aria-label="anchor" href="#step-1-reduce-the-size-of-our-input-csv"></a>
 </h3>
+<p>Reduce the total size of the input CSV using a simple command line
+utility. This demonstrates creating a simple rule that receives input
+and output command line arguments.</p>
 </div>
 <div class="section level3">
 <h3 id="step-2-filter-csv-for-our-target-species">Step 2: Filter CSV for our target species<a class="anchor" aria-label="anchor" href="#step-2-filter-csv-for-our-target-species"></a>
 </h3>
-<figure><img src="files/filtered.png" alt="" class="figure mx-auto d-block"><figcaption>filtered CSV screenshot</figcaption></figure>
+<figure>Next we run an R script to filtering our CSV for
+<code>Notropis nazas</code> species. <img src="files/filtered.png" alt="filtered CSV screenshot" class="figure mx-auto d-block"></figure>
 </div>
 <div class="section level3">
 <h3 id="step-3-download-images">Step 3: Download images<a class="anchor" aria-label="anchor" href="#step-3-download-images"></a>
 </h3>
-<figure><img src="files/bj373514.png" alt="" class="figure mx-auto d-block"><figcaption>minnow image</figcaption></figure>
+<figure>Next download each image from the filtered CSV. <img src="files/bj373514.png" alt="minnow image" class="figure mx-auto d-block"></figure>
 </div>
 <div class="section level3">
 <h3 id="step-4-detect-fish-in-each-image">Step 4: Detect fish in each image<a class="anchor" aria-label="anchor" href="#step-4-detect-fish-in-each-image"></a>
 </h3>
+<p>Next we use a tool to determine the location of the fish in each
+image.</p>
 </div>
 <div class="section level3">
 <h3 id="step-5-crop-each-fish-image">Step 5: Crop each fish image<a class="anchor" aria-label="anchor" href="#step-5-crop-each-fish-image"></a>
 </h3>
-<figure><img src="files/bj373514_crop.png" alt="" class="figure mx-auto d-block"><figcaption>cropped minnow image</figcaption></figure>
+<figure>We then crop each image with the bounding box from the object
+detection step. <img src="files/bj373514_crop.png" alt="cropped minnow image" class="figure mx-auto d-block"></figure>
 </div>
 <div class="section level3">
 <h3 id="step-6-segment-cropped-images">Step 6: Segment cropped images<a class="anchor" aria-label="anchor" href="#step-6-segment-cropped-images"></a>
 </h3>
-<figure><img src="files/bj373514_seg.png" alt="" class="figure mx-auto d-block"><figcaption>segmented minnow image</figcaption></figure>
+<figure>Next we use a tool to segment each cropped image. <img src="files/bj373514_seg.png" alt="segmented minnow image" class="figure mx-auto d-block"></figure>
 </div>
 <div class="section level3">
 <h3 id="step-7--determine-presence-absence-morphology">Step 7. determine presence absence morphology<a class="anchor" aria-label="anchor" href="#step-7--determine-presence-absence-morphology"></a>
 </h3>
+<p>Next we run a tool that looks at colors in the segmented images to
+determine a presence absence matrix.</p>
 </div>
 <div class="section level3">
 <h3 id="step-8--final-analysis">Step 8. final analysis<a class="anchor" aria-label="anchor" href="#step-8--final-analysis"></a>
 </h3>
-<figure><img src="files/report.png" alt="" class="figure mx-auto d-block"><figcaption>final report screenshot</figcaption></figure><!-- 
+<figure>Finally we create a report using another R script that summarizes the
+results of our processing. <img src="files/report.png" alt="final report screenshot" class="figure mx-auto d-block"></figure><!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
  -->

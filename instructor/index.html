@@ -292,7 +292,6 @@ any links that you are not going to use.
  1. <a href="introduction.html">Introduction</a>
 </td>
 <td>
-TODO
 </td>
 </tr><tr><td>
 <span class="visually-hidden">Duration: </span>00h 12m
@@ -387,15 +386,18 @@ Directory</strong>
 <li>Click “SnakemakeWorkflow” in the <strong>Name</strong> column the
 list of files and folders</li>
 <li>Click “open in terminal”</li>
-</ul></section><section id="software-environment-setup"><h2 class="section-heading">Software Environment Setup<a class="anchor" aria-label="anchor" href="#software-environment-setup"></a>
+<li>Start an interactive session that with 2 hours of time by
+running</li>
+</ul><pre><code>sinteractive -t 02:00:00 -A PAS2136</code></pre>
+</section><section id="software-environment-setup"><h2 class="section-heading">Software Environment Setup<a class="anchor" aria-label="anchor" href="#software-environment-setup"></a>
 </h2>
 <hr class="half-width"><p>Run the following steps from within an OSC ondemand terminal within
 the “SnakemakeWorkflow” subdirectory.</p>
 <p>Activate the Snakemake environment</p>
-<div class="codewrapper sourceCode" id="cb1">
+<div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span> /fs/ess/PAS2136/Workshops/Snakemake/setup_env.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span> /fs/ess/PAS2136/Workshops/Snakemake/setup_env.sh</span></code></pre>
 </div>
 <p>Expected Output:</p>
 <pre><code>Activating minconda3 environment with snakemake installed.
@@ -403,18 +405,18 @@ Activating R module that can be used with R scripts.
 This module will switch Compiler environment to gnu/11.2.0 and load mkl/2021.3.0 for R/4.2.1
 Configuring singularity to use a cache to speed up pulling containers.</code></pre>
 <p>Test snakemake with the –version flag</p>
-<div class="codewrapper sourceCode" id="cb3">
+<div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">--version</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">--version</span></span></code></pre>
 </div>
 <p>Expected Output:</p>
 <pre><code>7.22.0</code></pre>
 <p>Test R –version flag</p>
-<div class="codewrapper sourceCode" id="cb5">
+<div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> <span class="at">--version</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> <span class="at">--version</span></span></code></pre>
 </div>
 <p>Expected Output:</p>
 <pre><code>R version 4.2.1 ...</code></pre>
@@ -426,17 +428,17 @@ to be copied into the “SnakemakeWorkflow” subdirectory within your home
 directory.</p>
 <p>Run the following command to copy these files into the appropriate
 directory:</p>
-<div class="codewrapper sourceCode" id="cb7">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> /fs/ess/PAS2136/Workshops/Snakemake/files/<span class="pp">*</span> ~/SnakemakeWorkflow/.</span></code></pre>
-</div>
-<p>Next run the <code>ls</code> command to ensure you have all the
-needed files:</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> /fs/ess/PAS2136/Workshops/Snakemake/files/<span class="pp">*</span> ~/SnakemakeWorkflow/.</span></code></pre>
+</div>
+<p>Next run the <code>ls</code> command to ensure you have all the
+needed files:</p>
+<div class="codewrapper sourceCode" id="cb9">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre>
 </div>
 <p>Expected Output:</p>
 <pre><code>AnalyzeResults.R  FilterImages.R  FishSummary.Rmd  multimedia.csv</code></pre>
