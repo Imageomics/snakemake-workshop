@@ -13,13 +13,37 @@ exercises: 2
 - Click "SnakemakeWorkflow" in the __Name__ column the list of files and folders
 - Click "open in terminal"
 
+## Copy lesson Files
+Some files are provided for this lesson.
+These files need to be copied into the "SnakemakeWorkflow" subdirectory within your home directory.
+You should be within the `SnakemakeWorkflow` directory before running this step.
+Run the following command
+```bash
+pwd
+```
+
+
+Run the following command to copy these files into your current directory (SnakemakeWorkflow):
+```bash
+cp -r /fs/ess/PAS2136/Workshops/Snakemake/files/* .
+```
+
+Next run the `ls` command to ensure you have all the needed files:
+```bash
+ls
+```
+Expected Output:
+```output
+AnalyzeResults.R  FilterImages.R  FishSummary.Rmd  multimedia.csv  setup_env.sh  slurm
+```
+
 ## Software Environment Setup
 
 Run the following steps from within an OSC ondemand terminal within the "SnakemakeWorkflow" subdirectory.
 
 Activate the Snakemake environment
 ```bash
-. /fs/ess/PAS2136/Workshops/Snakemake/setup_env.sh
+. setup_env.sh
 ```
 
 Expected Output:
@@ -53,24 +77,6 @@ Expected Output:
 R version 4.2.1 ...
 ```
 
-## Copy lesson Files
-Four input files are provided for this lesson.
-An input csv file and some R scripts to filter and create the final analysis. 
-These files need to be copied into the "SnakemakeWorkflow" subdirectory within your home directory.
-
-Run the following command to copy these files into your new SnakemakeWorkflow directory:
-```bash
-cp -r /fs/ess/PAS2136/Workshops/Snakemake/files/* ~/SnakemakeWorkflow/.
-```
-
-Next run the `ls` command to ensure you have all the needed files:
-```bash
-ls
-```
-Expected Output:
-```output
-AnalyzeResults.R  FilterImages.R  FishSummary.Rmd  multimedia.csv
-```
 
 ## Start Interactive Session
 Start an interactive session that will remain active for 1 hour of by running:
