@@ -361,8 +361,8 @@
 <ul>
 <li>Create a Snakemake Workflow
 <ul>
-<li>Uses R scripts for pre-processing and post processing</li>
-<li>Uses Machine Learning Components</li>
+<li>Runs R scripts for filtering and final analysis</li>
+<li>Runs Machine Learning Components</li>
 <li>Process many files at the same time</li>
 </ul>
 </li>
@@ -534,32 +534,47 @@ Directory</strong>
 </li>
 <li>Click “SnakemakeWorkflow” in the <strong>Name</strong> column the
 list of files and folders</li>
-<li>Click “open in terminal”</li>
-</ul></section><section id="copy-lesson-files"><h2 class="section-heading">Copy lesson Files<a class="anchor" aria-label="anchor" href="#copy-lesson-files"></a>
+<li>Click “Open in Terminal”</li>
+</ul></section><section id="copy-lesson-files"><h2 class="section-heading">Copy Lesson Files<a class="anchor" aria-label="anchor" href="#copy-lesson-files"></a>
 </h2>
 <hr class="half-width">
 <p>Some files are provided for this lesson. These files need to be
 copied into the “SnakemakeWorkflow” subdirectory within your home
 directory. You should be within the <code>SnakemakeWorkflow</code>
-directory before running this step. Run the following command</p>
+directory before running this step.</p>
+<div class="section level3">
+<h3 id="verify-directory">Verify Directory<a class="anchor" aria-label="anchor" href="#verify-directory"></a>
+</h3>
+<p>Run the following command to ensure you are in the appropriate
+directory:</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span></code></pre>
 </div>
+<p>The output should look similar to the following:</p>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>/users/PAS2136/jbradley/SnakemakeWorkflow</code></pre>
+</div>
+</div>
+<div class="section level3">
+<h3 id="copy-files">Copy Files<a class="anchor" aria-label="anchor" href="#copy-files"></a>
+</h3>
 <p>Run the following command to copy these files into your current
 directory (SnakemakeWorkflow):</p>
-<div class="codewrapper sourceCode" id="cb2">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> /fs/ess/PAS2136/Workshops/Snakemake/files/<span class="pp">*</span> .</span></code></pre>
-</div>
-<p>Next run the <code>ls</code> command to ensure you have all the
-needed files:</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> /fs/ess/PAS2136/Workshops/Snakemake/files/<span class="pp">*</span> .</span></code></pre>
+</div>
+<p>Next run the <code>ls</code> command to ensure you have all the
+needed files:</p>
+<div class="codewrapper sourceCode" id="cb4">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre>
 </div>
 <p>Expected Output:</p>
 <div class="codewrapper">
@@ -567,16 +582,41 @@ needed files:</p>
 </h3>
 <pre class="output" tabindex="0"><code>AnalyzeResults.R  FilterImages.R  FishSummary.Rmd  multimedia.csv  setup_env.sh  slurm</code></pre>
 </div>
+</div>
+<div class="section level3">
+<h3 id="lesson-files">Lesson Files<a class="anchor" aria-label="anchor" href="#lesson-files"></a>
+</h3>
+<ul>
+<li>
+<strong>setup_env.sh</strong> - Used to activates snakemake conda
+environment and other utilities</li>
+<li>
+<strong>multimedia.csv</strong> - Main input file of fish images
+used by the workflow</li>
+<li>
+<strong>FilterImages.R</strong> - R script that filters a CSV for a
+target species.</li>
+<li>
+<strong>AnalyzeResults.R</strong> - R script that builds a summary
+report of the workflow outputs</li>
+<li>
+<strong>FishSummary.Rmd</strong> - R markdown script used by
+__AnalyzeResults.R to create a report</li>
+<li>
+<strong>slurm</strong> - Directory containing a config file used by
+Snakemake to run SLURM jobs</li>
+</ul>
+</div>
 </section><section id="software-environment-setup"><h2 class="section-heading">Software Environment Setup<a class="anchor" aria-label="anchor" href="#software-environment-setup"></a>
 </h2>
 <hr class="half-width">
 <p>Run the following steps from within an OSC ondemand terminal within
 the “SnakemakeWorkflow” subdirectory.</p>
 <p>Activate the Snakemake environment:</p>
-<div class="codewrapper sourceCode" id="cb5">
+<div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span> setup_env.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span> setup_env.sh</span></code></pre>
 </div>
 <p>NOTE: The leading dot followed by a space is important. This causes
 the settings in setup_env.sh to be applied to your current terminal
@@ -594,10 +634,10 @@ Configuring R to use the yaml package.
 Configuring singularity to use a cache to speed up pulling containers.</code></pre>
 </div>
 <p>Test snakemake with the –version flag</p>
-<div class="codewrapper sourceCode" id="cb7">
+<div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">--version</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">--version</span></span></code></pre>
 </div>
 <p>Expected Output:</p>
 <div class="codewrapper">
@@ -606,10 +646,10 @@ Configuring singularity to use a cache to speed up pulling containers.</code></p
 <pre class="output" tabindex="0"><code>7.22.0</code></pre>
 </div>
 <p>Test R –version flag</p>
-<div class="codewrapper sourceCode" id="cb9">
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> <span class="at">--version</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> <span class="at">--version</span></span></code></pre>
 </div>
 <p>Expected Output:</p>
 <div class="codewrapper">
@@ -620,13 +660,24 @@ Configuring singularity to use a cache to speed up pulling containers.</code></p
 </section><section id="start-interactive-session"><h2 class="section-heading">Start Interactive Session<a class="anchor" aria-label="anchor" href="#start-interactive-session"></a>
 </h2>
 <hr class="half-width">
+<p>Since we will be running some heavy processing starting an
+interactive job is important. Otherwise this processing would occcur on
+a login node and cause issues for other cluster users.</p>
 <p>Start an interactive session that will remain active for 1 hour of by
 running:</p>
-<div class="codewrapper sourceCode" id="cb11">
+<div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sinteractive</span> <span class="at">-t</span> 01:00:00 <span class="at">-A</span> PAS2136</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sinteractive</span> <span class="at">-t</span> 01:00:00 <span class="at">-A</span> PAS2136</span></code></pre>
 </div>
+</section><section id="new-terminal-sessions"><h2 class="section-heading">New Terminal Sessions<a class="anchor" aria-label="anchor" href="#new-terminal-sessions"></a>
+</h2>
+<hr class="half-width">
+<p>If you close your terminal and create a new one you will need to
+setup your environment again. To do so rerun the following two
+steps:</p>
+<pre><code>. setup_env.sh
+sinteractive -t 01:00:00 -A PAS2136</code></pre>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
