@@ -10,12 +10,14 @@ title: Setup
   - Enter `SnakemakeWorkflow` for the directory name
 - Click "SnakemakeWorkflow" in the __Name__ column the list of files and folders
 - Click "open in terminal"
-
+- Start an interactive session that with 2 hours of time by running
+```
+sinteractive -t 02:00:00 -A PAS2136
+```
 
 ## Software Environment Setup
 
 Run the following steps from within an OSC ondemand terminal within the "SnakemakeWorkflow" subdirectory.
-
 
 Activate the Snakemake environment
 ```bash
