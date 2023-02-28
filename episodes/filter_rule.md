@@ -47,8 +47,8 @@ snakemake -c1
 ```
 
 Expected Output:
-```
-NOTHING happened
+```output
+NOTHING happened: TODO get exact content
 ```
 
 Explain All rule:
@@ -59,4 +59,11 @@ The First rule in a Snakefile is the default target.
 snakemake -c1 filter/multimedia.csv
 ```
 
+## Run snakemake specifying a non-existant target
+```bash
+snakemake -c1 winninglotterynumbers.txt
+```
 
+```output
+MissingRuleException: TODO get content
+```
