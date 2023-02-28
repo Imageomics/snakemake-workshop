@@ -23,10 +23,6 @@ exercises: 2
 - Provides support for specifying containers for each rule
 - Provides support for many HPC Clusters including SLURM
 
-### Snakemake Overview Video
-
-https://youtu.be/UOKxta3061g
-
 ## What is a Snakemake Rule?
 
 A Snakemake Rule specifies
@@ -43,12 +39,16 @@ rule count_words:
     output: 'isles.dat'
     shell: 'python wordcount.py books/isles.txt isles.dat'
 ```
-Taken from [carpentries incubator hpc-workflows lesson](https://carpentries-incubator.github.io/hpc-workflows/02-snakefiles/index.html).
+_This rule was copied from the [carpentries incubator hpc-workflows lesson](https://carpentries-incubator.github.io/hpc-workflows/02-snakefiles/index.html)._
 
 ## Workflow Steps
 
 ### Input CSV
+The input CSV (`multimedia.csv`) was downloaded from https://bgnn.tulane.edu/.
+
+When viewed within RStudio the data looks like this:
 ![multimedia CSV screenshot](files/multimedia.png)
+
 
 ### Step 1: Reduce the size of our input CSV
 Reduce the total size of the input CSV using a simple command line utility.
@@ -56,6 +56,8 @@ This demonstrates creating a simple rule that receives input and output command 
 
 ### Step 2: Filter CSV for our target species
 Next we run an R script to filtering our CSV for `Notropis nazas` species.
+
+When viewed within RStudio the data looks like this:
 ![filtered CSV screenshot](files/filtered.png)
 
 ### Step 3: Download images
@@ -77,7 +79,9 @@ Next we use a tool to segment each cropped image.
 Next we run a tool that looks at colors in the segmented images to determine a presence absence matrix.
 
 ### Step 8. final analysis
-Finally we create a report using another R script that summarizes the results of our processing. 
+Finally we create a report using another R script that summarizes the results of our processing.
+
+The HTML report will look something like this:
 ![final report screenshot](files/report.png)
 
 

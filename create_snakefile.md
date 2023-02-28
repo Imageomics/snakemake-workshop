@@ -52,7 +52,7 @@ snakemake
 ```
 
 Expected Error Output:
-```
+```output
 Error: you need to specify the maximum number of CPU cores 
 to be used at the same time. If you want to use N cores, 
 say --cores N or -cN. For all cores on your system 
@@ -69,7 +69,7 @@ snakemake -c1
 ```
 
 Expected Output:
-```
+```output
 Building DAG of jobs...
 Using shell: /usr/bin/bash
 Provided cores: 1 (use --cores to define parallelism)
