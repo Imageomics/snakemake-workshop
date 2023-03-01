@@ -5,11 +5,13 @@ exercises: 2
 ---
 
 ## Goals
-- Create a Snakemake Workflow
+- Understanding the problem that workflow languages are trying to solve
+  - Many players in this field
+  - Understand the strengths of Snakemake
+- Create and run a Snakemake Workflow
   - Runs R scripts for filtering and final analysis
   - Runs Machine Learning Components
   - Process many files at the same time
-- Learn how to run a Snakemake workflow
 
 ## Why use a Workflow Language?
 ### Workflow Challenges
