@@ -10,7 +10,7 @@ Run the following steps from within an OSC ondemand terminal within the "Snakema
 
 Activate the Snakemake environment:
 ```bash
-. setup_env.sh
+. Scripts/setup_env.sh
 ```
 NOTE: The leading dot followed by a space is important. This causes the settings in setup_env.sh to be applied
 to your current terminal session.
@@ -62,7 +62,7 @@ sinteractive -t 01:00:00 -A PAS2136
 If you close your terminal and create a new one you will need to setup your environment again.
 To do so rerun the following two steps:
 ```bash
-. setup_env.sh
+. Scripts/setup_env.sh
 sinteractive -t 01:00:00 -A PAS2136
 ```
 :::
