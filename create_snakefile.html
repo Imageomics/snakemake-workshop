@@ -85,11 +85,11 @@
   Imageomics Snakemake Workshop
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: 29%" class="percentage">
-    29%
+<aside class="col-md-12 lesson-progress"><div style="width: 36%" class="percentage">
+    36%
   </div>
   <div class="progress incubator">
-    <div class="progress-bar incubator" role="progressbar" style="width: 29%" aria-valuenow="29" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar incubator" role="progressbar" style="width: 36%" aria-valuenow="36" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -153,7 +153,7 @@
 <div class="accordion accordion-flush" id="accordionFlush3">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading3">
-        <a href="filename_plan.html">2. Filename plan</a>
+        <a href="big_picture.html">2. Workflow Overview</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -162,7 +162,7 @@
 <div class="accordion accordion-flush" id="accordionFlush4">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading4">
-        <a href="setup_project.html">3. Project Setup</a>
+        <a href="filename_plan.html">3. Filename plan</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -171,7 +171,16 @@
 <div class="accordion accordion-flush" id="accordionFlush5">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading5">
-        <a href="setup_env.html">4. Environment Setup</a>
+        <a href="setup_project.html">4. Project Setup</a>
+    </div><!--/div.accordion-header-->
+        
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush6">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading6">
+        <a href="setup_env.html">5. Environment Setup</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -194,18 +203,8 @@
 <li><a href="#run-the-workflow">Run the Workflow</a></li>
 <li><a href="#reduce-duplication-using-wildcards">Reduce duplication using wildcards</a></li>
 <li><a href="#use-a-param-to-simplify-future-changes">Use a param to simplify future changes</a></li>
-<li><a href="#add-a-config-file">Add a config file</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
-        
-  </div><!--/div.accordion-item-->
-</div><!--/div.accordion-flush-->
-
-<div class="accordion accordion-flush" id="accordionFlush7">
-  <div class="accordion-item">
-    <div class="accordion-header" id="flush-heading7">
-        <a href="filter_rule.html">6. Add an R Script</a>
-    </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
@@ -213,7 +212,7 @@
 <div class="accordion accordion-flush" id="accordionFlush8">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading8">
-        <a href="scatter_rule.html">7. Process multiple files</a>
+        <a href="filter_rule.html">7. Add an R Script</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -222,7 +221,7 @@
 <div class="accordion accordion-flush" id="accordionFlush9">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading9">
-        <a href="container_rule.html">8. Use a container</a>
+        <a href="scatter_rule.html">8. Process multiple files</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -231,7 +230,7 @@
 <div class="accordion accordion-flush" id="accordionFlush10">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading10">
-        <a href="reuse_workflow.html">9. Reuse another workflow</a>
+        <a href="container_rule.html">9. Use a container</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -240,7 +239,7 @@
 <div class="accordion accordion-flush" id="accordionFlush11">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading11">
-        <a href="final_analysis_rule.html">10. Add Summary Analysis</a>
+        <a href="reuse_workflow.html">10. Reuse another workflow</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -249,7 +248,16 @@
 <div class="accordion accordion-flush" id="accordionFlush12">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading12">
-        <a href="run_on_slurm.html">11. Run at Scale</a>
+        <a href="final_analysis_rule.html">11. Add Summary Analysis</a>
+    </div><!--/div.accordion-header-->
+        
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush13">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading13">
+        <a href="run_on_slurm.html">12. Run at Scale</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -306,7 +314,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Create a Workflow</h1>
-        <p> Last updated on 2023-02-28 | 
+        <p> Last updated on 2023-03-04 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/create_snakefile.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -463,29 +471,6 @@ use the <code>params.rows</code> wildcard in the shell as follows:</p>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span></span></code></pre>
 </div>
-</section><section id="add-a-config-file"><h2 class="section-heading">Add a config file<a class="anchor" aria-label="anchor" href="#add-a-config-file"></a>
-</h2>
-<hr class="half-width"><p>A better option to allow easy changes to the rows param is to store
-this value in a config file. Snakemake comes with support for parsing
-and using a YAML config file.</p>
-<p>Create a new file named <code>config.yaml</code> with the following
-contents:</p>
-<pre><code><span><span class="va">reduce_rows</span><span class="op">:</span> <span class="fl">21</span></span></code></pre>
-<p>Then update your <code>Snakefile</code> to specify the config file
-location and use the “reduce_rows” config option:</p>
-<pre><code>configfile: "config.yaml"
-
-rule reduce:
-  input: "multimedia.csv"
-  output: "reduce/multimedia.csv"
-  params: rows=config["reduce_rows"]
-  shell: "head -n {params.rows} {input} &gt; {output}"</code></pre>
-<p>Running the workflow again:</p>
-<div class="codewrapper sourceCode" id="cb14">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span></span></code></pre>
-</div>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
@@ -542,9 +527,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://Imageomics.github.io/snakemake-workshop/create_snakefile.html",
   "identifier": "https://Imageomics.github.io/snakemake-workshop/create_snakefile.html",
-  "dateCreated": "2023-03-01",
-  "dateModified": "2023-02-28",
-  "datePublished": "2023-03-01"
+  "dateCreated": "2023-03-04",
+  "dateModified": "2023-03-04",
+  "datePublished": "2023-03-04"
 }
 
   </script><script>

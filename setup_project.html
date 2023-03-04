@@ -85,11 +85,11 @@
   Imageomics Snakemake Workshop
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: 20%" class="percentage">
-    20%
+<aside class="col-md-12 lesson-progress"><div style="width: 27%" class="percentage">
+    27%
   </div>
   <div class="progress incubator">
-    <div class="progress-bar incubator" role="progressbar" style="width: 20%" aria-valuenow="20" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar incubator" role="progressbar" style="width: 27%" aria-valuenow="27" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -153,7 +153,16 @@
 <div class="accordion accordion-flush" id="accordionFlush3">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading3">
-        <a href="filename_plan.html">2. Filename plan</a>
+        <a href="big_picture.html">2. Workflow Overview</a>
+    </div><!--/div.accordion-header-->
+        
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush4">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading4">
+        <a href="filename_plan.html">3. Filename plan</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -180,19 +189,10 @@
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
-<div class="accordion accordion-flush" id="accordionFlush5">
-  <div class="accordion-item">
-    <div class="accordion-header" id="flush-heading5">
-        <a href="setup_env.html">4. Environment Setup</a>
-    </div><!--/div.accordion-header-->
-        
-  </div><!--/div.accordion-item-->
-</div><!--/div.accordion-flush-->
-
 <div class="accordion accordion-flush" id="accordionFlush6">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading6">
-        <a href="create_snakefile.html">5. Create a Workflow</a>
+        <a href="setup_env.html">5. Environment Setup</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -201,7 +201,7 @@
 <div class="accordion accordion-flush" id="accordionFlush7">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading7">
-        <a href="filter_rule.html">6. Add an R Script</a>
+        <a href="create_snakefile.html">6. Create a Workflow</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -210,7 +210,7 @@
 <div class="accordion accordion-flush" id="accordionFlush8">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading8">
-        <a href="scatter_rule.html">7. Process multiple files</a>
+        <a href="filter_rule.html">7. Add an R Script</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -219,7 +219,7 @@
 <div class="accordion accordion-flush" id="accordionFlush9">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading9">
-        <a href="container_rule.html">8. Use a container</a>
+        <a href="scatter_rule.html">8. Process multiple files</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -228,7 +228,7 @@
 <div class="accordion accordion-flush" id="accordionFlush10">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading10">
-        <a href="reuse_workflow.html">9. Reuse another workflow</a>
+        <a href="container_rule.html">9. Use a container</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -237,7 +237,7 @@
 <div class="accordion accordion-flush" id="accordionFlush11">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading11">
-        <a href="final_analysis_rule.html">10. Add Summary Analysis</a>
+        <a href="reuse_workflow.html">10. Reuse another workflow</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -246,7 +246,16 @@
 <div class="accordion accordion-flush" id="accordionFlush12">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading12">
-        <a href="run_on_slurm.html">11. Run at Scale</a>
+        <a href="final_analysis_rule.html">11. Add Summary Analysis</a>
+    </div><!--/div.accordion-header-->
+        
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush13">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading13">
+        <a href="run_on_slurm.html">12. Run at Scale</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -303,7 +312,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Project Setup</h1>
-        <p> Last updated on 2023-02-28 | 
+        <p> Last updated on 2023-03-04 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/setup_project.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -370,25 +379,28 @@ needed files:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>AnalyzeResults.R  FilterImages.R  FishSummary.Rmd  multimedia.csv  setup_env.sh  slurm</code></pre>
+<pre class="output" tabindex="0"><code>multimedia.csv  Scripts  slurm</code></pre>
 </div>
 </div>
 <div class="section level3">
 <h3 id="lesson-files">Lesson Files<a class="anchor" aria-label="anchor" href="#lesson-files"></a></h3>
 <ul><li>
-<strong>setup_env.sh</strong> - Used to activates snakemake conda
-environment and other utilities</li>
-<li>
 <strong>multimedia.csv</strong> - Main input file of fish images
 used by the workflow</li>
 <li>
-<strong>FilterImages.R</strong> - R script that filters a CSV for a
-target species.</li>
+<strong>Scripts/setup_env.sh</strong> - Used to activates snakemake
+conda environment and other utilities</li>
 <li>
-<strong>AnalyzeResults.R</strong> - R script that builds a summary
-report of the workflow outputs</li>
+<strong>Scripts/FilterImagesHardCoded.R</strong> - Rscript that
+filters a CSV for a target species with hard coded filenames</li>
 <li>
-<strong>FishSummary.Rmd</strong> - R markdown script used by
+<strong>Scripts/FilterImages.R</strong> - R script that filters a
+CSV for a target species</li>
+<li>
+<strong>Scripts/AnalyzeResults.R</strong> - R script that builds a
+summary report of the workflow outputs</li>
+<li>
+<strong>Scripts/FishSummary.Rmd</strong> - R markdown script used by
 __AnalyzeResults.R to create a report</li>
 <li>
 <strong>slurm</strong> - Directory containing a config file used by
@@ -449,9 +461,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://Imageomics.github.io/snakemake-workshop/setup_project.html",
   "identifier": "https://Imageomics.github.io/snakemake-workshop/setup_project.html",
-  "dateCreated": "2023-03-01",
-  "dateModified": "2023-02-28",
-  "datePublished": "2023-03-01"
+  "dateCreated": "2023-03-04",
+  "dateModified": "2023-03-04",
+  "datePublished": "2023-03-04"
 }
 
   </script><script>

@@ -13,6 +13,9 @@
     <loc>https://Imageomics.github.io/snakemake-workshop/aio.html</loc>
   </url>
   <url>
+    <loc>https://Imageomics.github.io/snakemake-workshop/big_picture.html</loc>
+  </url>
+  <url>
     <loc>https://Imageomics.github.io/snakemake-workshop/container_rule.html</loc>
   </url>
   <url>
@@ -44,6 +47,9 @@
   </url>
   <url>
     <loc>https://Imageomics.github.io/snakemake-workshop/instructor/aio.html</loc>
+  </url>
+  <url>
+    <loc>https://Imageomics.github.io/snakemake-workshop/instructor/big_picture.html</loc>
   </url>
   <url>
     <loc>https://Imageomics.github.io/snakemake-workshop/instructor/container_rule.html</loc>

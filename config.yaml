@@ -60,6 +60,7 @@ contact: 'john.bradley@duke.edu'
 # Order of episodes in your lesson
 episodes:
 - introduction.md
+- big_picture.md
 - filename_plan.md
 - setup_project.md
 - setup_env.md

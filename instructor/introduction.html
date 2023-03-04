@@ -156,8 +156,13 @@
       <div class="accordion-body">
         <ul><li><a href="#goals">Goals</a></li>
 <li><a href="#why-use-a-workflow-language">Why use a Workflow Language?</a></li>
+<li><a href="#strengths-and-weaknesses-of-snakemake">Strengths and Weaknesses of Snakemake</a></li>
+<li><a href="#strengths">Strengths</a></li>
+<li><a href="#weaknesses">Weaknesses</a></li>
+<li><a href="#how-snakemake-works">How Snakemake works</a></li>
 <li><a href="#what-is-a-snakemake-rule">What is a Snakemake Rule?</a></li>
-<li><a href="#workflow-steps">Workflow Steps</a></li>
+<li><a href="#procedural">Procedural</a></li>
+<li><a href="#how-snakemake-combines-rules">How Snakemake combines rules</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
         
@@ -167,7 +172,7 @@
 <div class="accordion accordion-flush" id="accordionFlush3">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading3">
-        <a href="filename_plan.html">2. Filename plan</a>
+        <a href="big_picture.html">2. Workflow Overview</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -176,7 +181,7 @@
 <div class="accordion accordion-flush" id="accordionFlush4">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading4">
-        <a href="setup_project.html">3. Project Setup</a>
+        <a href="filename_plan.html">3. Filename plan</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -185,7 +190,7 @@
 <div class="accordion accordion-flush" id="accordionFlush5">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading5">
-        <a href="setup_env.html">4. Environment Setup</a>
+        <a href="setup_project.html">4. Project Setup</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -194,7 +199,7 @@
 <div class="accordion accordion-flush" id="accordionFlush6">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading6">
-        <a href="create_snakefile.html">5. Create a Workflow</a>
+        <a href="setup_env.html">5. Environment Setup</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -203,7 +208,7 @@
 <div class="accordion accordion-flush" id="accordionFlush7">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading7">
-        <a href="filter_rule.html">6. Add an R Script</a>
+        <a href="create_snakefile.html">6. Create a Workflow</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -212,7 +217,7 @@
 <div class="accordion accordion-flush" id="accordionFlush8">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading8">
-        <a href="scatter_rule.html">7. Process multiple files</a>
+        <a href="filter_rule.html">7. Add an R Script</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -221,7 +226,7 @@
 <div class="accordion accordion-flush" id="accordionFlush9">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading9">
-        <a href="container_rule.html">8. Use a container</a>
+        <a href="scatter_rule.html">8. Process multiple files</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -230,7 +235,7 @@
 <div class="accordion accordion-flush" id="accordionFlush10">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading10">
-        <a href="reuse_workflow.html">9. Reuse another workflow</a>
+        <a href="container_rule.html">9. Use a container</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -239,7 +244,7 @@
 <div class="accordion accordion-flush" id="accordionFlush11">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading11">
-        <a href="final_analysis_rule.html">10. Add Summary Analysis</a>
+        <a href="reuse_workflow.html">10. Reuse another workflow</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -248,7 +253,16 @@
 <div class="accordion accordion-flush" id="accordionFlush12">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading12">
-        <a href="run_on_slurm.html">11. Run at Scale</a>
+        <a href="final_analysis_rule.html">11. Add Summary Analysis</a>
+    </div><!--/div.accordion-header-->
+        
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush13">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading13">
+        <a href="run_on_slurm.html">12. Run at Scale</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -296,16 +310,16 @@
   <div class="col-xl-8 col-lg-12 primary-content">
     <nav class="lesson-content mx-md-4" aria-label="Previous and Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="../instructor/index.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
-        <a class="chapter-link float-end" href="../instructor/filename_plan.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="../instructor/big_picture.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
         <a class="chapter-link" href="../instructor/index.html" rel="prev"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
-        <a class="chapter-link float-end" href="../instructor/filename_plan.html" rel="next">Next: Filename plan... <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="../instructor/big_picture.html" rel="next">Next: Workflow Overview... <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Introduction</h1>
-        <p> Last updated on 2023-03-01 | 
+        <p> Last updated on 2023-03-04 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/introduction.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -319,13 +333,13 @@
 
         
 
+<p>TODO: Introduce –dry-run somewhere</p>
 <section id="goals"><h2 class="section-heading">Goals<a class="anchor" aria-label="anchor" href="#goals"></a>
 </h2>
 <hr class="half-width"><ul><li>Understanding the problem that workflow languages are trying to
-solve
-<ul><li>Many players in this field</li>
-<li>Understand the strengths of Snakemake</li>
-</ul></li>
+solve</li>
+<li>Understand the strengths and weaknesses of the Snakemake workflow
+language</li>
 <li>Create and run a Snakemake Workflow
 <ul><li>Runs R scripts for filtering and final analysis</li>
 <li>Runs Machine Learning Components</li>
@@ -340,80 +354,57 @@ solve
 <li>Dependency management</li>
 <li>Efficiently scaling the workflow using a HPC Cluster</li>
 </ul></div>
-<div class="section level3">
+</section><section id="strengths-and-weaknesses-of-snakemake"><h2 class="section-heading">Strengths and Weaknesses of Snakemake<a class="anchor" aria-label="anchor" href="#strengths-and-weaknesses-of-snakemake"></a>
+</h2>
+<hr class="half-width"></section><section id="strengths"><h2 class="section-heading">Strengths<a class="anchor" aria-label="anchor" href="#strengths"></a>
+</h2>
+<hr class="half-width"><ul><li>Rerun only creates missing or out of date files</li>
+<li>Python syntax</li>
+</ul></section><section id="weaknesses"><h2 class="section-heading">Weaknesses<a class="anchor" aria-label="anchor" href="#weaknesses"></a>
+</h2>
+<hr class="half-width"><ul><li>Rule based logic instead of procedural logic</li>
+<li>Requires some python code/knowledge for typical workflows</li>
+</ul></section><section id="how-snakemake-works"><h2 class="section-heading">How Snakemake works<a class="anchor" aria-label="anchor" href="#how-snakemake-works"></a>
+</h2>
+<hr class="half-width"><div class="section level3">
 <h3 id="snakemake">Snakemake<a class="anchor" aria-label="anchor" href="#snakemake"></a></h3>
 <ul><li>Breaks up workflow into rules and runs only the parts necessary</li>
 <li>Provides support for specifying containers for each rule</li>
 <li>Provides support for many HPC Clusters including SLURM</li>
-</ul></div>
+</ul><p>Explain DAG</p>
+</div>
 </section><section id="what-is-a-snakemake-rule"><h2 class="section-heading">What is a Snakemake Rule?<a class="anchor" aria-label="anchor" href="#what-is-a-snakemake-rule"></a>
 </h2>
 <hr class="half-width"><p>A Snakemake Rule specifies</p>
-<ul><li>input files</li>
+<ul><li>name - unique name for the rule</li>
+<li>input files</li>
 <li>output files</li>
 <li>shell command that reads the input file and writes the output
 files</li>
-</ul><p>Example rule</p>
-<pre><code>rule count_words:
+</ul><p>Example rules</p>
+<pre><code># Count words in one of the books
+rule count_words:
     input: 'books/isles.txt'
     output: 'isles.dat'
     shell: 'python wordcount.py books/isles.txt isles.dat'</code></pre>
 <p><em>This rule was copied from the <a href="https://carpentries-incubator.github.io/hpc-workflows/02-snakefiles/index.html" class="external-link">carpentries
 incubator hpc-workflows lesson</a>.</em></p>
-</section><section id="workflow-steps"><h2 class="section-heading">Workflow Steps<a class="anchor" aria-label="anchor" href="#workflow-steps"></a>
+</section><section id="procedural"><h2 class="section-heading">Procedural<a class="anchor" aria-label="anchor" href="#procedural"></a>
 </h2>
-<hr class="half-width"><div class="section level3">
-<h3 id="input-csv">Input CSV<a class="anchor" aria-label="anchor" href="#input-csv"></a></h3>
-<p>The input CSV (<code>multimedia.csv</code>) was downloaded from <a href="https://bgnn.tulane.edu/" class="external-link uri">https://bgnn.tulane.edu/</a>.</p>
-<figure>When viewed within RStudio the data looks like this: <img src="../files/multimedia.png" alt="multimedia CSV screenshot" class="figure mx-auto d-block"></figure></div>
-<div class="section level3">
-<h3 id="step-1-reduce-the-size-of-our-input-csv">Step 1: Reduce the size of our input CSV<a class="anchor" aria-label="anchor" href="#step-1-reduce-the-size-of-our-input-csv"></a></h3>
-<p>Reduce the total size of the input CSV using a simple command line
-utility. This demonstrates creating a simple rule that receives input
-and output command line arguments.</p>
-</div>
-<div class="section level3">
-<h3 id="step-2-filter-csv-for-our-target-species">Step 2: Filter CSV for our target species<a class="anchor" aria-label="anchor" href="#step-2-filter-csv-for-our-target-species"></a></h3>
-<p>Next we run an R script to filtering our CSV for
-<code>Notropis nazas</code> species.</p>
-<figure>When viewed within RStudio the data looks like this: <img src="../files/filtered.png" alt="filtered CSV screenshot" class="figure mx-auto d-block"></figure></div>
-<div class="section level3">
-<h3 id="step-3-download-images">Step 3: Download images<a class="anchor" aria-label="anchor" href="#step-3-download-images"></a></h3>
-<figure>Next download each image from the filtered CSV. <img src="../files/bj373514.png" alt="minnow image" class="figure mx-auto d-block"></figure></div>
-<div class="section level3">
-<h3 id="step-4-detect-fish-in-each-image">Step 4: Detect fish in each image<a class="anchor" aria-label="anchor" href="#step-4-detect-fish-in-each-image"></a></h3>
-<p>Next we use a tool to determine the location of the fish in each
-image.</p>
-</div>
-<div class="section level3">
-<h3 id="step-5-crop-each-fish-image">Step 5: Crop each fish image<a class="anchor" aria-label="anchor" href="#step-5-crop-each-fish-image"></a></h3>
-<figure>We then crop each image with the bounding box from the object
-detection step. <img src="../files/bj373514_crop.png" alt="cropped minnow image" class="figure mx-auto d-block"></figure></div>
-<div class="section level3">
-<h3 id="step-6-segment-cropped-images">Step 6: Segment cropped images<a class="anchor" aria-label="anchor" href="#step-6-segment-cropped-images"></a></h3>
-<figure>Next we use a tool to segment each cropped image. <img src="../files/bj373514_seg.png" alt="segmented minnow image" class="figure mx-auto d-block"></figure></div>
-<div class="section level3">
-<h3 id="step-7--determine-presence-absence-morphology">Step 7. determine presence absence morphology<a class="anchor" aria-label="anchor" href="#step-7--determine-presence-absence-morphology"></a></h3>
-<p>Next we run a tool that looks at colors in the segmented images to
-determine a presence absence matrix.</p>
-</div>
-<div class="section level3">
-<h3 id="step-8--final-analysis">Step 8. final analysis<a class="anchor" aria-label="anchor" href="#step-8--final-analysis"></a></h3>
-<p>Finally we create a report using another R script that summarizes the
-results of our processing.</p>
-<figure>The HTML report will look something like this: <img src="../files/report.png" alt="final report screenshot" class="figure mx-auto d-block"></figure><!-- 
+<hr class="half-width"></section><section id="how-snakemake-combines-rules"><h2 class="section-heading">How Snakemake combines rules<a class="anchor" aria-label="anchor" href="#how-snakemake-combines-rules"></a>
+</h2>
+<hr class="half-width"><!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
- --></div>
-</section></div> <!-- / div.lesson-content -->
+ --></section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="../instructor/index.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
-        <a class="chapter-link float-end" href="../instructor/filename_plan.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="../instructor/big_picture.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
         <a class="chapter-link" href="../instructor/index.html" rel="prev"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
-        <a class="chapter-link float-end" href="../instructor/filename_plan.html" rel="next">Next: Filename plan... <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="../instructor/big_picture.html" rel="next">Next: Workflow Overview... <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
     </nav></div> <!-- / div.primary-content.col-xs-12 -->
 <!-- END:   inst/pkgdown/templates/content-instructor.html-->
@@ -457,9 +448,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://Imageomics.github.io/snakemake-workshop/instructor/introduction.html",
   "identifier": "https://Imageomics.github.io/snakemake-workshop/instructor/introduction.html",
-  "dateCreated": "2023-03-01",
-  "dateModified": "2023-03-01",
-  "datePublished": "2023-03-01"
+  "dateCreated": "2023-03-04",
+  "dateModified": "2023-03-04",
+  "datePublished": "2023-03-04"
 }
 
   </script><script>
