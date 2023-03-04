@@ -4,17 +4,20 @@ teaching: 10
 exercises: 2
 ---
 
-
 ## RStudio friendly Rules
 Next we want to add an R script that will filter an input CSV file for the species of our choosing.
 We want this R script to be easily runnable within RStudio. To accomplish this we want to avoid 
 passing command line arguments to the R script as this is difficult to accommodate within Rstudio.
 
-### Add input and output filenames to config
-Add two new lines to config.yaml with the input and output filenames.
+## See the hard coded paths in the R script
+```bash
+head Scripts/FilterImagesHardCoded.R
 ```
-reduced_multimedia: reduce/multimedia.csv
-filtered_multimedia: filter/multimedia.csv
+
+```output
+input_path <- "reduce/multimedia.csv"
+output_path <- "filter/multimedia.csv"
+...
 ```
 
 ## Create a rule that uses named input files
@@ -22,15 +25,10 @@ Create a rule:
 ```
 rule filter:
   input: 
-    script="FilterImages.R"
-    fishes=config["reduced_multimedia"]
-  output: filtered_multimedia["filtered_multimedia"]
+    script="Scripts/FilterImagesHardCoded.R",
+    fishes="reduce/multimedia.csv"
+  output: "filter/multimedia.csv"
   shell: "Rscript {input.script}"
-```
-
-## See how the R script will also reads from the config file:
-```bash
-head FilterImages.R
 ```
 
 ```bash
@@ -70,3 +68,57 @@ Building DAG of jobs...
 MissingRuleException:
 No rule to produce winninglotterynumbers.txt (if you use input functions make sure that they don't raise unexpected exceptions).
 ```
+
+## Add a default rule
+At the top of Snakefile add a new rule
+
+```
+rule all:
+    input: filter/multimedia.csv
+```
+
+Test it out by removing filter/multimedia.csv and running snakemake with no target
+```
+rm filter/multimedia.csv
+snakemake -c1
+```
+
+## See how the R script will reads from the config file:
+```bash
+head Scripts/FilterImages.R
+```
+
+## Add a config file
+A better option to allow easy changes to the rows param is to store this value in a config file.
+Snakemake comes with support for parsing and using a YAML config file.
+
+Create a new file named `config.yaml` with the following contents:
+```
+reduce_multimedia: reduce/multimedia.csv
+filter_multimedia: filter/multimedia.csv
+```
+
+Then update your `Snakefile` to adding the config file location and using config to lookup filenames:
+```
+configfile: "config.yaml"
+
+rule reduce:
+  input: "multimedia.csv"
+  output: config["reduce_multimedia"]
+  params: rows="21"
+  shell: "head -n {params.rows} {input} > {output}"
+
+rule filter:
+  input: 
+    script="Scripts/FilterImages.R",
+    fishes=config["reduce_multimedia"]
+  output: config["filter_multimedia"]
+  shell: "Rscript {input.script}"
+```
+
+Running the workflow again:
+```bash
+snakemake -c1
+```
+
+

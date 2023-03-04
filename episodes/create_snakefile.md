@@ -137,27 +137,3 @@ Try running the workflow again:
 snakemake -c1
 ```
 
-## Add a config file
-A better option to allow easy changes to the rows param is to store this value in a config file.
-Snakemake comes with support for parsing and using a YAML config file.
-
-Create a new file named `config.yaml` with the following contents:
-```
-reduce_rows: 21
-```
-
-Then update your `Snakefile` to specify the config file location and use the "reduce_rows" config option:
-```
-configfile: "config.yaml"
-
-rule reduce:
-  input: "multimedia.csv"
-  output: "reduce/multimedia.csv"
-  params: rows=config["reduce_rows"]
-  shell: "head -n {params.rows} {input} > {output}"
-```
-
-Running the workflow again:
-```bash
-snakemake -c1
-```
