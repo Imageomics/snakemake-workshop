@@ -318,7 +318,7 @@ image</a></li>
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Process multiple files</h1>
-        <p> Last updated on 2023-03-04 | 
+        <p> Last updated on 2023-03-05 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/scatter_rule.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -407,7 +407,7 @@ directory:</p>
     return expand('images/{ark_id}.jpg', ark_id=ark_ids)
 
 rule all:
-    get_image_filenames</code></pre>
+    input: get_image_filenames</code></pre>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -415,12 +415,24 @@ rule all:
 </div>
 </section><section id="test-starting-from-scratch"><h2 class="section-heading">Test starting from scratch<a class="anchor" aria-label="anchor" href="#test-starting-from-scratch"></a>
 </h2>
-<hr class="half-width"><pre><code>rm -rf reduce filter images
-snakemake -c1</code></pre>
+<hr class="half-width"><div class="codewrapper sourceCode" id="cb10">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> reduce filter images</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>Building DAG of jobs...
+FileNotFoundError in file /users/PAS2136/jbradley/SnakemakeWorkflow/Snakefile, line 7:
+[Errno 2] No such file or directory: 'filter/multimedia.csv'
+...</code></pre>
+</div>
 </section><section id="checkpoints-inform-snakemake-of-order-to-run-rules"><h2 class="section-heading">Checkpoints inform Snakemake of order to run rules<a class="anchor" aria-label="anchor" href="#checkpoints-inform-snakemake-of-order-to-run-rules"></a>
 </h2>
 <hr class="half-width"><pre><code>def get_image_filenames(wildcards):
-    filename = checkpoints.filter.get().output
+    filename = checkpoints.filter.get().output[0]
     df = pd.read_csv(filename)    
     ark_ids = df["arkID"].tolist()
     return expand('images/{ark_id}.jpg', ark_id=ark_ids)  
@@ -489,9 +501,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://Imageomics.github.io/snakemake-workshop/instructor/scatter_rule.html",
   "identifier": "https://Imageomics.github.io/snakemake-workshop/instructor/scatter_rule.html",
-  "dateCreated": "2023-03-04",
-  "dateModified": "2023-03-04",
-  "datePublished": "2023-03-04"
+  "dateCreated": "2023-03-05",
+  "dateModified": "2023-03-05",
+  "datePublished": "2023-03-05"
 }
 
   </script><script>

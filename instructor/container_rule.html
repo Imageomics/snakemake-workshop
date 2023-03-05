@@ -304,7 +304,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Use a container</h1>
-        <p> Last updated on 2023-03-04 | 
+        <p> Last updated on 2023-03-05 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/container_rule.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -326,11 +326,24 @@
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> detect/metdata_bj373514.json</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> detect/metadata_bj373514.json</span></code></pre>
 </div>
-<p>Expected output: Fails to find command :(</p>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>...
+/usr/bin/bash: gen_metadata.py: command not found
+...</code></pre>
+</div>
 <p>Pass the –use-singularity flag</p>
-<pre><code>snakemake -c1 detect/metdata_bj373514.json --use-singularity</code></pre>
+<pre><code>snakemake -c1 --use-singularity detect/metadata_bj373514.json </code></pre>
+<pre><code>rule create_morphological_analysis:
+  input:
+    image = 'segmented/{arkID}_segmented.png',
+    metadata = 'transform_metadata/simple_metadata_{arkID}.json'
+  output: 'Morphology/{arkID}_presence.json'
+  container: "docker://ghcr.io/hdr-bgnn/morphology-analysis/morphology:1.0.0"
+  shell: 'Morphology_main.py {input.image} --metadata {input.metadata} {output}'</code></pre>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
@@ -390,9 +403,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://Imageomics.github.io/snakemake-workshop/instructor/container_rule.html",
   "identifier": "https://Imageomics.github.io/snakemake-workshop/instructor/container_rule.html",
-  "dateCreated": "2023-03-04",
-  "dateModified": "2023-03-04",
-  "datePublished": "2023-03-04"
+  "dateCreated": "2023-03-05",
+  "dateModified": "2023-03-05",
+  "datePublished": "2023-03-05"
 }
 
   </script><script>

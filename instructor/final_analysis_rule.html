@@ -304,7 +304,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Add Summary Analysis</h1>
-        <p> Last updated on 2023-02-28 | 
+        <p> Last updated on 2023-03-05 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/final_analysis_rule.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -318,19 +318,33 @@
 
         
 
-<pre><code>def get_analyze_results_inputs(wildcards):
-  df = pd.read_csv("filter/images.csv")
+<p>Add summary_report to config.yaml:</p>
+<pre><code><span><span class="va">summary_report</span><span class="op">:</span> <span class="va">summary</span><span class="op">/</span><span class="va">report.html</span></span></code></pre>
+<pre><code>def get_summary_inputs(wildcards):
+  filename = checkpoints.filter.get().output[0]
+  df = pd.read_csv(filename)
   ark_ids = df["arkID"].tolist()
-  return {
-     "script": "AnalyzeResults.R",
-     
-     "morphology": expand('Morphology/{arkID}_presence.json', arkID=ark_ids) + ["FishSummary.Rmd"]
-  }
+  return expand('Morphology/{arkID}_presence.json', arkID=ark_ids)
 
-rule analyze_results:
-  input: get_analyze_results_inputs
-  output: "results/summary.csv"
-  shell: "RScript {input.script}"</code></pre>
+rule summary:
+  input:
+     script="Scripts/SummaryReport.R",
+     morphology=get_summary_inputs
+  output: config["summary_report"]
+  shell: "Rscript {input.script}"</code></pre>
+<pre><code>def get_summary_inputs(wildcards):
+  filename = checkpoints.filter.get().output[0]
+  df = pd.read_csv(filename)
+  ark_ids = df["arkID"].tolist()
+  return expand('Morphology/{arkID}_presence.json', arkID=ark_ids)
+
+rule summary:
+  input:
+     script="Scripts/SummaryReport.R",
+     markdown="Scripts/FishSummary.R",
+     morphology=get_summary_inputs
+  output: config["summary_report"]
+  shell: "Rscript {input.script}"</code></pre>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
@@ -390,9 +404,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://Imageomics.github.io/snakemake-workshop/instructor/final_analysis_rule.html",
   "identifier": "https://Imageomics.github.io/snakemake-workshop/instructor/final_analysis_rule.html",
-  "dateCreated": "2023-03-04",
-  "dateModified": "2023-02-28",
-  "datePublished": "2023-03-04"
+  "dateCreated": "2023-03-05",
+  "dateModified": "2023-03-05",
+  "datePublished": "2023-03-05"
 }
 
   </script><script>

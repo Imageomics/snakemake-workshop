@@ -313,7 +313,7 @@ BGNN_Core_Workflow</a></li>
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Reuse another workflow</h1>
-        <p> Last updated on 2023-02-28 | 
+        <p> Last updated on 2023-03-05 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/reuse_workflow.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -328,10 +328,15 @@ BGNN_Core_Workflow</a></li>
 <section id="replace-object-detection-with-the-object-detection-rule-from-the-bgnn_core_workflow"><h2 class="section-heading">Replace object detection with the object detection rule from the
 BGNN_Core_Workflow<a class="anchor" aria-label="anchor" href="#replace-object-detection-with-the-object-detection-rule-from-the-bgnn_core_workflow"></a>
 </h2>
-<hr class="half-width"><pre><code>module segmentation:
+<hr class="half-width"><p>See <a href="https://github.com/hdr-bgnn/BGNN_Core_Workflow/blob/main/workflow/Snakefile#L19" class="external-link uri">https://github.com/hdr-bgnn/BGNN_Core_Workflow/blob/main/workflow/Snakefile#L19</a></p>
+<p>To re-use a workflow you generally need: - where to find workflow -
+github “hdr-bgnn/BGNN_Core_Workflow” - what is the relative path to the
+Snakefile “workflow/Snakefile” - what tag or version to use “1.0.0”</p>
+<pre><code>module bgnn_core:
     snakefile:
         github("hdr-bgnn/BGNN_Core_Workflow",   path="workflow/Snakefile", tag="1.0.0")
-use rule generate_metadata from segmentation as object_detection with:
+
+use rule generate_metadata from bgnn_core as detect with:
     input:'images/{image}.jpg'</code></pre>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -340,10 +345,13 @@ use rule generate_metadata from segmentation as object_detection with:
 </div>
 </section><section id="bring-in-additional-rules-from-bgnn_core_workflow"><h2 class="section-heading">Bring in additional rules from BGNN_Core_Workflow<a class="anchor" aria-label="anchor" href="#bring-in-additional-rules-from-bgnn_core_workflow"></a>
 </h2>
-<hr class="half-width"><pre><code>use rule generate_metadata from segmentation
-use rule transform_metadata from segmentation
-use rule crop_image from segmentation
-use rule segment_image from segmentation</code></pre>
+<hr class="half-width"><pre><code>use rule generate_metadata from bgnn_core
+use rule transform_metadata from bgnn_core
+use rule crop_image from bgnn_core with:
+    input:
+        image = 'images/{image}.jpg',
+        metadata = 'Metadata/{image}.json'
+use rule segment_image from bgnn_core</code></pre>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -405,9 +413,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://Imageomics.github.io/snakemake-workshop/reuse_workflow.html",
   "identifier": "https://Imageomics.github.io/snakemake-workshop/reuse_workflow.html",
-  "dateCreated": "2023-03-04",
-  "dateModified": "2023-02-28",
-  "datePublished": "2023-03-04"
+  "dateCreated": "2023-03-05",
+  "dateModified": "2023-03-05",
+  "datePublished": "2023-03-05"
 }
 
   </script><script>
