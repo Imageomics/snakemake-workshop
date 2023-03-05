@@ -5,5 +5,5 @@ exercises: 2
 ---
 
 ```bash
-snakemake -c10 --profile slurm_profile
+snakemake -c10 --use-singularity --profile slurm/
 ```

@@ -23,7 +23,7 @@ This module will switch Compiler environment to gnu/11.2.0 and load mkl/2021.3.0
 Lmod is automatically replacing "intel/19.0.5" with "gnu/11.2.0".
 The following have been reloaded with a version change:
   1) mvapich2/2.3.3 => mvapich2/2.3.6
-Configuring R to use the yaml package.
+Configuring R to use the yaml, dplyr, and rmarkdown packages.
 Configuring singularity to use a cache to speed up pulling containers.
 ```
 
