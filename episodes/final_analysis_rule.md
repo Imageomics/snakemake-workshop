@@ -4,20 +4,39 @@ teaching: 10
 exercises: 2
 ---
 
+Add summary_report to config.yaml:
 
 ```
-def get_analyze_results_inputs(wildcards):
-  df = pd.read_csv("filter/images.csv")
+summary_report: summary/report.html
+```
+
+```
+def get_summary_inputs(wildcards):
+  filename = checkpoints.filter.get().output[0]
+  df = pd.read_csv(filename)
   ark_ids = df["arkID"].tolist()
-  return {
-     "script": "AnalyzeResults.R",
-     
-     "morphology": expand('Morphology/{arkID}_presence.json', arkID=ark_ids) + ["FishSummary.Rmd"]
-  }
+  return expand('Morphology/{arkID}_presence.json', arkID=ark_ids)
 
-rule analyze_results:
-  input: get_analyze_results_inputs
-  output: "results/summary.csv"
-  shell: "RScript {input.script}"
+rule summary:
+  input:
+     script="Scripts/SummaryReport.R",
+     morphology=get_summary_inputs
+  output: config["summary_report"]
+  shell: "Rscript {input.script}"
 ```
 
+```
+def get_summary_inputs(wildcards):
+  filename = checkpoints.filter.get().output[0]
+  df = pd.read_csv(filename)
+  ark_ids = df["arkID"].tolist()
+  return expand('Morphology/{arkID}_presence.json', arkID=ark_ids)
+
+rule summary:
+  input:
+     script="Scripts/SummaryReport.R",
+     markdown="Scripts/FishSummary.R",
+     morphology=get_summary_inputs
+  output: config["summary_report"]
+  shell: "Rscript {input.script}"
+```

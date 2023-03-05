@@ -82,7 +82,7 @@ def get_image_filenames(wildcards):
     return expand('images/{ark_id}.jpg', ark_id=ark_ids)
 
 rule all:
-    get_image_filenames
+    input: get_image_filenames
 ```
 
 ```bash
@@ -90,15 +90,22 @@ snakemake -c1
 ```
 
 ## Test starting from scratch
-```
+```bash
 rm -rf reduce filter images
 snakemake -c1
+```
+
+```output
+Building DAG of jobs...
+FileNotFoundError in file /users/PAS2136/jbradley/SnakemakeWorkflow/Snakefile, line 7:
+[Errno 2] No such file or directory: 'filter/multimedia.csv'
+...
 ```
 
 ## Checkpoints inform Snakemake of order to run rules
 ```
 def get_image_filenames(wildcards):
-    filename = checkpoints.filter.get().output
+    filename = checkpoints.filter.get().output[0]
     df = pd.read_csv(filename)    
     ark_ids = df["arkID"].tolist()
     return expand('images/{ark_id}.jpg', ark_id=ark_ids)  
