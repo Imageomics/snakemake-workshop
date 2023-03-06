@@ -46,19 +46,3 @@ Finally we create a report using another R script that summarizes the results of
 
 The HTML report will look something like this:
 ![final report screenshot](files/report.png)
-
-
-## Procedural Approach
-Pseudocode of the workflow
-```
-filter_target_species
-for each url in csv
-    download_image
-    detect_fish
-    crop_fish
-    segment_fish
-    count_fish_parts
-done
-create_summary_report
-```
-

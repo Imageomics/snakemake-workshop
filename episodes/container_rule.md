@@ -4,37 +4,22 @@ teaching: 10
 exercises: 2
 ---
 
+Explain converting docker container URL to singularity container URL
+Explain the need for --use-singularity flag.
+Explain other options singularity image files, conda environment
 
-```
-rule detect:
-  input: 'images/{arkID}.jpg'
-  output: metadata='detect/metadata_{arkID}.json',
-  container: "docker://ghcr.io/hdr-bgnn/drexel_metadata:0.5"
-  shell: "gen_metadata.py --device cpu --outfname {output.metadata} {input}"
-```
 
-```bash
-snakemake -c1 detect/metadata_bj373514.json
+## Use container when downloading images
 ```
-```output
-...
-/usr/bin/bash: gen_metadata.py: command not found
-...
+rule download_image:
+    input: config["filter_multimedia"]
+    output:'Images/{ark_id}.jpg'
+    params: url=get_image_url
+    container: "docker://quay.io/biocontainers/gnu-wget:1.18--hed695b0_4"
+    shell: "wget -O {output} {params.url}"
 ```
 
 Pass the --use-singularity flag
-```
-snakemake -c1 --use-singularity detect/metadata_bj373514.json 
-```
-
-
-
-```
-rule create_morphological_analysis:
-  input:
-    image = 'segmented/{arkID}_segmented.png',
-    metadata = 'transform_metadata/simple_metadata_{arkID}.json'
-  output: 'Morphology/{arkID}_presence.json'
-  container: "docker://ghcr.io/hdr-bgnn/morphology-analysis/morphology:1.0.0"
-  shell: 'Morphology_main.py {input.image} --metadata {input.metadata} {output}'
+```bash
+snakemake -c1 --use-singularity images/hd529k3h.jpg
 ```

@@ -4,19 +4,17 @@ teaching: 10
 exercises: 2
 ---
 
-## Replace object detection with the object detection rule from the BGNN_Core_Workflow
-
-See https://github.com/hdr-bgnn/BGNN_Core_Workflow/blob/main/workflow/Snakefile#L19
-
 To re-use a workflow you generally need:
 - where to find workflow - github "hdr-bgnn/BGNN_Core_Workflow"
 - what is the relative path to the Snakefile "workflow/Snakefile"
 - what tag or version to use "1.0.0"
 
+https://github.com/hdr-bgnn/BGNN_Core_Workflow/blob/main/workflow/Snakefile#L19
+
 ```
 module bgnn_core:
     snakefile:
-        github("hdr-bgnn/BGNN_Core_Workflow",   path="workflow/Snakefile", tag="1.0.0")
+        github("hdr-bgnn/BGNN_Core_Workflow", path="workflow/Snakefile", tag="1.0.0")
 
 use rule generate_metadata from bgnn_core as detect with:
     input:'images/{image}.jpg'

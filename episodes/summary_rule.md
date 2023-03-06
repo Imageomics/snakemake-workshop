@@ -35,7 +35,7 @@ def get_summary_inputs(wildcards):
 rule summary:
   input:
      script="Scripts/SummaryReport.R",
-     markdown="Scripts/FishSummary.R",
+     markdown="Scripts/Summary.Rmd",
      morphology=get_summary_inputs
   output: config["summary_report"]
   shell: "Rscript {input.script}"

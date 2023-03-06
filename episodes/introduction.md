@@ -4,8 +4,6 @@ teaching: 10
 exercises: 2
 ---
 
-TODO: Introduce --dry-run somewhere
-
 ## Goals
 - Understanding the problem that workflow languages are trying to solve
 - Understand the strengths and weaknesses of the Snakemake workflow language
@@ -63,7 +61,8 @@ rule count_words:
 ```
 _This rule was copied from the [carpentries incubator hpc-workflows lesson](https://carpentries-incubator.github.io/hpc-workflows/02-snakefiles/index.html)._
 
-## Procedural 
+
+## Procedural Approach
 
 ## How Snakemake combines rules
 

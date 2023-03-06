@@ -69,7 +69,7 @@ episodes:
 - scatter_rule.md
 - container_rule.md
 - reuse_workflow.md
-- final_analysis_rule.md
+- summary_rule.md
 - run_on_slurm.md
 
 # Information for Learners
