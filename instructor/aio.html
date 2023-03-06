@@ -297,7 +297,7 @@
 <div class="accordion accordion-flush" id="accordionFlush12">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading12">
-        <a href="final_analysis_rule.html">11. Add Summary Analysis</a>
+        <a href="summary_rule.html">11. Add Summary Analysis</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -373,14 +373,13 @@
         
 <section id="aio-introduction"><p>Content from <a href="introduction.html">Introduction</a></p>
 <hr>
-<p> Last updated on 2023-03-04 | 
+<p> Last updated on 2023-03-06 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/introduction.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 12 minutes </p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
-<p>TODO: Introduce –dry-run somewhere</p>
 <section id="goals"><h2 class="section-heading">Goals<a class="anchor" aria-label="anchor" href="#goals"></a>
 </h2>
 <hr class="half-width">
@@ -455,7 +454,7 @@ rule count_words:
     shell: 'python wordcount.py books/isles.txt isles.dat'</code></pre>
 <p><em>This rule was copied from the <a href="https://carpentries-incubator.github.io/hpc-workflows/02-snakefiles/index.html" class="external-link">carpentries
 incubator hpc-workflows lesson</a>.</em></p>
-</section><section id="procedural"><h2 class="section-heading">Procedural<a class="anchor" aria-label="anchor" href="#procedural"></a>
+</section><section id="procedural-approach"><h2 class="section-heading">Procedural Approach<a class="anchor" aria-label="anchor" href="#procedural-approach"></a>
 </h2>
 <hr class="half-width"></section><section id="how-snakemake-combines-rules"><h2 class="section-heading">How Snakemake combines rules<a class="anchor" aria-label="anchor" href="#how-snakemake-combines-rules"></a>
 </h2>
@@ -465,7 +464,7 @@ Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
  --></section></section><section id="aio-big_picture"><p>Content from <a href="big_picture.html">Workflow Overview</a></p>
 <hr>
-<p> Last updated on 2023-03-04 | 
+<p> Last updated on 2023-03-06 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/big_picture.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 12 minutes </p>
@@ -528,25 +527,11 @@ determine a presence absence matrix.</p>
 </h3>
 <p>Finally we create a report using another R script that summarizes the
 results of our processing.</p>
-<figure>The HTML report will look something like this: <img src="../files/report.png" alt="final report screenshot" class="figure mx-auto d-block"></figure>
-</div>
-</section><section id="procedural-approach"><h2 class="section-heading">Procedural Approach<a class="anchor" aria-label="anchor" href="#procedural-approach"></a>
-</h2>
-<hr class="half-width">
-<p>Pseudocode of the workflow</p>
-<pre><code>filter_target_species
-for each url in csv
-    download_image
-    detect_fish
-    crop_fish
-    segment_fish
-    count_fish_parts
-done
-create_summary_report</code></pre>
-<!-- 
+<figure>The HTML report will look something like this: <img src="../files/report.png" alt="final report screenshot" class="figure mx-auto d-block"></figure><!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
  -->
+</div>
 </section></section><section id="aio-filename_plan"><p>Content from <a href="filename_plan.html">Filename plan</a></p>
 <hr>
 <p> Last updated on 2023-02-28 | 
@@ -1238,58 +1223,51 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-container_rule"><p>Content from <a href="container_rule.html">Use a container</a></p>
 <hr>
-<p> Last updated on 2023-03-05 | 
+<p> Last updated on 2023-03-06 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/container_rule.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 12 minutes </p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
-<pre><code>rule detect:
-  input: 'images/{arkID}.jpg'
-  output: metadata='detect/metadata_{arkID}.json',
-  container: "docker://ghcr.io/hdr-bgnn/drexel_metadata:0.5"
-  shell: "gen_metadata.py --device cpu --outfname {output.metadata} {input}"</code></pre>
+<p>Explain converting docker container URL to singularity container URL
+Explain the need for –use-singularity flag. Explain other options
+singularity image files, conda environment</p>
+<section id="use-container-when-downloading-images"><h2 class="section-heading">Use container when downloading images<a class="anchor" aria-label="anchor" href="#use-container-when-downloading-images"></a>
+</h2>
+<hr class="half-width">
+<pre><code>rule download_image:
+    input: config["filter_multimedia"]
+    output:'Images/{ark_id}.jpg'
+    params: url=get_image_url
+    container: "docker://quay.io/biocontainers/gnu-wget:1.18--hed695b0_4"
+    shell: "wget -O {output} {params.url}"</code></pre>
+<p>Pass the –use-singularity flag</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> detect/metadata_bj373514.json</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--use-singularity</span> images/hd529k3h.jpg</span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>...
-/usr/bin/bash: gen_metadata.py: command not found
-...</code></pre>
-</div>
-<p>Pass the –use-singularity flag</p>
-<pre><code>snakemake -c1 --use-singularity detect/metadata_bj373514.json </code></pre>
-<pre><code>rule create_morphological_analysis:
-  input:
-    image = 'segmented/{arkID}_segmented.png',
-    metadata = 'transform_metadata/simple_metadata_{arkID}.json'
-  output: 'Morphology/{arkID}_presence.json'
-  container: "docker://ghcr.io/hdr-bgnn/morphology-analysis/morphology:1.0.0"
-  shell: 'Morphology_main.py {input.image} --metadata {input.metadata} {output}'</code></pre></section><section id="aio-reuse_workflow"><p>Content from <a href="reuse_workflow.html">Reuse another workflow</a></p>
+<!-- 
+Place links that you need to refer to multiple times across pages here. Delete
+any links that you are not going to use. 
+ -->
+</section></section><section id="aio-reuse_workflow"><p>Content from <a href="reuse_workflow.html">Reuse another workflow</a></p>
 <hr>
-<p> Last updated on 2023-03-05 | 
+<p> Last updated on 2023-03-06 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/reuse_workflow.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 12 minutes </p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
-<section id="replace-object-detection-with-the-object-detection-rule-from-the-bgnn_core_workflow"><h2 class="section-heading">Replace object detection with the object detection rule from the
-BGNN_Core_Workflow<a class="anchor" aria-label="anchor" href="#replace-object-detection-with-the-object-detection-rule-from-the-bgnn_core_workflow"></a>
-</h2>
-<hr class="half-width">
-<p>See <a href="https://github.com/hdr-bgnn/BGNN_Core_Workflow/blob/main/workflow/Snakefile#L19" class="external-link uri">https://github.com/hdr-bgnn/BGNN_Core_Workflow/blob/main/workflow/Snakefile#L19</a></p>
 <p>To re-use a workflow you generally need: - where to find workflow -
 github “hdr-bgnn/BGNN_Core_Workflow” - what is the relative path to the
 Snakefile “workflow/Snakefile” - what tag or version to use “1.0.0”</p>
+<p><a href="https://github.com/hdr-bgnn/BGNN_Core_Workflow/blob/main/workflow/Snakefile#L19" class="external-link uri">https://github.com/hdr-bgnn/BGNN_Core_Workflow/blob/main/workflow/Snakefile#L19</a></p>
 <pre><code>module bgnn_core:
     snakefile:
-        github("hdr-bgnn/BGNN_Core_Workflow",   path="workflow/Snakefile", tag="1.0.0")
+        github("hdr-bgnn/BGNN_Core_Workflow", path="workflow/Snakefile", tag="1.0.0")
 
 use rule generate_metadata from bgnn_core as detect with:
     input:'images/{image}.jpg'</code></pre>
@@ -1298,7 +1276,7 @@ use rule generate_metadata from bgnn_core as detect with:
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--use-singularity</span> DrexelMetadata/bj373514.json</span></code></pre>
 </div>
-</section><section id="bring-in-additional-rules-from-bgnn_core_workflow"><h2 class="section-heading">Bring in additional rules from BGNN_Core_Workflow<a class="anchor" aria-label="anchor" href="#bring-in-additional-rules-from-bgnn_core_workflow"></a>
+<section id="bring-in-additional-rules-from-bgnn_core_workflow"><h2 class="section-heading">Bring in additional rules from BGNN_Core_Workflow<a class="anchor" aria-label="anchor" href="#bring-in-additional-rules-from-bgnn_core_workflow"></a>
 </h2>
 <hr class="half-width">
 <pre><code>use rule generate_metadata from bgnn_core
@@ -1317,11 +1295,11 @@ use rule segment_image from bgnn_core</code></pre>
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
  -->
-</section></section><section id="aio-final_analysis_rule"><p>Content from <a href="final_analysis_rule.html">Add Summary Analysis</a></p>
+</section></section><section id="aio-summary_rule"><p>Content from <a href="summary_rule.html">Add Summary Analysis</a></p>
 <hr>
-<p> Last updated on 2023-03-05 | 
+<p> Last updated on 2023-03-06 | 
         
-        <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/final_analysis_rule.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/summary_rule.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 12 minutes </p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
@@ -1349,7 +1327,7 @@ rule summary:
 rule summary:
   input:
      script="Scripts/SummaryReport.R",
-     markdown="Scripts/FishSummary.R",
+     markdown="Scripts/Summary.Rmd",
      morphology=get_summary_inputs
   output: config["summary_report"]
   shell: "Rscript {input.script}"</code></pre></section><section id="aio-run_on_slurm"><p>Content from <a href="run_on_slurm.html">Run at Scale</a></p>
@@ -1413,9 +1391,9 @@ rule summary:
   "creativeWorkStatus": "active",
   "url": "https://Imageomics.github.io/snakemake-workshop/instructor/aio.html",
   "identifier": "https://Imageomics.github.io/snakemake-workshop/instructor/aio.html",
-  "dateCreated": "2023-03-05",
-  "dateModified": "2023-03-05",
-  "datePublished": "2023-03-05"
+  "dateCreated": "2023-03-06",
+  "dateModified": "2023-03-06",
+  "datePublished": "2023-03-06"
 }
 
   </script><script>

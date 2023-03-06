@@ -216,12 +216,19 @@
 <div class="accordion accordion-flush" id="accordionFlushcurrent">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-headingcurrent">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsecurrent" aria-expanded="true" aria-controls="flush-collapsecurrent">
         <span class="visually-hidden">Current Chapter</span>
         <span class="current-chapter">
         Use a container
         </span>
-      
+      </button>
     </div><!--/div.accordion-header-->
+        
+    <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
+      <div class="accordion-body">
+        <ul><li><a href="#use-container-when-downloading-images">Use container when downloading images</a></li>
+        </ul></div><!--/div.accordion-body-->
+    </div><!--/div.accordion-collapse-->
         
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
@@ -238,7 +245,7 @@
 <div class="accordion accordion-flush" id="accordionFlush12">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading12">
-        <a href="final_analysis_rule.html">11. Add Summary Analysis</a>
+        <a href="summary_rule.html">11. Add Summary Analysis</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -304,7 +311,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Use a container</h1>
-        <p> Last updated on 2023-03-05 | 
+        <p> Last updated on 2023-03-06 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/container_rule.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -316,40 +323,28 @@
 
         
 
-<pre><code>rule detect:
-  input: 'images/{arkID}.jpg'
-  output: metadata='detect/metadata_{arkID}.json',
-  container: "docker://ghcr.io/hdr-bgnn/drexel_metadata:0.5"
-  shell: "gen_metadata.py --device cpu --outfname {output.metadata} {input}"</code></pre>
+<p>Explain converting docker container URL to singularity container URL
+Explain the need for –use-singularity flag. Explain other options
+singularity image files, conda environment</p>
+<section id="use-container-when-downloading-images"><h2 class="section-heading">Use container when downloading images<a class="anchor" aria-label="anchor" href="#use-container-when-downloading-images"></a>
+</h2>
+<hr class="half-width"><pre><code>rule download_image:
+    input: config["filter_multimedia"]
+    output:'Images/{ark_id}.jpg'
+    params: url=get_image_url
+    container: "docker://quay.io/biocontainers/gnu-wget:1.18--hed695b0_4"
+    shell: "wget -O {output} {params.url}"</code></pre>
+<p>Pass the –use-singularity flag</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> detect/metadata_bj373514.json</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--use-singularity</span> images/hd529k3h.jpg</span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>...
-/usr/bin/bash: gen_metadata.py: command not found
-...</code></pre>
-</div>
-<p>Pass the –use-singularity flag</p>
-<pre><code>snakemake -c1 --use-singularity detect/metadata_bj373514.json </code></pre>
-<pre><code>rule create_morphological_analysis:
-  input:
-    image = 'segmented/{arkID}_segmented.png',
-    metadata = 'transform_metadata/simple_metadata_{arkID}.json'
-  output: 'Morphology/{arkID}_presence.json'
-  container: "docker://ghcr.io/hdr-bgnn/morphology-analysis/morphology:1.0.0"
-  shell: 'Morphology_main.py {input.image} --metadata {input.metadata} {output}'</code></pre>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
  -->
-
-
-
-      </div> <!-- / div.lesson-content -->
+</section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="scatter_rule.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
         <a class="chapter-link float-end" href="reuse_workflow.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
@@ -401,9 +396,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://Imageomics.github.io/snakemake-workshop/container_rule.html",
   "identifier": "https://Imageomics.github.io/snakemake-workshop/container_rule.html",
-  "dateCreated": "2023-03-05",
-  "dateModified": "2023-03-05",
-  "datePublished": "2023-03-05"
+  "dateCreated": "2023-03-06",
+  "dateModified": "2023-03-06",
+  "datePublished": "2023-03-06"
 }
 
   </script><script>
