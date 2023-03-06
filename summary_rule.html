@@ -343,6 +343,9 @@ rule summary:
      morphology=get_summary_inputs
   output: config["summary_report"]
   shell: "Rscript {input.script}"</code></pre>
+<p>Just to do so Specify 2 threads and 1GB memory -
+<strong>threads</strong> - number of threads a rule uses (defaults to 1)
+- <strong>resources/mem_mb</strong> - amount of memory a rule needs</p>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 

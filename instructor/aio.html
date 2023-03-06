@@ -438,25 +438,31 @@ language</li>
 </section><section id="what-is-a-snakemake-rule"><h2 class="section-heading">What is a Snakemake Rule?<a class="anchor" aria-label="anchor" href="#what-is-a-snakemake-rule"></a>
 </h2>
 <hr class="half-width">
-<p>A Snakemake Rule specifies</p>
+<p>Main parts of a Snakemake Rule used in this workshop</p>
 <ul>
-<li>name - unique name for the rule</li>
-<li>input files</li>
-<li>output files</li>
-<li>shell command that reads the input file and writes the output
-files</li>
+<li>
+<strong>name</strong> - unique name for a rule</li>
+<li>
+<strong>input</strong> - input filenames used by a command</li>
+<li>
+<strong>params</strong> - input parameter (non-file) values used by
+a command</li>
+<li>
+<strong>output</strong> - output filenames created by a command</li>
+<li>
+<strong>shell</strong> - command to run</li>
+<li>
+<strong>container</strong> - singularity container to run command
+within</li>
 </ul>
-<p>Example rules</p>
-<pre><code># Count words in one of the books
-rule count_words:
-    input: 'books/isles.txt'
-    output: 'isles.dat'
-    shell: 'python wordcount.py books/isles.txt isles.dat'</code></pre>
-<p><em>This rule was copied from the <a href="https://carpentries-incubator.github.io/hpc-workflows/02-snakefiles/index.html" class="external-link">carpentries
-incubator hpc-workflows lesson</a>.</em></p>
-</section><section id="procedural-approach"><h2 class="section-heading">Procedural Approach<a class="anchor" aria-label="anchor" href="#procedural-approach"></a>
-</h2>
-<hr class="half-width"></section><section id="how-snakemake-combines-rules"><h2 class="section-heading">How Snakemake combines rules<a class="anchor" aria-label="anchor" href="#how-snakemake-combines-rules"></a>
+<p>Rule pattern:</p>
+<pre><code>rule &lt;name&gt;:
+    input: ...
+    params: ...
+    output: ...
+    shell: ...
+    container: ...</code></pre>
+</section><section id="how-snakemake-combines-rules"><h2 class="section-heading">How Snakemake combines rules<a class="anchor" aria-label="anchor" href="#how-snakemake-combines-rules"></a>
 </h2>
 <hr class="half-width">
 <!-- 
@@ -578,7 +584,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-setup_project"><p>Content from <a href="setup_project.html">Project Setup</a></p>
 <hr>
-<p> Last updated on 2023-03-04 | 
+<p> Last updated on 2023-03-06 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/setup_project.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 6 minutes </p>
@@ -658,22 +664,27 @@ needed files:</p>
 <strong>multimedia.csv</strong> - Main input file of fish images
 used by the workflow</li>
 <li>
-<strong>Scripts/setup_env.sh</strong> - Used to activates snakemake
-conda environment and other utilities</li>
+<strong>Scripts/</strong>
+<ul>
 <li>
-<strong>Scripts/FilterImagesHardCoded.R</strong> - Rscript that
-filters a CSV for a target species with hard coded filenames</li>
+<strong>setup_env.sh</strong> - Used to activates snakemake conda
+environment and other utilities</li>
 <li>
-<strong>Scripts/FilterImages.R</strong> - R script that filters a
-CSV for a target species</li>
+<strong>FilterImagesHardCoded.R</strong> - Rscript that filters a
+CSV for a target species with hard coded filenames</li>
 <li>
-<strong>Scripts/AnalyzeResults.R</strong> - R script that builds a
-summary report of the workflow outputs</li>
+<strong>FilterImages.R</strong> - R script that filters a CSV for a
+target species</li>
 <li>
-<strong>Scripts/FishSummary.Rmd</strong> - R markdown script used by
-__AnalyzeResults.R to create a report</li>
+<strong>SummaryReport.R</strong> - R script that builds a summary
+report of the workflow outputs</li>
 <li>
-<strong>slurm</strong> - Directory containing a config file used by
+<strong>Summary.Rmd</strong> - R markdown script used by
+SummaryReport.R to create a report</li>
+</ul>
+</li>
+<li>
+<strong>slurm/</strong> - Directory containing a config file used by
 Snakemake to run SLURM jobs</li>
 </ul>
 <!-- 
@@ -779,7 +790,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-create_snakefile"><p>Content from <a href="create_snakefile.html">Create a Workflow</a></p>
 <hr>
-<p> Last updated on 2023-03-04 | 
+<p> Last updated on 2023-03-06 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/create_snakefile.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 12 minutes </p>
@@ -805,9 +816,14 @@ any links that you are not going to use.
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
 <ul>
-<li>Explain the purpose of the the input, output, and shell parts of a
-Snakemake Rule</li>
-<li>Demonstrate how to create a Snakemake Rule</li>
+<li>Create a Snakemake Rule that uses an <strong>input</strong> file,
+<strong>output</strong> file and a <strong>shell</strong> command.</li>
+<li>Reduce filename duplication using <strong>wildcards</strong>
+</li>
+<li>Represent non-file inputs using a <strong>param</strong>
+</li>
+<li>Run a snakemake workflow</li>
+<li>Understand snakemake output</li>
 </ul>
 </div>
 </div>
@@ -828,16 +844,16 @@ lines printed out.</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 21 multimedia.csv</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 11 multimedia.csv</span></code></pre>
 </div>
 <p>To save this output we will change the command like so:</p>
-<p><code>head -n 21 multimedia.csv &gt; reduce/multimedia.csv</code></p>
+<p><code>head -n 11 multimedia.csv &gt; reduce/multimedia.csv</code></p>
 <p>Create a text file named <code>Snakefile</code> with the following
 contents:</p>
 <pre><code>rule reduce:
     input: "multimedia.csv"
     output: "reduce/multimedia.csv"
-    shell: "head -n 21 multimedia.csv &gt; reduce/multimedia.csv"</code></pre>
+    shell: "head -n 11 multimedia.csv &gt; reduce/multimedia.csv"</code></pre>
 <p>This code creates a Snakemake rule named <strong>reduce</strong> with
 a input file <strong>multimedia.csv</strong>, a output file
 <strong>reduce/multimedia.csv</strong>, and the shell command from
@@ -898,6 +914,10 @@ Finished job 0.
 1 of 1 steps (100%) done
 Complete log: .snakemake/log/2023-02-27T112816.505955.snakemake.log</code></pre>
 </div>
+<p>Notice the <strong>reason</strong> logging
+<code>Missing output files: reduce/multimedia.csv</code>. This tells you
+why snakemake is running this rule. In this case it is because the
+output file reduce/multimedia.csv is missing.</p>
 <p>Try running the workflow again:</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -919,25 +939,37 @@ follows:</p>
 <pre><code>rule reduce:
     input: "multimedia.csv"
     output: "reduce/multimedia.csv"
-    shell: "head -n 21 {input} &gt; {output}"</code></pre>
-</section><section id="use-a-param-to-simplify-future-changes"><h2 class="section-heading">Use a param to simplify future changes<a class="anchor" aria-label="anchor" href="#use-a-param-to-simplify-future-changes"></a>
+    shell: "head -n 11 {input} &gt; {output}"</code></pre>
+</section><section id="represent-non-file-inputs-using-a-param"><h2 class="section-heading">Represent non-file inputs using a param<a class="anchor" aria-label="anchor" href="#represent-non-file-inputs-using-a-param"></a>
 </h2>
 <hr class="half-width">
-<p>Currently the reduce rule grabs the top 21 rows. Since we are likely
-to change this number in the future a better option is to use a
+<p>Currently the reduce rule grabs the top 21 rows. Since the meaning of
+this number may not be obvious and we are likely to change this number
+in the future a better option is to use this non-file input as a
 param.</p>
 <p>Add a new <code>params</code> setting to the <code>rule</code> and
 use the <code>params.rows</code> wildcard in the shell as follows:</p>
 <pre><code>rule reduce:
   input: "multimedia.csv"
+  params:rows="11"  
   output: "reduce/multimedia.csv"
-  params: rows="21"
   shell: "head -n {params.rows} {input} &gt; {output}"</code></pre>
+<p>Notice how we assigned a name “rows” to the parameter. Assigning a
+name like this can also be done for the input and output filenames as
+well.</p>
 <p>Try running the workflow again:</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span></span></code></pre>
+</div>
+<p>Notice the <strong>reason</strong> has changed</p>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>...
+    reason: Code has changed since last execution; Params have changed since last execution
+...</code></pre>
 </div>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
@@ -945,13 +977,45 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-filter_rule"><p>Content from <a href="filter_rule.html">Add an R Script</a></p>
 <hr>
-<p> Last updated on 2023-03-04 | 
+<p> Last updated on 2023-03-06 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/filter_rule.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 12 minutes </p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
+<div class="overview card">
+<h2 class="card-header">Overview</h2>
+<div class="row g-0">
+<div class="col-md-4">
+<div class="card-body">
+<div class="inner">
+<h3 class="card-title">Questions</h3>
+<ul>
+<li>How can I create a rule using an RStudio friendly R script?</li>
+<li>How can I control what files Snakemake creates?</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<div class="inner bordered">
+<h3 class="card-title">Objectives</h3>
+<ul>
+<li>Create a rule that uses an RStudio friendly R script.</li>
+<li>Run snakemake specifying a <strong>target output file</strong>
+</li>
+<li>Create an <strong>all</strong> rule to control the default output
+files</li>
+<li>Use a <strong>YAML config file</strong> to avoid filename
+duplication</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
 <section id="rstudio-friendly-rules"><h2 class="section-heading">RStudio friendly Rules<a class="anchor" aria-label="anchor" href="#rstudio-friendly-rules"></a>
 </h2>
 <hr class="half-width">
@@ -959,7 +1023,7 @@ any links that you are not going to use.
 for the species of our choosing. We want this R script to be easily
 runnable within RStudio. To accomplish this we want to avoid passing
 command line arguments to the R script as this is difficult to
-accommodate within Rstudio.</p>
+accommodate within RStudio.</p>
 </section><section id="see-the-hard-coded-paths-in-the-r-script"><h2 class="section-heading">See the hard coded paths in the R script<a class="anchor" aria-label="anchor" href="#see-the-hard-coded-paths-in-the-r-script"></a>
 </h2>
 <hr class="half-width">
@@ -975,14 +1039,14 @@ accommodate within Rstudio.</p>
 <span><span class="va">output_path</span> <span class="op">&lt;-</span> <span class="st">"filter/multimedia.csv"</span></span>
 <span><span class="va">...</span></span></code></pre>
 </div>
-</section><section id="create-a-rule-that-uses-named-input-files"><h2 class="section-heading">Create a rule that uses named input files<a class="anchor" aria-label="anchor" href="#create-a-rule-that-uses-named-input-files"></a>
+</section><section id="create-a-rule-that-runs-an-filtering-r-script"><h2 class="section-heading">Create a rule that runs an filtering R script<a class="anchor" aria-label="anchor" href="#create-a-rule-that-runs-an-filtering-r-script"></a>
 </h2>
 <hr class="half-width">
 <p>Create a rule:</p>
 <pre><code>rule filter:
   input: 
-    script="Scripts/FilterImagesHardCoded.R",
-    fishes="reduce/multimedia.csv"
+      script="Scripts/FilterImagesHardCoded.R",
+      fishes="reduce/multimedia.csv"
   output: "filter/multimedia.csv"
   shell: "Rscript {input.script}"</code></pre>
 <div class="codewrapper sourceCode" id="cb4">
@@ -1074,8 +1138,8 @@ rule reduce:
 
 rule filter:
   input: 
-    script="Scripts/FilterImages.R",
-    fishes=config["reduce_multimedia"]
+      script="Scripts/FilterImages.R",
+      fishes=config["reduce_multimedia"]
   output: config["filter_multimedia"]
   shell: "Rscript {input.script}"</code></pre>
 <p>Running the workflow again:</p>
@@ -1090,14 +1154,46 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-scatter_rule"><p>Content from <a href="scatter_rule.html">Process multiple files</a></p>
 <hr>
-<p> Last updated on 2023-03-05 | 
+<p> Last updated on 2023-03-06 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/scatter_rule.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 12 minutes </p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
-<section id="downloading-an-image-from-a-csv-using-wget"><h2 class="section-heading">Downloading an Image from a CSV using wget<a class="anchor" aria-label="anchor" href="#downloading-an-image-from-a-csv-using-wget"></a>
+<div class="overview card">
+<h2 class="card-header">Overview</h2>
+<div class="row g-0">
+<div class="col-md-4">
+<div class="card-body">
+<div class="inner">
+<h3 class="card-title">Questions</h3>
+<ul>
+<li>How can I create a generic rule that can process multiple
+files?</li>
+<li>How can I use a python function as part of a rule?</li>
+<li>How do I tell snakemake to create a certain file before running a
+python function?</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<div class="inner bordered">
+<h3 class="card-title">Objectives</h3>
+<ul>
+<li>Use a python function as a params input</li>
+<li>Create a pattern rule to process multiple files</li>
+<li>Setup a <strong>checkpoint</strong> to ensure a file exists before
+running a python function.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section id="use-wget-to-download-an-image"><h2 class="section-heading">Use wget to download an image<a class="anchor" aria-label="anchor" href="#use-wget-to-download-an-image"></a>
 </h2>
 <hr class="half-width">
 <div class="codewrapper sourceCode" id="cb1">
@@ -1106,12 +1202,11 @@ any links that you are not going to use.
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 2 filter/multimedia.csv</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">-O</span> test.jpg https://bgnn.tulane.edu/hdr-share/ftp/ark/89609/GLIN/FMNH/bj373514.jpg</span></code></pre>
 </div>
-</section><section id="create-a-rule-that-uses-a-input-function-to-download-a-single-image"><h2 class="section-heading">Create a rule that uses a input function to download a single
-image<a class="anchor" aria-label="anchor" href="#create-a-rule-that-uses-a-input-function-to-download-a-single-image"></a>
+</section><section id="create-a-rule-that-uses-a-python-function"><h2 class="section-heading">Create a rule that uses a python function<a class="anchor" aria-label="anchor" href="#create-a-rule-that-uses-a-python-function"></a>
 </h2>
 <hr class="half-width">
-<p>First add a rule to download a single image that uses a python
-function param:</p>
+<p>Add a rule to download a single image that uses a python function
+param:</p>
 <pre><code>def get_image_url(wildcards):
     base_image_url = "https://bgnn.tulane.edu/hdr-share/ftp/ark/89609/GLIN/FMNH/"
     return base_image_url + "bj373514.jpg"
@@ -1124,7 +1219,8 @@ rule download_image:
 </section><section id="make-the-rule-generic-with-a-pattern-rule"><h2 class="section-heading">Make the rule generic with a pattern rule<a class="anchor" aria-label="anchor" href="#make-the-rule-generic-with-a-pattern-rule"></a>
 </h2>
 <hr class="half-width">
-<p>Change this rule to be a pattern rule:</p>
+<p>Change this rule to be a pattern rule by adding a wildcard expression
+in an output filename.</p>
 <pre><code>def get_image_url(wildcards):
     base_url = ""https://bgnn.tulane.edu/hdr-share/ftp/ark/89609/GLIN/FMNH/"
     return base_url + wildcards.ark_id + ".jpg"
@@ -1140,7 +1236,7 @@ rule download_image:
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> images/hd529k3h.jpg</span></code></pre>
 </div>
-</section><section id="add-python-logic-to-parse-a-csv-to-lookup-the-url"><h2 class="section-heading">Add python logic to parse a CSV to lookup the URL<a class="anchor" aria-label="anchor" href="#add-python-logic-to-parse-a-csv-to-lookup-the-url"></a>
+</section><section id="add-python-logic-to-lookup-the-url"><h2 class="section-heading">Add python logic to lookup the URL<a class="anchor" aria-label="anchor" href="#add-python-logic-to-lookup-the-url"></a>
 </h2>
 <hr class="half-width">
 <p>Add a pandas import to the top of <code>Snakefile</code>:</p>
@@ -1200,7 +1296,8 @@ FileNotFoundError in file /users/PAS2136/jbradley/SnakemakeWorkflow/Snakefile, l
 [Errno 2] No such file or directory: 'filter/multimedia.csv'
 ...</code></pre>
 </div>
-</section><section id="checkpoints-inform-snakemake-of-order-to-run-rules"><h2 class="section-heading">Checkpoints inform Snakemake of order to run rules<a class="anchor" aria-label="anchor" href="#checkpoints-inform-snakemake-of-order-to-run-rules"></a>
+</section><section id="ensure-the-csv-exists-before-running-a-python-function-using-a-checkpoint"><h2 class="section-heading">Ensure the CSV exists before running a python function using a
+checkpoint<a class="anchor" aria-label="anchor" href="#ensure-the-csv-exists-before-running-a-python-function-using-a-checkpoint"></a>
 </h2>
 <hr class="half-width">
 <pre><code>def get_image_filenames(wildcards):
@@ -1212,11 +1309,10 @@ FileNotFoundError in file /users/PAS2136/jbradley/SnakemakeWorkflow/Snakefile, l
 
 checkpoint filter:
   input: 
-    script="Scripts/FilterImages.R",
-    fishes=config["reduce_multimedia"]
+      script="Scripts/FilterImages.R",
+      fishes=config["reduce_multimedia"]
   output: config["filter_multimedia"]
-  shell: "Rscript {input.script}"
-</code></pre>
+  shell: "Rscript {input.script}"</code></pre>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
@@ -1230,10 +1326,66 @@ any links that you are not going to use.
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
-<p>Explain converting docker container URL to singularity container URL
-Explain the need for –use-singularity flag. Explain other options
-singularity image files, conda environment</p>
-<section id="use-container-when-downloading-images"><h2 class="section-heading">Use container when downloading images<a class="anchor" aria-label="anchor" href="#use-container-when-downloading-images"></a>
+<div class="overview card">
+<h2 class="card-header">Overview</h2>
+<div class="row g-0">
+<div class="col-md-4">
+<div class="card-body">
+<div class="inner">
+<h3 class="card-title">Questions</h3>
+<ul>
+<li>How can I specify a singularity container for a rule?</li>
+<li>How do you change a docker container URI into a singularity
+container URI?</li>
+<li>What command line argument is required to enable containers for
+snakemake ?</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<div class="inner bordered">
+<h3 class="card-title">Objectives</h3>
+<ul>
+<li>Update a rule to use a container</li>
+<li>Run snakemake with the –use-singularity argument</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section id="snakemake-dependency-management"><h2 class="section-heading">Snakemake dependency management<a class="anchor" aria-label="anchor" href="#snakemake-dependency-management"></a>
+</h2>
+<hr class="half-width">
+<ul>
+<li>containers
+<ul>
+<li>exact software versions on later installs</li>
+<li>support for
+<ul>
+<li>docker container images</li>
+<li>singularity containers images</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>conda environments
+<ul>
+<li>may result in different software versions on later installs</li>
+<li>powerful but might not install in every environment</li>
+</ul>
+</li>
+</ul></section><section id="singularity-container-image-uri"><h2 class="section-heading">Singularity Container Image URI<a class="anchor" aria-label="anchor" href="#singularity-container-image-uri"></a>
+</h2>
+<hr class="half-width">
+<p>Example docker container:
+<code>docker pull ubuntu:kinetic-20230217</code></p>
+<p>Example docker container:
+<code>singularity pull docker://ubuntu:kinetic-20230217</code></p>
+<p>Explain other options singularity image files, conda environment</p>
+</section><section id="use-container-when-downloading-images"><h2 class="section-heading">Use container when downloading images<a class="anchor" aria-label="anchor" href="#use-container-when-downloading-images"></a>
 </h2>
 <hr class="half-width">
 <pre><code>rule download_image:
@@ -1248,6 +1400,7 @@ singularity image files, conda environment</p>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--use-singularity</span> images/hd529k3h.jpg</span></code></pre>
 </div>
+<p>Explain the need for –use-singularity flag.</p>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
@@ -1261,16 +1414,18 @@ any links that you are not going to use.
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
-<p>To re-use a workflow you generally need: - where to find workflow -
-github “hdr-bgnn/BGNN_Core_Workflow” - what is the relative path to the
-Snakefile “workflow/Snakefile” - what tag or version to use “1.0.0”</p>
+<p>To re-use a workflow you generally need:</p>
+<ul>
+<li>where to find workflow - github “hdr-bgnn/BGNN_Core_Workflow”</li>
+<li>what is the relative path to the Snakefile “workflow/Snakefile”</li>
+<li>what tag or version to use “1.0.0”</li>
+</ul>
 <p><a href="https://github.com/hdr-bgnn/BGNN_Core_Workflow/blob/main/workflow/Snakefile#L19" class="external-link uri">https://github.com/hdr-bgnn/BGNN_Core_Workflow/blob/main/workflow/Snakefile#L19</a></p>
 <pre><code>module bgnn_core:
     snakefile:
         github("hdr-bgnn/BGNN_Core_Workflow", path="workflow/Snakefile", tag="1.0.0")
 
-use rule generate_metadata from bgnn_core as detect with:
-    input:'images/{image}.jpg'</code></pre>
+use rule generate_metadata from bgnn_core</code></pre>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1282,9 +1437,6 @@ use rule generate_metadata from bgnn_core as detect with:
 <pre><code>use rule generate_metadata from bgnn_core
 use rule transform_metadata from bgnn_core
 use rule crop_image from bgnn_core with:
-    input:
-        image = 'images/{image}.jpg',
-        metadata = 'Metadata/{image}.json'
 use rule segment_image from bgnn_core</code></pre>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1330,7 +1482,10 @@ rule summary:
      markdown="Scripts/Summary.Rmd",
      morphology=get_summary_inputs
   output: config["summary_report"]
-  shell: "Rscript {input.script}"</code></pre></section><section id="aio-run_on_slurm"><p>Content from <a href="run_on_slurm.html">Run at Scale</a></p>
+  shell: "Rscript {input.script}"</code></pre>
+<p>Just to do so Specify 2 threads and 1GB memory -
+<strong>threads</strong> - number of threads a rule uses (defaults to 1)
+- <strong>resources/mem_mb</strong> - amount of memory a rule needs</p></section><section id="aio-run_on_slurm"><p>Content from <a href="run_on_slurm.html">Run at Scale</a></p>
 <hr>
 <p> Last updated on 2023-03-05 | 
         

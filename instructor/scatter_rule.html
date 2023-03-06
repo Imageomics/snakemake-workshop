@@ -217,14 +217,14 @@
         
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
-        <ul><li><a href="#downloading-an-image-from-a-csv-using-wget">Downloading an Image from a CSV using wget</a></li>
-<li><a href="#create-a-rule-that-uses-a-input-function-to-download-a-single-image">Create a rule that uses a input function to download a single
-image</a></li>
+        <ul><li><a href="#use-wget-to-download-an-image">Use wget to download an image</a></li>
+<li><a href="#create-a-rule-that-uses-a-python-function">Create a rule that uses a python function</a></li>
 <li><a href="#make-the-rule-generic-with-a-pattern-rule">Make the rule generic with a pattern rule</a></li>
-<li><a href="#add-python-logic-to-parse-a-csv-to-lookup-the-url">Add python logic to parse a CSV to lookup the URL</a></li>
+<li><a href="#add-python-logic-to-lookup-the-url">Add python logic to lookup the URL</a></li>
 <li><a href="#updating-all-rule">Updating all rule</a></li>
 <li><a href="#test-starting-from-scratch">Test starting from scratch</a></li>
-<li><a href="#checkpoints-inform-snakemake-of-order-to-run-rules">Checkpoints inform Snakemake of order to run rules</a></li>
+<li><a href="#ensure-the-csv-exists-before-running-a-python-function-using-a-checkpoint">Ensure the CSV exists before running a python function using a
+checkpoint</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
         
@@ -318,7 +318,7 @@ image</a></li>
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Process multiple files</h1>
-        <p> Last updated on 2023-03-05 | 
+        <p> Last updated on 2023-03-06 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/scatter_rule.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -332,7 +332,35 @@ image</a></li>
 
         
 
-<section id="downloading-an-image-from-a-csv-using-wget"><h2 class="section-heading">Downloading an Image from a CSV using wget<a class="anchor" aria-label="anchor" href="#downloading-an-image-from-a-csv-using-wget"></a>
+<div class="overview card">
+<h2 class="card-header">Overview</h2>
+<div class="row g-0">
+<div class="col-md-4">
+<div class="card-body">
+<div class="inner">
+<h3 class="card-title">Questions</h3>
+<ul><li>How can I create a generic rule that can process multiple
+files?</li>
+<li>How can I use a python function as part of a rule?</li>
+<li>How do I tell snakemake to create a certain file before running a
+python function?</li>
+</ul></div>
+</div>
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<div class="inner bordered">
+<h3 class="card-title">Objectives</h3>
+<ul><li>Use a python function as a params input</li>
+<li>Create a pattern rule to process multiple files</li>
+<li>Setup a <strong>checkpoint</strong> to ensure a file exists before
+running a python function.</li>
+</ul></div>
+</div>
+</div>
+</div>
+</div>
+<section id="use-wget-to-download-an-image"><h2 class="section-heading">Use wget to download an image<a class="anchor" aria-label="anchor" href="#use-wget-to-download-an-image"></a>
 </h2>
 <hr class="half-width"><div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -340,11 +368,10 @@ image</a></li>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 2 filter/multimedia.csv</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">-O</span> test.jpg https://bgnn.tulane.edu/hdr-share/ftp/ark/89609/GLIN/FMNH/bj373514.jpg</span></code></pre>
 </div>
-</section><section id="create-a-rule-that-uses-a-input-function-to-download-a-single-image"><h2 class="section-heading">Create a rule that uses a input function to download a single
-image<a class="anchor" aria-label="anchor" href="#create-a-rule-that-uses-a-input-function-to-download-a-single-image"></a>
+</section><section id="create-a-rule-that-uses-a-python-function"><h2 class="section-heading">Create a rule that uses a python function<a class="anchor" aria-label="anchor" href="#create-a-rule-that-uses-a-python-function"></a>
 </h2>
-<hr class="half-width"><p>First add a rule to download a single image that uses a python
-function param:</p>
+<hr class="half-width"><p>Add a rule to download a single image that uses a python function
+param:</p>
 <pre><code>def get_image_url(wildcards):
     base_image_url = "https://bgnn.tulane.edu/hdr-share/ftp/ark/89609/GLIN/FMNH/"
     return base_image_url + "bj373514.jpg"
@@ -356,7 +383,8 @@ rule download_image:
     shell: "wget -O {output} {params.url}"</code></pre>
 </section><section id="make-the-rule-generic-with-a-pattern-rule"><h2 class="section-heading">Make the rule generic with a pattern rule<a class="anchor" aria-label="anchor" href="#make-the-rule-generic-with-a-pattern-rule"></a>
 </h2>
-<hr class="half-width"><p>Change this rule to be a pattern rule:</p>
+<hr class="half-width"><p>Change this rule to be a pattern rule by adding a wildcard expression
+in an output filename.</p>
 <pre><code>def get_image_url(wildcards):
     base_url = ""https://bgnn.tulane.edu/hdr-share/ftp/ark/89609/GLIN/FMNH/"
     return base_url + wildcards.ark_id + ".jpg"
@@ -372,7 +400,7 @@ rule download_image:
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> images/hd529k3h.jpg</span></code></pre>
 </div>
-</section><section id="add-python-logic-to-parse-a-csv-to-lookup-the-url"><h2 class="section-heading">Add python logic to parse a CSV to lookup the URL<a class="anchor" aria-label="anchor" href="#add-python-logic-to-parse-a-csv-to-lookup-the-url"></a>
+</section><section id="add-python-logic-to-lookup-the-url"><h2 class="section-heading">Add python logic to lookup the URL<a class="anchor" aria-label="anchor" href="#add-python-logic-to-lookup-the-url"></a>
 </h2>
 <hr class="half-width"><p>Add a pandas import to the top of <code>Snakefile</code>:</p>
 <pre><code>import pandas as pd</code></pre>
@@ -429,7 +457,8 @@ FileNotFoundError in file /users/PAS2136/jbradley/SnakemakeWorkflow/Snakefile, l
 [Errno 2] No such file or directory: 'filter/multimedia.csv'
 ...</code></pre>
 </div>
-</section><section id="checkpoints-inform-snakemake-of-order-to-run-rules"><h2 class="section-heading">Checkpoints inform Snakemake of order to run rules<a class="anchor" aria-label="anchor" href="#checkpoints-inform-snakemake-of-order-to-run-rules"></a>
+</section><section id="ensure-the-csv-exists-before-running-a-python-function-using-a-checkpoint"><h2 class="section-heading">Ensure the CSV exists before running a python function using a
+checkpoint<a class="anchor" aria-label="anchor" href="#ensure-the-csv-exists-before-running-a-python-function-using-a-checkpoint"></a>
 </h2>
 <hr class="half-width"><pre><code>def get_image_filenames(wildcards):
     filename = checkpoints.filter.get().output[0]
@@ -440,11 +469,10 @@ FileNotFoundError in file /users/PAS2136/jbradley/SnakemakeWorkflow/Snakefile, l
 
 checkpoint filter:
   input: 
-    script="Scripts/FilterImages.R",
-    fishes=config["reduce_multimedia"]
+      script="Scripts/FilterImages.R",
+      fishes=config["reduce_multimedia"]
   output: config["filter_multimedia"]
-  shell: "Rscript {input.script}"
-</code></pre>
+  shell: "Rscript {input.script}"</code></pre>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
@@ -502,7 +530,7 @@ any links that you are not going to use.
   "url": "https://Imageomics.github.io/snakemake-workshop/instructor/scatter_rule.html",
   "identifier": "https://Imageomics.github.io/snakemake-workshop/instructor/scatter_rule.html",
   "dateCreated": "2023-03-06",
-  "dateModified": "2023-03-05",
+  "dateModified": "2023-03-06",
   "datePublished": "2023-03-06"
 }
 

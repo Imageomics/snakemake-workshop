@@ -161,7 +161,6 @@
 <li><a href="#weaknesses">Weaknesses</a></li>
 <li><a href="#how-snakemake-works">How Snakemake works</a></li>
 <li><a href="#what-is-a-snakemake-rule">What is a Snakemake Rule?</a></li>
-<li><a href="#procedural-approach">Procedural Approach</a></li>
 <li><a href="#how-snakemake-combines-rules">How Snakemake combines rules</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
@@ -372,23 +371,29 @@ language</li>
 </div>
 </section><section id="what-is-a-snakemake-rule"><h2 class="section-heading">What is a Snakemake Rule?<a class="anchor" aria-label="anchor" href="#what-is-a-snakemake-rule"></a>
 </h2>
-<hr class="half-width"><p>A Snakemake Rule specifies</p>
-<ul><li>name - unique name for the rule</li>
-<li>input files</li>
-<li>output files</li>
-<li>shell command that reads the input file and writes the output
-files</li>
-</ul><p>Example rules</p>
-<pre><code># Count words in one of the books
-rule count_words:
-    input: 'books/isles.txt'
-    output: 'isles.dat'
-    shell: 'python wordcount.py books/isles.txt isles.dat'</code></pre>
-<p><em>This rule was copied from the <a href="https://carpentries-incubator.github.io/hpc-workflows/02-snakefiles/index.html" class="external-link">carpentries
-incubator hpc-workflows lesson</a>.</em></p>
-</section><section id="procedural-approach"><h2 class="section-heading">Procedural Approach<a class="anchor" aria-label="anchor" href="#procedural-approach"></a>
-</h2>
-<hr class="half-width"></section><section id="how-snakemake-combines-rules"><h2 class="section-heading">How Snakemake combines rules<a class="anchor" aria-label="anchor" href="#how-snakemake-combines-rules"></a>
+<hr class="half-width"><p>Main parts of a Snakemake Rule used in this workshop</p>
+<ul><li>
+<strong>name</strong> - unique name for a rule</li>
+<li>
+<strong>input</strong> - input filenames used by a command</li>
+<li>
+<strong>params</strong> - input parameter (non-file) values used by
+a command</li>
+<li>
+<strong>output</strong> - output filenames created by a command</li>
+<li>
+<strong>shell</strong> - command to run</li>
+<li>
+<strong>container</strong> - singularity container to run command
+within</li>
+</ul><p>Rule pattern:</p>
+<pre><code>rule &lt;name&gt;:
+    input: ...
+    params: ...
+    output: ...
+    shell: ...
+    container: ...</code></pre>
+</section><section id="how-snakemake-combines-rules"><h2 class="section-heading">How Snakemake combines rules<a class="anchor" aria-label="anchor" href="#how-snakemake-combines-rules"></a>
 </h2>
 <hr class="half-width"><!-- 
 Place links that you need to refer to multiple times across pages here. Delete

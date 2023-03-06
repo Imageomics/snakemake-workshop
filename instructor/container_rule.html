@@ -226,7 +226,9 @@
         
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
-        <ul><li><a href="#use-container-when-downloading-images">Use container when downloading images</a></li>
+        <ul><li><a href="#snakemake-dependency-management">Snakemake dependency management</a></li>
+<li><a href="#singularity-container-image-uri">Singularity Container Image URI</a></li>
+<li><a href="#use-container-when-downloading-images">Use container when downloading images</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
         
@@ -325,10 +327,53 @@
 
         
 
-<p>Explain converting docker container URL to singularity container URL
-Explain the need for –use-singularity flag. Explain other options
-singularity image files, conda environment</p>
-<section id="use-container-when-downloading-images"><h2 class="section-heading">Use container when downloading images<a class="anchor" aria-label="anchor" href="#use-container-when-downloading-images"></a>
+<div class="overview card">
+<h2 class="card-header">Overview</h2>
+<div class="row g-0">
+<div class="col-md-4">
+<div class="card-body">
+<div class="inner">
+<h3 class="card-title">Questions</h3>
+<ul><li>How can I specify a singularity container for a rule?</li>
+<li>How do you change a docker container URI into a singularity
+container URI?</li>
+<li>What command line argument is required to enable containers for
+snakemake ?</li>
+</ul></div>
+</div>
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<div class="inner bordered">
+<h3 class="card-title">Objectives</h3>
+<ul><li>Update a rule to use a container</li>
+<li>Run snakemake with the –use-singularity argument</li>
+</ul></div>
+</div>
+</div>
+</div>
+</div>
+<section id="snakemake-dependency-management"><h2 class="section-heading">Snakemake dependency management<a class="anchor" aria-label="anchor" href="#snakemake-dependency-management"></a>
+</h2>
+<hr class="half-width"><ul><li>containers
+<ul><li>exact software versions on later installs</li>
+<li>support for
+<ul><li>docker container images</li>
+<li>singularity containers images</li>
+</ul></li>
+</ul></li>
+<li>conda environments
+<ul><li>may result in different software versions on later installs</li>
+<li>powerful but might not install in every environment</li>
+</ul></li>
+</ul></section><section id="singularity-container-image-uri"><h2 class="section-heading">Singularity Container Image URI<a class="anchor" aria-label="anchor" href="#singularity-container-image-uri"></a>
+</h2>
+<hr class="half-width"><p>Example docker container:
+<code>docker pull ubuntu:kinetic-20230217</code></p>
+<p>Example docker container:
+<code>singularity pull docker://ubuntu:kinetic-20230217</code></p>
+<p>Explain other options singularity image files, conda environment</p>
+</section><section id="use-container-when-downloading-images"><h2 class="section-heading">Use container when downloading images<a class="anchor" aria-label="anchor" href="#use-container-when-downloading-images"></a>
 </h2>
 <hr class="half-width"><pre><code>rule download_image:
     input: config["filter_multimedia"]
@@ -342,6 +387,7 @@ singularity image files, conda environment</p>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--use-singularity</span> images/hd529k3h.jpg</span></code></pre>
 </div>
+<p>Explain the need for –use-singularity flag.</p>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 

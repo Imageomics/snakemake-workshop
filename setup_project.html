@@ -312,7 +312,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Project Setup</h1>
-        <p> Last updated on 2023-03-04 | 
+        <p> Last updated on 2023-03-06 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/setup_project.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -388,22 +388,25 @@ needed files:</p>
 <strong>multimedia.csv</strong> - Main input file of fish images
 used by the workflow</li>
 <li>
-<strong>Scripts/setup_env.sh</strong> - Used to activates snakemake
-conda environment and other utilities</li>
+<strong>Scripts/</strong>
+<ul><li>
+<strong>setup_env.sh</strong> - Used to activates snakemake conda
+environment and other utilities</li>
 <li>
-<strong>Scripts/FilterImagesHardCoded.R</strong> - Rscript that
-filters a CSV for a target species with hard coded filenames</li>
+<strong>FilterImagesHardCoded.R</strong> - Rscript that filters a
+CSV for a target species with hard coded filenames</li>
 <li>
-<strong>Scripts/FilterImages.R</strong> - R script that filters a
-CSV for a target species</li>
+<strong>FilterImages.R</strong> - R script that filters a CSV for a
+target species</li>
 <li>
-<strong>Scripts/AnalyzeResults.R</strong> - R script that builds a
-summary report of the workflow outputs</li>
+<strong>SummaryReport.R</strong> - R script that builds a summary
+report of the workflow outputs</li>
 <li>
-<strong>Scripts/FishSummary.Rmd</strong> - R markdown script used by
-__AnalyzeResults.R to create a report</li>
+<strong>Summary.Rmd</strong> - R markdown script used by
+SummaryReport.R to create a report</li>
+</ul></li>
 <li>
-<strong>slurm</strong> - Directory containing a config file used by
+<strong>slurm/</strong> - Directory containing a config file used by
 Snakemake to run SLURM jobs</li>
 </ul><!-- 
 Place links that you need to refer to multiple times across pages here. Delete
@@ -462,7 +465,7 @@ any links that you are not going to use.
   "url": "https://Imageomics.github.io/snakemake-workshop/setup_project.html",
   "identifier": "https://Imageomics.github.io/snakemake-workshop/setup_project.html",
   "dateCreated": "2023-03-06",
-  "dateModified": "2023-03-04",
+  "dateModified": "2023-03-06",
   "datePublished": "2023-03-06"
 }
 

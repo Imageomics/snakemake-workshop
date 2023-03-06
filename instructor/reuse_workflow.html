@@ -325,16 +325,16 @@
 
         
 
-<p>To re-use a workflow you generally need: - where to find workflow -
-github “hdr-bgnn/BGNN_Core_Workflow” - what is the relative path to the
-Snakefile “workflow/Snakefile” - what tag or version to use “1.0.0”</p>
-<p><a href="https://github.com/hdr-bgnn/BGNN_Core_Workflow/blob/main/workflow/Snakefile#L19" class="external-link uri">https://github.com/hdr-bgnn/BGNN_Core_Workflow/blob/main/workflow/Snakefile#L19</a></p>
+<p>To re-use a workflow you generally need:</p>
+<ul><li>where to find workflow - github “hdr-bgnn/BGNN_Core_Workflow”</li>
+<li>what is the relative path to the Snakefile “workflow/Snakefile”</li>
+<li>what tag or version to use “1.0.0”</li>
+</ul><p><a href="https://github.com/hdr-bgnn/BGNN_Core_Workflow/blob/main/workflow/Snakefile#L19" class="external-link uri">https://github.com/hdr-bgnn/BGNN_Core_Workflow/blob/main/workflow/Snakefile#L19</a></p>
 <pre><code>module bgnn_core:
     snakefile:
         github("hdr-bgnn/BGNN_Core_Workflow", path="workflow/Snakefile", tag="1.0.0")
 
-use rule generate_metadata from bgnn_core as detect with:
-    input:'images/{image}.jpg'</code></pre>
+use rule generate_metadata from bgnn_core</code></pre>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -345,9 +345,6 @@ use rule generate_metadata from bgnn_core as detect with:
 <hr class="half-width"><pre><code>use rule generate_metadata from bgnn_core
 use rule transform_metadata from bgnn_core
 use rule crop_image from bgnn_core with:
-    input:
-        image = 'images/{image}.jpg',
-        metadata = 'Metadata/{image}.json'
 use rule segment_image from bgnn_core</code></pre>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>

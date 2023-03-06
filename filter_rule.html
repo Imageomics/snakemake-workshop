@@ -210,7 +210,7 @@
       <div class="accordion-body">
         <ul><li><a href="#rstudio-friendly-rules">RStudio friendly Rules</a></li>
 <li><a href="#see-the-hard-coded-paths-in-the-r-script">See the hard coded paths in the R script</a></li>
-<li><a href="#create-a-rule-that-uses-named-input-files">Create a rule that uses named input files</a></li>
+<li><a href="#create-a-rule-that-runs-an-filtering-r-script">Create a rule that runs an filtering R script</a></li>
 <li><a href="#default-target">Default target</a></li>
 <li><a href="#run-snakemake-specifying-a-specific-target">Run snakemake specifying a specific target</a></li>
 <li><a href="#run-snakemake-specifying-a-non-existant-target">Run snakemake specifying a non-existant target</a></li>
@@ -319,7 +319,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Add an R Script</h1>
-        <p> Last updated on 2023-03-04 | 
+        <p> Last updated on 2023-03-06 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/filter_rule.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -331,13 +331,41 @@
 
         
 
+<div class="overview card">
+<h2 class="card-header">Overview</h2>
+<div class="row g-0">
+<div class="col-md-4">
+<div class="card-body">
+<div class="inner">
+<h3 class="card-title">Questions</h3>
+<ul><li>How can I create a rule using an RStudio friendly R script?</li>
+<li>How can I control what files Snakemake creates?</li>
+</ul></div>
+</div>
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<div class="inner bordered">
+<h3 class="card-title">Objectives</h3>
+<ul><li>Create a rule that uses an RStudio friendly R script.</li>
+<li>Run snakemake specifying a <strong>target output file</strong>
+</li>
+<li>Create an <strong>all</strong> rule to control the default output
+files</li>
+<li>Use a <strong>YAML config file</strong> to avoid filename
+duplication</li>
+</ul></div>
+</div>
+</div>
+</div>
+</div>
 <section id="rstudio-friendly-rules"><h2 class="section-heading">RStudio friendly Rules<a class="anchor" aria-label="anchor" href="#rstudio-friendly-rules"></a>
 </h2>
 <hr class="half-width"><p>Next we want to add an R script that will filter an input CSV file
 for the species of our choosing. We want this R script to be easily
 runnable within RStudio. To accomplish this we want to avoid passing
 command line arguments to the R script as this is difficult to
-accommodate within Rstudio.</p>
+accommodate within RStudio.</p>
 </section><section id="see-the-hard-coded-paths-in-the-r-script"><h2 class="section-heading">See the hard coded paths in the R script<a class="anchor" aria-label="anchor" href="#see-the-hard-coded-paths-in-the-r-script"></a>
 </h2>
 <hr class="half-width"><div class="codewrapper sourceCode" id="cb1">
@@ -352,13 +380,13 @@ accommodate within Rstudio.</p>
 <span><span class="va">output_path</span> <span class="op">&lt;-</span> <span class="st">"filter/multimedia.csv"</span></span>
 <span><span class="va">...</span></span></code></pre>
 </div>
-</section><section id="create-a-rule-that-uses-named-input-files"><h2 class="section-heading">Create a rule that uses named input files<a class="anchor" aria-label="anchor" href="#create-a-rule-that-uses-named-input-files"></a>
+</section><section id="create-a-rule-that-runs-an-filtering-r-script"><h2 class="section-heading">Create a rule that runs an filtering R script<a class="anchor" aria-label="anchor" href="#create-a-rule-that-runs-an-filtering-r-script"></a>
 </h2>
 <hr class="half-width"><p>Create a rule:</p>
 <pre><code>rule filter:
   input: 
-    script="Scripts/FilterImagesHardCoded.R",
-    fishes="reduce/multimedia.csv"
+      script="Scripts/FilterImagesHardCoded.R",
+      fishes="reduce/multimedia.csv"
   output: "filter/multimedia.csv"
   shell: "Rscript {input.script}"</code></pre>
 <div class="codewrapper sourceCode" id="cb4">
@@ -444,8 +472,8 @@ rule reduce:
 
 rule filter:
   input: 
-    script="Scripts/FilterImages.R",
-    fishes=config["reduce_multimedia"]
+      script="Scripts/FilterImages.R",
+      fishes=config["reduce_multimedia"]
   output: config["filter_multimedia"]
   shell: "Rscript {input.script}"</code></pre>
 <p>Running the workflow again:</p>
@@ -511,7 +539,7 @@ any links that you are not going to use.
   "url": "https://Imageomics.github.io/snakemake-workshop/filter_rule.html",
   "identifier": "https://Imageomics.github.io/snakemake-workshop/filter_rule.html",
   "dateCreated": "2023-03-06",
-  "dateModified": "2023-03-04",
+  "dateModified": "2023-03-06",
   "datePublished": "2023-03-06"
 }
 
