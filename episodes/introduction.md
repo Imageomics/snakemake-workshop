@@ -43,26 +43,25 @@ Explain DAG
 
 ## What is a Snakemake Rule?
 
-A Snakemake Rule specifies
+Main parts of a Snakemake Rule used in this workshop
 
-- name - unique name for the rule
-- input files
-- output files
-- shell command that reads the input file and writes the output files
+- __name__ - unique name for a rule
+- __input__ - input filenames used by a command
+- __params__ - input parameter (non-file) values used by a command
+- __output__ - output filenames created by a command
+- __shell__ - command to run
+- __container__ - singularity container to run command within
 
+Rule pattern:
 
-Example rules
 ```
-# Count words in one of the books
-rule count_words:
-    input: 'books/isles.txt'
-    output: 'isles.dat'
-    shell: 'python wordcount.py books/isles.txt isles.dat'
+rule <name>:
+    input: ...
+    params: ...
+    output: ...
+    shell: ...
+    container: ...
 ```
-_This rule was copied from the [carpentries incubator hpc-workflows lesson](https://carpentries-incubator.github.io/hpc-workflows/02-snakefiles/index.html)._
-
-
-## Procedural Approach
 
 ## How Snakemake combines rules
 

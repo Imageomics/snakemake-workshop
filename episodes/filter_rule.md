@@ -4,10 +4,26 @@ teaching: 10
 exercises: 2
 ---
 
+:::::::::::::::::::::::::::::::::::::: questions 
+
+- How can I create a rule using an RStudio friendly R script?
+- How can I control what files Snakemake creates?
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::: objectives
+
+- Create a rule that uses an RStudio friendly R script.
+- Run snakemake specifying a __target output file__
+- Create an __all__ rule to control the default output files
+- Use a __YAML config file__ to avoid filename duplication
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
 ## RStudio friendly Rules
 Next we want to add an R script that will filter an input CSV file for the species of our choosing.
 We want this R script to be easily runnable within RStudio. To accomplish this we want to avoid 
-passing command line arguments to the R script as this is difficult to accommodate within Rstudio.
+passing command line arguments to the R script as this is difficult to accommodate within RStudio.
 
 ## See the hard coded paths in the R script
 ```bash
@@ -20,13 +36,13 @@ output_path <- "filter/multimedia.csv"
 ...
 ```
 
-## Create a rule that uses named input files
+## Create a rule that runs an filtering R script
 Create a rule:
 ```
 rule filter:
   input: 
-    script="Scripts/FilterImagesHardCoded.R",
-    fishes="reduce/multimedia.csv"
+      script="Scripts/FilterImagesHardCoded.R",
+      fishes="reduce/multimedia.csv"
   output: "filter/multimedia.csv"
   shell: "Rscript {input.script}"
 ```
@@ -110,8 +126,8 @@ rule reduce:
 
 rule filter:
   input: 
-    script="Scripts/FilterImages.R",
-    fishes=config["reduce_multimedia"]
+      script="Scripts/FilterImages.R",
+      fishes=config["reduce_multimedia"]
   output: config["filter_multimedia"]
   shell: "Rscript {input.script}"
 ```
@@ -120,5 +136,3 @@ Running the workflow again:
 ```bash
 snakemake -c1
 ```
-
-

@@ -6,6 +6,8 @@ exercises: 2
 
 Add summary_report to config.yaml:
 
+
+
 ```
 summary_report: summary/report.html
 ```
@@ -40,3 +42,7 @@ rule summary:
   output: config["summary_report"]
   shell: "Rscript {input.script}"
 ```
+
+Just to do so Specify 2 threads and 1GB memory
+- __threads__ - number of threads a rule uses (defaults to 1)
+- __resources/mem_mb__ - amount of memory a rule needs
