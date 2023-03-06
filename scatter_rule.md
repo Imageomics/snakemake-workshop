@@ -4,14 +4,31 @@ teaching: 10
 exercises: 2
 ---
 
-## Downloading an Image from a CSV using wget
+:::::::::::::::::::::::::::::::::::::: questions 
+
+- How can I create a generic rule that can process multiple files?
+- How can I use a python function as part of a rule?
+- How do I tell snakemake to create a certain file before running a python function? 
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::: objectives
+
+- Use a python function as a params input
+- Create a pattern rule to process multiple files
+- Setup a __checkpoint__ to ensure a file exists before running a python function.
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+## Use wget to download an image
 ```bash
 head -n 2 filter/multimedia.csv
 wget -O test.jpg https://bgnn.tulane.edu/hdr-share/ftp/ark/89609/GLIN/FMNH/bj373514.jpg
 ```
 
-## Create a rule that uses a input function to download a single image
-First add a rule to download a single image that uses a python function param:
+## Create a rule that uses a python function
+Add a rule to download a single image that uses a python function param:
 ```
 def get_image_url(wildcards):
     base_image_url = "https://bgnn.tulane.edu/hdr-share/ftp/ark/89609/GLIN/FMNH/"
@@ -25,8 +42,7 @@ rule download_image:
 ```
 
 ## Make the rule generic with a pattern rule
-
-Change this rule to be a pattern rule:
+Change this rule to be a pattern rule by adding a wildcard expression in an output filename.
 ```
 def get_image_url(wildcards):
     base_url = ""https://bgnn.tulane.edu/hdr-share/ftp/ark/89609/GLIN/FMNH/"
@@ -44,7 +60,7 @@ Run this rule:
 snakemake -c1 images/hd529k3h.jpg
 ```
 
-## Add python logic to parse a CSV to lookup the URL
+## Add python logic to lookup the URL
 Add a pandas import to the top of `Snakefile`:
 ```
 import pandas as pd
@@ -71,7 +87,6 @@ Run this rule for a couple files after deleting the images directory:
 rm -rf images
 snakemake -c1 images/bj373514.jpg images/hd529k3h.jpg
 ```
-
 
 ## Updating all rule
 ```
@@ -102,7 +117,7 @@ FileNotFoundError in file /users/PAS2136/jbradley/SnakemakeWorkflow/Snakefile, l
 ...
 ```
 
-## Checkpoints inform Snakemake of order to run rules
+## Ensure the CSV exists before running a python function using a checkpoint
 ```
 def get_image_filenames(wildcards):
     filename = checkpoints.filter.get().output[0]
@@ -113,12 +128,8 @@ def get_image_filenames(wildcards):
 
 checkpoint filter:
   input: 
-    script="Scripts/FilterImages.R",
-    fishes=config["reduce_multimedia"]
+      script="Scripts/FilterImages.R",
+      fishes=config["reduce_multimedia"]
   output: config["filter_multimedia"]
   shell: "Rscript {input.script}"
-
 ```
-
-
-

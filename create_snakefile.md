@@ -13,11 +13,13 @@ exercises: 2
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-- Explain the purpose of the the input, output, and shell parts of a Snakemake Rule
-- Demonstrate how to create a Snakemake Rule
+- Create a Snakemake Rule that uses an __input__ file, __output__ file and a __shell__ command.
+- Reduce filename duplication using __wildcards__
+- Represent non-file inputs using a __param__
+- Run a snakemake workflow
+- Understand snakemake output
+
 ::::::::::::::::::::::::::::::::::::::::::::::::
-
-
 
 ## Create a Snakemake Workflow
 For our first step we will reduce the size of the __multimedia.csv__ input file
@@ -26,18 +28,18 @@ data lines. So to save the first 20 data lines we will need the first 21 lines i
 This can be accomplished with the shell `head` command passing the `--n 21` argument.
 Run the following command in your terminal to see the first 21 lines printed out.
 ```bash
-head -n 21 multimedia.csv
+head -n 11 multimedia.csv
 ```
 To save this output we will change the command like so:
 
-`head -n 21 multimedia.csv > reduce/multimedia.csv`
+`head -n 11 multimedia.csv > reduce/multimedia.csv`
 
 Create a text file named `Snakefile` with the following contents:
 ```
 rule reduce:
     input: "multimedia.csv"
     output: "reduce/multimedia.csv"
-    shell: "head -n 21 multimedia.csv > reduce/multimedia.csv"
+    shell: "head -n 11 multimedia.csv > reduce/multimedia.csv"
 ```
 This code creates a Snakemake rule named __reduce__ with a input file __multimedia.csv__, a output file __reduce/multimedia.csv__, and the shell command from above.
 Snakemake will automatically create the reduce directory for us before running the shell command.
@@ -93,6 +95,9 @@ Finished job 0.
 Complete log: .snakemake/log/2023-02-27T112816.505955.snakemake.log
 ```
 
+Notice the __reason__ logging `Missing output files: reduce/multimedia.csv`.
+This tells you why snakemake is running this rule.
+In this case it is because the output file reduce/multimedia.csv is missing.
 
 Try running the workflow again:
 ```bash
@@ -116,24 +121,30 @@ Change the `shell` line in the `Snakefile` as follows:
 rule reduce:
     input: "multimedia.csv"
     output: "reduce/multimedia.csv"
-    shell: "head -n 21 {input} > {output}"
+    shell: "head -n 11 {input} > {output}"
 ```
 
-## Use a param to simplify future changes
-Currently the reduce rule grabs the top 21 rows. Since we are likely to change this number in the future
-a better option is to use a param. 
+## Represent non-file inputs using a param
+Currently the reduce rule grabs the top 21 rows. Since the meaning of this number may not be obvious and we are likely to change this number in the future a better option is to use this non-file input as a param. 
 
 Add a new `params` setting to the `rule` and use the `params.rows` wildcard in the shell as follows:
 ```
 rule reduce:
   input: "multimedia.csv"
+  params:rows="11"  
   output: "reduce/multimedia.csv"
-  params: rows="21"
   shell: "head -n {params.rows} {input} > {output}"
 ```
+Notice how we assigned a name "rows" to the parameter. Assigning a name like this can also be done for the input and output filenames as well.
 
 Try running the workflow again:
 ```bash
 snakemake -c1
 ```
 
+Notice the __reason__ has changed 
+```output
+...
+    reason: Code has changed since last execution; Params have changed since last execution
+...
+```

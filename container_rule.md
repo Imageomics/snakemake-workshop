@@ -4,8 +4,40 @@ teaching: 10
 exercises: 2
 ---
 
-Explain converting docker container URL to singularity container URL
-Explain the need for --use-singularity flag.
+:::::::::::::::::::::::::::::::::::::: questions 
+
+- How can I specify a singularity container for a rule?
+- How do you change a docker container URI into a singularity container URI?
+- What command line argument is required to enable containers for snakemake ? 
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::: objectives
+
+- Update a rule to use a container
+- Run snakemake with the --use-singularity argument
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Snakemake dependency management
+- containers
+  - exact software versions on later installs
+  - support for 
+    - docker container images
+    - singularity containers images
+- conda environments
+  - may result in different software versions on later installs
+  - powerful but might not install in every environment
+
+## Singularity Container Image URI
+
+Example docker container:
+`docker pull ubuntu:kinetic-20230217`
+
+Example docker container:
+`singularity pull docker://ubuntu:kinetic-20230217`
+
+
 Explain other options singularity image files, conda environment
 
 
@@ -23,3 +55,8 @@ Pass the --use-singularity flag
 ```bash
 snakemake -c1 --use-singularity images/hd529k3h.jpg
 ```
+
+
+Explain the need for --use-singularity flag.
+
+

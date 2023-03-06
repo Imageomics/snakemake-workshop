@@ -45,9 +45,11 @@ multimedia.csv  Scripts  slurm
 
 ### Lesson Files
 - __multimedia.csv__ - Main input file of fish images used by the workflow
-- __Scripts/setup_env.sh__ - Used to activates snakemake conda environment and other utilities
-- __Scripts/FilterImagesHardCoded.R__ - Rscript that filters a CSV for a target species with hard coded filenames
-- __Scripts/FilterImages.R__ - R script that filters a CSV for a target species
-- __Scripts/AnalyzeResults.R__ - R script that builds a summary report of the workflow outputs
-- __Scripts/FishSummary.Rmd__ - R markdown script used by __AnalyzeResults.R to create a report
-- __slurm__ - Directory containing a config file used by Snakemake to run SLURM jobs
+- __Scripts/__
+  - __setup_env.sh__ - Used to activates snakemake conda environment and other utilities
+  - __FilterImagesHardCoded.R__ - Rscript that filters a CSV for a target species with hard coded filenames
+  - __FilterImages.R__ - R script that filters a CSV for a target species
+  - __SummaryReport.R__ - R script that builds a summary report of the workflow outputs
+  - __Summary.Rmd__ - R markdown script used by SummaryReport.R to create a report
+- __slurm/__ - Directory containing a config file used by Snakemake to run SLURM jobs
+
