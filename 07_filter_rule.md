@@ -104,7 +104,7 @@ snakemake -c1
 head Scripts/FilterImages.R
 ```
 
-## Add a config file
+## Use a config file to avoid filename duplication
 A better option to allow easy changes to the rows param is to store this value in a config file.
 Snakemake comes with support for parsing and using a YAML config file.
 
