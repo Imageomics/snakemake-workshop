@@ -1,36 +1,23 @@
 ---
-title: "Introduction"
+title: "Snakemake Mindset"
 teaching: 10
 exercises: 2
 ---
 
-## Goals
-- Understanding the problem that workflow languages are trying to solve
-- Understand the strengths and weaknesses of the Snakemake workflow language
-- Create and run a Snakemake Workflow
-  - Runs R scripts for filtering and final analysis
-  - Runs Machine Learning Components
-  - Process many files at the same time
+:::::::::::::::::::::::::::::::::::::: questions 
 
-## Why use a Workflow Language?
-### Workflow Challenges
-- Reproducibility
-- Not re-running the entire workflow on every change
-- Dependency management
-- Efficiently scaling the workflow using a HPC Cluster
+- What are the parts of a snakemake workflow?
+- What is a snakemake rule?
+- How does snakemake combine rules into jobs to run?
 
+::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::: objectives
 
+- Understand a Snakemake workflow is a list of rules
+- Understand the parts of a Snakemake rule
+- Understand how Snakemake creates a job DAG
 
-## Strengths and Weaknesses of Snakemake
-
-## Strengths
-- Rerun only creates missing or out of date files
-- Python syntax
-
-## Weaknesses
-- Rule based logic instead of procedural logic
-- Requires some python code/knowledge for typical workflows
-
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## How Snakemake works
 
@@ -67,4 +54,3 @@ rule <name>:
 
 Rules vs Jobs
 Job is running a rule to create a specific set of output files.
-
