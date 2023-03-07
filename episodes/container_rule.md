@@ -6,15 +6,15 @@ exercises: 2
 
 :::::::::::::::::::::::::::::::::::::: questions 
 
-- How can I specify a singularity container for a rule?
-- How do you change a docker container URI into a singularity container URI?
+- How can I specify a container for a rule?
+- How do you change a docker image URI into a singularity image URI?
 - What command line argument is required to enable containers for snakemake ? 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-- Update a rule to use a container
+- Use a container in a rule
 - Run snakemake with the --use-singularity argument
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
@@ -31,32 +31,40 @@ exercises: 2
 
 ## Singularity Container Image URI
 
-Example docker container:
-`docker pull ubuntu:kinetic-20230217`
+Pulling a container with docker:
+```
+docker pull ubuntu:kinetic-20230217
+```
 
-Example docker container:
-`singularity pull docker://ubuntu:kinetic-20230217`
-
-
-Explain other options singularity image files, conda environment
-
+Pulling a docker container with singularity:
+```
+singularity pull docker://ubuntu:kinetic-20230217
+```
 
 ## Use container when downloading images
+
 ```
 rule download_image:
     input: config["filter_multimedia"]
+    params: url=get_image_url    
     output:'Images/{ark_id}.jpg'
-    params: url=get_image_url
-    container: "docker://quay.io/biocontainers/gnu-wget:1.18--hed695b0_4"
+    container: "docker://quay.io/biocontainers/gnu-wget:1.18--h60da905_7"    
     shell: "wget -O {output} {params.url}"
 ```
 
-Pass the --use-singularity flag
+
+
+Delete an image then run snakemake passing the --use-singularity flag
 ```bash
+rm images/hd529k3h.jpg
 snakemake -c1 --use-singularity images/hd529k3h.jpg
 ```
 
-
-Explain the need for --use-singularity flag.
-
-
+```output
+Building DAG of jobs...
+Pulling singularity image docker://quay.io/biocontainers/gnu-wget:1.18--h60da905_7.
+Using shell: /usr/bin/bash
+...
+Activating singularity image /users/PAS2136/jbradley/SnakemakeWorkflow/.snakemake/singularity/3a63838ec9e2427957182dedc234c8d7.simg
+...
+```

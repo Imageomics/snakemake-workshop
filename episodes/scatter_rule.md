@@ -35,9 +35,9 @@ def get_image_url(wildcards):
     return base_image_url + "bj373514.jpg"
 
 rule download_image:
-    input: "filter/images.csv"
-    output:'images/bj373514.jpg'
-    params: url=get_image_url
+    input: config["filter_multimedia"]
+    params: url=get_image_url    
+    output:"images/bj373514.jpg"
     shell: "wget -O {output} {params.url}"
 ```
 
@@ -49,9 +49,9 @@ def get_image_url(wildcards):
     return base_url + wildcards.ark_id + ".jpg"
 
 rule download_image:
-    input: "filter/images.csv"
-    output:'images/{ark_id}.jpg'
-    params: url=get_image_url
+    input: config["filter_multimedia"]
+    params: url=get_image_url    
+    output: "images/{ark_id}.jpg"
     shell: "wget -O {output} {params.url}"
 ```
 
@@ -76,9 +76,9 @@ def get_image_url(wildcards):
     return url
 
 rule download_image:
-    input: "filter/images.csv"
-    output:'images/{ark_id}.jpg'
-    params: url=get_image_url
+    input: config["filter_multimedia"]
+    params: url=get_image_url    
+    output: "images/{ark_id}.jpg"
     shell: "wget -O {output} {params.url}"
 ```
 
@@ -94,7 +94,7 @@ def get_image_filenames(wildcards):
     filename = config["filter_multimedia"]
     df = pd.read_csv(filename)    
     ark_ids = df["arkID"].tolist()
-    return expand('images/{ark_id}.jpg', ark_id=ark_ids)
+    return expand("images/{ark_id}.jpg", ark_id=ark_ids)
 
 rule all:
     input: get_image_filenames
@@ -117,13 +117,13 @@ FileNotFoundError in file /users/PAS2136/jbradley/SnakemakeWorkflow/Snakefile, l
 ...
 ```
 
-## Ensure the CSV exists before running a python function using a checkpoint
+## Require a file exists before a python function is used
 ```
 def get_image_filenames(wildcards):
     filename = checkpoints.filter.get().output[0]
     df = pd.read_csv(filename)    
     ark_ids = df["arkID"].tolist()
-    return expand('images/{ark_id}.jpg', ark_id=ark_ids)  
+    return expand("images/{ark_id}.jpg", ark_id=ark_ids)  
 ...
 
 checkpoint filter:
