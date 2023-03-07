@@ -4,17 +4,34 @@ teaching: 10
 exercises: 2
 ---
 
-## Scalability Issues
+## Problems with way we have been running snakemake
 - Only using a single node so limited scaling
 - Must keep our terminal window connected or the job might stop
+- Interactive job must request maximum resources needed for all jobs: threads, cpus, gpu
 
-## Solution
-- Configure Snakemake to spawn Slurm Jobs that run in parallel
-- Run whole job in the background
+## Running with Slurm
+- Configure snakemake to submit slurm jobs
+- Run main snakemake job in a background job
+- Ensure rules request appropriate resources
+  - threads/cpus
+  - memory
+  - requires a gpu
+
+See [Snakemake threads/resources docs](https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#threads for details on how to request different resources such as threads, memory, and gpus.
+
+## Annotating memory requirements
+Update the reduce rule to request a specific amount of memory.
+```
+rule reduce:
+    input: "multimedia.csv"
+    params: rows="11"
+    output: "reduce/multimedia.csv"
+    resources:
+        mem_mb=200
+    shell: "head -n {params.rows} {input} > {output}"
+```
 
 ## Create sbatch script
-
-
 Create a script name `run-workflow.sh` to run snakemake in the background.
 ```
 #!/bin/bash

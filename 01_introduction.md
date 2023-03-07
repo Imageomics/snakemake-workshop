@@ -1,7 +1,6 @@
 ---
 title: "Introduction"
 teaching: 10
-exercises: 2
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 
@@ -18,12 +17,11 @@ exercises: 2
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Why use a Workflow Language?
-### Workflow Challenges
-- Reproducibility
-- Not re-running the entire workflow on every change
-- Dependency management
-- Efficiently scaling the workflow using a HPC Cluster
+## Workflow languages help you make workflows
+- Portable
+- Reproducible
+- Scalable
+- Reusable
 
 ## Strengths and Weaknesses of Snakemake
 
@@ -31,16 +29,14 @@ exercises: 2
 - Only creates missing or out of date files
 - Flexible control over which files are created 
 - Uses potentially familiar Python syntax
+- Dynamic branching - Output files and commands used determined while the workflow is running
 
 ## Weaknesses
 - Rule based logic instead of procedural logic
 - Requires some python code/knowledge for typical workflows
 
 ## Class Plan
-- Create and run a Snakemake Workflow
+- Create Snakemake Workflow that
   - Runs R scripts for filtering and final analysis
   - Runs Machine Learning Components
-  - Process many files at the same time
-  - Scale workflow on Slurm cluster
-
-
+  - Efficently processes many files at the same time

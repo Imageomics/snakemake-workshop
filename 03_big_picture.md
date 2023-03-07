@@ -1,7 +1,6 @@
 ---
 title: "Workflow Filename Plan"
 teaching: 10
-exercises: 2
 ---
 
 ## Use directories to organize files
