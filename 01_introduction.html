@@ -154,7 +154,7 @@
         
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
-        <ul><li><a href="#why-use-a-workflow-language">Why use a Workflow Language?</a></li>
+        <ul><li><a href="#workflow-languages-help-you-make-workflows">Workflow languages help you make workflows</a></li>
 <li><a href="#strengths-and-weaknesses-of-snakemake">Strengths and Weaknesses of Snakemake</a></li>
 <li><a href="#strengths">Strengths</a></li>
 <li><a href="#weaknesses">Weaknesses</a></li>
@@ -351,33 +351,31 @@
 </div>
 </div>
 </div>
-<section id="why-use-a-workflow-language"><h2 class="section-heading">Why use a Workflow Language?<a class="anchor" aria-label="anchor" href="#why-use-a-workflow-language"></a>
+<section id="workflow-languages-help-you-make-workflows"><h2 class="section-heading">Workflow languages help you make workflows<a class="anchor" aria-label="anchor" href="#workflow-languages-help-you-make-workflows"></a>
 </h2>
-<hr class="half-width"><div class="section level3">
-<h3 id="workflow-challenges">Workflow Challenges<a class="anchor" aria-label="anchor" href="#workflow-challenges"></a></h3>
-<ul><li>Reproducibility</li>
-<li>Not re-running the entire workflow on every change</li>
-<li>Dependency management</li>
-<li>Efficiently scaling the workflow using a HPC Cluster</li>
-</ul></div>
-</section><section id="strengths-and-weaknesses-of-snakemake"><h2 class="section-heading">Strengths and Weaknesses of Snakemake<a class="anchor" aria-label="anchor" href="#strengths-and-weaknesses-of-snakemake"></a>
+<hr class="half-width"><ul><li>Portable</li>
+<li>Reproducible</li>
+<li>Scalable</li>
+<li>Reusable</li>
+</ul></section><section id="strengths-and-weaknesses-of-snakemake"><h2 class="section-heading">Strengths and Weaknesses of Snakemake<a class="anchor" aria-label="anchor" href="#strengths-and-weaknesses-of-snakemake"></a>
 </h2>
 <hr class="half-width"></section><section id="strengths"><h2 class="section-heading">Strengths<a class="anchor" aria-label="anchor" href="#strengths"></a>
 </h2>
 <hr class="half-width"><ul><li>Only creates missing or out of date files</li>
 <li>Flexible control over which files are created</li>
 <li>Uses potentially familiar Python syntax</li>
+<li>Dynamic branching - Output files and commands used determined while
+the workflow is running</li>
 </ul></section><section id="weaknesses"><h2 class="section-heading">Weaknesses<a class="anchor" aria-label="anchor" href="#weaknesses"></a>
 </h2>
 <hr class="half-width"><ul><li>Rule based logic instead of procedural logic</li>
 <li>Requires some python code/knowledge for typical workflows</li>
 </ul></section><section id="class-plan"><h2 class="section-heading">Class Plan<a class="anchor" aria-label="anchor" href="#class-plan"></a>
 </h2>
-<hr class="half-width"><ul><li>Create and run a Snakemake Workflow
+<hr class="half-width"><ul><li>Create Snakemake Workflow that
 <ul><li>Runs R scripts for filtering and final analysis</li>
 <li>Runs Machine Learning Components</li>
-<li>Process many files at the same time</li>
-<li>Scale workflow on Slurm cluster</li>
+<li>Efficently processes many files at the same time</li>
 </ul></li>
 </ul><!-- 
 Place links that you need to refer to multiple times across pages here. Delete

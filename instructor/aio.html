@@ -376,7 +376,6 @@
 <p> Last updated on 2023-03-07 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/01_introduction.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 12 minutes </p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -408,20 +407,15 @@
 </div>
 </div>
 </div>
-<section id="why-use-a-workflow-language"><h2 class="section-heading">Why use a Workflow Language?<a class="anchor" aria-label="anchor" href="#why-use-a-workflow-language"></a>
+<section id="workflow-languages-help-you-make-workflows"><h2 class="section-heading">Workflow languages help you make workflows<a class="anchor" aria-label="anchor" href="#workflow-languages-help-you-make-workflows"></a>
 </h2>
 <hr class="half-width">
-<div class="section level3">
-<h3 id="workflow-challenges">Workflow Challenges<a class="anchor" aria-label="anchor" href="#workflow-challenges"></a>
-</h3>
 <ul>
-<li>Reproducibility</li>
-<li>Not re-running the entire workflow on every change</li>
-<li>Dependency management</li>
-<li>Efficiently scaling the workflow using a HPC Cluster</li>
-</ul>
-</div>
-</section><section id="strengths-and-weaknesses-of-snakemake"><h2 class="section-heading">Strengths and Weaknesses of Snakemake<a class="anchor" aria-label="anchor" href="#strengths-and-weaknesses-of-snakemake"></a>
+<li>Portable</li>
+<li>Reproducible</li>
+<li>Scalable</li>
+<li>Reusable</li>
+</ul></section><section id="strengths-and-weaknesses-of-snakemake"><h2 class="section-heading">Strengths and Weaknesses of Snakemake<a class="anchor" aria-label="anchor" href="#strengths-and-weaknesses-of-snakemake"></a>
 </h2>
 <hr class="half-width"></section><section id="strengths"><h2 class="section-heading">Strengths<a class="anchor" aria-label="anchor" href="#strengths"></a>
 </h2>
@@ -430,6 +424,8 @@
 <li>Only creates missing or out of date files</li>
 <li>Flexible control over which files are created</li>
 <li>Uses potentially familiar Python syntax</li>
+<li>Dynamic branching - Output files and commands used determined while
+the workflow is running</li>
 </ul></section><section id="weaknesses"><h2 class="section-heading">Weaknesses<a class="anchor" aria-label="anchor" href="#weaknesses"></a>
 </h2>
 <hr class="half-width">
@@ -440,12 +436,11 @@
 </h2>
 <hr class="half-width">
 <ul>
-<li>Create and run a Snakemake Workflow
+<li>Create Snakemake Workflow that
 <ul>
 <li>Runs R scripts for filtering and final analysis</li>
 <li>Runs Machine Learning Components</li>
-<li>Process many files at the same time</li>
-<li>Scale workflow on Slurm cluster</li>
+<li>Efficently processes many files at the same time</li>
 </ul>
 </li>
 </ul>
@@ -457,7 +452,6 @@ any links that you are not going to use.
 <p> Last updated on 2023-03-07 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/02_snakemake_mindset.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 12 minutes </p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -544,7 +538,6 @@ any links that you are not going to use.
 <p> Last updated on 2023-03-07 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/03_big_picture.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 12 minutes </p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -716,7 +709,7 @@ SummaryReport.R to create a report</li>
 Snakemake to run SLURM jobs</li>
 </ul>
 </div>
-</section><section id="prime-singularity-cache"><h2 class="section-heading">Prime Singularity Cache<a class="anchor" aria-label="anchor" href="#prime-singularity-cache"></a>
+</section><section id="setup-singularity-cache"><h2 class="section-heading">Setup Singularity Cache<a class="anchor" aria-label="anchor" href="#setup-singularity-cache"></a>
 </h2>
 <hr class="half-width">
 <p>To avoid waiting for singularity containers to pull we will copy
@@ -1590,19 +1583,43 @@ rule summary:
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
-<section id="scalability-issues"><h2 class="section-heading">Scalability Issues<a class="anchor" aria-label="anchor" href="#scalability-issues"></a>
+<section id="problems-with-way-we-have-been-running-snakemake"><h2 class="section-heading">Problems with way we have been running snakemake<a class="anchor" aria-label="anchor" href="#problems-with-way-we-have-been-running-snakemake"></a>
 </h2>
 <hr class="half-width">
 <ul>
 <li>Only using a single node so limited scaling</li>
 <li>Must keep our terminal window connected or the job might stop</li>
-</ul></section><section id="solution"><h2 class="section-heading">Solution<a class="anchor" aria-label="anchor" href="#solution"></a>
+<li>Interactive job must request maximum resources needed for all jobs:
+threads, cpus, gpu</li>
+</ul></section><section id="running-with-slurm"><h2 class="section-heading">Running with Slurm<a class="anchor" aria-label="anchor" href="#running-with-slurm"></a>
 </h2>
 <hr class="half-width">
 <ul>
-<li>Configure Snakemake to spawn Slurm Jobs that run in parallel</li>
-<li>Run whole job in the background</li>
-</ul></section><section id="create-sbatch-script"><h2 class="section-heading">Create sbatch script<a class="anchor" aria-label="anchor" href="#create-sbatch-script"></a>
+<li>Configure snakemake to submit slurm jobs</li>
+<li>Run main snakemake job in a background job</li>
+<li>Ensure rules request appropriate resources
+<ul>
+<li>threads/cpus</li>
+<li>memory</li>
+<li>requires a gpu</li>
+</ul>
+</li>
+</ul>
+<p>See [Snakemake threads/resources docs](<a href="https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#threads" class="external-link uri">https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#threads</a>
+for details on how to request different resources such as threads,
+memory, and gpus.</p>
+</section><section id="annotating-memory-requirements"><h2 class="section-heading">Annotating memory requirements<a class="anchor" aria-label="anchor" href="#annotating-memory-requirements"></a>
+</h2>
+<hr class="half-width">
+<p>Update the reduce rule to request a specific amount of memory.</p>
+<pre><code>rule reduce:
+    input: "multimedia.csv"
+    params: rows="11"
+    output: "reduce/multimedia.csv"
+    resources:
+        mem_mb=200
+    shell: "head -n {params.rows} {input} &gt; {output}"</code></pre>
+</section><section id="create-sbatch-script"><h2 class="section-heading">Create sbatch script<a class="anchor" aria-label="anchor" href="#create-sbatch-script"></a>
 </h2>
 <hr class="half-width">
 <p>Create a script name <code>run-workflow.sh</code> to run snakemake in
@@ -1616,19 +1633,19 @@ snakemake --jobs $JOBS --use-singularity --profile slurm/ "$@"</code></pre>
 </section><section id="delete-all-outputs"><h2 class="section-heading">Delete All Outputs<a class="anchor" aria-label="anchor" href="#delete-all-outputs"></a>
 </h2>
 <hr class="half-width">
-<div class="codewrapper sourceCode" id="cb2">
+<div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> c1 <span class="at">--delete-all-output</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> c1 <span class="at">--delete-all-output</span></span></code></pre>
 </div>
 </section><section id="run-background-job-and-monitor-progress"><h2 class="section-heading">Run Background job and monitor progress<a class="anchor" aria-label="anchor" href="#run-background-job-and-monitor-progress"></a>
 </h2>
 <hr class="half-width">
 <p>Run snakemake in the background scaling up</p>
-<div class="codewrapper sourceCode" id="cb3">
+<div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> run-workflow.sh <span class="at">-c10</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> run-workflow.sh <span class="at">-c10</span></span></code></pre>
 </div>
 <pre><code><span><span class="va">squeue</span> <span class="op">-</span><span class="va">u</span> <span class="op">$</span><span class="va">LOGNAME</span></span></code></pre>
 <!-- 
