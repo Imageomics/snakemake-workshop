@@ -235,7 +235,8 @@
         
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
-        <ul><li><a href="#bring-in-additional-rules-from-bgnn_core_workflow">Bring in additional rules from BGNN_Core_Workflow</a></li>
+        <ul><li><a href="#harmonize-filename-plans">Harmonize Filename Plans</a></li>
+<li><a href="#bring-in-additional-rules-from-bgnn_core_workflow">Bring in additional rules from BGNN_Core_Workflow</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
         
@@ -311,7 +312,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Reuse another workflow</h1>
-        <p> Last updated on 2023-03-06 | 
+        <p> Last updated on 2023-03-07 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/reuse_workflow.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -329,6 +330,7 @@
 <ul><li>where to find workflow - github “hdr-bgnn/BGNN_Core_Workflow”</li>
 <li>what is the relative path to the Snakefile “workflow/Snakefile”</li>
 <li>what tag or version to use “1.0.0”</li>
+<li>what file naming convention is the workflow using</li>
 </ul><p><a href="https://github.com/hdr-bgnn/BGNN_Core_Workflow/blob/main/workflow/Snakefile#L19" class="external-link uri">https://github.com/hdr-bgnn/BGNN_Core_Workflow/blob/main/workflow/Snakefile#L19</a></p>
 <pre><code>module bgnn_core:
     snakefile:
@@ -340,16 +342,50 @@ use rule generate_metadata from bgnn_core</code></pre>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--use-singularity</span> DrexelMetadata/bj373514.json</span></code></pre>
 </div>
-<section id="bring-in-additional-rules-from-bgnn_core_workflow"><h2 class="section-heading">Bring in additional rules from BGNN_Core_Workflow<a class="anchor" aria-label="anchor" href="#bring-in-additional-rules-from-bgnn_core_workflow"></a>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>Building DAG of jobs...
+MissingInputException in rule generate_metadata in file https://raw.githubusercontent.com/hdr-bgnn/BGNN_Core_Workflow/1.0.0/workflow/Snakefile, line 19:
+Missing input files for rule generate_metadata:
+    output: DrexelMetadata/bj373514.json, Mask/bj373514_mask.png
+    wildcards: image=bj373514
+    affected files:
+        Images/bj373514.jpg</code></pre>
+</div>
+<section id="harmonize-filename-plans"><h2 class="section-heading">Harmonize Filename Plans<a class="anchor" aria-label="anchor" href="#harmonize-filename-plans"></a>
+</h2>
+<hr class="half-width"><div class="section level3">
+<h3 id="option-1-override-settings-in-the-other-workflows-rules">Option 1: Override settings in the other workflow’s rules<a class="anchor" aria-label="anchor" href="#option-1-override-settings-in-the-other-workflows-rules"></a></h3>
+<pre><code>use rule generate_metadata from bgnn_core with:
+    input: "images/{image}.jpg"</code></pre>
+</div>
+<div class="section level3">
+<h3 id="option-2-change-our-filename-plan-to-match-theirs">Option 2: Change our filename plan to match theirs<a class="anchor" aria-label="anchor" href="#option-2-change-our-filename-plan-to-match-theirs"></a></h3>
+<pre><code>...
+    return expand("Images/{ark_id}.jpg", ark_id=ark_ids)
+...
+rule download_image:
+    input: config["filter_multimedia"]
+    params: url=get_image_url
+    output: "Images/{ark_id}.jpg"
+    ...</code></pre>
+<div class="codewrapper sourceCode" id="cb6">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--use-singularity</span> DrexelMetadata/bj373514.json</span></code></pre>
+</div>
+</div>
+</section><section id="bring-in-additional-rules-from-bgnn_core_workflow"><h2 class="section-heading">Bring in additional rules from BGNN_Core_Workflow<a class="anchor" aria-label="anchor" href="#bring-in-additional-rules-from-bgnn_core_workflow"></a>
 </h2>
 <hr class="half-width"><pre><code>use rule generate_metadata from bgnn_core
 use rule transform_metadata from bgnn_core
 use rule crop_image from bgnn_core with:
 use rule segment_image from bgnn_core</code></pre>
-<div class="codewrapper sourceCode" id="cb4">
+<div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--use-singularity</span> Segmented/bj373514_segmented.png </span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--use-singularity</span> Segmented/bj373514_segmented.png </span></code></pre>
 </div>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
@@ -407,8 +443,8 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://Imageomics.github.io/snakemake-workshop/instructor/reuse_workflow.html",
   "identifier": "https://Imageomics.github.io/snakemake-workshop/instructor/reuse_workflow.html",
-  "dateCreated": "2023-03-06",
-  "dateModified": "2023-03-06",
+  "dateCreated": "2023-03-07",
+  "dateModified": "2023-03-07",
   "datePublished": "2023-03-07"
 }
 

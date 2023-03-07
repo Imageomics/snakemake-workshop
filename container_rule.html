@@ -313,7 +313,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Use a container</h1>
-        <p> Last updated on 2023-03-06 | 
+        <p> Last updated on 2023-03-07 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/container_rule.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -332,9 +332,9 @@
 <div class="card-body">
 <div class="inner">
 <h3 class="card-title">Questions</h3>
-<ul><li>How can I specify a singularity container for a rule?</li>
-<li>How do you change a docker container URI into a singularity
-container URI?</li>
+<ul><li>How can I specify a container for a rule?</li>
+<li>How do you change a docker image URI into a singularity image
+URI?</li>
 <li>What command line argument is required to enable containers for
 snakemake ?</li>
 </ul></div>
@@ -344,7 +344,7 @@ snakemake ?</li>
 <div class="card-body">
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
-<ul><li>Update a rule to use a container</li>
+<ul><li>Use a container in a rule</li>
 <li>Run snakemake with the –use-singularity argument</li>
 </ul></div>
 </div>
@@ -366,26 +366,36 @@ snakemake ?</li>
 </ul></li>
 </ul></section><section id="singularity-container-image-uri"><h2 class="section-heading">Singularity Container Image URI<a class="anchor" aria-label="anchor" href="#singularity-container-image-uri"></a>
 </h2>
-<hr class="half-width"><p>Example docker container:
-<code>docker pull ubuntu:kinetic-20230217</code></p>
-<p>Example docker container:
-<code>singularity pull docker://ubuntu:kinetic-20230217</code></p>
-<p>Explain other options singularity image files, conda environment</p>
+<hr class="half-width"><p>Pulling a container with docker:</p>
+<pre><code>docker pull ubuntu:kinetic-20230217</code></pre>
+<p>Pulling a docker container with singularity:</p>
+<pre><code>singularity pull docker://ubuntu:kinetic-20230217</code></pre>
 </section><section id="use-container-when-downloading-images"><h2 class="section-heading">Use container when downloading images<a class="anchor" aria-label="anchor" href="#use-container-when-downloading-images"></a>
 </h2>
 <hr class="half-width"><pre><code>rule download_image:
     input: config["filter_multimedia"]
+    params: url=get_image_url    
     output:'Images/{ark_id}.jpg'
-    params: url=get_image_url
-    container: "docker://quay.io/biocontainers/gnu-wget:1.18--hed695b0_4"
+    container: "docker://quay.io/biocontainers/gnu-wget:1.18--h60da905_7"    
     shell: "wget -O {output} {params.url}"</code></pre>
-<p>Pass the –use-singularity flag</p>
-<div class="codewrapper sourceCode" id="cb2">
+<p>Delete an image then run snakemake passing the –use-singularity
+flag</p>
+<div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--use-singularity</span> images/hd529k3h.jpg</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> images/hd529k3h.jpg</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--use-singularity</span> images/hd529k3h.jpg</span></code></pre>
 </div>
-<p>Explain the need for –use-singularity flag.</p>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>Building DAG of jobs...
+Pulling singularity image docker://quay.io/biocontainers/gnu-wget:1.18--h60da905_7.
+Using shell: /usr/bin/bash
+...
+Activating singularity image /users/PAS2136/jbradley/SnakemakeWorkflow/.snakemake/singularity/3a63838ec9e2427957182dedc234c8d7.simg
+...</code></pre>
+</div>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
@@ -442,8 +452,8 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://Imageomics.github.io/snakemake-workshop/container_rule.html",
   "identifier": "https://Imageomics.github.io/snakemake-workshop/container_rule.html",
-  "dateCreated": "2023-03-06",
-  "dateModified": "2023-03-06",
+  "dateCreated": "2023-03-07",
+  "dateModified": "2023-03-07",
   "datePublished": "2023-03-07"
 }
 

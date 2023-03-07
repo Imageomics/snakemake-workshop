@@ -223,8 +223,7 @@
 <li><a href="#add-python-logic-to-lookup-the-url">Add python logic to lookup the URL</a></li>
 <li><a href="#updating-all-rule">Updating all rule</a></li>
 <li><a href="#test-starting-from-scratch">Test starting from scratch</a></li>
-<li><a href="#ensure-the-csv-exists-before-running-a-python-function-using-a-checkpoint">Ensure the CSV exists before running a python function using a
-checkpoint</a></li>
+<li><a href="#require-a-file-exists-before-a-python-function-is-used">Require a file exists before a python function is used</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
         
@@ -318,7 +317,7 @@ checkpoint</a></li>
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Process multiple files</h1>
-        <p> Last updated on 2023-03-06 | 
+        <p> Last updated on 2023-03-07 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/scatter_rule.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -377,9 +376,9 @@ param:</p>
     return base_image_url + "bj373514.jpg"
 
 rule download_image:
-    input: "filter/images.csv"
-    output:'images/bj373514.jpg'
-    params: url=get_image_url
+    input: config["filter_multimedia"]
+    params: url=get_image_url    
+    output:"images/bj373514.jpg"
     shell: "wget -O {output} {params.url}"</code></pre>
 </section><section id="make-the-rule-generic-with-a-pattern-rule"><h2 class="section-heading">Make the rule generic with a pattern rule<a class="anchor" aria-label="anchor" href="#make-the-rule-generic-with-a-pattern-rule"></a>
 </h2>
@@ -390,9 +389,9 @@ in an output filename.</p>
     return base_url + wildcards.ark_id + ".jpg"
 
 rule download_image:
-    input: "filter/images.csv"
-    output:'images/{ark_id}.jpg'
-    params: url=get_image_url
+    input: config["filter_multimedia"]
+    params: url=get_image_url    
+    output: "images/{ark_id}.jpg"
     shell: "wget -O {output} {params.url}"</code></pre>
 <p>Run this rule:</p>
 <div class="codewrapper sourceCode" id="cb4">
@@ -414,9 +413,9 @@ file:</p>
     return url
 
 rule download_image:
-    input: "filter/images.csv"
-    output:'images/{ark_id}.jpg'
-    params: url=get_image_url
+    input: config["filter_multimedia"]
+    params: url=get_image_url    
+    output: "images/{ark_id}.jpg"
     shell: "wget -O {output} {params.url}"</code></pre>
 <p>Run this rule for a couple files after deleting the images
 directory:</p>
@@ -432,7 +431,7 @@ directory:</p>
     filename = config["filter_multimedia"]
     df = pd.read_csv(filename)    
     ark_ids = df["arkID"].tolist()
-    return expand('images/{ark_id}.jpg', ark_id=ark_ids)
+    return expand("images/{ark_id}.jpg", ark_id=ark_ids)
 
 rule all:
     input: get_image_filenames</code></pre>
@@ -457,14 +456,13 @@ FileNotFoundError in file /users/PAS2136/jbradley/SnakemakeWorkflow/Snakefile, l
 [Errno 2] No such file or directory: 'filter/multimedia.csv'
 ...</code></pre>
 </div>
-</section><section id="ensure-the-csv-exists-before-running-a-python-function-using-a-checkpoint"><h2 class="section-heading">Ensure the CSV exists before running a python function using a
-checkpoint<a class="anchor" aria-label="anchor" href="#ensure-the-csv-exists-before-running-a-python-function-using-a-checkpoint"></a>
+</section><section id="require-a-file-exists-before-a-python-function-is-used"><h2 class="section-heading">Require a file exists before a python function is used<a class="anchor" aria-label="anchor" href="#require-a-file-exists-before-a-python-function-is-used"></a>
 </h2>
 <hr class="half-width"><pre><code>def get_image_filenames(wildcards):
     filename = checkpoints.filter.get().output[0]
     df = pd.read_csv(filename)    
     ark_ids = df["arkID"].tolist()
-    return expand('images/{ark_id}.jpg', ark_id=ark_ids)  
+    return expand("images/{ark_id}.jpg", ark_id=ark_ids)  
 ...
 
 checkpoint filter:
@@ -529,8 +527,8 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://Imageomics.github.io/snakemake-workshop/instructor/scatter_rule.html",
   "identifier": "https://Imageomics.github.io/snakemake-workshop/instructor/scatter_rule.html",
-  "dateCreated": "2023-03-06",
-  "dateModified": "2023-03-06",
+  "dateCreated": "2023-03-07",
+  "dateModified": "2023-03-07",
   "datePublished": "2023-03-07"
 }
 

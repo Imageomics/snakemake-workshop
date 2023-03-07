@@ -319,7 +319,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Add an R Script</h1>
-        <p> Last updated on 2023-03-06 | 
+        <p> Last updated on 2023-03-07 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/filter_rule.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -441,7 +441,7 @@ No rule to produce winninglotterynumbers.txt (if you use input functions make su
 </h2>
 <hr class="half-width"><p>At the top of Snakefile add a new rule</p>
 <pre><code>rule all:
-    input: filter/multimedia.csv</code></pre>
+    input: "filter/multimedia.csv"</code></pre>
 <p>Test it out by removing filter/multimedia.csv and running snakemake
 with no target</p>
 <pre><code>rm filter/multimedia.csv
@@ -466,10 +466,13 @@ contents:</p>
 location and using config to lookup filenames:</p>
 <pre><code>configfile: "config.yaml"
 
+rule all:
+    input: config["filter_multimedia"]
+
 rule reduce:
   input: "multimedia.csv"
+  params: rows="21"  
   output: config["reduce_multimedia"]
-  params: rows="21"
   shell: "head -n {params.rows} {input} &gt; {output}"
 
 rule filter:
@@ -540,8 +543,8 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://Imageomics.github.io/snakemake-workshop/instructor/filter_rule.html",
   "identifier": "https://Imageomics.github.io/snakemake-workshop/instructor/filter_rule.html",
-  "dateCreated": "2023-03-06",
-  "dateModified": "2023-03-06",
+  "dateCreated": "2023-03-07",
+  "dateModified": "2023-03-07",
   "datePublished": "2023-03-07"
 }
 
