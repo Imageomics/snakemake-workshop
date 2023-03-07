@@ -1,7 +1,6 @@
 ---
 title: "Snakemake Mindset"
 teaching: 10
-exercises: 2
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 
