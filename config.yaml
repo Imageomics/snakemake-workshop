@@ -59,18 +59,18 @@ contact: 'john.bradley@duke.edu'
 
 # Order of episodes in your lesson
 episodes:
-- introduction.md
-- big_picture.md
-- filename_plan.md
-- setup_project.md
-- setup_env.md
-- create_snakefile.md
-- filter_rule.md
-- scatter_rule.md
-- container_rule.md
-- reuse_workflow.md
-- summary_rule.md
-- run_on_slurm.md
+- 01_introduction.md
+- 02_snakemake_mindset.md
+- 03_big_picture.md
+- 04_setup_project.md
+- 05_setup_env.md
+- 06_create_snakefile.md
+- 07_filter_rule.md
+- 08_scatter_rule.md
+- 09_container_rule.md
+- 10_reuse_workflow.md
+- 11_summary_rule.md
+- 12_run_on_slurm.md
 
 # Information for Learners
 learners:

@@ -177,7 +177,7 @@
 <div class="accordion accordion-flush" id="accordionFlush2">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading2">
-        <a href="introduction.html">1. Introduction</a>
+        <a href="01_introduction.html">1. Introduction</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -189,7 +189,7 @@
 <div class="accordion accordion-flush" id="accordionFlush3">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading3">
-        <a href="big_picture.html">2. Workflow Overview</a>
+        <a href="02_snakemake_mindset.html">2. Snakemake Mindset</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -201,7 +201,7 @@
 <div class="accordion accordion-flush" id="accordionFlush4">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading4">
-        <a href="filename_plan.html">3. Filename plan</a>
+        <a href="03_big_picture.html">3. Workflow Filename Plan</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -213,7 +213,7 @@
 <div class="accordion accordion-flush" id="accordionFlush5">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading5">
-        <a href="setup_project.html">4. Project Setup</a>
+        <a href="04_setup_project.html">4. Project Setup</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -225,7 +225,7 @@
 <div class="accordion accordion-flush" id="accordionFlush6">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading6">
-        <a href="setup_env.html">5. Environment Setup</a>
+        <a href="05_setup_env.html">5. Environment Setup</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -237,7 +237,7 @@
 <div class="accordion accordion-flush" id="accordionFlush7">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading7">
-        <a href="create_snakefile.html">6. Create a Workflow</a>
+        <a href="06_create_snakefile.html">6. Create a Workflow</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -249,7 +249,7 @@
 <div class="accordion accordion-flush" id="accordionFlush8">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading8">
-        <a href="filter_rule.html">7. Add an R Script</a>
+        <a href="07_filter_rule.html">7. Add an R Script</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -261,7 +261,7 @@
 <div class="accordion accordion-flush" id="accordionFlush9">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading9">
-        <a href="scatter_rule.html">8. Process multiple files</a>
+        <a href="08_scatter_rule.html">8. Process multiple files</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -273,7 +273,7 @@
 <div class="accordion accordion-flush" id="accordionFlush10">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading10">
-        <a href="container_rule.html">9. Use a container</a>
+        <a href="09_container_rule.html">9. Use a container</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -285,7 +285,7 @@
 <div class="accordion accordion-flush" id="accordionFlush11">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading11">
-        <a href="reuse_workflow.html">10. Reuse another workflow</a>
+        <a href="10_reuse_workflow.html">10. Reuse another workflow</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -297,7 +297,7 @@
 <div class="accordion accordion-flush" id="accordionFlush12">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading12">
-        <a href="summary_rule.html">11. Add Summary Analysis</a>
+        <a href="11_summary_rule.html">11. Add Summary Analysis</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -309,7 +309,7 @@
 <div class="accordion accordion-flush" id="accordionFlush13">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading13">
-        <a href="run_on_slurm.html">12. Run at Scale</a>
+        <a href="12_run_on_slurm.html">12. Run at Scale</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -371,30 +371,43 @@
     <main id="main-content" class="main-content"><div class="container lesson-content">
         
         
-<section id="aio-introduction"><p>Content from <a href="introduction.html">Introduction</a></p>
+<section id="aio-01_introduction"><p>Content from <a href="01_introduction.html">Introduction</a></p>
 <hr>
 <p> Last updated on 2023-03-07 | 
         
-        <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/introduction.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/01_introduction.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
-<section id="goals"><h2 class="section-heading">Goals<a class="anchor" aria-label="anchor" href="#goals"></a>
-</h2>
-<hr class="half-width">
+<div class="overview card">
+<h2 class="card-header">Overview</h2>
+<div class="row g-0">
+<div class="col-md-4">
+<div class="card-body">
+<div class="inner">
+<h3 class="card-title">Questions</h3>
 <ul>
-<li>Understanding the problem that workflow languages are trying to
-solve</li>
-<li>Understand the strengths and weaknesses of the Snakemake workflow
-language</li>
-<li>Create and run a Snakemake Workflow
-<ul>
-<li>Runs R scripts for filtering and final analysis</li>
-<li>Runs Machine Learning Components</li>
-<li>Process many files at the same time</li>
+<li>What problems do workflow languages solve?</li>
+<li>What are the strengths and weaknesses of Snakemake?</li>
+<li>What will be covered in this workshop?</li>
 </ul>
-</li>
-</ul></section><section id="why-use-a-workflow-language"><h2 class="section-heading">Why use a Workflow Language?<a class="anchor" aria-label="anchor" href="#why-use-a-workflow-language"></a>
+</div>
+</div>
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<div class="inner bordered">
+<h3 class="card-title">Objectives</h3>
+<ul>
+<li>Understand why one may use a workflow language like Snakemake</li>
+<li>Understand the goal of the workshop</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section id="why-use-a-workflow-language"><h2 class="section-heading">Why use a Workflow Language?<a class="anchor" aria-label="anchor" href="#why-use-a-workflow-language"></a>
 </h2>
 <hr class="half-width">
 <div class="section level3">
@@ -413,15 +426,69 @@ language</li>
 </h2>
 <hr class="half-width">
 <ul>
-<li>Rerun only creates missing or out of date files</li>
-<li>Python syntax</li>
+<li>Only creates missing or out of date files</li>
+<li>Flexible control over which files are created</li>
+<li>Uses potentially familiar Python syntax</li>
 </ul></section><section id="weaknesses"><h2 class="section-heading">Weaknesses<a class="anchor" aria-label="anchor" href="#weaknesses"></a>
 </h2>
 <hr class="half-width">
 <ul>
 <li>Rule based logic instead of procedural logic</li>
 <li>Requires some python code/knowledge for typical workflows</li>
-</ul></section><section id="how-snakemake-works"><h2 class="section-heading">How Snakemake works<a class="anchor" aria-label="anchor" href="#how-snakemake-works"></a>
+</ul></section><section id="class-plan"><h2 class="section-heading">Class Plan<a class="anchor" aria-label="anchor" href="#class-plan"></a>
+</h2>
+<hr class="half-width">
+<ul>
+<li>Create and run a Snakemake Workflow
+<ul>
+<li>Runs R scripts for filtering and final analysis</li>
+<li>Runs Machine Learning Components</li>
+<li>Process many files at the same time</li>
+<li>Scale workflow on Slurm cluster</li>
+</ul>
+</li>
+</ul>
+<!-- 
+Place links that you need to refer to multiple times across pages here. Delete
+any links that you are not going to use. 
+ --></section></section><section id="aio-02_snakemake_mindset"><p>Content from <a href="02_snakemake_mindset.html">Snakemake Mindset</a></p>
+<hr>
+<p> Last updated on 2023-03-07 | 
+        
+        <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/02_snakemake_mindset.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+<div class="text-end">
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+        </div>
+<div class="overview card">
+<h2 class="card-header">Overview</h2>
+<div class="row g-0">
+<div class="col-md-4">
+<div class="card-body">
+<div class="inner">
+<h3 class="card-title">Questions</h3>
+<ul>
+<li>What are the parts of a snakemake workflow?</li>
+<li>What is a snakemake rule?</li>
+<li>How does snakemake combine rules into jobs to run?</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<div class="inner bordered">
+<h3 class="card-title">Objectives</h3>
+<ul>
+<li>Understand a Snakemake workflow is a list of rules</li>
+<li>Understand the parts of a Snakemake rule</li>
+<li>Understand how Snakemake creates a job DAG</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section id="how-snakemake-works"><h2 class="section-heading">How Snakemake works<a class="anchor" aria-label="anchor" href="#how-snakemake-works"></a>
 </h2>
 <hr class="half-width">
 <div class="section level3">
@@ -470,80 +537,11 @@ output files.</p>
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
  -->
-</section></section><section id="aio-big_picture"><p>Content from <a href="big_picture.html">Workflow Overview</a></p>
+</section></section><section id="aio-03_big_picture"><p>Content from <a href="03_big_picture.html">Workflow Filename Plan</a></p>
 <hr>
-<p> Last updated on 2023-03-06 | 
+<p> Last updated on 2023-03-07 | 
         
-        <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/big_picture.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<div class="text-end">
-          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
-        </div>
-<section id="workflow-steps"><h2 class="section-heading">Workflow Steps<a class="anchor" aria-label="anchor" href="#workflow-steps"></a>
-</h2>
-<hr class="half-width">
-<div class="section level3">
-<h3 id="input-csv">Input CSV<a class="anchor" aria-label="anchor" href="#input-csv"></a>
-</h3>
-<p>The input CSV (<code>multimedia.csv</code>) was downloaded from <a href="https://bgnn.tulane.edu/" class="external-link uri">https://bgnn.tulane.edu/</a>.</p>
-<figure>When viewed within RStudio the data looks like this: <img src="files/multimedia.png" alt="multimedia CSV screenshot" class="figure mx-auto d-block"></figure>
-</div>
-<div class="section level3">
-<h3 id="step-1-reduce-the-size-of-our-input-csv">Step 1: Reduce the size of our input CSV<a class="anchor" aria-label="anchor" href="#step-1-reduce-the-size-of-our-input-csv"></a>
-</h3>
-<p>Reduce the total size of the input CSV using a simple command line
-utility. This demonstrates creating a simple rule that receives input
-and output command line arguments.</p>
-</div>
-<div class="section level3">
-<h3 id="step-2-filter-csv-for-our-target-species">Step 2: Filter CSV for our target species<a class="anchor" aria-label="anchor" href="#step-2-filter-csv-for-our-target-species"></a>
-</h3>
-<p>Next we run an R script to filtering our CSV for
-<code>Notropis nazas</code> species.</p>
-<figure>When viewed within RStudio the data looks like this: <img src="files/filtered.png" alt="filtered CSV screenshot" class="figure mx-auto d-block"></figure>
-</div>
-<div class="section level3">
-<h3 id="step-3-download-images">Step 3: Download images<a class="anchor" aria-label="anchor" href="#step-3-download-images"></a>
-</h3>
-<figure>Next download each image from the filtered CSV. <img src="files/bj373514.png" alt="minnow image" class="figure mx-auto d-block"></figure>
-</div>
-<div class="section level3">
-<h3 id="step-4-detect-fish-in-each-image">Step 4: Detect fish in each image<a class="anchor" aria-label="anchor" href="#step-4-detect-fish-in-each-image"></a>
-</h3>
-<p>Next we use a tool to determine the location of the fish in each
-image.</p>
-</div>
-<div class="section level3">
-<h3 id="step-5-crop-each-fish-image">Step 5: Crop each fish image<a class="anchor" aria-label="anchor" href="#step-5-crop-each-fish-image"></a>
-</h3>
-<figure>We then crop each image with the bounding box from the object
-detection step. <img src="files/bj373514_crop.png" alt="cropped minnow image" class="figure mx-auto d-block"></figure>
-</div>
-<div class="section level3">
-<h3 id="step-6-segment-cropped-images">Step 6: Segment cropped images<a class="anchor" aria-label="anchor" href="#step-6-segment-cropped-images"></a>
-</h3>
-<figure>Next we use a tool to segment each cropped image. <img src="files/bj373514_seg.png" alt="segmented minnow image" class="figure mx-auto d-block"></figure>
-</div>
-<div class="section level3">
-<h3 id="step-7--determine-presence-absence-morphology">Step 7. determine presence absence morphology<a class="anchor" aria-label="anchor" href="#step-7--determine-presence-absence-morphology"></a>
-</h3>
-<p>Next we run a tool that looks at colors in the segmented images to
-determine a presence absence matrix.</p>
-</div>
-<div class="section level3">
-<h3 id="step-8--final-analysis">Step 8. final analysis<a class="anchor" aria-label="anchor" href="#step-8--final-analysis"></a>
-</h3>
-<p>Finally we create a report using another R script that summarizes the
-results of our processing.</p>
-<figure>The HTML report will look something like this: <img src="files/report.png" alt="final report screenshot" class="figure mx-auto d-block"></figure><!-- 
-Place links that you need to refer to multiple times across pages here. Delete
-any links that you are not going to use. 
- -->
-</div>
-</section></section><section id="aio-filename_plan"><p>Content from <a href="filename_plan.html">Filename plan</a></p>
-<hr>
-<p> Last updated on 2023-02-28 | 
-        
-        <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/filename_plan.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/03_big_picture.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -555,16 +553,29 @@ organize your files. One good practice that Snakemake supports is to
 store each rule’s output files in subdirectories. This makes it easy to
 tell where the input files used in a rule came from. This helps
 determining which rule that created a file.</p>
-<p>For our first step where we reduce the input file
-<code>multimedia.csv</code> we will save output filename as
-<code>reduce/multimedia.csv</code>.</p>
-</section><section id="name-image-files-based-on-a-unique-id"><h2 class="section-heading">Name image files based on a unique ID<a class="anchor" aria-label="anchor" href="#name-image-files-based-on-a-unique-id"></a>
+</section><section id="input-csv"><h2 class="section-heading">Input CSV<a class="anchor" aria-label="anchor" href="#input-csv"></a>
 </h2>
 <hr class="half-width">
-<p>Additionally since we will be downloading many images from multiple
-locations having a plan for how to name these files is important.</p>
-<figure>Looking at our main input file (multimedia.csv) we can see details
-about the files: <img src="files/multimedia.png" alt="multimedia.csv screenshot" class="figure mx-auto d-block"></figure><p>The <a href="https://bgnn.tulane.edu/" class="external-link">Tulane multimedia.csv
+<p>The input CSV (<code>multimedia.csv</code>) was downloaded from <a href="https://bgnn.tulane.edu/" class="external-link uri">https://bgnn.tulane.edu/</a>.</p>
+<figure>When viewed within RStudio the data looks like this: <img src="files/multimedia.png" alt="multimedia CSV screenshot" class="figure mx-auto d-block"></figure></section><section id="step-1-reduce-csv-size"><h2 class="section-heading">Step 1: Reduce CSV size<a class="anchor" aria-label="anchor" href="#step-1-reduce-csv-size"></a>
+</h2>
+<hr class="half-width">
+<p>Reduce the total size of the input CSV using a simple command line
+utility. This demonstrates creating a simple rule that receives input
+and output command line arguments. The result of this step will be saved
+at <code>reduce/multimedia.csv</code>.</p>
+</section><section id="step-2-filter-for-our-target-species"><h2 class="section-heading">Step 2: Filter for our target species<a class="anchor" aria-label="anchor" href="#step-2-filter-for-our-target-species"></a>
+</h2>
+<hr class="half-width">
+<p>Next we run an R script to filtering our CSV for
+<code>Notropis nazas</code> species.</p>
+<figure>When viewed within RStudio the data looks like this: <img src="files/filtered.png" alt="filtered CSV screenshot" class="figure mx-auto d-block"> The result of
+this step will be saved at <code>filter/multimedia.csv</code>.</figure></section><section id="step-3-download-images"><h2 class="section-heading">Step 3: Download images<a class="anchor" aria-label="anchor" href="#step-3-download-images"></a>
+</h2>
+<hr class="half-width">
+<p>Since we will be downloading many images from multiple locations
+having a plan for how to name these files is important.</p>
+<p>The <a href="https://bgnn.tulane.edu/" class="external-link">Tulane multimedia.csv
 documentation</a> describes the <code>arkID</code> column as:</p>
 <blockquote>
 <p>Multimedia unique identifier number</p>
@@ -574,19 +585,33 @@ image filenames.</p>
 <p>For the multimedia row with arkID <code>dd216t3d</code> we will save
 the downloaded image as:</p>
 <pre><code><span><span class="va">images</span><span class="op">/</span><span class="va">dd216t3d.jpg</span></span></code></pre>
-<p>For subsequent rules that process images the <code>arkID</code> value
-will be re-used. For example the object detection rule would create an
-output file named:</p>
-<pre><code><span><span class="va">object_detection</span><span class="op">/</span><span class="va">metadata_dd216t3d.json</span></span></code></pre>
-<!-- 
+<figure>Example image: <img src="files/bj373514.png" alt="minnow image" class="figure mx-auto d-block"></figure></section><section id="step-4-detect-fish-in-each-image"><h2 class="section-heading">Step 4: Detect fish in each image<a class="anchor" aria-label="anchor" href="#step-4-detect-fish-in-each-image"></a>
+</h2>
+<hr class="half-width">
+<p>Next we use a tool to determine the location of the fish in each
+image. We will reuse another workflow and use it’s filenaming schema for
+the next 3 steps.</p>
+</section><section id="step-5-crop-each-fish-image"><h2 class="section-heading">Step 5: Crop each fish image<a class="anchor" aria-label="anchor" href="#step-5-crop-each-fish-image"></a>
+</h2>
+<hr class="half-width">
+<figure>We then crop each image with the bounding box from the object
+detection step. <img src="files/bj373514_crop.png" alt="cropped minnow image" class="figure mx-auto d-block"></figure></section><section id="step-6-segment-each-fish-image"><h2 class="section-heading">Step 6: Segment each fish image<a class="anchor" aria-label="anchor" href="#step-6-segment-each-fish-image"></a>
+</h2>
+<hr class="half-width">
+<figure>Next we use a tool to segment each cropped image. <img src="files/bj373514_seg.png" alt="segmented minnow image" class="figure mx-auto d-block"></figure></section><section id="step-8.-create-summary-report"><h2 class="section-heading">Step 8. Create summary report<a class="anchor" aria-label="anchor" href="#step-8.-create-summary-report"></a>
+</h2>
+<hr class="half-width">
+<p>Finally we create a report using another R script that summarizes the
+results of our processing.</p>
+<figure>The HTML report will look something like this: <img src="files/report.png" alt="final report screenshot" class="figure mx-auto d-block"> We will save the
+output as <code>summary/report.html</code>.</figure><!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
- -->
-</section></section><section id="aio-setup_project"><p>Content from <a href="setup_project.html">Project Setup</a></p>
+ --></section></section><section id="aio-04_setup_project"><p>Content from <a href="04_setup_project.html">Project Setup</a></p>
 <hr>
-<p> Last updated on 2023-03-06 | 
+<p> Last updated on 2023-03-07 | 
         
-        <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/setup_project.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/04_setup_project.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -686,16 +711,23 @@ SummaryReport.R to create a report</li>
 <strong>slurm/</strong> - Directory containing a config file used by
 Snakemake to run SLURM jobs</li>
 </ul>
+</div>
+</section><section id="prime-singularity-cache"><h2 class="section-heading">Prime Singularity Cache<a class="anchor" aria-label="anchor" href="#prime-singularity-cache"></a>
+</h2>
+<hr class="half-width">
+<p>To avoid waiting for singularity containers to pull we will copy
+cached containers inline.</p>
+<pre><code>mkdir -p .snakemake/singularity
+cp /fs/ess/PAS2136/Workshops/Snakemake/singularity_images/* .snakemake/singularity/.</code></pre>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
  -->
-</div>
-</section></section><section id="aio-setup_env"><p>Content from <a href="setup_env.html">Environment Setup</a></p>
+</section></section><section id="aio-05_setup_env"><p>Content from <a href="05_setup_env.html">Environment Setup</a></p>
 <hr>
-<p> Last updated on 2023-03-05 | 
+<p> Last updated on 2023-03-07 | 
         
-        <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/setup_env.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/05_setup_env.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -786,11 +818,11 @@ steps:</p>
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
  -->
-</section></section><section id="aio-create_snakefile"><p>Content from <a href="create_snakefile.html">Create a Workflow</a></p>
+</section></section><section id="aio-06_create_snakefile"><p>Content from <a href="06_create_snakefile.html">Create a Workflow</a></p>
 <hr>
-<p> Last updated on 2023-03-06 | 
+<p> Last updated on 2023-03-07 | 
         
-        <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/create_snakefile.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/06_create_snakefile.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -972,11 +1004,11 @@ well.</p>
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
  -->
-</section></section><section id="aio-filter_rule"><p>Content from <a href="filter_rule.html">Add an R Script</a></p>
+</section></section><section id="aio-07_filter_rule"><p>Content from <a href="07_filter_rule.html">Add an R Script</a></p>
 <hr>
 <p> Last updated on 2023-03-07 | 
         
-        <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/filter_rule.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/07_filter_rule.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -1112,7 +1144,7 @@ snakemake -c1</code></pre>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> Scripts/FilterImages.R</span></code></pre>
 </div>
-</section><section id="add-a-config-file"><h2 class="section-heading">Add a config file<a class="anchor" aria-label="anchor" href="#add-a-config-file"></a>
+</section><section id="use-a-config-file-to-avoid-filename-duplication"><h2 class="section-heading">Use a config file to avoid filename duplication<a class="anchor" aria-label="anchor" href="#use-a-config-file-to-avoid-filename-duplication"></a>
 </h2>
 <hr class="half-width">
 <p>A better option to allow easy changes to the rows param is to store
@@ -1151,11 +1183,11 @@ rule filter:
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
  -->
-</section></section><section id="aio-scatter_rule"><p>Content from <a href="scatter_rule.html">Process multiple files</a></p>
+</section></section><section id="aio-08_scatter_rule"><p>Content from <a href="08_scatter_rule.html">Process multiple files</a></p>
 <hr>
 <p> Last updated on 2023-03-07 | 
         
-        <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/scatter_rule.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/08_scatter_rule.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -1314,11 +1346,11 @@ checkpoint filter:
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
  -->
-</section></section><section id="aio-container_rule"><p>Content from <a href="container_rule.html">Use a container</a></p>
+</section></section><section id="aio-09_container_rule"><p>Content from <a href="09_container_rule.html">Use a container</a></p>
 <hr>
 <p> Last updated on 2023-03-07 | 
         
-        <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/container_rule.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/09_container_rule.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -1411,11 +1443,11 @@ Activating singularity image /users/PAS2136/jbradley/SnakemakeWorkflow/.snakemak
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
  -->
-</section></section><section id="aio-reuse_workflow"><p>Content from <a href="reuse_workflow.html">Reuse another workflow</a></p>
+</section></section><section id="aio-10_reuse_workflow"><p>Content from <a href="10_reuse_workflow.html">Reuse another workflow</a></p>
 <hr>
 <p> Last updated on 2023-03-07 | 
         
-        <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/reuse_workflow.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/10_reuse_workflow.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -1490,11 +1522,11 @@ use rule segment_image from bgnn_core</code></pre>
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
  -->
-</section></section><section id="aio-summary_rule"><p>Content from <a href="summary_rule.html">Add Summary Analysis</a></p>
+</section></section><section id="aio-11_summary_rule"><p>Content from <a href="11_summary_rule.html">Add Summary Analysis</a></p>
 <hr>
 <p> Last updated on 2023-03-07 | 
         
-        <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/summary_rule.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/11_summary_rule.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -1538,11 +1570,11 @@ rule summary:
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> logs</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> logs/</span></code></pre>
-</div></section><section id="aio-run_on_slurm"><p>Content from <a href="run_on_slurm.html">Run at Scale</a></p>
+</div></section><section id="aio-12_run_on_slurm"><p>Content from <a href="12_run_on_slurm.html">Run at Scale</a></p>
 <hr>
 <p> Last updated on 2023-03-07 | 
         
-        <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/run_on_slurm.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/12_run_on_slurm.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>

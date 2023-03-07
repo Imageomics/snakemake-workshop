@@ -4,6 +4,42 @@
     <loc>https://Imageomics.github.io/snakemake-workshop/01-introduction.html</loc>
   </url>
   <url>
+    <loc>https://Imageomics.github.io/snakemake-workshop/01_introduction.html</loc>
+  </url>
+  <url>
+    <loc>https://Imageomics.github.io/snakemake-workshop/02_snakemake_mindset.html</loc>
+  </url>
+  <url>
+    <loc>https://Imageomics.github.io/snakemake-workshop/03_big_picture.html</loc>
+  </url>
+  <url>
+    <loc>https://Imageomics.github.io/snakemake-workshop/04_setup_project.html</loc>
+  </url>
+  <url>
+    <loc>https://Imageomics.github.io/snakemake-workshop/05_setup_env.html</loc>
+  </url>
+  <url>
+    <loc>https://Imageomics.github.io/snakemake-workshop/06_create_snakefile.html</loc>
+  </url>
+  <url>
+    <loc>https://Imageomics.github.io/snakemake-workshop/07_filter_rule.html</loc>
+  </url>
+  <url>
+    <loc>https://Imageomics.github.io/snakemake-workshop/08_scatter_rule.html</loc>
+  </url>
+  <url>
+    <loc>https://Imageomics.github.io/snakemake-workshop/09_container_rule.html</loc>
+  </url>
+  <url>
+    <loc>https://Imageomics.github.io/snakemake-workshop/10_reuse_workflow.html</loc>
+  </url>
+  <url>
+    <loc>https://Imageomics.github.io/snakemake-workshop/11_summary_rule.html</loc>
+  </url>
+  <url>
+    <loc>https://Imageomics.github.io/snakemake-workshop/12_run_on_slurm.html</loc>
+  </url>
+  <url>
     <loc>https://Imageomics.github.io/snakemake-workshop/CODE_OF_CONDUCT.html</loc>
   </url>
   <url>
@@ -38,6 +74,42 @@
   </url>
   <url>
     <loc>https://Imageomics.github.io/snakemake-workshop/instructor/01-introduction.html</loc>
+  </url>
+  <url>
+    <loc>https://Imageomics.github.io/snakemake-workshop/instructor/01_introduction.html</loc>
+  </url>
+  <url>
+    <loc>https://Imageomics.github.io/snakemake-workshop/instructor/02_snakemake_mindset.html</loc>
+  </url>
+  <url>
+    <loc>https://Imageomics.github.io/snakemake-workshop/instructor/03_big_picture.html</loc>
+  </url>
+  <url>
+    <loc>https://Imageomics.github.io/snakemake-workshop/instructor/04_setup_project.html</loc>
+  </url>
+  <url>
+    <loc>https://Imageomics.github.io/snakemake-workshop/instructor/05_setup_env.html</loc>
+  </url>
+  <url>
+    <loc>https://Imageomics.github.io/snakemake-workshop/instructor/06_create_snakefile.html</loc>
+  </url>
+  <url>
+    <loc>https://Imageomics.github.io/snakemake-workshop/instructor/07_filter_rule.html</loc>
+  </url>
+  <url>
+    <loc>https://Imageomics.github.io/snakemake-workshop/instructor/08_scatter_rule.html</loc>
+  </url>
+  <url>
+    <loc>https://Imageomics.github.io/snakemake-workshop/instructor/09_container_rule.html</loc>
+  </url>
+  <url>
+    <loc>https://Imageomics.github.io/snakemake-workshop/instructor/10_reuse_workflow.html</loc>
+  </url>
+  <url>
+    <loc>https://Imageomics.github.io/snakemake-workshop/instructor/11_summary_rule.html</loc>
+  </url>
+  <url>
+    <loc>https://Imageomics.github.io/snakemake-workshop/instructor/12_run_on_slurm.html</loc>
   </url>
   <url>
     <loc>https://Imageomics.github.io/snakemake-workshop/instructor/CODE_OF_CONDUCT.html</loc>
