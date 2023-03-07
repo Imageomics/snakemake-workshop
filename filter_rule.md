@@ -90,7 +90,7 @@ At the top of Snakefile add a new rule
 
 ```
 rule all:
-    input: filter/multimedia.csv
+    input: "filter/multimedia.csv"
 ```
 
 Test it out by removing filter/multimedia.csv and running snakemake with no target
@@ -118,10 +118,13 @@ Then update your `Snakefile` to adding the config file location and using config
 ```
 configfile: "config.yaml"
 
+rule all:
+    input: config["filter_multimedia"]
+
 rule reduce:
   input: "multimedia.csv"
+  params: rows="21"  
   output: config["reduce_multimedia"]
-  params: rows="21"
   shell: "head -n {params.rows} {input} > {output}"
 
 rule filter:

@@ -65,4 +65,6 @@ rule <name>:
 
 ## How Snakemake combines rules
 
+Rules vs Jobs
+Job is running a rule to create a specific set of output files.
 
