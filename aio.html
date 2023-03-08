@@ -921,7 +921,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-06_create_snakefile"><p>Content from <a href="06_create_snakefile.html">Create a Workflow</a></p>
 <hr>
-<p> Last updated on 2023-03-07 | 
+<p> Last updated on 2023-03-08 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/06_create_snakefile.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1081,7 +1081,7 @@ param.</p>
 use the <code>params.rows</code> wildcard in the shell as follows:</p>
 <pre><code>rule reduce:
   input: "multimedia.csv"
-  params:rows="11"  
+  params: rows="11"  
   output: "reduce/multimedia.csv"
   shell: "head -n {params.rows} {input} &gt; {output}"</code></pre>
 <p>Notice how we assigned a name “rows” to the parameter. Assigning a
