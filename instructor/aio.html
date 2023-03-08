@@ -1290,7 +1290,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-08_scatter_rule"><p>Content from <a href="08_scatter_rule.html">Process multiple files</a></p>
 <hr>
-<p> Last updated on 2023-03-07 | 
+<p> Last updated on 2023-03-08 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/08_scatter_rule.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 12 minutes </p>
@@ -1358,7 +1358,7 @@ rule download_image:
 <p>Change this rule to be a pattern rule by adding a wildcard expression
 in an output filename.</p>
 <pre><code>def get_image_url(wildcards):
-    base_url = ""https://bgnn.tulane.edu/hdr-share/ftp/ark/89609/GLIN/FMNH/"
+    base_url = "https://bgnn.tulane.edu/hdr-share/ftp/ark/89609/GLIN/FMNH/"
     return base_url + wildcards.ark_id + ".jpg"
 
 rule download_image:
