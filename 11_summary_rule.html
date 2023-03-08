@@ -304,7 +304,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Add Summary Analysis</h1>
-        <p> Last updated on 2023-03-07 | 
+        <p> Last updated on 2023-03-08 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/11_summary_rule.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -316,6 +316,28 @@
 
         
 
+<div class="overview card">
+<h2 class="card-header">Overview</h2>
+<div class="row g-0">
+<div class="col-md-4">
+<div class="card-body">
+<div class="inner">
+<h3 class="card-title">Questions</h3>
+<ul><li>How can we specify a rule that has many dynamic input files?</li>
+</ul></div>
+</div>
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<div class="inner bordered">
+<h3 class="card-title">Objectives</h3>
+<ul><li>Add a summary rule that requires Segmented images</li>
+<li>Use expand function to simplify creating filenames</li>
+</ul></div>
+</div>
+</div>
+</div>
+</div>
 <p>Add summary_report to config.yaml:</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -350,13 +372,6 @@ rule summary:
   output: config["summary_report"]
   container: "docker://ghcr.io/rocker-org/tidyverse:4.2.2"
   shell: "Rscript {input.script}"</code></pre>
-<p>Where did my logs go?</p>
-<div class="codewrapper sourceCode" id="cb5">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> logs</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> logs/</span></code></pre>
-</div>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
@@ -417,7 +432,7 @@ any links that you are not going to use.
   "url": "https://Imageomics.github.io/snakemake-workshop/11_summary_rule.html",
   "identifier": "https://Imageomics.github.io/snakemake-workshop/11_summary_rule.html",
   "dateCreated": "2023-03-08",
-  "dateModified": "2023-03-07",
+  "dateModified": "2023-03-08",
   "datePublished": "2023-03-08"
 }
 

@@ -235,7 +235,8 @@
         
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
-        <ul><li><a href="#harmonize-filename-plans">Harmonize Filename Plans</a></li>
+        <ul><li><a href="#reusing-another-workflow">Reusing Another Workflow</a></li>
+<li><a href="#harmonize-filename-plans">Harmonize Filename Plans</a></li>
 <li><a href="#bring-in-additional-rules-from-bgnn_core_workflow">Bring in additional rules from BGNN_Core_Workflow</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
@@ -312,7 +313,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Reuse another workflow</h1>
-        <p> Last updated on 2023-03-07 | 
+        <p> Last updated on 2023-03-08 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/10_reuse_workflow.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -326,12 +327,39 @@
 
         
 
-<p>To re-use a workflow you generally need:</p>
-<ul><li>where to find workflow - github “hdr-bgnn/BGNN_Core_Workflow”</li>
-<li>what is the relative path to the Snakefile “workflow/Snakefile”</li>
-<li>what tag or version to use “1.0.0”</li>
-<li>what file naming convention is the workflow using</li>
-</ul><p><a href="https://github.com/hdr-bgnn/BGNN_Core_Workflow/blob/main/workflow/Snakefile#L19" class="external-link uri">https://github.com/hdr-bgnn/BGNN_Core_Workflow/blob/main/workflow/Snakefile#L19</a></p>
+<div class="overview card">
+<h2 class="card-header">Overview</h2>
+<div class="row g-0">
+<div class="col-md-4">
+<div class="card-body">
+<div class="inner">
+<h3 class="card-title">Questions</h3>
+<ul><li>What do I need to do to re-use another Snakemake workflow?</li>
+</ul></div>
+</div>
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<div class="inner bordered">
+<h3 class="card-title">Objectives</h3>
+<ul><li>Add a module to our Snakefile to re-use parts of the
+BGNN_Core_Workflow workflow</li>
+<li>Make changes so our workflow will be filename compatible</li>
+</ul></div>
+</div>
+</div>
+</div>
+</div>
+<section id="reusing-another-workflow"><h2 class="section-heading">Reusing Another Workflow<a class="anchor" aria-label="anchor" href="#reusing-another-workflow"></a>
+</h2>
+<hr class="half-width"><p>To re-use a workflow you generally need:</p>
+<ul><li>Where to find workflow? - github “hdr-bgnn/BGNN_Core_Workflow”</li>
+<li>What is the relative path to the Snakefile?
+“workflow/Snakefile”</li>
+<li>What tag or version to use? “1.0.0”</li>
+<li>What file naming convention is the workflow using?</li>
+<li>What dependencies must be manually installed?</li>
+</ul><p>See source code for the workflow <a href="https://github.com/hdr-bgnn/BGNN_Core_Workflow/blob/main/workflow/Snakefile#L19" class="external-link uri">https://github.com/hdr-bgnn/BGNN_Core_Workflow/blob/main/workflow/Snakefile#L19</a></p>
 <pre><code>module bgnn_core:
     snakefile:
         github("hdr-bgnn/BGNN_Core_Workflow", path="workflow/Snakefile", tag="1.0.0")
@@ -353,7 +381,7 @@ Missing input files for rule generate_metadata:
     affected files:
         Images/bj373514.jpg</code></pre>
 </div>
-<section id="harmonize-filename-plans"><h2 class="section-heading">Harmonize Filename Plans<a class="anchor" aria-label="anchor" href="#harmonize-filename-plans"></a>
+</section><section id="harmonize-filename-plans"><h2 class="section-heading">Harmonize Filename Plans<a class="anchor" aria-label="anchor" href="#harmonize-filename-plans"></a>
 </h2>
 <hr class="half-width"><div class="section level3">
 <h3 id="option-1-override-settings-in-the-other-workflows-rules">Option 1: Override settings in the other workflow’s rules<a class="anchor" aria-label="anchor" href="#option-1-override-settings-in-the-other-workflows-rules"></a></h3>
@@ -444,7 +472,7 @@ any links that you are not going to use.
   "url": "https://Imageomics.github.io/snakemake-workshop/instructor/10_reuse_workflow.html",
   "identifier": "https://Imageomics.github.io/snakemake-workshop/instructor/10_reuse_workflow.html",
   "dateCreated": "2023-03-08",
-  "dateModified": "2023-03-07",
+  "dateModified": "2023-03-08",
   "datePublished": "2023-03-08"
 }
 
