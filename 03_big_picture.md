@@ -2,6 +2,24 @@
 title: "Workflow Filename Plan"
 teaching: 10
 ---
+:::::::::::::::::::::::::::::::::::::: questions 
+
+- Why should I create a filename plan for a workflow?
+- What are common approaches to filename plans with Snakemake?
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::: objectives
+
+- Understand the filename plan we will be using for the class workflow
+- Understand a high level view of the workflow we will be building
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Common questions about files in a workflow
+- What did this file come from?
+- Am I still using this file?
+- What code uses this file as an input?
+- Did I have a filename collision?
 
 ## Use directories to organize files
 When working with Snakemake it is important to have a plan for how to organize your files.
@@ -45,7 +63,6 @@ images/dd216t3d.jpg
 Example image:
 ![minnow image](files/bj373514.png){alt='Image of fish'}
 
-
 ## Step 4: Detect fish in each image
 Next we use a tool to determine the location of the fish in each image.
 We will reuse another workflow and use it's filenaming schema for the next 3 steps.
@@ -64,4 +81,3 @@ Finally we create a report using another R script that summarizes the results of
 The HTML report will look something like this:
 ![final report screenshot](files/report.png){alt='Screenshot of html report'}
 We will save the output as `summary/report.html`.
-

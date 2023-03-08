@@ -12,8 +12,8 @@ teaching: 10
 ::::::::::::::::::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::: objectives
 
-- Understand why one may use a workflow language like Snakemake
-- Understand the goal of the workshop
+- Understand why one would use a workflow language like Snakemake
+- Understand the goals of the workshop
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
