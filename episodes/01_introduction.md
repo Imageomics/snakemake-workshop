@@ -23,15 +23,13 @@ teaching: 10
 - Scalable
 - Reusable
 
-## Strengths and Weaknesses of Snakemake
-
-## Strengths
+## Strengths of Snakemake
 - Only creates missing or out of date files
 - Flexible control over which files are created 
 - Uses potentially familiar Python syntax
 - Dynamic branching - Output files and commands used determined while the workflow is running
 
-## Weaknesses
+## Weaknesses of Snakemake
 - Rule based logic instead of procedural logic
 - Requires some python code/knowledge for typical workflows
 
@@ -39,4 +37,4 @@ teaching: 10
 - Create Snakemake Workflow that
   - Runs R scripts for filtering and final analysis
   - Runs Machine Learning Components
-  - Efficently processes many files at the same time
+  - Efficiently processes many files at the same time
