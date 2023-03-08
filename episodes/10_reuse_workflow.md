@@ -3,14 +3,28 @@ title: "Reuse another workflow"
 teaching: 10
 exercises: 2
 ---
+:::::::::::::::::::::::::::::::::::::: questions 
 
+- What do I need to do to re-use another Snakemake workflow?
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::: objectives
+
+- Add a module to our Snakefile to re-use parts of the BGNN_Core_Workflow workflow
+- Make changes so our workflow will be filename compatible
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Reusing Another Workflow
 To re-use a workflow you generally need:
 
-- where to find workflow - github "hdr-bgnn/BGNN_Core_Workflow"
-- what is the relative path to the Snakefile "workflow/Snakefile"
-- what tag or version to use "1.0.0"
-- what file naming convention is the workflow using
+- Where to find workflow? - github "hdr-bgnn/BGNN_Core_Workflow"
+- What is the relative path to the Snakefile? "workflow/Snakefile"
+- What tag or version to use? "1.0.0"
+- What file naming convention is the workflow using?
+- What dependencies must be manually installed?
 
+See source code for the workflow
 https://github.com/hdr-bgnn/BGNN_Core_Workflow/blob/main/workflow/Snakefile#L19
 
 ```
@@ -70,3 +84,5 @@ use rule segment_image from bgnn_core
 ```bash
 snakemake -c1 --use-singularity Segmented/bj373514_segmented.png 
 ```
+
+

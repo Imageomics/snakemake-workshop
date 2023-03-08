@@ -3,6 +3,17 @@ title: "Project Setup"
 teaching: 1
 exercises: 5
 ---
+:::::::::::::::::::::::::::::::::::::: questions 
+
+- How do I create a directory with the necessary files for this class?
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::: objectives
+
+- Create a "SnakemakeWorkflow" directory with scripts and cached container images
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
 
 ## Log into OSC
 - Visit https://ondemand.osc.edu/.

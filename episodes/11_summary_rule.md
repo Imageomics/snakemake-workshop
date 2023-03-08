@@ -4,6 +4,19 @@ teaching: 10
 exercises: 2
 ---
 
+:::::::::::::::::::::::::::::::::::::: questions 
+
+- How can we specify a rule that has many dynamic input files?
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::: objectives
+
+- Add a summary rule that requires Segmented images
+- Use expand function to simplify creating filenames
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+
 Add summary_report to config.yaml:
 ```bash
 cat Scripts/SummaryReport.R 
@@ -42,11 +55,5 @@ rule summary:
   shell: "Rscript {input.script}"
 ```
 
-
-Where did my logs go?
-```bash
-ls logs
-ls logs/
-```
 
 

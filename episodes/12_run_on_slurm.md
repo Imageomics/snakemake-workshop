@@ -4,6 +4,22 @@ teaching: 10
 exercises: 2
 ---
 
+:::::::::::::::::::::::::::::::::::::: questions 
+
+- How can can I add memory, cpu, and gpu requirements to a rule?
+- How can can I scale up my workflow in a cluster?
+- What logs are created when running my workflow with a cluster?
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::: objectives
+
+- Add a memory requirement to a rule
+- Create sbatch script to run a workflow at scale
+- Delete all outputs
+- Run the workflow at scale
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
 ## Problems with way we have been running snakemake
 - Only using a single node so limited scaling
 - Must keep our terminal window connected or the job might stop
@@ -53,6 +69,15 @@ Run snakemake in the background scaling up
 sbatch run-workflow.sh -c10
 ```
 
+## Monitor job
 ```
 squeue -u $LOGNAME
+```
+
+## Notice new job logs
+
+Where did my logs go?
+```bash
+ls logs
+ls logs/
 ```
