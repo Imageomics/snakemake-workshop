@@ -535,7 +535,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-03_big_picture"><p>Content from <a href="03_big_picture.html">Workflow Filename Plan</a></p>
 <hr>
-<p> Last updated on 2023-03-07 | 
+<p> Last updated on 2023-03-08 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/03_big_picture.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -553,7 +553,7 @@ determining which rule that created a file.</p>
 </h2>
 <hr class="half-width">
 <p>The input CSV (<code>multimedia.csv</code>) was downloaded from <a href="https://bgnn.tulane.edu/" class="external-link uri">https://bgnn.tulane.edu/</a>.</p>
-<figure>When viewed within RStudio the data looks like this: <img src="../files/multimedia.png" alt="multimedia CSV screenshot" class="figure mx-auto d-block"></figure></section><section id="step-1-reduce-csv-size"><h2 class="section-heading">Step 1: Reduce CSV size<a class="anchor" aria-label="anchor" href="#step-1-reduce-csv-size"></a>
+<figure>When viewed within RStudio the data looks like this: <img src="../files/multimedia.png" alt="Table of fish images" class="figure mx-auto d-block"></figure></section><section id="step-1-reduce-csv-size"><h2 class="section-heading">Step 1: Reduce CSV size<a class="anchor" aria-label="anchor" href="#step-1-reduce-csv-size"></a>
 </h2>
 <hr class="half-width">
 <p>Reduce the total size of the input CSV using a simple command line
@@ -565,8 +565,9 @@ at <code>reduce/multimedia.csv</code>.</p>
 <hr class="half-width">
 <p>Next we run an R script to filtering our CSV for
 <code>Notropis nazas</code> species.</p>
-<figure>When viewed within RStudio the data looks like this: <img src="../files/filtered.png" alt="filtered CSV screenshot" class="figure mx-auto d-block"> The result of
-this step will be saved at <code>filter/multimedia.csv</code>.</figure></section><section id="step-3-download-images"><h2 class="section-heading">Step 3: Download images<a class="anchor" aria-label="anchor" href="#step-3-download-images"></a>
+<figure>When viewed within RStudio the data looks like this: <img src="../files/filtered.png" alt="Table of filtered fish images" class="figure mx-auto d-block"> The
+result of this step will be saved at
+<code>filter/multimedia.csv</code>.</figure></section><section id="step-3-download-images"><h2 class="section-heading">Step 3: Download images<a class="anchor" aria-label="anchor" href="#step-3-download-images"></a>
 </h2>
 <hr class="half-width">
 <p>Since we will be downloading many images from multiple locations
@@ -581,7 +582,7 @@ image filenames.</p>
 <p>For the multimedia row with arkID <code>dd216t3d</code> we will save
 the downloaded image as:</p>
 <pre><code><span><span class="va">images</span><span class="op">/</span><span class="va">dd216t3d.jpg</span></span></code></pre>
-<figure>Example image: <img src="../files/bj373514.png" alt="minnow image" class="figure mx-auto d-block"></figure></section><section id="step-4-detect-fish-in-each-image"><h2 class="section-heading">Step 4: Detect fish in each image<a class="anchor" aria-label="anchor" href="#step-4-detect-fish-in-each-image"></a>
+<figure>Example image: <img src="../files/bj373514.png" alt="Image of fish" class="figure mx-auto d-block"></figure></section><section id="step-4-detect-fish-in-each-image"><h2 class="section-heading">Step 4: Detect fish in each image<a class="anchor" aria-label="anchor" href="#step-4-detect-fish-in-each-image"></a>
 </h2>
 <hr class="half-width">
 <p>Next we use a tool to determine the location of the fish in each
@@ -591,16 +592,16 @@ the next 3 steps.</p>
 </h2>
 <hr class="half-width">
 <figure>We then crop each image with the bounding box from the object
-detection step. <img src="../files/bj373514_crop.png" alt="cropped minnow image" class="figure mx-auto d-block"></figure></section><section id="step-6-segment-each-fish-image"><h2 class="section-heading">Step 6: Segment each fish image<a class="anchor" aria-label="anchor" href="#step-6-segment-each-fish-image"></a>
+detection step. <img src="../files/bj373514_crop.png" alt="Cropped image of fish" class="figure mx-auto d-block"></figure></section><section id="step-6-segment-each-fish-image"><h2 class="section-heading">Step 6: Segment each fish image<a class="anchor" aria-label="anchor" href="#step-6-segment-each-fish-image"></a>
 </h2>
 <hr class="half-width">
-<figure>Next we use a tool to segment each cropped image. <img src="../files/bj373514_seg.png" alt="segmented minnow image" class="figure mx-auto d-block"></figure></section><section id="step-8.-create-summary-report"><h2 class="section-heading">Step 8. Create summary report<a class="anchor" aria-label="anchor" href="#step-8.-create-summary-report"></a>
+<figure>Next we use a tool to segment each cropped image. <img src="../files/bj373514_seg.png" alt="Segmented image of fish" class="figure mx-auto d-block"></figure></section><section id="step-8.-create-summary-report"><h2 class="section-heading">Step 8. Create summary report<a class="anchor" aria-label="anchor" href="#step-8.-create-summary-report"></a>
 </h2>
 <hr class="half-width">
 <p>Finally we create a report using another R script that summarizes the
 results of our processing.</p>
-<figure>The HTML report will look something like this: <img src="../files/report.png" alt="final report screenshot" class="figure mx-auto d-block"> We will save the
-output as <code>summary/report.html</code>.</figure><!-- 
+<figure>The HTML report will look something like this: <img src="../files/report.png" alt="Screenshot of html report" class="figure mx-auto d-block"> We will save
+the output as <code>summary/report.html</code>.</figure><!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
  --></section></section><section id="aio-04_setup_project"><p>Content from <a href="04_setup_project.html">Project Setup</a></p>
@@ -1700,9 +1701,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://Imageomics.github.io/snakemake-workshop/instructor/aio.html",
   "identifier": "https://Imageomics.github.io/snakemake-workshop/instructor/aio.html",
-  "dateCreated": "2023-03-07",
-  "dateModified": "2023-03-07",
-  "datePublished": "2023-03-07"
+  "dateCreated": "2023-03-08",
+  "dateModified": "2023-03-08",
+  "datePublished": "2023-03-08"
 }
 
   </script><script>
