@@ -395,7 +395,7 @@ the background.</p>
 #SBATCH --time=00:30:00
 . Scripts/setup_env.sh
 JOBS=10
-snakemake --jobs $JOBS --use-singularity --profile slurm/ "$@"</code></pre>
+snakemake --jobs $JOBS --use-singularity --profile slurm/</code></pre>
 </section><section id="delete-all-outputs"><h2 class="section-heading">Delete All Outputs<a class="anchor" aria-label="anchor" href="#delete-all-outputs"></a>
 </h2>
 <hr class="half-width"><div class="codewrapper sourceCode" id="cb3">
@@ -409,7 +409,7 @@ snakemake --jobs $JOBS --use-singularity --profile slurm/ "$@"</code></pre>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> run-workflow.sh <span class="at">-c10</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> run-workflow.sh</span></code></pre>
 </div>
 </section><section id="monitor-job"><h2 class="section-heading">Monitor job<a class="anchor" aria-label="anchor" href="#monitor-job"></a>
 </h2>
@@ -420,8 +420,7 @@ snakemake --jobs $JOBS --use-singularity --profile slurm/ "$@"</code></pre>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> logs</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> logs/</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> logs/</span></code></pre>
 </div>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete

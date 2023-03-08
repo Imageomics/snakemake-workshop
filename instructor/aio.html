@@ -464,6 +464,7 @@ any links that you are not going to use.
 <li>What are the parts of a snakemake workflow?</li>
 <li>What is a snakemake rule?</li>
 <li>How does snakemake combine rules into jobs to run?</li>
+<li>How is a Snakemake Rule different from a Snakemake Job?</li>
 </ul>
 </div>
 </div>
@@ -493,7 +494,6 @@ any links that you are not going to use.
 <li>Provides support for specifying containers for each rule</li>
 <li>Provides support for many HPC Clusters including SLURM</li>
 </ul>
-<p>TODO Explain DAG</p>
 </div>
 </section><section id="what-is-a-snakemake-rule"><h2 class="section-heading">What is a Snakemake Rule?<a class="anchor" aria-label="anchor" href="#what-is-a-snakemake-rule"></a>
 </h2>
@@ -525,12 +525,25 @@ within</li>
 </section><section id="how-snakemake-combines-rules"><h2 class="section-heading">How Snakemake combines rules<a class="anchor" aria-label="anchor" href="#how-snakemake-combines-rules"></a>
 </h2>
 <hr class="half-width">
+<div class="section level3">
+<h3 id="example-workflow">Example workflow<a class="anchor" aria-label="anchor" href="#example-workflow"></a>
+</h3>
+<p>Create checksums for each image and zip up the results</p>
+<pre><code><span><span class="va">fish1.jpg</span></span>
+<span><span class="va">fish2.jpg</span></span></code></pre>
+<p>rule checksum1: input: “fish1.jpg” output: “fish1.checksum” …</p>
+<p>rule checksum2: input: “fish2.jpg” output: “fish2.checksum”<br>
+…</p>
+<p>rule zip: input: “fish1.jpg”, “fish1.checksum”, “fish2.jpg”,
+“fish2.checksum” ouput: “result.zip” … ```</p>
+<p>Explain DAG DAG (directed acyclic graph)</p>
 <p>Rules vs Jobs Job is running a rule to create a specific set of
 output files.</p>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
  -->
+</div>
 </section></section><section id="aio-03_big_picture"><p>Content from <a href="03_big_picture.html">Workflow Filename Plan</a></p>
 <hr>
 <p> Last updated on 2023-03-08 | 
@@ -1802,7 +1815,7 @@ the background.</p>
 #SBATCH --time=00:30:00
 . Scripts/setup_env.sh
 JOBS=10
-snakemake --jobs $JOBS --use-singularity --profile slurm/ "$@"</code></pre>
+snakemake --jobs $JOBS --use-singularity --profile slurm/</code></pre>
 </section><section id="delete-all-outputs"><h2 class="section-heading">Delete All Outputs<a class="anchor" aria-label="anchor" href="#delete-all-outputs"></a>
 </h2>
 <hr class="half-width">
@@ -1818,7 +1831,7 @@ snakemake --jobs $JOBS --use-singularity --profile slurm/ "$@"</code></pre>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> run-workflow.sh <span class="at">-c10</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> run-workflow.sh</span></code></pre>
 </div>
 </section><section id="monitor-job"><h2 class="section-heading">Monitor job<a class="anchor" aria-label="anchor" href="#monitor-job"></a>
 </h2>
@@ -1831,8 +1844,7 @@ snakemake --jobs $JOBS --use-singularity --profile slurm/ "$@"</code></pre>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> logs</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> logs/</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> logs/</span></code></pre>
 </div>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
