@@ -8,6 +8,7 @@ teaching: 10
 - What are the parts of a snakemake workflow?
 - What is a snakemake rule?
 - How does snakemake combine rules into jobs to run?
+- How is a Snakemake Rule different from a Snakemake Job?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::: objectives
@@ -24,9 +25,6 @@ teaching: 10
 - Breaks up workflow into rules and runs only the parts necessary
 - Provides support for specifying containers for each rule
 - Provides support for many HPC Clusters including SLURM
-
-TODO
-Explain DAG
 
 ## What is a Snakemake Rule?
 
@@ -51,6 +49,31 @@ rule <name>:
 ```
 
 ## How Snakemake combines rules
+### Example workflow
+
+Create checksums for each image and zip up the results
+```
+fish1.jpg
+fish2.jpg
+```
+rule checksum1:
+    input: "fish1.jpg"
+    output: "fish1.checksum"
+    ...
+   
+rule checksum2:
+    input: "fish2.jpg"
+    output: "fish2.checksum"   
+    ...
+   
+rule zip:
+    input: "fish1.jpg", "fish1.checksum", "fish2.jpg", "fish2.checksum"
+    ouput: "result.zip"
+    ...
+```
+
+Explain DAG
+DAG (directed acyclic graph) 
 
 Rules vs Jobs
 Job is running a rule to create a specific set of output files.

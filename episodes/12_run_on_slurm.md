@@ -55,7 +55,7 @@ Create a script name `run-workflow.sh` to run snakemake in the background.
 #SBATCH --time=00:30:00
 . Scripts/setup_env.sh
 JOBS=10
-snakemake --jobs $JOBS --use-singularity --profile slurm/ "$@"
+snakemake --jobs $JOBS --use-singularity --profile slurm/
 ```
 
 ## Delete All Outputs
@@ -66,7 +66,7 @@ snakemake c1 --delete-all-output
 ## Run Background job and monitor progress
 Run snakemake in the background scaling up
 ```bash
-sbatch run-workflow.sh -c10
+sbatch run-workflow.sh
 ```
 
 ## Monitor job
@@ -78,6 +78,5 @@ squeue -u $LOGNAME
 
 Where did my logs go?
 ```bash
-ls logs
 ls logs/
 ```
