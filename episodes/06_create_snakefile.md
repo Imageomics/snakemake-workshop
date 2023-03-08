@@ -131,7 +131,7 @@ Add a new `params` setting to the `rule` and use the `params.rows` wildcard in t
 ```
 rule reduce:
   input: "multimedia.csv"
-  params:rows="11"  
+  params: rows="11"  
   output: "reduce/multimedia.csv"
   shell: "head -n {params.rows} {input} > {output}"
 ```
