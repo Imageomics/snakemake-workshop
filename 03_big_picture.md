@@ -13,7 +13,7 @@ determining which rule that created a file.
 The input CSV (`multimedia.csv`) was downloaded from https://bgnn.tulane.edu/.
 
 When viewed within RStudio the data looks like this:
-![multimedia CSV screenshot](files/multimedia.png)
+![multimedia CSV screenshot](files/multimedia.png){alt='Table of fish images'}
 
 
 ## Step 1: Reduce CSV size
@@ -25,7 +25,7 @@ The result of this step will be saved at `reduce/multimedia.csv`.
 Next we run an R script to filtering our CSV for `Notropis nazas` species.
 
 When viewed within RStudio the data looks like this:
-![filtered CSV screenshot](files/filtered.png)
+![filtered CSV screenshot](files/filtered.png){alt='Table of filtered fish images'}
 The result of this step will be saved at `filter/multimedia.csv`.
 
 ## Step 3: Download images
@@ -43,7 +43,7 @@ images/dd216t3d.jpg
 ```
 
 Example image:
-![minnow image](files/bj373514.png)
+![minnow image](files/bj373514.png){alt='Image of fish'}
 
 
 ## Step 4: Detect fish in each image
@@ -52,16 +52,16 @@ We will reuse another workflow and use it's filenaming schema for the next 3 ste
 
 ## Step 5: Crop each fish image
 We then crop each image with the bounding box from the object detection step.
-![cropped minnow image](files/bj373514_crop.png)
+![cropped minnow image](files/bj373514_crop.png){alt='Cropped image of fish'}
 
 ## Step 6: Segment each fish image
 Next we use a tool to segment each cropped image.
-![segmented minnow image](files/bj373514_seg.png)
+![segmented minnow image](files/bj373514_seg.png){alt='Segmented image of fish'}
 
 ## Step 8. Create summary report
 Finally we create a report using another R script that summarizes the results of our processing.
 
 The HTML report will look something like this:
-![final report screenshot](files/report.png)
+![final report screenshot](files/report.png){alt='Screenshot of html report'}
 We will save the output as `summary/report.html`.
 
