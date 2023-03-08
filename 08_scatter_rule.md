@@ -45,7 +45,7 @@ rule download_image:
 Change this rule to be a pattern rule by adding a wildcard expression in an output filename.
 ```
 def get_image_url(wildcards):
-    base_url = ""https://bgnn.tulane.edu/hdr-share/ftp/ark/89609/GLIN/FMNH/"
+    base_url = "https://bgnn.tulane.edu/hdr-share/ftp/ark/89609/GLIN/FMNH/"
     return base_url + wildcards.ark_id + ".jpg"
 
 rule download_image:
