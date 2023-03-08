@@ -17,7 +17,7 @@ teaching: 10
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Workflow languages help you make workflows
+## Workflow language features
 - Portable
 - Reproducible
 - Scalable

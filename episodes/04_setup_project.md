@@ -53,7 +53,7 @@ multimedia.csv  Scripts  slurm
   - __Summary.Rmd__ - R markdown script used by SummaryReport.R to create a report
 - __slurm/__ - Directory containing a config file used by Snakemake to run SLURM jobs
 
-## Setup Singularity Cache
+## Setup Snakemake Singularity Cache
 To avoid waiting for singularity containers to pull we will copy cached containers inline.
 ```
 mkdir -p .snakemake/singularity
