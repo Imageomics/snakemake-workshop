@@ -25,6 +25,7 @@ teaching: 10
 - Provides support for specifying containers for each rule
 - Provides support for many HPC Clusters including SLURM
 
+TODO
 Explain DAG
 
 ## What is a Snakemake Rule?
