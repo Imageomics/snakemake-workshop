@@ -85,11 +85,11 @@
   Imageomics Snakemake Workshop
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: 57%" class="percentage">
-    57%
+<aside class="col-md-12 lesson-progress"><div style="width: 45%" class="percentage">
+    45%
   </div>
   <div class="progress incubator">
-    <div class="progress-bar incubator" role="progressbar" style="width: 57%" aria-valuenow="57" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar incubator" role="progressbar" style="width: 45%" aria-valuenow="45" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -153,7 +153,7 @@
 <div class="accordion accordion-flush" id="accordionFlush3">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading3">
-        <a href="02_snakemake_mindset.html">2. Snakemake Mindset</a>
+        <a href="02_setup_project.html">2. Project Setup</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -162,7 +162,7 @@
 <div class="accordion accordion-flush" id="accordionFlush4">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading4">
-        <a href="03_big_picture.html">3. Workflow Filename Plan</a>
+        <a href="03_setup_env.html">3. Environment Setup</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -171,7 +171,7 @@
 <div class="accordion accordion-flush" id="accordionFlush5">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading5">
-        <a href="04_setup_project.html">4. Project Setup</a>
+        <a href="06_create_snakefile.html">4. Create a Workflow</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -180,25 +180,7 @@
 <div class="accordion accordion-flush" id="accordionFlush6">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading6">
-        <a href="05_setup_env.html">5. Environment Setup</a>
-    </div><!--/div.accordion-header-->
-        
-  </div><!--/div.accordion-item-->
-</div><!--/div.accordion-flush-->
-
-<div class="accordion accordion-flush" id="accordionFlush7">
-  <div class="accordion-item">
-    <div class="accordion-header" id="flush-heading7">
-        <a href="06_create_snakefile.html">6. Create a Workflow</a>
-    </div><!--/div.accordion-header-->
-        
-  </div><!--/div.accordion-item-->
-</div><!--/div.accordion-flush-->
-
-<div class="accordion accordion-flush" id="accordionFlush8">
-  <div class="accordion-item">
-    <div class="accordion-header" id="flush-heading8">
-        <a href="07_filter_rule.html">7. Add an R Script</a>
+        <a href="07_filter_rule.html">5. Add an R Script</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -217,7 +199,7 @@
         
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
-        <ul><li><a href="#use-wget-to-download-an-image">Use wget to download an image</a></li>
+        <ul><li><a href="#snakemake-dry-run">Snakemake Dry Run</a></li>
 <li><a href="#create-a-rule-that-uses-a-python-function">Create a rule that uses a python function</a></li>
 <li><a href="#make-the-rule-generic-with-a-pattern-rule">Make the rule generic with a pattern rule</a></li>
 <li><a href="#add-python-logic-to-lookup-the-url">Add python logic to lookup the URL</a></li>
@@ -230,10 +212,28 @@
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
+<div class="accordion accordion-flush" id="accordionFlush8">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading8">
+        <a href="09_container_rule.html">7. Use a container</a>
+    </div><!--/div.accordion-header-->
+        
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush9">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading9">
+        <a href="10_reuse_workflow.html">8. Reuse another workflow</a>
+    </div><!--/div.accordion-header-->
+        
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
 <div class="accordion accordion-flush" id="accordionFlush10">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading10">
-        <a href="09_container_rule.html">9. Use a container</a>
+        <a href="11_summary_rule.html">9. Add Summary Analysis</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -242,25 +242,7 @@
 <div class="accordion accordion-flush" id="accordionFlush11">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading11">
-        <a href="10_reuse_workflow.html">10. Reuse another workflow</a>
-    </div><!--/div.accordion-header-->
-        
-  </div><!--/div.accordion-item-->
-</div><!--/div.accordion-flush-->
-
-<div class="accordion accordion-flush" id="accordionFlush12">
-  <div class="accordion-item">
-    <div class="accordion-header" id="flush-heading12">
-        <a href="11_summary_rule.html">11. Add Summary Analysis</a>
-    </div><!--/div.accordion-header-->
-        
-  </div><!--/div.accordion-item-->
-</div><!--/div.accordion-flush-->
-
-<div class="accordion accordion-flush" id="accordionFlush13">
-  <div class="accordion-item">
-    <div class="accordion-header" id="flush-heading13">
-        <a href="12_run_on_slurm.html">12. Run at Scale</a>
+        <a href="12_run_on_slurm.html">10. Run at Scale</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -317,7 +299,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Process multiple files</h1>
-        <p> Last updated on 2023-03-08 | 
+        <p> Last updated on 2023-03-12 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/08_scatter_rule.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -338,7 +320,9 @@
 <div class="card-body">
 <div class="inner">
 <h3 class="card-title">Questions</h3>
-<ul><li>How can I create a generic rule that can process multiple
+<ul><li>How can I verify my Snakefile without running the whole
+workflow?</li>
+<li>How can I create a generic rule that can process multiple
 files?</li>
 <li>How can I use a python function as part of a rule?</li>
 <li>How do I tell snakemake to create a certain file before running a
@@ -359,14 +343,19 @@ running a python function.</li>
 </div>
 </div>
 </div>
-<section id="use-wget-to-download-an-image"><h2 class="section-heading">Use wget to download an image<a class="anchor" aria-label="anchor" href="#use-wget-to-download-an-image"></a>
+<section id="snakemake-dry-run"><h2 class="section-heading">Snakemake Dry Run<a class="anchor" aria-label="anchor" href="#snakemake-dry-run"></a>
 </h2>
-<hr class="half-width"><div class="codewrapper sourceCode" id="cb1">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 2 filter/multimedia.csv</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">-O</span> test.jpg https://bgnn.tulane.edu/hdr-share/ftp/ark/89609/GLIN/FMNH/bj373514.jpg</span></code></pre>
-</div>
+<hr class="half-width"><p>When developing a workflow running the entire workflow after every
+change can be time intensive. To help with this snakemake has a
+<code>--dry-run</code> flag that will validate the
+<code>Snakefile</code> and show what it would do. Try this now:</p>
+<pre><code>snakemake -c1 --dry-run
+``
+
+## Use wget to download an image
+```bash
+head -n 2 filter/multimedia.csv
+wget -O test.jpg https://bgnn.tulane.edu/hdr-share/ftp/ark/89609/GLIN/FMNH/bj373514.jpg</code></pre>
 </section><section id="create-a-rule-that-uses-a-python-function"><h2 class="section-heading">Create a rule that uses a python function<a class="anchor" aria-label="anchor" href="#create-a-rule-that-uses-a-python-function"></a>
 </h2>
 <hr class="half-width"><p>Add a rule to download a single image that uses a python function
@@ -527,9 +516,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://Imageomics.github.io/snakemake-workshop/instructor/08_scatter_rule.html",
   "identifier": "https://Imageomics.github.io/snakemake-workshop/instructor/08_scatter_rule.html",
-  "dateCreated": "2023-03-10",
-  "dateModified": "2023-03-08",
-  "datePublished": "2023-03-10"
+  "dateCreated": "2023-03-12",
+  "dateModified": "2023-03-12",
+  "datePublished": "2023-03-12"
 }
 
   </script><script>

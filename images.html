@@ -189,7 +189,7 @@
 <div class="accordion accordion-flush" id="accordionFlush3">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading3">
-        <a href="02_snakemake_mindset.html">2. Snakemake Mindset</a>
+        <a href="02_setup_project.html">2. Project Setup</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -201,7 +201,7 @@
 <div class="accordion accordion-flush" id="accordionFlush4">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading4">
-        <a href="03_big_picture.html">3. Workflow Filename Plan</a>
+        <a href="03_setup_env.html">3. Environment Setup</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -213,7 +213,7 @@
 <div class="accordion accordion-flush" id="accordionFlush5">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading5">
-        <a href="04_setup_project.html">4. Project Setup</a>
+        <a href="06_create_snakefile.html">4. Create a Workflow</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -225,7 +225,7 @@
 <div class="accordion accordion-flush" id="accordionFlush6">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading6">
-        <a href="05_setup_env.html">5. Environment Setup</a>
+        <a href="07_filter_rule.html">5. Add an R Script</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -237,7 +237,7 @@
 <div class="accordion accordion-flush" id="accordionFlush7">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading7">
-        <a href="06_create_snakefile.html">6. Create a Workflow</a>
+        <a href="08_scatter_rule.html">6. Process multiple files</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -249,7 +249,7 @@
 <div class="accordion accordion-flush" id="accordionFlush8">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading8">
-        <a href="07_filter_rule.html">7. Add an R Script</a>
+        <a href="09_container_rule.html">7. Use a container</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -261,7 +261,7 @@
 <div class="accordion accordion-flush" id="accordionFlush9">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading9">
-        <a href="08_scatter_rule.html">8. Process multiple files</a>
+        <a href="10_reuse_workflow.html">8. Reuse another workflow</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -273,7 +273,7 @@
 <div class="accordion accordion-flush" id="accordionFlush10">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading10">
-        <a href="09_container_rule.html">9. Use a container</a>
+        <a href="11_summary_rule.html">9. Add Summary Analysis</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -285,31 +285,7 @@
 <div class="accordion accordion-flush" id="accordionFlush11">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading11">
-        <a href="10_reuse_workflow.html">10. Reuse another workflow</a>
-    </div>
-<!--/div.accordion-header-->
-        
-  </div>
-<!--/div.accordion-item-->
-</div>
-<!--/div.accordion-flush-->
-
-<div class="accordion accordion-flush" id="accordionFlush12">
-  <div class="accordion-item">
-    <div class="accordion-header" id="flush-heading12">
-        <a href="11_summary_rule.html">11. Add Summary Analysis</a>
-    </div>
-<!--/div.accordion-header-->
-        
-  </div>
-<!--/div.accordion-item-->
-</div>
-<!--/div.accordion-flush-->
-
-<div class="accordion accordion-flush" id="accordionFlush13">
-  <div class="accordion-item">
-    <div class="accordion-header" id="flush-heading13">
-        <a href="12_run_on_slurm.html">12. Run at Scale</a>
+        <a href="12_run_on_slurm.html">10. Run at Scale</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -372,32 +348,8 @@
         
         
 <section id="01_introduction"><h2 class="section-heading"><a href="01_introduction.html">Introduction</a></h2>
-<hr class="half-width"></section><section id="02_snakemake_mindset"><h2 class="section-heading"><a href="02_snakemake_mindset.html">Snakemake Mindset</a></h2>
-<hr class="half-width"></section><section id="03_big_picture"><h2 class="section-heading"><a href="03_big_picture.html">Workflow Filename Plan</a></h2>
-<hr class="half-width">
-<h3 id="03_big_picture-figure-1">Figure 1</h3>
-<p aria-hidden="true">Image 1 of 1: ‘Table of fish images’</p>
-<figure>When viewed within RStudio the data looks like this: <img src="files/multimedia.png" alt="Table of fish images" class="figure mx-auto d-block"></figure><hr>
-<h3 id="03_big_picture-figure-2">Figure 2</h3>
-<p aria-hidden="true">Image 1 of 1: ‘Table of filtered fish images’</p>
-<figure>When viewed within RStudio the data looks like this: <img src="files/filtered.png" alt="Table of filtered fish images" class="figure mx-auto d-block"> The
-result of this step will be saved at
-<code>filter/multimedia.csv</code>.</figure><hr>
-<h3 id="03_big_picture-figure-3">Figure 3</h3>
-<p aria-hidden="true">Image 1 of 1: ‘Image of fish’</p>
-<figure>Example image: <img src="files/bj373514.png" alt="Image of fish" class="figure mx-auto d-block"></figure><hr>
-<h3 id="03_big_picture-figure-4">Figure 4</h3>
-<p aria-hidden="true">Image 1 of 1: ‘Cropped image of fish’</p>
-<figure>We then crop each image with the bounding box from the object
-detection step. <img src="files/bj373514_crop.png" alt="Cropped image of fish" class="figure mx-auto d-block"></figure><hr>
-<h3 id="03_big_picture-figure-5">Figure 5</h3>
-<p aria-hidden="true">Image 1 of 1: ‘Segmented image of fish’</p>
-<figure>Next we use a tool to segment each cropped image. <img src="files/bj373514_seg.png" alt="Segmented image of fish" class="figure mx-auto d-block"></figure><hr>
-<h3 id="03_big_picture-figure-6">Figure 6</h3>
-<p aria-hidden="true">Image 1 of 1: ‘Screenshot of html report’</p>
-<figure>The HTML report will look something like this: <img src="files/report.png" alt="Screenshot of html report" class="figure mx-auto d-block"> We will save
-the output as <code>summary/report.html</code>.</figure><hr></section><section id="04_setup_project"><h2 class="section-heading"><a href="04_setup_project.html">Project Setup</a></h2>
-<hr class="half-width"></section><section id="05_setup_env"><h2 class="section-heading"><a href="05_setup_env.html">Environment Setup</a></h2>
+<hr class="half-width"></section><section id="02_setup_project"><h2 class="section-heading"><a href="02_setup_project.html">Project Setup</a></h2>
+<hr class="half-width"></section><section id="03_setup_env"><h2 class="section-heading"><a href="03_setup_env.html">Environment Setup</a></h2>
 <hr class="half-width"></section><section id="06_create_snakefile"><h2 class="section-heading"><a href="06_create_snakefile.html">Create a Workflow</a></h2>
 <hr class="half-width"></section><section id="07_filter_rule"><h2 class="section-heading"><a href="07_filter_rule.html">Add an R Script</a></h2>
 <hr class="half-width"></section><section id="08_scatter_rule"><h2 class="section-heading"><a href="08_scatter_rule.html">Process multiple files</a></h2>
@@ -453,9 +405,9 @@ the output as <code>summary/report.html</code>.</figure><hr></section><section i
   "creativeWorkStatus": "active",
   "url": "https://Imageomics.github.io/snakemake-workshop/images.html",
   "identifier": "https://Imageomics.github.io/snakemake-workshop/images.html",
-  "dateCreated": "2023-03-10",
-  "dateModified": "2023-03-10",
-  "datePublished": "2023-03-10"
+  "dateCreated": "2023-03-12",
+  "dateModified": "2023-03-12",
+  "datePublished": "2023-03-12"
 }
 
   </script><script>

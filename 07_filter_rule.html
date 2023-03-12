@@ -85,11 +85,11 @@
   Imageomics Snakemake Workshop
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: 49%" class="percentage">
-    49%
+<aside class="col-md-12 lesson-progress"><div style="width: 35%" class="percentage">
+    35%
   </div>
   <div class="progress incubator">
-    <div class="progress-bar incubator" role="progressbar" style="width: 49%" aria-valuenow="49" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar incubator" role="progressbar" style="width: 35%" aria-valuenow="35" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -153,7 +153,7 @@
 <div class="accordion accordion-flush" id="accordionFlush3">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading3">
-        <a href="02_snakemake_mindset.html">2. Snakemake Mindset</a>
+        <a href="02_setup_project.html">2. Project Setup</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -162,7 +162,7 @@
 <div class="accordion accordion-flush" id="accordionFlush4">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading4">
-        <a href="03_big_picture.html">3. Workflow Filename Plan</a>
+        <a href="03_setup_env.html">3. Environment Setup</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -171,25 +171,7 @@
 <div class="accordion accordion-flush" id="accordionFlush5">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading5">
-        <a href="04_setup_project.html">4. Project Setup</a>
-    </div><!--/div.accordion-header-->
-        
-  </div><!--/div.accordion-item-->
-</div><!--/div.accordion-flush-->
-
-<div class="accordion accordion-flush" id="accordionFlush6">
-  <div class="accordion-item">
-    <div class="accordion-header" id="flush-heading6">
-        <a href="05_setup_env.html">5. Environment Setup</a>
-    </div><!--/div.accordion-header-->
-        
-  </div><!--/div.accordion-item-->
-</div><!--/div.accordion-flush-->
-
-<div class="accordion accordion-flush" id="accordionFlush7">
-  <div class="accordion-item">
-    <div class="accordion-header" id="flush-heading7">
-        <a href="06_create_snakefile.html">6. Create a Workflow</a>
+        <a href="06_create_snakefile.html">4. Create a Workflow</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -210,7 +192,7 @@
       <div class="accordion-body">
         <ul><li><a href="#rstudio-friendly-rules">RStudio friendly Rules</a></li>
 <li><a href="#see-the-hard-coded-paths-in-the-r-script">See the hard coded paths in the R script</a></li>
-<li><a href="#create-a-rule-that-runs-an-filtering-r-script">Create a rule that runs an filtering R script</a></li>
+<li><a href="#run-a-filtering-r-script">Run a filtering R script</a></li>
 <li><a href="#default-target">Default target</a></li>
 <li><a href="#run-snakemake-specifying-a-specific-target">Run snakemake specifying a specific target</a></li>
 <li><a href="#run-snakemake-specifying-a-non-existant-target">Run snakemake specifying a non-existant target</a></li>
@@ -223,10 +205,28 @@
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
+<div class="accordion accordion-flush" id="accordionFlush7">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading7">
+        <a href="08_scatter_rule.html">6. Process multiple files</a>
+    </div><!--/div.accordion-header-->
+        
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush8">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading8">
+        <a href="09_container_rule.html">7. Use a container</a>
+    </div><!--/div.accordion-header-->
+        
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
 <div class="accordion accordion-flush" id="accordionFlush9">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading9">
-        <a href="08_scatter_rule.html">8. Process multiple files</a>
+        <a href="10_reuse_workflow.html">8. Reuse another workflow</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -235,7 +235,7 @@
 <div class="accordion accordion-flush" id="accordionFlush10">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading10">
-        <a href="09_container_rule.html">9. Use a container</a>
+        <a href="11_summary_rule.html">9. Add Summary Analysis</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -244,25 +244,7 @@
 <div class="accordion accordion-flush" id="accordionFlush11">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading11">
-        <a href="10_reuse_workflow.html">10. Reuse another workflow</a>
-    </div><!--/div.accordion-header-->
-        
-  </div><!--/div.accordion-item-->
-</div><!--/div.accordion-flush-->
-
-<div class="accordion accordion-flush" id="accordionFlush12">
-  <div class="accordion-item">
-    <div class="accordion-header" id="flush-heading12">
-        <a href="11_summary_rule.html">11. Add Summary Analysis</a>
-    </div><!--/div.accordion-header-->
-        
-  </div><!--/div.accordion-item-->
-</div><!--/div.accordion-flush-->
-
-<div class="accordion accordion-flush" id="accordionFlush13">
-  <div class="accordion-item">
-    <div class="accordion-header" id="flush-heading13">
-        <a href="12_run_on_slurm.html">12. Run at Scale</a>
+        <a href="12_run_on_slurm.html">10. Run at Scale</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -319,7 +301,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Add an R Script</h1>
-        <p> Last updated on 2023-03-07 | 
+        <p> Last updated on 2023-03-12 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/07_filter_rule.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -380,9 +362,9 @@ accommodate within RStudio.</p>
 <span><span class="va">output_path</span> <span class="op">&lt;-</span> <span class="st">"filter/multimedia.csv"</span></span>
 <span><span class="va">...</span></span></code></pre>
 </div>
-</section><section id="create-a-rule-that-runs-an-filtering-r-script"><h2 class="section-heading">Create a rule that runs an filtering R script<a class="anchor" aria-label="anchor" href="#create-a-rule-that-runs-an-filtering-r-script"></a>
+</section><section id="run-a-filtering-r-script"><h2 class="section-heading">Run a filtering R script<a class="anchor" aria-label="anchor" href="#run-a-filtering-r-script"></a>
 </h2>
-<hr class="half-width"><p>Create a rule:</p>
+<hr class="half-width"><p>Add a new rule to <code>Snakefile</code>:</p>
 <pre><code>rule filter:
   input: 
       script="Scripts/FilterImagesHardCoded.R",
@@ -402,6 +384,8 @@ accommodate within RStudio.</p>
 Nothing to be done (all requested files are present and up to date).
 Complete log: .snakemake/log/2023-02-28T164348.500545.snakemake.log</code></pre>
 </div>
+<p>Snakemake didn’t create the <code>filter/multimedia.csv</code>
+because the default target in snakemake is the first rule.</p>
 </section><section id="default-target"><h2 class="section-heading">Default target<a class="anchor" aria-label="anchor" href="#default-target"></a>
 </h2>
 <hr class="half-width"><p>So unless you specify another target snakemake will The First rule in
@@ -541,9 +525,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://Imageomics.github.io/snakemake-workshop/07_filter_rule.html",
   "identifier": "https://Imageomics.github.io/snakemake-workshop/07_filter_rule.html",
-  "dateCreated": "2023-03-10",
-  "dateModified": "2023-03-07",
-  "datePublished": "2023-03-10"
+  "dateCreated": "2023-03-12",
+  "dateModified": "2023-03-12",
+  "datePublished": "2023-03-12"
 }
 
   </script><script>

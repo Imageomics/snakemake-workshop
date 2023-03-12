@@ -85,11 +85,11 @@
   Imageomics Snakemake Workshop
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: 40%" class="percentage">
-    40%
+<aside class="col-md-12 lesson-progress"><div style="width: 24%" class="percentage">
+    24%
   </div>
   <div class="progress incubator">
-    <div class="progress-bar incubator" role="progressbar" style="width: 40%" aria-valuenow="40" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar incubator" role="progressbar" style="width: 24%" aria-valuenow="24" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -153,7 +153,7 @@
 <div class="accordion accordion-flush" id="accordionFlush3">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading3">
-        <a href="02_snakemake_mindset.html">2. Snakemake Mindset</a>
+        <a href="02_setup_project.html">2. Project Setup</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -162,25 +162,7 @@
 <div class="accordion accordion-flush" id="accordionFlush4">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading4">
-        <a href="03_big_picture.html">3. Workflow Filename Plan</a>
-    </div><!--/div.accordion-header-->
-        
-  </div><!--/div.accordion-item-->
-</div><!--/div.accordion-flush-->
-
-<div class="accordion accordion-flush" id="accordionFlush5">
-  <div class="accordion-item">
-    <div class="accordion-header" id="flush-heading5">
-        <a href="04_setup_project.html">4. Project Setup</a>
-    </div><!--/div.accordion-header-->
-        
-  </div><!--/div.accordion-item-->
-</div><!--/div.accordion-flush-->
-
-<div class="accordion accordion-flush" id="accordionFlush6">
-  <div class="accordion-item">
-    <div class="accordion-header" id="flush-heading6">
-        <a href="05_setup_env.html">5. Environment Setup</a>
+        <a href="03_setup_env.html">3. Environment Setup</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -199,7 +181,8 @@
         
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
-        <ul><li><a href="#create-a-snakemake-workflow">Create a Snakemake Workflow</a></li>
+        <ul><li><a href="#snakemake-rule-parts">Snakemake Rule Parts</a></li>
+<li><a href="#create-a-snakemake-workflow">Create a Snakemake Workflow</a></li>
 <li><a href="#run-the-workflow">Run the Workflow</a></li>
 <li><a href="#reduce-duplication-using-wildcards">Reduce duplication using wildcards</a></li>
 <li><a href="#represent-non-file-inputs-using-a-param">Represent non-file inputs using a param</a></li>
@@ -209,10 +192,28 @@
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
+<div class="accordion accordion-flush" id="accordionFlush6">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading6">
+        <a href="07_filter_rule.html">5. Add an R Script</a>
+    </div><!--/div.accordion-header-->
+        
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush7">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading7">
+        <a href="08_scatter_rule.html">6. Process multiple files</a>
+    </div><!--/div.accordion-header-->
+        
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
 <div class="accordion accordion-flush" id="accordionFlush8">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading8">
-        <a href="07_filter_rule.html">7. Add an R Script</a>
+        <a href="09_container_rule.html">7. Use a container</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -221,7 +222,7 @@
 <div class="accordion accordion-flush" id="accordionFlush9">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading9">
-        <a href="08_scatter_rule.html">8. Process multiple files</a>
+        <a href="10_reuse_workflow.html">8. Reuse another workflow</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -230,7 +231,7 @@
 <div class="accordion accordion-flush" id="accordionFlush10">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading10">
-        <a href="09_container_rule.html">9. Use a container</a>
+        <a href="11_summary_rule.html">9. Add Summary Analysis</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -239,25 +240,7 @@
 <div class="accordion accordion-flush" id="accordionFlush11">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading11">
-        <a href="10_reuse_workflow.html">10. Reuse another workflow</a>
-    </div><!--/div.accordion-header-->
-        
-  </div><!--/div.accordion-item-->
-</div><!--/div.accordion-flush-->
-
-<div class="accordion accordion-flush" id="accordionFlush12">
-  <div class="accordion-item">
-    <div class="accordion-header" id="flush-heading12">
-        <a href="11_summary_rule.html">11. Add Summary Analysis</a>
-    </div><!--/div.accordion-header-->
-        
-  </div><!--/div.accordion-item-->
-</div><!--/div.accordion-flush-->
-
-<div class="accordion accordion-flush" id="accordionFlush13">
-  <div class="accordion-item">
-    <div class="accordion-header" id="flush-heading13">
-        <a href="12_run_on_slurm.html">12. Run at Scale</a>
+        <a href="12_run_on_slurm.html">10. Run at Scale</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -304,17 +287,17 @@
         <!-- START: inst/pkgdown/templates/content-instructor.html -->
   <div class="col-xl-8 col-lg-12 primary-content">
     <nav class="lesson-content mx-md-4" aria-label="Previous and Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
-        <a class="chapter-link" href="../instructor/05_setup_env.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
+        <a class="chapter-link" href="../instructor/03_setup_env.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
         <a class="chapter-link float-end" href="../instructor/07_filter_rule.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
-        <a class="chapter-link" href="../instructor/05_setup_env.html" rel="prev"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous: Environment Setup</a>
+        <a class="chapter-link" href="../instructor/03_setup_env.html" rel="prev"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous: Environment Setup</a>
         <a class="chapter-link float-end" href="../instructor/07_filter_rule.html" rel="next">Next: Add an R Script... <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Create a Workflow</h1>
-        <p> Last updated on 2023-03-08 | 
+        <p> Last updated on 2023-03-12 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/06_create_snakefile.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -335,7 +318,8 @@
 <div class="card-body">
 <div class="inner">
 <h3 class="card-title">Questions</h3>
-<ul><li>How do you create a Snakemake Workflow?</li>
+<ul><li>What are the main parts of a Snakemake Rule?</li>
+<li>How do you create a Snakemake Workflow?</li>
 <li>How do you run a Snakemake Workflow?</li>
 </ul></div>
 </div>
@@ -357,7 +341,31 @@
 </div>
 </div>
 </div>
-<section id="create-a-snakemake-workflow"><h2 class="section-heading">Create a Snakemake Workflow<a class="anchor" aria-label="anchor" href="#create-a-snakemake-workflow"></a>
+<section id="snakemake-rule-parts"><h2 class="section-heading">Snakemake Rule Parts<a class="anchor" aria-label="anchor" href="#snakemake-rule-parts"></a>
+</h2>
+<hr class="half-width"><p>Main parts of a Snakemake Rule used in this workshop</p>
+<ul><li>
+<strong>name</strong> - unique name for a rule</li>
+<li>
+<strong>input</strong> - input filenames used by a command</li>
+<li>
+<strong>params</strong> - input parameter (non-file) values used by
+a command</li>
+<li>
+<strong>output</strong> - output filenames created by a command</li>
+<li>
+<strong>shell</strong> - command to run</li>
+<li>
+<strong>container</strong> - singularity container to run command
+within</li>
+</ul><p>Rule pattern:</p>
+<pre><code>rule &lt;name&gt;:
+    input: ...
+    params: ...
+    output: ...
+    shell: ...
+    container: ...</code></pre>
+</section><section id="create-a-snakemake-workflow"><h2 class="section-heading">Create a Snakemake Workflow<a class="anchor" aria-label="anchor" href="#create-a-snakemake-workflow"></a>
 </h2>
 <hr class="half-width"><p>For our first step we will reduce the size of the
 <strong>multimedia.csv</strong> input file saving the result as
@@ -367,10 +375,10 @@ need the first 21 lines in total. This can be accomplished with the
 shell <code>head</code> command passing the <code>--n 21</code>
 argument. Run the following command in your terminal to see the first 21
 lines printed out.</p>
-<div class="codewrapper sourceCode" id="cb1">
+<div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 11 multimedia.csv</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 11 multimedia.csv</span></code></pre>
 </div>
 <p>To save this output we will change the command like so:</p>
 <p><code>head -n 11 multimedia.csv &gt; reduce/multimedia.csv</code></p>
@@ -389,10 +397,10 @@ a directory named after the rule. This will help you keep track of which
 rule created a specific file.</p>
 </section><section id="run-the-workflow"><h2 class="section-heading">Run the Workflow<a class="anchor" aria-label="anchor" href="#run-the-workflow"></a>
 </h2>
-<hr class="half-width"><div class="codewrapper sourceCode" id="cb3">
+<hr class="half-width"><div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span></span></code></pre>
 </div>
 <p>Expected Error Output:</p>
 <div class="codewrapper">
@@ -408,10 +416,10 @@ For no parallelization use --cores 1 or -c1....</code></pre>
 that specifies how manu CPU cores to use when running a workflow. Until
 we want to scale up our workflow we are fine using 1 core.</p>
 <p>Run snakemake specifying 1 core:</p>
-<div class="codewrapper sourceCode" id="cb5">
+<div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span></span></code></pre>
 </div>
 <p>Expected Output:</p>
 <div class="codewrapper">
@@ -444,10 +452,10 @@ Complete log: .snakemake/log/2023-02-27T112816.505955.snakemake.log</code></pre>
 why snakemake is running this rule. In this case it is because the
 output file reduce/multimedia.csv is missing.</p>
 <p>Try running the workflow again:</p>
-<div class="codewrapper sourceCode" id="cb7">
+<div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span></span></code></pre>
 </div>
 <p>Expected Output:</p>
 <pre><code>Building DAG of jobs...
@@ -481,10 +489,10 @@ use the <code>params.rows</code> wildcard in the shell as follows:</p>
 name like this can also be done for the input and output filenames as
 well.</p>
 <p>Try running the workflow again:</p>
-<div class="codewrapper sourceCode" id="cb11">
+<div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span></span></code></pre>
 </div>
 <p>Notice the <strong>reason</strong> has changed</p>
 <div class="codewrapper">
@@ -500,12 +508,12 @@ any links that you are not going to use.
  -->
 </section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
-        <a class="chapter-link" href="../instructor/05_setup_env.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
+        <a class="chapter-link" href="../instructor/03_setup_env.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
         <a class="chapter-link float-end" href="../instructor/07_filter_rule.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
-        <a class="chapter-link" href="../instructor/05_setup_env.html" rel="prev"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous: Environment Setup</a>
+        <a class="chapter-link" href="../instructor/03_setup_env.html" rel="prev"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous: Environment Setup</a>
         <a class="chapter-link float-end" href="../instructor/07_filter_rule.html" rel="next">Next: Add an R Script... <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
     </nav></div> <!-- / div.primary-content.col-xs-12 -->
@@ -550,9 +558,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://Imageomics.github.io/snakemake-workshop/instructor/06_create_snakefile.html",
   "identifier": "https://Imageomics.github.io/snakemake-workshop/instructor/06_create_snakefile.html",
-  "dateCreated": "2023-03-10",
-  "dateModified": "2023-03-08",
-  "datePublished": "2023-03-10"
+  "dateCreated": "2023-03-12",
+  "dateModified": "2023-03-12",
+  "datePublished": "2023-03-12"
 }
 
   </script><script>

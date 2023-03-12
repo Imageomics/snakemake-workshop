@@ -7,10 +7,16 @@
     <loc>https://Imageomics.github.io/snakemake-workshop/01_introduction.html</loc>
   </url>
   <url>
+    <loc>https://Imageomics.github.io/snakemake-workshop/02_setup_project.html</loc>
+  </url>
+  <url>
     <loc>https://Imageomics.github.io/snakemake-workshop/02_snakemake_mindset.html</loc>
   </url>
   <url>
     <loc>https://Imageomics.github.io/snakemake-workshop/03_big_picture.html</loc>
+  </url>
+  <url>
+    <loc>https://Imageomics.github.io/snakemake-workshop/03_setup_env.html</loc>
   </url>
   <url>
     <loc>https://Imageomics.github.io/snakemake-workshop/04_setup_project.html</loc>
@@ -79,10 +85,16 @@
     <loc>https://Imageomics.github.io/snakemake-workshop/instructor/01_introduction.html</loc>
   </url>
   <url>
+    <loc>https://Imageomics.github.io/snakemake-workshop/instructor/02_setup_project.html</loc>
+  </url>
+  <url>
     <loc>https://Imageomics.github.io/snakemake-workshop/instructor/02_snakemake_mindset.html</loc>
   </url>
   <url>
     <loc>https://Imageomics.github.io/snakemake-workshop/instructor/03_big_picture.html</loc>
+  </url>
+  <url>
+    <loc>https://Imageomics.github.io/snakemake-workshop/instructor/03_setup_env.html</loc>
   </url>
   <url>
     <loc>https://Imageomics.github.io/snakemake-workshop/instructor/04_setup_project.html</loc>
