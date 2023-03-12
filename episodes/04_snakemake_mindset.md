@@ -19,12 +19,12 @@ teaching: 10
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-## How Snakemake works
-
 ### Snakemake
 - Breaks up workflow into rules and runs only the parts necessary
 - Provides support for specifying containers for each rule
 - Provides support for many HPC Clusters including SLURM
+
+
 
 ## What is a Snakemake Rule?
 

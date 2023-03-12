@@ -6,6 +6,7 @@ exercises: 2
 
 :::::::::::::::::::::::::::::::::::::: questions 
 
+- How can I verify my Snakefile without running the whole workflow?
 - How can I create a generic rule that can process multiple files?
 - How can I use a python function as part of a rule?
 - How do I tell snakemake to create a certain file before running a python function? 
@@ -20,6 +21,13 @@ exercises: 2
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
+## Snakemake Dry Run
+When developing a workflow running the entire workflow after every change can be time intensive.
+To help with this snakemake has a `--dry-run` flag that will validate the `Snakefile` and show what it would do.
+Try this now:
+```
+snakemake -c1 --dry-run
+``
 
 ## Use wget to download an image
 ```bash

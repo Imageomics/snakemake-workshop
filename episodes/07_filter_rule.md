@@ -36,8 +36,8 @@ output_path <- "filter/multimedia.csv"
 ...
 ```
 
-## Create a rule that runs an filtering R script
-Create a rule:
+## Run a filtering R script
+Add a new rule to `Snakefile`:
 ```
 rule filter:
   input: 
@@ -57,6 +57,7 @@ Building DAG of jobs...
 Nothing to be done (all requested files are present and up to date).
 Complete log: .snakemake/log/2023-02-28T164348.500545.snakemake.log
 ```
+Snakemake didn't create the `filter/multimedia.csv` because the default target in snakemake is the first rule.
 
 ## Default target
 So unless you specify another target snakemake will 
