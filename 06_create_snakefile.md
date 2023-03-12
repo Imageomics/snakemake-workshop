@@ -6,6 +6,7 @@ exercises: 2
 
 :::::::::::::::::::::::::::::::::::::: questions 
 
+- What are the main parts of a Snakemake Rule?
 - How do you create a Snakemake Workflow?
 - How do you run a Snakemake Workflow?
 
@@ -20,6 +21,28 @@ exercises: 2
 - Understand snakemake output
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Snakemake Rule Parts
+
+Main parts of a Snakemake Rule used in this workshop
+
+- __name__ - unique name for a rule
+- __input__ - input filenames used by a command
+- __params__ - input parameter (non-file) values used by a command
+- __output__ - output filenames created by a command
+- __shell__ - command to run
+- __container__ - singularity container to run command within
+
+Rule pattern:
+
+```
+rule <name>:
+    input: ...
+    params: ...
+    output: ...
+    shell: ...
+    container: ...
+```
 
 ## Create a Snakemake Workflow
 For our first step we will reduce the size of the __multimedia.csv__ input file
@@ -45,7 +68,6 @@ This code creates a Snakemake rule named __reduce__ with a input file __multimed
 Snakemake will automatically create the reduce directory for us before running the shell command.
 A common pattern is to output files in a directory named after the rule.
 This will help you keep track of which rule created a specific file.
-
 
 ## Run the Workflow
 

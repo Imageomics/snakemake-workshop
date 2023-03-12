@@ -26,11 +26,13 @@ teaching: 10
 ## Strengths of Snakemake
 - Only creates missing or out of date files
 - Flexible control over which files are created 
-- Uses potentially familiar Python syntax
-- Dynamic branching - Output files and commands used determined while the workflow is running
+- Is python with some additional rule syntax
+- Dynamic branching
+  - Workflow isn't fixed at start up. 
+  - Outputs of commands can be used determined what happens next.
 
 ## Weaknesses of Snakemake
-- Rule based logic instead of procedural logic
+- Requires learning rule based logic instead of procedural logic
 - Requires some python code/knowledge for typical workflows
 
 ## Class Plan
