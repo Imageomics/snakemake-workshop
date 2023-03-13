@@ -9,6 +9,7 @@ exercises: 2
 - What are the main parts of a Snakemake Rule?
 - How do you create a Snakemake Workflow?
 - How do you run a Snakemake Workflow?
+- How does Snakemake create a job plan from rules?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -170,3 +171,10 @@ Notice the __reason__ has changed
     reason: Code has changed since last execution; Params have changed since last execution
 ...
 ```
+
+## Snakemake DAG
+When you run snakemake it creates a job plan called a DAG(directed asyclic graph).
+To build the DAG snakemake first must determine the target output files.
+The target output files are determined from the first rule in the Snakefile by default, but filenames passed as command line arguments will override this.
+Snakemake uses the input and output file settings to determine which rules need to be used to create the target files.
+Snakemake will only create jobs for rules with output files that do not exist or are outdated.
