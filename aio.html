@@ -694,7 +694,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-06_create_snakefile"><p>Content from <a href="06_create_snakefile.html">Create a Workflow</a></p>
 <hr>
-<p> Last updated on 2023-03-12 | 
+<p> Last updated on 2023-03-13 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/06_create_snakefile.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -711,6 +711,7 @@ any links that you are not going to use.
 <li>What are the main parts of a Snakemake Rule?</li>
 <li>How do you create a Snakemake Workflow?</li>
 <li>How do you run a Snakemake Workflow?</li>
+<li>How does Snakemake create a job plan from rules?</li>
 </ul>
 </div>
 </div>
@@ -902,6 +903,17 @@ well.</p>
     reason: Code has changed since last execution; Params have changed since last execution
 ...</code></pre>
 </div>
+</section><section id="snakemake-dag"><h2 class="section-heading">Snakemake DAG<a class="anchor" aria-label="anchor" href="#snakemake-dag"></a>
+</h2>
+<hr class="half-width">
+<p>When you run snakemake it creates a job plan called a DAG(directed
+asyclic graph). To build the DAG snakemake first must determine the
+target output files. The target output files are determined from the
+first rule in the Snakefile by default, but filenames passed as command
+line arguments will override this. Snakemake uses the input and output
+file settings to determine which rules need to be used to create the
+target files. Snakemake will only create jobs for rules with output
+files that do not exist or are outdated.</p>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
@@ -1678,7 +1690,7 @@ any links that you are not going to use.
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
         <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.11.8" class="external-link">sandpaper (0.11.8)</a>,
         <a href="https://github.com/carpentries/pegboard/tree/0.4.3" class="external-link">pegboard (0.4.3)</a>,
-      and <a href="https://github.com/carpentries/varnish/tree/0.2.14" class="external-link">varnish (0.2.14)</a>.</p>
+      and <a href="https://github.com/carpentries/varnish/tree/0.2.15" class="external-link">varnish (0.2.15)</a>.</p>
 			</div>
 		</footer>
 </div> <!-- / div.container -->
@@ -1699,9 +1711,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://Imageomics.github.io/snakemake-workshop/aio.html",
   "identifier": "https://Imageomics.github.io/snakemake-workshop/aio.html",
-  "dateCreated": "2023-03-12",
-  "dateModified": "2023-03-12",
-  "datePublished": "2023-03-12"
+  "dateCreated": "2023-03-13",
+  "dateModified": "2023-03-13",
+  "datePublished": "2023-03-13"
 }
 
   </script><script>
