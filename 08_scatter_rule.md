@@ -43,7 +43,6 @@ def get_image_url(wildcards):
     return base_image_url + "bj373514.jpg"
 
 rule download_image:
-    input: config["filter_multimedia"]
     params: url=get_image_url    
     output:"images/bj373514.jpg"
     shell: "wget -O {output} {params.url}"
@@ -57,7 +56,6 @@ def get_image_url(wildcards):
     return base_url + wildcards.ark_id + ".jpg"
 
 rule download_image:
-    input: config["filter_multimedia"]
     params: url=get_image_url    
     output: "images/{ark_id}.jpg"
     shell: "wget -O {output} {params.url}"
@@ -84,7 +82,6 @@ def get_image_url(wildcards):
     return url
 
 rule download_image:
-    input: config["filter_multimedia"]
     params: url=get_image_url    
     output: "images/{ark_id}.jpg"
     shell: "wget -O {output} {params.url}"
