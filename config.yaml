@@ -1,0 +1,88 @@
+#------------------------------------------------------------
+# Values for this lesson.
+#------------------------------------------------------------
+
+# Which carpentry is this (swc, dc, lc, or cp)?
+# swc: Software Carpentry
+# dc: Data Carpentry
+# lc: Library Carpentry
+# cp: Carpentries (to use for instructor traning for instance)
+# incubator: The Carpentries Incubator
+carpentry: 'incubator'
+
+# Overall title for pages.
+title: 'Imageomics Snakemake Workshop'
+
+# Date the lesson was created (YYYY-MM-DD, this is empty by default)
+created: ~
+
+# Comma-separated list of keywords for the lesson
+keywords: 'software, workflows, Imageomics'
+
+# Life cycle stage of the lesson
+# possible values: pre-alpha, alpha, beta, stable
+life_cycle: 'pre-alpha'
+
+# License of the lesson
+license: 'CC-BY 4.0'
+
+# Link to the source repository for this lesson
+source: 'https://github.com/Imageomics/snakemake-workshop'
+
+# Default branch of your lesson
+branch: 'main'
+
+# Who to contact if there are any issues
+contact: 'john.bradley@duke.edu'
+
+# Navigation ------------------------------------------------
+#
+# Use the following menu items to specify the order of
+# individual pages in each dropdown section. Leave blank to
+# include all pages in the folder.
+#
+# Example -------------
+#
+# episodes:
+# - introduction.md
+# - first-steps.md
+#
+# learners:
+# - setup.md
+#
+# instructors:
+# - instructor-notes.md
+#
+# profiles:
+# - one-learner.md
+# - another-learner.md
+
+# Order of episodes in your lesson
+episodes:
+- 01_introduction.md
+- 02_setup_project.md
+- 03_setup_env.md
+- 06_create_snakefile.md
+- 07_filter_rule.md
+- 08_scatter_rule.md
+- 09_container_rule.md
+- 10_reuse_workflow.md
+- 11_summary_rule.md
+- 12_run_on_slurm.md
+
+# Information for Learners
+learners:
+
+# Information for Instructors
+instructors:
+
+# Learner Profiles
+profiles:
+
+# Customisation ---------------------------------------------
+#
+# This space below is where custom yaml items (e.g. pinning
+# sandpaper and varnish versions) should live
+
+
+
