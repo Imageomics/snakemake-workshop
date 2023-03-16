@@ -1071,7 +1071,7 @@ contents:</p>
 <pre><code><span><span class="va">reduce_multimedia</span><span class="op">:</span> <span class="va">reduce</span><span class="op">/</span><span class="va">multimedia.csv</span></span>
 <span><span class="va">filter_multimedia</span><span class="op">:</span> <span class="va">filter</span><span class="op">/</span><span class="va">multimedia.csv</span></span></code></pre>
 <p>Then update your <code>Snakefile</code> to adding the config file
-location and using config to lookup filenames:</p>
+location and using <code>config.yaml</code> to lookup filenames:</p>
 <pre><code>configfile: "config.yaml"
 
 rule all:
