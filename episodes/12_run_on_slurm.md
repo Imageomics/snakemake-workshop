@@ -33,7 +33,7 @@ exercises: 2
   - memory
   - requires a gpu
 
-See [Snakemake threads/resources docs](https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#threads for details on how to request different resources such as threads, memory, and gpus.
+See [Snakemake threads/resources docs](https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#threads) for details on how to request different resources such as threads, memory, and gpus.
 
 ## Annotating memory requirements
 Update the reduce rule to request a specific amount of memory.
