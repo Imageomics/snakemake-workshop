@@ -31,7 +31,7 @@ exercises: 2
 
 ## Singularity Container Image URI
 
-Pulling a container with docker:
+Pulling a container with docker (won't work on OSC):
 ```
 docker pull ubuntu:kinetic-20230217
 ```
