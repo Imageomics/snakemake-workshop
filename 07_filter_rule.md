@@ -37,7 +37,7 @@ output_path <- "filter/multimedia.csv"
 ```
 
 ## Run a filtering R script
-Add a new rule to `Snakefile`:
+Add a new rule to the bottom of `Snakefile`:
 ```
 rule filter:
   input: 
