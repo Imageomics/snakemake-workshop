@@ -115,7 +115,7 @@ reduce_multimedia: reduce/multimedia.csv
 filter_multimedia: filter/multimedia.csv
 ```
 
-Then update your `Snakefile` to adding the config file location and using config to lookup filenames:
+Then update your `Snakefile` to adding the config file location and using `config.yaml` to lookup filenames:
 ```
 configfile: "config.yaml"
 
