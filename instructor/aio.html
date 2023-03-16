@@ -923,7 +923,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-07_filter_rule"><p>Content from <a href="07_filter_rule.html">Add an R Script</a></p>
 <hr>
-<p> Last updated on 2023-03-12 | 
+<p> Last updated on 2023-03-16 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/07_filter_rule.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 12 minutes </p>
@@ -988,7 +988,7 @@ accommodate within RStudio.</p>
 </section><section id="run-a-filtering-r-script"><h2 class="section-heading">Run a filtering R script<a class="anchor" aria-label="anchor" href="#run-a-filtering-r-script"></a>
 </h2>
 <hr class="half-width">
-<p>Add a new rule to <code>Snakefile</code>:</p>
+<p>Add a new rule to the bottom of <code>Snakefile</code>:</p>
 <pre><code>rule filter:
   input: 
       script="Scripts/FilterImagesHardCoded.R",
