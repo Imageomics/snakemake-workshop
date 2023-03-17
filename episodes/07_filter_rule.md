@@ -37,7 +37,7 @@ output_path <- "filter/multimedia.csv"
 ```
 
 ## Run a filtering R script
-Add a new rule to `Snakefile`:
+Add a new rule to the bottom of `Snakefile`:
 ```
 rule filter:
   input: 
@@ -115,7 +115,7 @@ reduce_multimedia: reduce/multimedia.csv
 filter_multimedia: filter/multimedia.csv
 ```
 
-Then update your `Snakefile` to adding the config file location and using config to lookup filenames:
+Then update your `Snakefile` to adding the config file location and using `config.yaml` to lookup filenames:
 ```
 configfile: "config.yaml"
 
