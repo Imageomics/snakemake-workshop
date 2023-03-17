@@ -1101,7 +1101,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-08_scatter_rule"><p>Content from <a href="08_scatter_rule.html">Process multiple files</a></p>
 <hr>
-<p> Last updated on 2023-03-14 | 
+<p> Last updated on 2023-03-17 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/08_scatter_rule.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1249,6 +1249,20 @@ FileNotFoundError in file /users/PAS2136/jbradley/SnakemakeWorkflow/Snakefile, l
 </section><section id="require-a-file-exists-before-a-python-function-is-used"><h2 class="section-heading">Require a file exists before a python function is used<a class="anchor" aria-label="anchor" href="#require-a-file-exists-before-a-python-function-is-used"></a>
 </h2>
 <hr class="half-width">
+<p>To fix the <strong>FileNotFoundError</strong> error we need to inform
+Snakemake that it needs to wait for the
+<code>filter/multimedia.csv</code> file to be created before Snakemake
+runs the function.</p>
+<p>We need two changes to fix the error:</p>
+<ol style="list-style-type: decimal">
+<li>Change the <strong>filter</strong> rule to be a checkpoint instead
+of a simple rule. This is done by changing the word “rule” to
+“checkpoint”.</li>
+<li>Add code to the function requesting the output of the
+<code>filter</code> checkpoint.</li>
+</ol>
+<p>Update the <code>get_image_filenames</code> function and
+<code>filter</code> rule/checkpoint as follows:</p>
 <pre><code>def get_image_filenames(wildcards):
     filename = checkpoints.filter.get().output[0]
     df = pd.read_csv(filename)    
