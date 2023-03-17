@@ -5,17 +5,27 @@ exercises: 4
 ---
 :::::::::::::::::::::::::::::::::::::: questions 
 
-- How do I activate the Snakemake for this class?
 - How do I start an interactive job to run snakemake on a worker node?
+- How do I activate the Snakemake for this class?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::: objectives
 
+- Start an interactive session on a worker node
 - Setup the shell environment
 - Verify snakemake and R versions
-- Start an interactive session on a worker node
+
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Start Interactive Session
+Since we will be running some heavy processing starting an interactive job is important.
+Otherwise this processing would occcur on a login node and cause issues for other cluster users.
+
+Start an interactive session that will remain active for 1 hour of by running:
+```bash
+sinteractive -t 01:00:00 -A PAS2136
+```
 
 ## Software Environment Setup
 
@@ -27,7 +37,6 @@ Activate the Snakemake environment:
 ```
 NOTE: The leading dot followed by a space is important. This causes the settings in setup_env.sh to be applied
 to your current terminal session.
-
 
 Expected Output:
 ```output
@@ -60,22 +69,12 @@ Expected Output:
 R version 4.2.1 ...
 ```
 
-
-## Start Interactive Session
-Since we will be running some heavy processing starting an interactive job is important.
-Otherwise this processing would occcur on a login node and cause issues for other cluster users.
-
-Start an interactive session that will remain active for 1 hour of by running:
-```bash
-sinteractive -t 01:00:00 -A PAS2136
-```
-
 ::: callout
 ## New Terminal Sessions
-If you close your terminal and create a new one you will need to setup your environment again.
+If you close your terminal, create a new terminal, or reach the 1 hour timeout you will need to setup your environment again.
 To do so rerun the following two steps:
 ```bash
-. Scripts/setup_env.sh
 sinteractive -t 01:00:00 -A PAS2136
+. Scripts/setup_env.sh
 ```
 :::
