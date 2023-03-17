@@ -123,6 +123,16 @@ FileNotFoundError in file /users/PAS2136/jbradley/SnakemakeWorkflow/Snakefile, l
 ```
 
 ## Require a file exists before a python function is used
+To fix the __FileNotFoundError__ error we need to inform Snakemake that it needs to wait for the
+`filter/multimedia.csv` file to be created before Snakemake runs the function.
+
+We need two changes to fix the error:
+
+1. Change the __filter__ rule to be a checkpoint instead of a simple rule. This is done by changing the word "rule" to "checkpoint".
+2. Add code to the function requesting the output of the
+`filter` checkpoint.
+
+Update the `get_image_filenames` function and `filter` rule/checkpoint as follows:
 ```
 def get_image_filenames(wildcards):
     filename = checkpoints.filter.get().output[0]
