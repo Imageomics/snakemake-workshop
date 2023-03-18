@@ -154,7 +154,8 @@
         
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
-        <ul><li><a href="#workflow-language-features">Workflow language features</a></li>
+        <ul><li><a href="#workflow-challenges">Workflow Challenges</a></li>
+<li><a href="#workflow-language-features">Workflow language features</a></li>
 <li><a href="#strengths-of-snakemake">Strengths of Snakemake</a></li>
 <li><a href="#weaknesses-of-snakemake">Weaknesses of Snakemake</a></li>
 <li><a href="#class-plan">Class Plan</a></li>
@@ -296,7 +297,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Introduction</h1>
-        <p> Last updated on 2023-03-12 | 
+        <p> Last updated on 2023-03-18 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/01_introduction.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -317,7 +318,9 @@
 <div class="card-body">
 <div class="inner">
 <h3 class="card-title">Questions</h3>
-<ul><li>What problems do workflow languages solve?</li>
+<ul><li>Why not use a general purpose language like bash or python for
+writing workflows?</li>
+<li>What problems do workflow languages solve?</li>
 <li>What are the strengths and weaknesses of Snakemake?</li>
 <li>What will be covered in this workshop?</li>
 </ul></div>
@@ -334,7 +337,15 @@
 </div>
 </div>
 </div>
-<section id="workflow-language-features"><h2 class="section-heading">Workflow language features<a class="anchor" aria-label="anchor" href="#workflow-language-features"></a>
+<section id="workflow-challenges"><h2 class="section-heading">Workflow Challenges<a class="anchor" aria-label="anchor" href="#workflow-challenges"></a>
+</h2>
+<hr class="half-width"><p>Using a general purpose language like bash or python can be
+challenging:</p>
+<ul><li>Not re-running the whole pipeline every time</li>
+<li>Adapting the pipeline to run in different environments</li>
+<li>Providing dependencies for tools</li>
+<li>Tracking progress of the workflow</li>
+</ul></section><section id="workflow-language-features"><h2 class="section-heading">Workflow language features<a class="anchor" aria-label="anchor" href="#workflow-language-features"></a>
 </h2>
 <hr class="half-width"><ul><li>Portable</li>
 <li>Reproducible</li>
@@ -342,7 +353,8 @@
 <li>Reusable</li>
 </ul></section><section id="strengths-of-snakemake"><h2 class="section-heading">Strengths of Snakemake<a class="anchor" aria-label="anchor" href="#strengths-of-snakemake"></a>
 </h2>
-<hr class="half-width"><ul><li>Only creates missing or out of date files</li>
+<hr class="half-width"><ul><li>Readability</li>
+<li>Only creates missing or out of date files</li>
 <li>Flexible control over which files are created</li>
 <li>Is python with some additional rule syntax</li>
 <li>Dynamic branching
@@ -359,6 +371,7 @@
 <ul><li>Runs R scripts for filtering and final analysis</li>
 <li>Runs Machine Learning Components</li>
 <li>Efficiently processes many files at the same time</li>
+<li>Reuses an existing Snakemake workflow</li>
 </ul></li>
 </ul><!-- 
 Place links that you need to refer to multiple times across pages here. Delete
@@ -393,7 +406,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="../LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.11.10" class="external-link">sandpaper (0.11.10)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper" class="external-link">sandpaper (0.11.11.1)</a>,
         <a href="https://github.com/carpentries/pegboard/tree/0.4.3" class="external-link">pegboard (0.4.3)</a>,
       and <a href="https://github.com/carpentries/varnish/tree/0.2.15" class="external-link">varnish (0.2.15)</a>.</p>
 			</div>
@@ -415,9 +428,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://Imageomics.github.io/snakemake-workshop/instructor/01_introduction.html",
   "identifier": "https://Imageomics.github.io/snakemake-workshop/instructor/01_introduction.html",
-  "dateCreated": "2023-03-17",
-  "dateModified": "2023-03-12",
-  "datePublished": "2023-03-17"
+  "dateCreated": "2023-03-18",
+  "dateModified": "2023-03-18",
+  "datePublished": "2023-03-18"
 }
 
   </script><script>

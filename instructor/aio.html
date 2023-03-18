@@ -349,7 +349,7 @@
         
 <section id="aio-01_introduction"><p>Content from <a href="01_introduction.html">Introduction</a></p>
 <hr>
-<p> Last updated on 2023-03-12 | 
+<p> Last updated on 2023-03-18 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/01_introduction.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -363,6 +363,8 @@
 <div class="inner">
 <h3 class="card-title">Questions</h3>
 <ul>
+<li>Why not use a general purpose language like bash or python for
+writing workflows?</li>
 <li>What problems do workflow languages solve?</li>
 <li>What are the strengths and weaknesses of Snakemake?</li>
 <li>What will be covered in this workshop?</li>
@@ -383,7 +385,17 @@
 </div>
 </div>
 </div>
-<section id="workflow-language-features"><h2 class="section-heading">Workflow language features<a class="anchor" aria-label="anchor" href="#workflow-language-features"></a>
+<section id="workflow-challenges"><h2 class="section-heading">Workflow Challenges<a class="anchor" aria-label="anchor" href="#workflow-challenges"></a>
+</h2>
+<hr class="half-width">
+<p>Using a general purpose language like bash or python can be
+challenging:</p>
+<ul>
+<li>Not re-running the whole pipeline every time</li>
+<li>Adapting the pipeline to run in different environments</li>
+<li>Providing dependencies for tools</li>
+<li>Tracking progress of the workflow</li>
+</ul></section><section id="workflow-language-features"><h2 class="section-heading">Workflow language features<a class="anchor" aria-label="anchor" href="#workflow-language-features"></a>
 </h2>
 <hr class="half-width">
 <ul>
@@ -395,6 +407,7 @@
 </h2>
 <hr class="half-width">
 <ul>
+<li>Readability</li>
 <li>Only creates missing or out of date files</li>
 <li>Flexible control over which files are created</li>
 <li>Is python with some additional rule syntax</li>
@@ -419,6 +432,7 @@
 <li>Runs R scripts for filtering and final analysis</li>
 <li>Runs Machine Learning Components</li>
 <li>Efficiently processes many files at the same time</li>
+<li>Reuses an existing Snakemake workflow</li>
 </ul>
 </li>
 </ul>
@@ -1105,7 +1119,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-08_scatter_rule"><p>Content from <a href="08_scatter_rule.html">Process multiple files</a></p>
 <hr>
-<p> Last updated on 2023-03-17 | 
+<p> Last updated on 2023-03-18 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/08_scatter_rule.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 12 minutes </p>
@@ -1153,13 +1167,16 @@ running a python function.</li>
 change can be time intensive. To help with this snakemake has a
 <code>--dry-run</code> flag that will validate the
 <code>Snakefile</code> and show what it would do. Try this now:</p>
-<pre><code>snakemake -c1 --dry-run
-``
-
-## Use wget to download an image
-```bash
-head -n 2 filter/multimedia.csv
-wget -O test.jpg https://bgnn.tulane.edu/hdr-share/ftp/ark/89609/GLIN/FMNH/bj373514.jpg</code></pre>
+<pre><code><span><span class="va">snakemake</span> <span class="op">-</span><span class="va">c1</span> <span class="op">-</span><span class="op">-</span><span class="va">dry</span><span class="op">-</span><span class="va">run</span></span></code></pre>
+</section><section id="use-wget-to-download-an-image"><h2 class="section-heading">Use wget to download an image<a class="anchor" aria-label="anchor" href="#use-wget-to-download-an-image"></a>
+</h2>
+<hr class="half-width">
+<div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 2 filter/multimedia.csv</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">-O</span> test.jpg https://bgnn.tulane.edu/hdr-share/ftp/ark/89609/GLIN/FMNH/bj373514.jpg</span></code></pre>
+</div>
 </section><section id="create-a-rule-that-uses-a-python-function"><h2 class="section-heading">Create a rule that uses a python function<a class="anchor" aria-label="anchor" href="#create-a-rule-that-uses-a-python-function"></a>
 </h2>
 <hr class="half-width">
@@ -1187,10 +1204,10 @@ rule download_image:
     output: "images/{ark_id}.jpg"
     shell: "wget -O {output} {params.url}"</code></pre>
 <p>Run this rule:</p>
-<div class="codewrapper sourceCode" id="cb4">
+<div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> images/hd529k3h.jpg</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> images/hd529k3h.jpg</span></code></pre>
 </div>
 </section><section id="add-python-logic-to-lookup-the-url"><h2 class="section-heading">Add python logic to lookup the URL<a class="anchor" aria-label="anchor" href="#add-python-logic-to-lookup-the-url"></a>
 </h2>
@@ -1212,11 +1229,11 @@ rule download_image:
     shell: "wget -O {output} {params.url}"</code></pre>
 <p>Run this rule for a couple files after deleting the images
 directory:</p>
-<div class="codewrapper sourceCode" id="cb7">
+<div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> images</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> images/bj373514.jpg images/hd529k3h.jpg</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> images</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> images/bj373514.jpg images/hd529k3h.jpg</span></code></pre>
 </div>
 </section><section id="updating-all-rule"><h2 class="section-heading">Updating all rule<a class="anchor" aria-label="anchor" href="#updating-all-rule"></a>
 </h2>
@@ -1229,19 +1246,19 @@ directory:</p>
 
 rule all:
     input: get_image_filenames</code></pre>
-<div class="codewrapper sourceCode" id="cb9">
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span></span></code></pre>
 </div>
 </section><section id="test-starting-from-scratch"><h2 class="section-heading">Test starting from scratch<a class="anchor" aria-label="anchor" href="#test-starting-from-scratch"></a>
 </h2>
 <hr class="half-width">
-<div class="codewrapper sourceCode" id="cb10">
+<div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> reduce filter images</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> reduce filter images</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1708,7 +1725,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="../LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.11.10" class="external-link">sandpaper (0.11.10)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper" class="external-link">sandpaper (0.11.11.1)</a>,
         <a href="https://github.com/carpentries/pegboard/tree/0.4.3" class="external-link">pegboard (0.4.3)</a>,
       and <a href="https://github.com/carpentries/varnish/tree/0.2.15" class="external-link">varnish (0.2.15)</a>.</p>
 			</div>
@@ -1731,9 +1748,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://Imageomics.github.io/snakemake-workshop/instructor/aio.html",
   "identifier": "https://Imageomics.github.io/snakemake-workshop/instructor/aio.html",
-  "dateCreated": "2023-03-17",
-  "dateModified": "2023-03-17",
-  "datePublished": "2023-03-17"
+  "dateCreated": "2023-03-18",
+  "dateModified": "2023-03-18",
+  "datePublished": "2023-03-18"
 }
 
   </script><script>
