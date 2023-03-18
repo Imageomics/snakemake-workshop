@@ -44,9 +44,11 @@ def get_image_url(wildcards):
 
 rule download_image:
     params: url=get_image_url    
-    output:"images/bj373514.jpg"
+    output: "images/bj373514.jpg"
     shell: "wget -O {output} {params.url}"
 ```
+
+NOTE: Make sure you are using `-O` and not `-o` for the `wget` argument.
 
 ## Make the rule generic with a pattern rule
 Change this rule to be a pattern rule by adding a wildcard expression in an output filename.
@@ -146,4 +148,18 @@ checkpoint filter:
       fishes=config["reduce_multimedia"]
   output: config["filter_multimedia"]
   shell: "Rscript {input.script}"
+```
+
+
+## Ensure the downloaded files are jpg
+```bash
+file images/*
+```
+```output
+images/88624536.jpg: JPEG image data, EXIF standard
+images/9x56f44c.jpg: JPEG image data, EXIF standard
+images/bj373514.jpg: JPEG image data, EXIF standard
+images/dp60604r.jpg: JPEG image data, EXIF standard
+images/hd529k3h.jpg: JPEG image data, EXIF standard
+images/t868dr68.jpg: JPEG image data, EXIF standard
 ```
