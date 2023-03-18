@@ -27,7 +27,7 @@ To help with this snakemake has a `--dry-run` flag that will validate the `Snake
 Try this now:
 ```
 snakemake -c1 --dry-run
-``
+```
 
 ## Use wget to download an image
 ```bash
