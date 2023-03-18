@@ -31,8 +31,9 @@ Main parts of a Snakemake Rule used in this workshop
 - __input__ - input filenames used by a command
 - __params__ - input parameter (non-file) values used by a command
 - __output__ - output filenames created by a command
-- __shell__ - command to run
 - __container__ - singularity container to run command within
+- __shell__ - command to run
+
 
 Rule pattern:
 
@@ -41,8 +42,9 @@ rule <name>:
     input: ...
     params: ...
     output: ...
-    shell: ...
     container: ...
+    shell: ...
+
 ```
 
 ## Create a Snakemake Workflow

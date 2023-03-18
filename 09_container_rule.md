@@ -32,16 +32,24 @@ exercises: 2
 ## Singularity Container Image URI
 
 Pulling a container with docker (won't work on OSC):
+```bash
+docker pull alpine:3
 ```
-docker pull ubuntu:kinetic-20230217
+```output
+bash: docker: command not found
 ```
 
 Pulling a docker container with singularity:
 ```
-singularity pull docker://ubuntu:kinetic-20230217
+singularity pull docker://alpine:3
 ```
+Singularity supports multiple container types so you must prefix docker container image URIs with `docker://`.
+
 
 ## Use container when downloading images
+Update the download_image rule to use the docker container image URI
+`quay.io/biocontainers/gnu-wget:1.18--h60da905_7`.
+
 
 ```
 rule download_image:
@@ -52,7 +60,7 @@ rule download_image:
     shell: "wget -O {output} {params.url}"
 ```
 
-
+NOTE: You must put the `container` line before the `shell` line.
 
 Delete an image then run snakemake passing the --use-singularity flag
 ```bash
