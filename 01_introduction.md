@@ -5,6 +5,7 @@ teaching: 10
 
 :::::::::::::::::::::::::::::::::::::: questions 
 
+- Why not use a general purpose language like bash or python for writing workflows?
 - What problems do workflow languages solve?
 - What are the strengths and weaknesses of Snakemake?
 - What will be covered in this workshop?
@@ -17,6 +18,14 @@ teaching: 10
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
+## Workflow Challenges
+Using a general purpose language like bash or python can be challenging:
+
+- Not re-running the whole pipeline every time
+- Adapting the pipeline to run in different environments
+- Providing dependencies for tools
+- Tracking progress of the workflow
+
 ## Workflow language features
 - Portable
 - Reproducible
@@ -24,6 +33,7 @@ teaching: 10
 - Reusable
 
 ## Strengths of Snakemake
+- Readability
 - Only creates missing or out of date files
 - Flexible control over which files are created 
 - Is python with some additional rule syntax
@@ -40,3 +50,4 @@ teaching: 10
   - Runs R scripts for filtering and final analysis
   - Runs Machine Learning Components
   - Efficiently processes many files at the same time
+  - Reuses an existing Snakemake workflow
