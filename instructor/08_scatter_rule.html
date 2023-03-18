@@ -207,6 +207,7 @@
 <li><a href="#updating-all-rule">Updating all rule</a></li>
 <li><a href="#test-starting-from-scratch">Test starting from scratch</a></li>
 <li><a href="#require-a-file-exists-before-a-python-function-is-used">Require a file exists before a python function is used</a></li>
+<li><a href="#ensure-the-downloaded-files-are-jpg">Ensure the downloaded files are jpg</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
         
@@ -369,8 +370,10 @@ param:</p>
 
 rule download_image:
     params: url=get_image_url    
-    output:"images/bj373514.jpg"
+    output: "images/bj373514.jpg"
     shell: "wget -O {output} {params.url}"</code></pre>
+<p>NOTE: Make sure you are using <code>-O</code> and not <code>-o</code>
+for the <code>wget</code> argument.</p>
 </section><section id="make-the-rule-generic-with-a-pattern-rule"><h2 class="section-heading">Make the rule generic with a pattern rule<a class="anchor" aria-label="anchor" href="#make-the-rule-generic-with-a-pattern-rule"></a>
 </h2>
 <hr class="half-width"><p>Change this rule to be a pattern rule by adding a wildcard expression
@@ -471,6 +474,23 @@ checkpoint filter:
       fishes=config["reduce_multimedia"]
   output: config["filter_multimedia"]
   shell: "Rscript {input.script}"</code></pre>
+</section><section id="ensure-the-downloaded-files-are-jpg"><h2 class="section-heading">Ensure the downloaded files are jpg<a class="anchor" aria-label="anchor" href="#ensure-the-downloaded-files-are-jpg"></a>
+</h2>
+<hr class="half-width"><div class="codewrapper sourceCode" id="cb14">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">file</span> images/<span class="pp">*</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>images/88624536.jpg: JPEG image data, EXIF standard
+images/9x56f44c.jpg: JPEG image data, EXIF standard
+images/bj373514.jpg: JPEG image data, EXIF standard
+images/dp60604r.jpg: JPEG image data, EXIF standard
+images/hd529k3h.jpg: JPEG image data, EXIF standard
+images/t868dr68.jpg: JPEG image data, EXIF standard</code></pre>
+</div>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 

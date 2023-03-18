@@ -295,7 +295,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Use a container</h1>
-        <p> Last updated on 2023-03-16 | 
+        <p> Last updated on 2023-03-18 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/09_container_rule.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -351,24 +351,39 @@ snakemake ?</li>
 </ul></section><section id="singularity-container-image-uri"><h2 class="section-heading">Singularity Container Image URI<a class="anchor" aria-label="anchor" href="#singularity-container-image-uri"></a>
 </h2>
 <hr class="half-width"><p>Pulling a container with docker (won’t work on OSC):</p>
-<pre><code>docker pull ubuntu:kinetic-20230217</code></pre>
+<div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull alpine:3</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>bash: docker: command not found</code></pre>
+</div>
 <p>Pulling a docker container with singularity:</p>
-<pre><code>singularity pull docker://ubuntu:kinetic-20230217</code></pre>
+<pre><code>singularity pull docker://alpine:3</code></pre>
+<p>Singularity supports multiple container types so you must prefix
+docker container image URIs with <code>docker://</code>.</p>
 </section><section id="use-container-when-downloading-images"><h2 class="section-heading">Use container when downloading images<a class="anchor" aria-label="anchor" href="#use-container-when-downloading-images"></a>
 </h2>
-<hr class="half-width"><pre><code>rule download_image:
+<hr class="half-width"><p>Update the download_image rule to use the docker container image URI
+<code>quay.io/biocontainers/gnu-wget:1.18--h60da905_7</code>.</p>
+<pre><code>rule download_image:
     input: config["filter_multimedia"]
     params: url=get_image_url    
     output:'Images/{ark_id}.jpg'
     container: "docker://quay.io/biocontainers/gnu-wget:1.18--h60da905_7"    
     shell: "wget -O {output} {params.url}"</code></pre>
+<p>NOTE: You must put the <code>container</code> line before the
+<code>shell</code> line.</p>
 <p>Delete an image then run snakemake passing the –use-singularity
 flag</p>
-<div class="codewrapper sourceCode" id="cb4">
+<div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> images/hd529k3h.jpg</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--use-singularity</span> images/hd529k3h.jpg</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> images/hd529k3h.jpg</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--use-singularity</span> images/hd529k3h.jpg</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -437,7 +452,7 @@ any links that you are not going to use.
   "url": "https://Imageomics.github.io/snakemake-workshop/instructor/09_container_rule.html",
   "identifier": "https://Imageomics.github.io/snakemake-workshop/instructor/09_container_rule.html",
   "dateCreated": "2023-03-18",
-  "dateModified": "2023-03-16",
+  "dateModified": "2023-03-18",
   "datePublished": "2023-03-18"
 }
 
