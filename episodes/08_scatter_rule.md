@@ -63,7 +63,7 @@ rule download_image:
 
 Run this rule:
 ```bash
-snakemake -c1 images/hd529k3h.jpg
+snakemake -c1 --dry-run images/hd529k3h.jpg
 ```
 
 ## Add python logic to lookup the URL
@@ -89,7 +89,6 @@ rule download_image:
 
 Run this rule for a couple files after deleting the images directory:
 ```bash
-rm -rf images
 snakemake -c1 images/bj373514.jpg images/hd529k3h.jpg
 ```
 
