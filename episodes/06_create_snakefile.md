@@ -50,9 +50,9 @@ rule <name>:
 ## Create a Snakemake Workflow
 For our first step we will reduce the size of the __multimedia.csv__ input file
 saving the result as __reduce/multimedia.csv__. This CSV file contains a header line followed by
-data lines. So to save the first 20 data lines we will need the first 21 lines in total.
-This can be accomplished with the shell `head` command passing the `--n 21` argument.
-Run the following command in your terminal to see the first 21 lines printed out.
+data lines. So to save the first 10 data lines we will need the first 11 lines in total.
+This can be accomplished with the shell `head` command passing the `--n 11` argument.
+Run the following command in your terminal to see the first 11 lines printed out.
 ```bash
 head -n 11 multimedia.csv
 ```
@@ -150,7 +150,7 @@ rule reduce:
 ```
 
 ## Represent non-file inputs using a param
-Currently the reduce rule grabs the top 21 rows. Since the meaning of this number may not be obvious and we are likely to change this number in the future a better option is to use this non-file input as a param. 
+Currently the reduce rule grabs the top 11 rows. Since the meaning of this number may not be obvious and we are likely to change this number in the future a better option is to use this non-file input as a param.
 
 Add a new `params` setting to the `rule` and use the `params.rows` wildcard in the shell as follows:
 ```

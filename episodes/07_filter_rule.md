@@ -124,7 +124,7 @@ rule all:
 
 rule reduce:
   input: "multimedia.csv"
-  params: rows="21"  
+  params: rows="11"
   output: config["reduce_multimedia"]
   shell: "head -n {params.rows} {input} > {output}"
 
