@@ -298,7 +298,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Create a Workflow</h1>
-        <p> Last updated on 2023-03-18 | 
+        <p> Last updated on 2023-03-19 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/06_create_snakefile.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -371,10 +371,10 @@ within</li>
 <hr class="half-width"><p>For our first step we will reduce the size of the
 <strong>multimedia.csv</strong> input file saving the result as
 <strong>reduce/multimedia.csv</strong>. This CSV file contains a header
-line followed by data lines. So to save the first 20 data lines we will
-need the first 21 lines in total. This can be accomplished with the
-shell <code>head</code> command passing the <code>--n 21</code>
-argument. Run the following command in your terminal to see the first 21
+line followed by data lines. So to save the first 10 data lines we will
+need the first 11 lines in total. This can be accomplished with the
+shell <code>head</code> command passing the <code>--n 11</code>
+argument. Run the following command in your terminal to see the first 11
 lines printed out.</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -475,7 +475,7 @@ follows:</p>
     shell: "head -n 11 {input} &gt; {output}"</code></pre>
 </section><section id="represent-non-file-inputs-using-a-param"><h2 class="section-heading">Represent non-file inputs using a param<a class="anchor" aria-label="anchor" href="#represent-non-file-inputs-using-a-param"></a>
 </h2>
-<hr class="half-width"><p>Currently the reduce rule grabs the top 21 rows. Since the meaning of
+<hr class="half-width"><p>Currently the reduce rule grabs the top 11 rows. Since the meaning of
 this number may not be obvious and we are likely to change this number
 in the future a better option is to use this non-file input as a
 param.</p>
@@ -569,9 +569,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://Imageomics.github.io/snakemake-workshop/06_create_snakefile.html",
   "identifier": "https://Imageomics.github.io/snakemake-workshop/06_create_snakefile.html",
-  "dateCreated": "2023-03-18",
-  "dateModified": "2023-03-18",
-  "datePublished": "2023-03-18"
+  "dateCreated": "2023-03-19",
+  "dateModified": "2023-03-19",
+  "datePublished": "2023-03-19"
 }
 
   </script><script>

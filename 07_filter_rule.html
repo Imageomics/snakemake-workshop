@@ -301,7 +301,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Add an R Script</h1>
-        <p> Last updated on 2023-03-16 | 
+        <p> Last updated on 2023-03-19 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/07_filter_rule.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -453,7 +453,7 @@ rule all:
 
 rule reduce:
   input: "multimedia.csv"
-  params: rows="21"  
+  params: rows="11"
   output: config["reduce_multimedia"]
   shell: "head -n {params.rows} {input} &gt; {output}"
 
@@ -525,9 +525,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://Imageomics.github.io/snakemake-workshop/07_filter_rule.html",
   "identifier": "https://Imageomics.github.io/snakemake-workshop/07_filter_rule.html",
-  "dateCreated": "2023-03-18",
-  "dateModified": "2023-03-16",
-  "datePublished": "2023-03-18"
+  "dateCreated": "2023-03-19",
+  "dateModified": "2023-03-19",
+  "datePublished": "2023-03-19"
 }
 
   </script><script>

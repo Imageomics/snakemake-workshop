@@ -710,7 +710,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-06_create_snakefile"><p>Content from <a href="06_create_snakefile.html">Create a Workflow</a></p>
 <hr>
-<p> Last updated on 2023-03-18 | 
+<p> Last updated on 2023-03-19 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/06_create_snakefile.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 12 minutes </p>
@@ -786,10 +786,10 @@ within</li>
 <p>For our first step we will reduce the size of the
 <strong>multimedia.csv</strong> input file saving the result as
 <strong>reduce/multimedia.csv</strong>. This CSV file contains a header
-line followed by data lines. So to save the first 20 data lines we will
-need the first 21 lines in total. This can be accomplished with the
-shell <code>head</code> command passing the <code>--n 21</code>
-argument. Run the following command in your terminal to see the first 21
+line followed by data lines. So to save the first 10 data lines we will
+need the first 11 lines in total. This can be accomplished with the
+shell <code>head</code> command passing the <code>--n 11</code>
+argument. Run the following command in your terminal to see the first 11
 lines printed out.</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -893,7 +893,7 @@ follows:</p>
 </section><section id="represent-non-file-inputs-using-a-param"><h2 class="section-heading">Represent non-file inputs using a param<a class="anchor" aria-label="anchor" href="#represent-non-file-inputs-using-a-param"></a>
 </h2>
 <hr class="half-width">
-<p>Currently the reduce rule grabs the top 21 rows. Since the meaning of
+<p>Currently the reduce rule grabs the top 11 rows. Since the meaning of
 this number may not be obvious and we are likely to change this number
 in the future a better option is to use this non-file input as a
 param.</p>
@@ -938,7 +938,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-07_filter_rule"><p>Content from <a href="07_filter_rule.html">Add an R Script</a></p>
 <hr>
-<p> Last updated on 2023-03-16 | 
+<p> Last updated on 2023-03-19 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/07_filter_rule.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 12 minutes </p>
@@ -1098,7 +1098,7 @@ rule all:
 
 rule reduce:
   input: "multimedia.csv"
-  params: rows="21"  
+  params: rows="11"
   output: config["reduce_multimedia"]
   shell: "head -n {params.rows} {input} &gt; {output}"
 
@@ -1783,9 +1783,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://Imageomics.github.io/snakemake-workshop/instructor/aio.html",
   "identifier": "https://Imageomics.github.io/snakemake-workshop/instructor/aio.html",
-  "dateCreated": "2023-03-18",
-  "dateModified": "2023-03-18",
-  "datePublished": "2023-03-18"
+  "dateCreated": "2023-03-19",
+  "dateModified": "2023-03-19",
+  "datePublished": "2023-03-19"
 }
 
   </script><script>
