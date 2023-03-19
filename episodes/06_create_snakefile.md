@@ -54,18 +54,18 @@ data lines. So to save the first 20 data lines we will need the first 21 lines i
 This can be accomplished with the shell `head` command passing the `--n 21` argument.
 Run the following command in your terminal to see the first 21 lines printed out.
 ```bash
-head -n 11 multimedia.csv
+head -n 21 multimedia.csv
 ```
 To save this output we will change the command like so:
 
-`head -n 11 multimedia.csv > reduce/multimedia.csv`
+`head -n 21 multimedia.csv > reduce/multimedia.csv`
 
 Create a text file named `Snakefile` with the following contents:
 ```
 rule reduce:
     input: "multimedia.csv"
     output: "reduce/multimedia.csv"
-    shell: "head -n 11 multimedia.csv > reduce/multimedia.csv"
+    shell: "head -n 21 multimedia.csv > reduce/multimedia.csv"
 ```
 This code creates a Snakemake rule named __reduce__ with a input file __multimedia.csv__, a output file __reduce/multimedia.csv__, and the shell command from above.
 Snakemake will automatically create the reduce directory for us before running the shell command.
@@ -146,7 +146,7 @@ Change the `shell` line in the `Snakefile` as follows:
 rule reduce:
     input: "multimedia.csv"
     output: "reduce/multimedia.csv"
-    shell: "head -n 11 {input} > {output}"
+    shell: "head -n 21 {input} > {output}"
 ```
 
 ## Represent non-file inputs using a param
@@ -156,7 +156,7 @@ Add a new `params` setting to the `rule` and use the `params.rows` wildcard in t
 ```
 rule reduce:
   input: "multimedia.csv"
-  params: rows="11"  
+  params: rows="21"  
   output: "reduce/multimedia.csv"
   shell: "head -n {params.rows} {input} > {output}"
 ```
