@@ -100,7 +100,7 @@ rm filter/multimedia.csv
 snakemake -c1
 ```
 
-## See how the R script will reads from the config file:
+## See how the R script reads from the config file:
 ```bash
 head Scripts/FilterImages.R
 ```
