@@ -1120,7 +1120,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-08_scatter_rule"><p>Content from <a href="08_scatter_rule.html">Process multiple files</a></p>
 <hr>
-<p> Last updated on 2023-03-18 | 
+<p> Last updated on 2023-03-20 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/08_scatter_rule.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 12 minutes </p>
@@ -1217,8 +1217,8 @@ rule download_image:
 <hr class="half-width">
 <p>Add a pandas import to the top of <code>Snakefile</code>:</p>
 <pre><code>import pandas as pd</code></pre>
-<p>Change the <code>get_image_url</code> function to read the CSV
-file:</p>
+<p>Change the <code>get_image_url</code> function to read the CSV file
+and add the file as a rule input:</p>
 <pre><code>def get_image_url(wildcards):
     filename = config["filter_multimedia"]
     df = pd.read_csv(filename)
@@ -1227,6 +1227,7 @@ file:</p>
     return url
 
 rule download_image:
+    input: config["filter_multimedia"]
     params: url=get_image_url    
     output: "images/{ark_id}.jpg"
     shell: "wget -O {output} {params.url}"</code></pre>
@@ -1324,7 +1325,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-09_container_rule"><p>Content from <a href="09_container_rule.html">Use a container</a></p>
 <hr>
-<p> Last updated on 2023-03-18 | 
+<p> Last updated on 2023-03-20 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/09_container_rule.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 12 minutes </p>
@@ -1371,7 +1372,7 @@ snakemake ?</li>
 <li>support for
 <ul>
 <li>docker container images</li>
-<li>singularity containers images</li>
+<li>singularity container images</li>
 </ul>
 </li>
 </ul>
@@ -1437,7 +1438,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-10_reuse_workflow"><p>Content from <a href="10_reuse_workflow.html">Reuse another workflow</a></p>
 <hr>
-<p> Last updated on 2023-03-08 | 
+<p> Last updated on 2023-03-20 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/10_reuse_workflow.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 12 minutes </p>
@@ -1536,7 +1537,7 @@ rule download_image:
 <hr class="half-width">
 <pre><code>use rule generate_metadata from bgnn_core
 use rule transform_metadata from bgnn_core
-use rule crop_image from bgnn_core with:
+use rule crop_image from bgnn_core
 use rule segment_image from bgnn_core</code></pre>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1783,9 +1784,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://Imageomics.github.io/snakemake-workshop/instructor/aio.html",
   "identifier": "https://Imageomics.github.io/snakemake-workshop/instructor/aio.html",
-  "dateCreated": "2023-03-19",
-  "dateModified": "2023-03-19",
-  "datePublished": "2023-03-19"
+  "dateCreated": "2023-03-20",
+  "dateModified": "2023-03-20",
+  "datePublished": "2023-03-20"
 }
 
   </script><script>

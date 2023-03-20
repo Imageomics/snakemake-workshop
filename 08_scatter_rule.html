@@ -301,7 +301,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Process multiple files</h1>
-        <p> Last updated on 2023-03-18 | 
+        <p> Last updated on 2023-03-20 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/08_scatter_rule.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -394,8 +394,8 @@ rule download_image:
 </h2>
 <hr class="half-width"><p>Add a pandas import to the top of <code>Snakefile</code>:</p>
 <pre><code>import pandas as pd</code></pre>
-<p>Change the <code>get_image_url</code> function to read the CSV
-file:</p>
+<p>Change the <code>get_image_url</code> function to read the CSV file
+and add the file as a rule input:</p>
 <pre><code>def get_image_url(wildcards):
     filename = config["filter_multimedia"]
     df = pd.read_csv(filename)
@@ -404,6 +404,7 @@ file:</p>
     return url
 
 rule download_image:
+    input: config["filter_multimedia"]
     params: url=get_image_url    
     output: "images/{ark_id}.jpg"
     shell: "wget -O {output} {params.url}"</code></pre>
@@ -545,9 +546,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://Imageomics.github.io/snakemake-workshop/08_scatter_rule.html",
   "identifier": "https://Imageomics.github.io/snakemake-workshop/08_scatter_rule.html",
-  "dateCreated": "2023-03-19",
-  "dateModified": "2023-03-18",
-  "datePublished": "2023-03-19"
+  "dateCreated": "2023-03-20",
+  "dateModified": "2023-03-20",
+  "datePublished": "2023-03-20"
 }
 
   </script><script>
