@@ -59,6 +59,14 @@ Complete log: .snakemake/log/2023-02-28T164348.500545.snakemake.log
 ```
 Snakemake didn't create the `filter/multimedia.csv` because the default target in snakemake is the first rule.
 
+## Snakemake DAG
+
+When you run snakemake it creates a job plan called a DAG (directed acyclic graph).
+To build the DAG, Snakemake first must determine the target output files.
+The target output files are determined from the first rule in the Snakefile by default, but filenames passed as command line arguments will override this.
+Snakemake uses the input and output file settings to determine which rules need to be used to create the target files.
+Snakemake will only create jobs for rules with output files that do not exist or are outdated.
+
 ## Default target
 So unless you specify another target snakemake will 
 The First rule in a Snakefile is the default target.

@@ -31,7 +31,7 @@ snakemake -c1 --dry-run
 
 ## Use wget to download an image
 ```bash
-head -n 2 filter/multimedia.csv
+head -n 3 multimedia.csv
 wget -O test.jpg https://bgnn.tulane.edu/hdr-share/ftp/ark/89609/GLIN/FMNH/bj373514.jpg
 ```
 
