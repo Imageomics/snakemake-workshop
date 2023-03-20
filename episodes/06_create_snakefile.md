@@ -14,10 +14,10 @@ exercises: 6
 ::::::::::::::::::::::::::::::::::::: objectives
 
 - Create a workflow with a single rule
-- Reduce filename duplication using __wildcards__
-- Represent non-file inputs using a __param__
 - Run a snakemake workflow
 - Understand snakemake output
+- Reduce filename duplication using __wildcards__
+- Represent non-file inputs using a __param__
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
