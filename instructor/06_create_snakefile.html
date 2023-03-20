@@ -181,12 +181,11 @@
         
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
-        <ul><li><a href="#snakemake-rule-parts">Snakemake Rule Parts</a></li>
+        <ul><li><a href="#snakemake-workflow">Snakemake Workflow</a></li>
 <li><a href="#create-a-snakemake-workflow">Create a Snakemake Workflow</a></li>
 <li><a href="#run-the-workflow">Run the Workflow</a></li>
 <li><a href="#reduce-duplication-using-wildcards">Reduce duplication using wildcards</a></li>
 <li><a href="#represent-non-file-inputs-using-a-param">Represent non-file inputs using a param</a></li>
-<li><a href="#snakemake-dag">Snakemake DAG</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
         
@@ -298,13 +297,13 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Create a Workflow</h1>
-        <p> Last updated on 2023-03-19 | 
+        <p> Last updated on 2023-03-20 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/06_create_snakefile.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
         
         
-        <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 12 minutes </p>
+        <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 16 minutes </p>
         
         <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
@@ -319,10 +318,8 @@
 <div class="card-body">
 <div class="inner">
 <h3 class="card-title">Questions</h3>
-<ul><li>What are the main parts of a Snakemake Rule?</li>
-<li>How do you create a Snakemake Workflow?</li>
+<ul><li>How do you create a Snakemake Workflow?</li>
 <li>How do you run a Snakemake Workflow?</li>
-<li>How does Snakemake create a job plan from rules?</li>
 </ul></div>
 </div>
 </div>
@@ -330,8 +327,7 @@
 <div class="card-body">
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
-<ul><li>Create a Snakemake Rule that uses an <strong>input</strong> file,
-<strong>output</strong> file and a <strong>shell</strong> command.</li>
+<ul><li>Create a workflow with a single rule</li>
 <li>Reduce filename duplication using <strong>wildcards</strong>
 </li>
 <li>Represent non-file inputs using a <strong>param</strong>
@@ -343,16 +339,17 @@
 </div>
 </div>
 </div>
-<section id="snakemake-rule-parts"><h2 class="section-heading">Snakemake Rule Parts<a class="anchor" aria-label="anchor" href="#snakemake-rule-parts"></a>
+<section id="snakemake-workflow"><h2 class="section-heading">Snakemake Workflow<a class="anchor" aria-label="anchor" href="#snakemake-workflow"></a>
 </h2>
-<hr class="half-width"><p>Main parts of a Snakemake Rule used in this workshop</p>
+<hr class="half-width"><p>A Snakemake workflow is a list of rules.</p>
+<p>Commonly used parts of a rule are:</p>
 <ul><li>
 <strong>name</strong> - unique name for a rule</li>
 <li>
 <strong>input</strong> - input filenames used by a command</li>
 <li>
-<strong>params</strong> - input parameter (non-file) values used by
-a command</li>
+<strong>params</strong> - non-file input values used by a
+command</li>
 <li>
 <strong>output</strong> - output filenames created by a command</li>
 <li>
@@ -505,16 +502,6 @@ well.</p>
     reason: Code has changed since last execution; Params have changed since last execution
 ...</code></pre>
 </div>
-</section><section id="snakemake-dag"><h2 class="section-heading">Snakemake DAG<a class="anchor" aria-label="anchor" href="#snakemake-dag"></a>
-</h2>
-<hr class="half-width"><p>When you run snakemake it creates a job plan called a DAG (directed
-acyclic graph). To build the DAG, Snakemake first must determine the
-target output files. The target output files are determined from the
-first rule in the Snakefile by default, but filenames passed as command
-line arguments will override this. Snakemake uses the input and output
-file settings to determine which rules need to be used to create the
-target files. Snakemake will only create jobs for rules with output
-files that do not exist or are outdated.</p>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
@@ -572,7 +559,7 @@ any links that you are not going to use.
   "url": "https://Imageomics.github.io/snakemake-workshop/instructor/06_create_snakefile.html",
   "identifier": "https://Imageomics.github.io/snakemake-workshop/instructor/06_create_snakefile.html",
   "dateCreated": "2023-03-20",
-  "dateModified": "2023-03-19",
+  "dateModified": "2023-03-20",
   "datePublished": "2023-03-20"
 }
 

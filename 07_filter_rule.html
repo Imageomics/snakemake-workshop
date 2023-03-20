@@ -85,11 +85,11 @@
   Imageomics Snakemake Workshop
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: 31%" class="percentage">
-    31%
+<aside class="col-md-12 lesson-progress"><div style="width: 33%" class="percentage">
+    33%
   </div>
   <div class="progress incubator">
-    <div class="progress-bar incubator" role="progressbar" style="width: 31%" aria-valuenow="31" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar incubator" role="progressbar" style="width: 33%" aria-valuenow="33" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -193,6 +193,7 @@
         <ul><li><a href="#rstudio-friendly-rules">RStudio friendly Rules</a></li>
 <li><a href="#see-the-hard-coded-paths-in-the-r-script">See the hard coded paths in the R script</a></li>
 <li><a href="#run-a-filtering-r-script">Run a filtering R script</a></li>
+<li><a href="#snakemake-dag">Snakemake DAG</a></li>
 <li><a href="#default-target">Default target</a></li>
 <li><a href="#run-snakemake-specifying-a-specific-target">Run snakemake specifying a specific target</a></li>
 <li><a href="#run-snakemake-specifying-a-non-existant-target">Run snakemake specifying a non-existant target</a></li>
@@ -301,7 +302,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Add an R Script</h1>
-        <p> Last updated on 2023-03-19 | 
+        <p> Last updated on 2023-03-20 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/07_filter_rule.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -386,6 +387,16 @@ Complete log: .snakemake/log/2023-02-28T164348.500545.snakemake.log</code></pre>
 </div>
 <p>Snakemake didn’t create the <code>filter/multimedia.csv</code>
 because the default target in snakemake is the first rule.</p>
+</section><section id="snakemake-dag"><h2 class="section-heading">Snakemake DAG<a class="anchor" aria-label="anchor" href="#snakemake-dag"></a>
+</h2>
+<hr class="half-width"><p>When you run snakemake it creates a job plan called a DAG (directed
+acyclic graph). To build the DAG, Snakemake first must determine the
+target output files. The target output files are determined from the
+first rule in the Snakefile by default, but filenames passed as command
+line arguments will override this. Snakemake uses the input and output
+file settings to determine which rules need to be used to create the
+target files. Snakemake will only create jobs for rules with output
+files that do not exist or are outdated.</p>
 </section><section id="default-target"><h2 class="section-heading">Default target<a class="anchor" aria-label="anchor" href="#default-target"></a>
 </h2>
 <hr class="half-width"><p>So unless you specify another target snakemake will The First rule in
@@ -526,7 +537,7 @@ any links that you are not going to use.
   "url": "https://Imageomics.github.io/snakemake-workshop/07_filter_rule.html",
   "identifier": "https://Imageomics.github.io/snakemake-workshop/07_filter_rule.html",
   "dateCreated": "2023-03-20",
-  "dateModified": "2023-03-19",
+  "dateModified": "2023-03-20",
   "datePublished": "2023-03-20"
 }
 
