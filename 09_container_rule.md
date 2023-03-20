@@ -1,14 +1,14 @@
 ---
 title: "Use a container"
-teaching: 10
-exercises: 2
+teaching: 5
+exercises: 3
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 
 
-- How can I specify a container for a rule?
-- How do you change a docker image URI into a singularity image URI?
-- What command line argument is required to enable containers for snakemake ? 
+- How can I make my workflow more reproducible?
+- How do you use a docker image with Snakemake?
+- How do I enable containers with snakemake?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
