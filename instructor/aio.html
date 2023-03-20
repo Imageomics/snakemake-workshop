@@ -1542,7 +1542,7 @@ use rule segment_image from bgnn_core</code></pre>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--use-singularity</span> Segmented/bj373514_segmented.png </span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--use-singularity</span> Segmented/hd529k3h_segmented.png</span></code></pre>
 </div>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
@@ -1550,7 +1550,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-11_summary_rule"><p>Content from <a href="11_summary_rule.html">Add Summary Analysis</a></p>
 <hr>
-<p> Last updated on 2023-03-08 | 
+<p> Last updated on 2023-03-20 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/11_summary_rule.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 12 minutes </p>
@@ -1603,6 +1603,12 @@ any links that you are not going to use.
 </div>
 <p>Edit config.yaml adding <strong>summary_report</strong>:</p>
 <pre><code><span><span class="va">summary_report</span><span class="op">:</span> <span class="va">summary</span><span class="op">/</span><span class="va">report.html</span></span></code></pre>
+<p>Change the <code>all</code> rule to require
+<code>summary/report.html</code> in <code>Snakefile</code>:</p>
+<pre><code>rule all:
+    inputs: config["summary_report"]</code></pre>
+<p>Add a new function that gathers the inputs for the summary rule and a
+<code>summary</code> rule:</p>
 <pre><code>def get_summary_inputs(wildcards):
   filename = checkpoints.filter.get().output[0]
   df = pd.read_csv(filename)
@@ -1616,7 +1622,13 @@ rule summary:
      morphology=get_summary_inputs
   output: config["summary_report"]
   container: "docker://ghcr.io/rocker-org/tidyverse:4.2.2"
-  shell: "Rscript {input.script}"</code></pre></section><section id="aio-12_run_on_slurm"><p>Content from <a href="12_run_on_slurm.html">Run at Scale</a></p>
+  shell: "Rscript {input.script}"</code></pre>
+<p>Run snakemake to create the summary/report.</p>
+<div class="codewrapper sourceCode" id="cb6">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--use-singularity</span> <span class="at">--dry-run</span></span></code></pre>
+</div></section><section id="aio-12_run_on_slurm"><p>Content from <a href="12_run_on_slurm.html">Run at Scale</a></p>
 <hr>
 <p> Last updated on 2023-03-16 | 
         
