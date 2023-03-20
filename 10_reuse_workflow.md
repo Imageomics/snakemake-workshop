@@ -55,6 +55,11 @@ Missing input files for rule generate_metadata:
 ```
 use rule generate_metadata from bgnn_core with:
     input: "images/{image}.jpg"
+...
+use rule crop_image from bgnn_core with:
+    input:
+        image = 'images/{image}.jpg',
+        metadata = 'Metadata/{image}.json'
 ```
 
 ### Option 2: Change our filename plan to match theirs
@@ -68,6 +73,8 @@ rule download_image:
     output: "Images/{ark_id}.jpg"
     ...
 ```
+
+## We will got with option 2
 
 ```bash
 snakemake -c1 --use-singularity DrexelMetadata/bj373514.json

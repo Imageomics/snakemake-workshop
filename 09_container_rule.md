@@ -53,7 +53,6 @@ Update the download_image rule to use the docker container image URI
 
 ```
 rule download_image:
-    input: config["filter_multimedia"]
     params: url=get_image_url    
     output:'Images/{ark_id}.jpg'
     container: "docker://quay.io/biocontainers/gnu-wget:1.18--h60da905_7"    
