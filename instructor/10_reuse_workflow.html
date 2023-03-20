@@ -219,6 +219,7 @@
       <div class="accordion-body">
         <ul><li><a href="#reusing-another-workflow">Reusing Another Workflow</a></li>
 <li><a href="#harmonize-filename-plans">Harmonize Filename Plans</a></li>
+<li><a href="#we-will-got-with-option-2">We will got with option 2</a></li>
 <li><a href="#bring-in-additional-rules-from-bgnn_core_workflow">Bring in additional rules from BGNN_Core_Workflow</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
@@ -368,7 +369,12 @@ Missing input files for rule generate_metadata:
 <hr class="half-width"><div class="section level3">
 <h3 id="option-1-override-settings-in-the-other-workflows-rules">Option 1: Override settings in the other workflow’s rules<a class="anchor" aria-label="anchor" href="#option-1-override-settings-in-the-other-workflows-rules"></a></h3>
 <pre><code>use rule generate_metadata from bgnn_core with:
-    input: "images/{image}.jpg"</code></pre>
+    input: "images/{image}.jpg"
+...
+use rule crop_image from bgnn_core with:
+    input:
+        image = 'images/{image}.jpg',
+        metadata = 'Metadata/{image}.json'</code></pre>
 </div>
 <div class="section level3">
 <h3 id="option-2-change-our-filename-plan-to-match-theirs">Option 2: Change our filename plan to match theirs<a class="anchor" aria-label="anchor" href="#option-2-change-our-filename-plan-to-match-theirs"></a></h3>
@@ -380,11 +386,13 @@ rule download_image:
     params: url=get_image_url
     output: "Images/{ark_id}.jpg"
     ...</code></pre>
-<div class="codewrapper sourceCode" id="cb6">
+</div>
+</section><section id="we-will-got-with-option-2"><h2 class="section-heading">We will got with option 2<a class="anchor" aria-label="anchor" href="#we-will-got-with-option-2"></a>
+</h2>
+<hr class="half-width"><div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--use-singularity</span> DrexelMetadata/bj373514.json</span></code></pre>
-</div>
 </div>
 </section><section id="bring-in-additional-rules-from-bgnn_core_workflow"><h2 class="section-heading">Bring in additional rules from BGNN_Core_Workflow<a class="anchor" aria-label="anchor" href="#bring-in-additional-rules-from-bgnn_core_workflow"></a>
 </h2>

@@ -368,7 +368,6 @@ docker container image URIs with <code>docker://</code>.</p>
 <hr class="half-width"><p>Update the download_image rule to use the docker container image URI
 <code>quay.io/biocontainers/gnu-wget:1.18--h60da905_7</code>.</p>
 <pre><code>rule download_image:
-    input: config["filter_multimedia"]
     params: url=get_image_url    
     output:'Images/{ark_id}.jpg'
     container: "docker://quay.io/biocontainers/gnu-wget:1.18--h60da905_7"    
