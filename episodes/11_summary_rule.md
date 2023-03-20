@@ -38,6 +38,13 @@ Edit config.yaml adding __summary_report__:
 summary_report: summary/report.html
 ```
 
+Change the `all` rule to require `summary/report.html` in `Snakefile`:
+```
+rule all:
+    inputs: config["summary_report"]
+```
+
+Add a new function that gathers the inputs for the summary rule and a `summary` rule:
 ```
 def get_summary_inputs(wildcards):
   filename = checkpoints.filter.get().output[0]
@@ -55,5 +62,7 @@ rule summary:
   shell: "Rscript {input.script}"
 ```
 
-
-
+Run snakemake to create the summary/report.
+```bash
+snakemake -c1 --use-singularity --dry-run
+```

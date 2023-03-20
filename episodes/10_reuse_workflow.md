@@ -82,7 +82,7 @@ use rule segment_image from bgnn_core
 ```
 
 ```bash
-snakemake -c1 --use-singularity Segmented/bj373514_segmented.png 
+snakemake -c1 --use-singularity Segmented/hd529k3h_segmented.png
 ```
 
 
