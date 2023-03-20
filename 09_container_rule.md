@@ -24,7 +24,7 @@ exercises: 2
   - exact software versions on later installs
   - support for 
     - docker container images
-    - singularity containers images
+    - singularity container images
 - conda environments
   - may result in different software versions on later installs
   - powerful but might not install in every environment
