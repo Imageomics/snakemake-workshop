@@ -1,12 +1,12 @@
 ---
 title: "Process multiple files"
-teaching: 10
-exercises: 2
+teaching: 13
+exercises: 9
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 
 
-- How can I verify my Snakefile without running the whole workflow?
+- How can I check a Snakefile without running the whole workflow?
 - How can I create a generic rule that can process multiple files?
 - How can I use a python function as part of a rule?
 - How do I tell snakemake to create a certain file before running a python function? 
@@ -15,8 +15,9 @@ exercises: 2
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
+- Determine a filename plan to download images
+- Create a pattern rule to download multiple image files
 - Use a python function as a params input
-- Create a pattern rule to process multiple files
 - Setup a __checkpoint__ to ensure a file exists before running a python function.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
@@ -29,10 +30,31 @@ Try this now:
 snakemake -c1 --dry-run
 ```
 
+## Create a filename plan to save images
+When downloading images from the internet it is important to avoid filename clashes.
+To avoid this problem deciding on a plan for naming the files is important.
+
+The input CSV (`multimedia.csv`) was downloaded from https://bgnn.tulane.edu/userinterface/.
+This `multimedia.csv` file we are using is only meant to be used for this workshop and should not be used for any particular research purpose.
+To create a real world dataset you could use the tulane website.
+
+When viewed within RStudio the data looks like this:
+![multimedia CSV screenshot](files/multimedia.png)
+
+The [Tulane multimedia.csv documentation](https://bgnn.tulane.edu/) describes the `arkID` column as:
+
+> Multimedia unique identifier number
+
+__arkID__ seems like a good identifier to use in our image filenames.
+
+For the multimedia row with arkID `dd216t3d` we will save the downloaded image as:
+```
+images/dd216t3d.jpg
+```
+
 ## Use wget to download an image
 ```bash
-head -n 3 multimedia.csv
-wget -O test.jpg https://bgnn.tulane.edu/hdr-share/ftp/ark/89609/GLIN/FMNH/bj373514.jpg
+wget -O test.jpg https://bgnn.tulane.edu/hdr-share/ftp/ark/89609/GLIN/FMNH/dd216t3d.jpg
 ```
 
 ## Create a rule that uses a python function
@@ -40,11 +62,11 @@ Add a rule to download a single image that uses a python function param:
 ```
 def get_image_url(wildcards):
     base_image_url = "https://bgnn.tulane.edu/hdr-share/ftp/ark/89609/GLIN/FMNH/"
-    return base_image_url + "bj373514.jpg"
+    return base_image_url + "dd216t3d.jpg"
 
 rule download_image:
     params: url=get_image_url    
-    output: "images/bj373514.jpg"
+    output: "images/dd216t3d.jpg"
     shell: "wget -O {output} {params.url}"
 ```
 

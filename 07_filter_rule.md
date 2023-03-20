@@ -1,7 +1,7 @@
 ---
 title: "Add an R Script"
 teaching: 10
-exercises: 2
+exercises: 8
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 
@@ -57,24 +57,16 @@ Building DAG of jobs...
 Nothing to be done (all requested files are present and up to date).
 Complete log: .snakemake/log/2023-02-28T164348.500545.snakemake.log
 ```
-Snakemake didn't create the `filter/multimedia.csv` because the default target in snakemake is the first rule.
+Snakemake didn't create the `filter/multimedia.csv`.
 
-## Snakemake DAG
+## Snakemake Target Files
+When Snakemake starts up it first determines a set of target files to create.
+By default the target files are determined from the first rule unless filenames are passed along the command line to snakemake. After determining the target files Snakemake looks through the rules and creates job plan (called a DAG) to create the desired target.
 
-When you run snakemake it creates a job plan called a DAG (directed acyclic graph).
-To build the DAG, Snakemake first must determine the target output files.
-The target output files are determined from the first rule in the Snakefile by default, but filenames passed as command line arguments will override this.
-Snakemake uses the input and output file settings to determine which rules need to be used to create the target files.
-Snakemake will only create jobs for rules with output files that do not exist or are outdated.
 
-## Default target
-So unless you specify another target snakemake will 
-The First rule in a Snakefile is the default target.
 
-## Run snakemake specifying a specific target
-By default Snakemake assumes the first rule is the default target.
-
-For our workflow this is currently the __reduce__ rule.
+## Create a desired file
+For our workflow the first rule is the __reduce__ rule.
 To change the target file you can just pass it as an argument to snakemake.
 This is a nice way to build different files from your workflow when developing it.
 
