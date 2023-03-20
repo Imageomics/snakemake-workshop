@@ -77,7 +77,7 @@ snakemake -c1 --use-singularity DrexelMetadata/bj373514.json
 ```
 use rule generate_metadata from bgnn_core
 use rule transform_metadata from bgnn_core
-use rule crop_image from bgnn_core with:
+use rule crop_image from bgnn_core
 use rule segment_image from bgnn_core
 ```
 
