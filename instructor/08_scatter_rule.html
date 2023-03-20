@@ -200,6 +200,7 @@
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
         <ul><li><a href="#snakemake-dry-run">Snakemake Dry Run</a></li>
+<li><a href="#create-a-filename-plan-to-save-images">Create a filename plan to save images</a></li>
 <li><a href="#use-wget-to-download-an-image">Use wget to download an image</a></li>
 <li><a href="#create-a-rule-that-uses-a-python-function">Create a rule that uses a python function</a></li>
 <li><a href="#make-the-rule-generic-with-a-pattern-rule">Make the rule generic with a pattern rule</a></li>
@@ -307,7 +308,7 @@
         
         
         
-        <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 12 minutes </p>
+        <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 22 minutes </p>
         
         <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
@@ -322,8 +323,7 @@
 <div class="card-body">
 <div class="inner">
 <h3 class="card-title">Questions</h3>
-<ul><li>How can I verify my Snakefile without running the whole
-workflow?</li>
+<ul><li>How can I check a Snakefile without running the whole workflow?</li>
 <li>How can I create a generic rule that can process multiple
 files?</li>
 <li>How can I use a python function as part of a rule?</li>
@@ -336,8 +336,9 @@ python function?</li>
 <div class="card-body">
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
-<ul><li>Use a python function as a params input</li>
-<li>Create a pattern rule to process multiple files</li>
+<ul><li>Determine a filename plan to download images</li>
+<li>Create a pattern rule to download multiple image files</li>
+<li>Use a python function as a params input</li>
 <li>Setup a <strong>checkpoint</strong> to ensure a file exists before
 running a python function.</li>
 </ul></div>
@@ -352,13 +353,32 @@ change can be time intensive. To help with this snakemake has a
 <code>--dry-run</code> flag that will validate the
 <code>Snakefile</code> and show what it would do. Try this now:</p>
 <pre><code><span><span class="va">snakemake</span> <span class="op">-</span><span class="va">c1</span> <span class="op">-</span><span class="op">-</span><span class="va">dry</span><span class="op">-</span><span class="va">run</span></span></code></pre>
+</section><section id="create-a-filename-plan-to-save-images"><h2 class="section-heading">Create a filename plan to save images<a class="anchor" aria-label="anchor" href="#create-a-filename-plan-to-save-images"></a>
+</h2>
+<hr class="half-width"><p>When downloading images from the internet it is important to avoid
+filename clashes. To avoid this problem deciding on a plan for naming
+the files is important.</p>
+<p>The input CSV (<code>multimedia.csv</code>) was downloaded from <a href="https://bgnn.tulane.edu/userinterface/" class="external-link uri">https://bgnn.tulane.edu/userinterface/</a>. This
+<code>multimedia.csv</code> file we are using is only meant to be used
+for this workshop and should not be used for any particular research
+purpose. To create a real world dataset you could use the tulane
+website.</p>
+<figure>When viewed within RStudio the data looks like this: <img src="../files/multimedia.png" alt="multimedia CSV screenshot" class="figure mx-auto d-block"></figure><p>The <a href="https://bgnn.tulane.edu/" class="external-link">Tulane multimedia.csv
+documentation</a> describes the <code>arkID</code> column as:</p>
+<blockquote>
+<p>Multimedia unique identifier number</p>
+</blockquote>
+<p><strong>arkID</strong> seems like a good identifier to use in our
+image filenames.</p>
+<p>For the multimedia row with arkID <code>dd216t3d</code> we will save
+the downloaded image as:</p>
+<pre><code><span><span class="va">images</span><span class="op">/</span><span class="va">dd216t3d.jpg</span></span></code></pre>
 </section><section id="use-wget-to-download-an-image"><h2 class="section-heading">Use wget to download an image<a class="anchor" aria-label="anchor" href="#use-wget-to-download-an-image"></a>
 </h2>
-<hr class="half-width"><div class="codewrapper sourceCode" id="cb2">
+<hr class="half-width"><div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 3 multimedia.csv</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">-O</span> test.jpg https://bgnn.tulane.edu/hdr-share/ftp/ark/89609/GLIN/FMNH/bj373514.jpg</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">-O</span> test.jpg https://bgnn.tulane.edu/hdr-share/ftp/ark/89609/GLIN/FMNH/dd216t3d.jpg</span></code></pre>
 </div>
 </section><section id="create-a-rule-that-uses-a-python-function"><h2 class="section-heading">Create a rule that uses a python function<a class="anchor" aria-label="anchor" href="#create-a-rule-that-uses-a-python-function"></a>
 </h2>
@@ -366,11 +386,11 @@ change can be time intensive. To help with this snakemake has a
 param:</p>
 <pre><code>def get_image_url(wildcards):
     base_image_url = "https://bgnn.tulane.edu/hdr-share/ftp/ark/89609/GLIN/FMNH/"
-    return base_image_url + "bj373514.jpg"
+    return base_image_url + "dd216t3d.jpg"
 
 rule download_image:
     params: url=get_image_url    
-    output: "images/bj373514.jpg"
+    output: "images/dd216t3d.jpg"
     shell: "wget -O {output} {params.url}"</code></pre>
 <p>NOTE: Make sure you are using <code>-O</code> and not <code>-o</code>
 for the <code>wget</code> argument.</p>
@@ -387,10 +407,10 @@ rule download_image:
     output: "images/{ark_id}.jpg"
     shell: "wget -O {output} {params.url}"</code></pre>
 <p>Run this rule:</p>
-<div class="codewrapper sourceCode" id="cb5">
+<div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--dry-run</span> images/hd529k3h.jpg</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--dry-run</span> images/hd529k3h.jpg</span></code></pre>
 </div>
 </section><section id="add-python-logic-to-lookup-the-url"><h2 class="section-heading">Add python logic to lookup the URL<a class="anchor" aria-label="anchor" href="#add-python-logic-to-lookup-the-url"></a>
 </h2>
@@ -411,10 +431,10 @@ rule download_image:
     shell: "wget -O {output} {params.url}"</code></pre>
 <p>Run this rule for a couple files after deleting the images
 directory:</p>
-<div class="codewrapper sourceCode" id="cb8">
+<div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> images/bj373514.jpg images/hd529k3h.jpg</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> images/bj373514.jpg images/hd529k3h.jpg</span></code></pre>
 </div>
 </section><section id="updating-all-rule"><h2 class="section-heading">Updating all rule<a class="anchor" aria-label="anchor" href="#updating-all-rule"></a>
 </h2>
@@ -426,18 +446,18 @@ directory:</p>
 
 rule all:
     input: get_image_filenames</code></pre>
-<div class="codewrapper sourceCode" id="cb10">
+<div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span></span></code></pre>
 </div>
 </section><section id="test-starting-from-scratch"><h2 class="section-heading">Test starting from scratch<a class="anchor" aria-label="anchor" href="#test-starting-from-scratch"></a>
 </h2>
-<hr class="half-width"><div class="codewrapper sourceCode" id="cb11">
+<hr class="half-width"><div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> reduce filter images</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> reduce filter images</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -476,10 +496,10 @@ checkpoint filter:
   shell: "Rscript {input.script}"</code></pre>
 </section><section id="ensure-the-downloaded-files-are-jpg"><h2 class="section-heading">Ensure the downloaded files are jpg<a class="anchor" aria-label="anchor" href="#ensure-the-downloaded-files-are-jpg"></a>
 </h2>
-<hr class="half-width"><div class="codewrapper sourceCode" id="cb14">
+<hr class="half-width"><div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">file</span> images/<span class="pp">*</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">file</span> images/<span class="pp">*</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>

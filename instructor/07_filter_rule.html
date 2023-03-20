@@ -85,11 +85,11 @@
   Imageomics Snakemake Workshop
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: 33%" class="percentage">
-    33%
+<aside class="col-md-12 lesson-progress"><div style="width: 29%" class="percentage">
+    29%
   </div>
   <div class="progress incubator">
-    <div class="progress-bar incubator" role="progressbar" style="width: 33%" aria-valuenow="33" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar incubator" role="progressbar" style="width: 29%" aria-valuenow="29" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -193,9 +193,8 @@
         <ul><li><a href="#rstudio-friendly-rules">RStudio friendly Rules</a></li>
 <li><a href="#see-the-hard-coded-paths-in-the-r-script">See the hard coded paths in the R script</a></li>
 <li><a href="#run-a-filtering-r-script">Run a filtering R script</a></li>
-<li><a href="#snakemake-dag">Snakemake DAG</a></li>
-<li><a href="#default-target">Default target</a></li>
-<li><a href="#run-snakemake-specifying-a-specific-target">Run snakemake specifying a specific target</a></li>
+<li><a href="#snakemake-target-files">Snakemake Target Files</a></li>
+<li><a href="#create-a-desired-file">Create a desired file</a></li>
 <li><a href="#run-snakemake-specifying-a-non-existant-target">Run snakemake specifying a non-existant target</a></li>
 <li><a href="#add-a-default-rule">Add a default rule</a></li>
 <li><a href="#see-how-the-r-script-reads-from-the-config-file">See how the R script reads from the config file:</a></li>
@@ -308,7 +307,7 @@
         
         
         
-        <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 12 minutes </p>
+        <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 18 minutes </p>
         
         <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
@@ -387,27 +386,17 @@ accommodate within RStudio.</p>
 Nothing to be done (all requested files are present and up to date).
 Complete log: .snakemake/log/2023-02-28T164348.500545.snakemake.log</code></pre>
 </div>
-<p>Snakemake didn’t create the <code>filter/multimedia.csv</code>
-because the default target in snakemake is the first rule.</p>
-</section><section id="snakemake-dag"><h2 class="section-heading">Snakemake DAG<a class="anchor" aria-label="anchor" href="#snakemake-dag"></a>
+<p>Snakemake didn’t create the <code>filter/multimedia.csv</code>.</p>
+</section><section id="snakemake-target-files"><h2 class="section-heading">Snakemake Target Files<a class="anchor" aria-label="anchor" href="#snakemake-target-files"></a>
 </h2>
-<hr class="half-width"><p>When you run snakemake it creates a job plan called a DAG (directed
-acyclic graph). To build the DAG, Snakemake first must determine the
-target output files. The target output files are determined from the
-first rule in the Snakefile by default, but filenames passed as command
-line arguments will override this. Snakemake uses the input and output
-file settings to determine which rules need to be used to create the
-target files. Snakemake will only create jobs for rules with output
-files that do not exist or are outdated.</p>
-</section><section id="default-target"><h2 class="section-heading">Default target<a class="anchor" aria-label="anchor" href="#default-target"></a>
+<hr class="half-width"><p>When Snakemake starts up it first determines a set of target files to
+create. By default the target files are determined from the first rule
+unless filenames are passed along the command line to snakemake. After
+determining the target files Snakemake looks through the rules and
+creates job plan (called a DAG) to create the desired target.</p>
+</section><section id="create-a-desired-file"><h2 class="section-heading">Create a desired file<a class="anchor" aria-label="anchor" href="#create-a-desired-file"></a>
 </h2>
-<hr class="half-width"><p>So unless you specify another target snakemake will The First rule in
-a Snakefile is the default target.</p>
-</section><section id="run-snakemake-specifying-a-specific-target"><h2 class="section-heading">Run snakemake specifying a specific target<a class="anchor" aria-label="anchor" href="#run-snakemake-specifying-a-specific-target"></a>
-</h2>
-<hr class="half-width"><p>By default Snakemake assumes the first rule is the default
-target.</p>
-<p>For our workflow this is currently the <strong>reduce</strong> rule.
+<hr class="half-width"><p>For our workflow the first rule is the <strong>reduce</strong> rule.
 To change the target file you can just pass it as an argument to
 snakemake. This is a nice way to build different files from your
 workflow when developing it.</p>
