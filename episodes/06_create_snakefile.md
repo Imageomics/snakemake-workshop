@@ -1,21 +1,19 @@
 ---
 title: "Create a Workflow"
 teaching: 10
-exercises: 2
+exercises: 6
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 
 
-- What are the main parts of a Snakemake Rule?
 - How do you create a Snakemake Workflow?
 - How do you run a Snakemake Workflow?
-- How does Snakemake create a job plan from rules?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-- Create a Snakemake Rule that uses an __input__ file, __output__ file and a __shell__ command.
+- Create a workflow with a single rule
 - Reduce filename duplication using __wildcards__
 - Represent non-file inputs using a __param__
 - Run a snakemake workflow
@@ -23,13 +21,14 @@ exercises: 2
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Snakemake Rule Parts
+## Snakemake Workflow
+A Snakemake workflow is a list of rules.
 
-Main parts of a Snakemake Rule used in this workshop
+Commonly used parts of a rule are:
 
 - __name__ - unique name for a rule
 - __input__ - input filenames used by a command
-- __params__ - input parameter (non-file) values used by a command
+- __params__ - non-file input values used by a command
 - __output__ - output filenames created by a command
 - __container__ - singularity container to run command within
 - __shell__ - command to run
@@ -173,10 +172,3 @@ Notice the __reason__ has changed
     reason: Code has changed since last execution; Params have changed since last execution
 ...
 ```
-
-## Snakemake DAG
-When you run snakemake it creates a job plan called a DAG (directed acyclic graph).
-To build the DAG, Snakemake first must determine the target output files.
-The target output files are determined from the first rule in the Snakefile by default, but filenames passed as command line arguments will override this.
-Snakemake uses the input and output file settings to determine which rules need to be used to create the target files.
-Snakemake will only create jobs for rules with output files that do not exist or are outdated.
