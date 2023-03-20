@@ -1,7 +1,7 @@
 ---
 title: "Reuse another workflow"
 teaching: 7
-exercises: 4
+exercises: 2
 ---
 :::::::::::::::::::::::::::::::::::::: questions 
 
@@ -11,7 +11,6 @@ exercises: 4
 ::::::::::::::::::::::::::::::::::::: objectives
 
 - Re-use parts of the BGNN_Core_Workflow Snakemake Workflow
-- Make changes so our workflow will be filename compatible with another workflow
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
