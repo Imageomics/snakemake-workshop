@@ -1,20 +1,18 @@
 ---
 title: "Environment Setup"
-teaching: 1
+teaching: 4
 exercises: 4
 ---
 :::::::::::::::::::::::::::::::::::::: questions 
 
-- How do I start an interactive job to run snakemake on a worker node?
-- How do I activate the Snakemake for this class?
+- How do I setup an shell environment to use Snakemake?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::: objectives
 
 - Start an interactive session on a worker node
 - Setup the shell environment
-- Verify snakemake and R versions
-
+- Verify versions of snakemake and R
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 

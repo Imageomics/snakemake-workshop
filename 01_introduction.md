@@ -1,6 +1,7 @@
 ---
 title: "Introduction"
-teaching: 10
+teaching: 6
+exercises: 0
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 

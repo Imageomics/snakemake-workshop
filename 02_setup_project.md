@@ -10,7 +10,11 @@ exercises: 5
 ::::::::::::::::::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::: objectives
 
-- Create a "SnakemakeWorkflow" directory with scripts and cached container images
+- Connect to OSC
+- Create a directory
+- Open a Web Terminal in that Directory
+- Copy lesson files into place
+- Copy cached singularity images into place
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
