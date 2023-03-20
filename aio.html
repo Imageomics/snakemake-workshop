@@ -539,7 +539,7 @@ needed files:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>multimedia.csv  Scripts  slurm</code></pre>
+<pre class="output" tabindex="0"><code>multimedia.csv  run-workflow.sh  Scripts  slurm</code></pre>
 </div>
 </div>
 <div class="section level3">
@@ -569,6 +569,8 @@ report of the workflow outputs</li>
 SummaryReport.R to create a report</li>
 </ul>
 </li>
+<li>run-workflow.sh - sbatch script used to run the workflow using
+SLURM</li>
 <li>
 <strong>slurm/</strong> - Directory containing a config file used by
 Snakemake to run SLURM jobs</li>
@@ -1172,7 +1174,7 @@ documentation</a> describes the <code>arkID</code> column as:</p>
 image filenames.</p>
 <p>For the multimedia row with arkID <code>dd216t3d</code> we will save
 the downloaded image as:</p>
-<pre><code><span><span class="va">images</span><span class="op">/</span><span class="va">dd216t3d.jpg</span></span></code></pre>
+<pre><code><span><span class="va">Images</span><span class="op">/</span><span class="va">dd216t3d.jpg</span></span></code></pre>
 </section><section id="use-wget-to-download-an-image"><h2 class="section-heading">Use wget to download an image<a class="anchor" aria-label="anchor" href="#use-wget-to-download-an-image"></a>
 </h2>
 <hr class="half-width">
@@ -1192,7 +1194,7 @@ param:</p>
 
 rule download_image:
     params: url=get_image_url    
-    output: "images/dd216t3d.jpg"
+    output: "Images/dd216t3d.jpg"
     shell: "wget -O {output} {params.url}"</code></pre>
 <p>NOTE: Make sure you are using <code>-O</code> and not <code>-o</code>
 for the <code>wget</code> argument.</p>
@@ -1207,13 +1209,13 @@ in an output filename.</p>
 
 rule download_image:
     params: url=get_image_url    
-    output: "images/{ark_id}.jpg"
+    output: "Images/{ark_id}.jpg"
     shell: "wget -O {output} {params.url}"</code></pre>
 <p>Run this rule:</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--dry-run</span> images/hd529k3h.jpg</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--dry-run</span> Images/hd529k3h.jpg</span></code></pre>
 </div>
 </section><section id="add-python-logic-to-lookup-the-url"><h2 class="section-heading">Add python logic to lookup the URL<a class="anchor" aria-label="anchor" href="#add-python-logic-to-lookup-the-url"></a>
 </h2>
@@ -1231,14 +1233,13 @@ and add the file as a rule input:</p>
 
 rule download_image:
     params: url=get_image_url    
-    output: "images/{ark_id}.jpg"
+    output: "Images/{ark_id}.jpg"
     shell: "wget -O {output} {params.url}"</code></pre>
-<p>Run this rule for a couple files after deleting the images
-directory:</p>
+<p>Run snakemake:</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> images/bj373514.jpg images/hd529k3h.jpg</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--dry-run</span> Images/hd529k3h.jpg</span></code></pre>
 </div>
 </section><section id="updating-all-rule"><h2 class="section-heading">Updating all rule<a class="anchor" aria-label="anchor" href="#updating-all-rule"></a>
 </h2>
@@ -1247,7 +1248,7 @@ directory:</p>
     filename = config["filter_multimedia"]
     df = pd.read_csv(filename)    
     ark_ids = df["arkID"].tolist()
-    return expand("images/{ark_id}.jpg", ark_id=ark_ids)
+    return expand("Images/{ark_id}.jpg", ark_id=ark_ids)
 
 rule all:
     input: get_image_filenames</code></pre>
@@ -1262,7 +1263,7 @@ rule all:
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> reduce filter images</span>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> reduce filter Images</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -1294,7 +1295,7 @@ of a simple rule. This is done by changing the word “rule” to
     filename = checkpoints.filter.get().output[0]
     df = pd.read_csv(filename)    
     ark_ids = df["arkID"].tolist()
-    return expand("images/{ark_id}.jpg", ark_id=ark_ids)  
+    return expand("Images/{ark_id}.jpg", ark_id=ark_ids)
 ...
 
 checkpoint filter:
@@ -1309,17 +1310,17 @@ checkpoint filter:
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">file</span> images/<span class="pp">*</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">file</span> Images/<span class="pp">*</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>images/88624536.jpg: JPEG image data, EXIF standard
-images/9x56f44c.jpg: JPEG image data, EXIF standard
-images/bj373514.jpg: JPEG image data, EXIF standard
-images/dp60604r.jpg: JPEG image data, EXIF standard
-images/hd529k3h.jpg: JPEG image data, EXIF standard
-images/t868dr68.jpg: JPEG image data, EXIF standard</code></pre>
+<pre class="output" tabindex="0"><code>Images/88624536.jpg: JPEG image data, EXIF standard
+Images/9x56f44c.jpg: JPEG image data, EXIF standard
+Images/bj373514.jpg: JPEG image data, EXIF standard
+Images/dp60604r.jpg: JPEG image data, EXIF standard
+Images/hd529k3h.jpg: JPEG image data, EXIF standard
+Images/t868dr68.jpg: JPEG image data, EXIF standard</code></pre>
 </div>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
@@ -1417,8 +1418,8 @@ flag</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> images/hd529k3h.jpg</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--use-singularity</span> images/hd529k3h.jpg</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> Images/hd529k3h.jpg</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--use-singularity</span> Images/hd529k3h.jpg</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1450,7 +1451,7 @@ any links that you are not going to use.
 <div class="inner">
 <h3 class="card-title">Questions</h3>
 <ul>
-<li>What do I need to do to re-use another Snakemake workflow?</li>
+<li>What is needed to re-use another Snakemake workflow?</li>
 </ul>
 </div>
 </div>
@@ -1460,9 +1461,7 @@ any links that you are not going to use.
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
 <ul>
-<li>Add a module to our Snakefile to re-use parts of the
-BGNN_Core_Workflow workflow</li>
-<li>Make changes so our workflow will be filename compatible</li>
+<li>Re-use parts of the BGNN_Core_Workflow Snakemake Workflow</li>
 </ul>
 </div>
 </div>
@@ -1482,6 +1481,8 @@ BGNN_Core_Workflow workflow</li>
 <li>What dependencies must be manually installed?</li>
 </ul>
 <p>See source code for the workflow <a href="https://github.com/hdr-bgnn/BGNN_Core_Workflow/blob/main/workflow/Snakefile#L19" class="external-link uri">https://github.com/hdr-bgnn/BGNN_Core_Workflow/blob/main/workflow/Snakefile#L19</a></p>
+<p>If there is a filename mismatch you can either change your workflow
+or override settings in the rule.</p>
 <pre><code>module bgnn_core:
     snakefile:
         github("hdr-bgnn/BGNN_Core_Workflow", path="workflow/Snakefile", tag="1.0.0")
@@ -1492,62 +1493,16 @@ use rule generate_metadata from bgnn_core</code></pre>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--use-singularity</span> DrexelMetadata/bj373514.json</span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>Building DAG of jobs...
-MissingInputException in rule generate_metadata in file https://raw.githubusercontent.com/hdr-bgnn/BGNN_Core_Workflow/1.0.0/workflow/Snakefile, line 19:
-Missing input files for rule generate_metadata:
-    output: DrexelMetadata/bj373514.json, Mask/bj373514_mask.png
-    wildcards: image=bj373514
-    affected files:
-        Images/bj373514.jpg</code></pre>
-</div>
-</section><section id="harmonize-filename-plans"><h2 class="section-heading">Harmonize Filename Plans<a class="anchor" aria-label="anchor" href="#harmonize-filename-plans"></a>
-</h2>
-<hr class="half-width">
-<div class="section level3">
-<h3 id="option-1-override-settings-in-the-other-workflows-rules">Option 1: Override settings in the other workflow’s rules<a class="anchor" aria-label="anchor" href="#option-1-override-settings-in-the-other-workflows-rules"></a>
-</h3>
-<pre><code>use rule generate_metadata from bgnn_core with:
-    input: "images/{image}.jpg"
-...
-use rule crop_image from bgnn_core with:
-    input:
-        image = 'images/{image}.jpg',
-        metadata = 'Metadata/{image}.json'</code></pre>
-</div>
-<div class="section level3">
-<h3 id="option-2-change-our-filename-plan-to-match-theirs">Option 2: Change our filename plan to match theirs<a class="anchor" aria-label="anchor" href="#option-2-change-our-filename-plan-to-match-theirs"></a>
-</h3>
-<pre><code>...
-    return expand("Images/{ark_id}.jpg", ark_id=ark_ids)
-...
-rule download_image:
-    input: config["filter_multimedia"]
-    params: url=get_image_url
-    output: "Images/{ark_id}.jpg"
-    ...</code></pre>
-</div>
-</section><section id="we-will-got-with-option-2"><h2 class="section-heading">We will got with option 2<a class="anchor" aria-label="anchor" href="#we-will-got-with-option-2"></a>
-</h2>
-<hr class="half-width">
-<div class="codewrapper sourceCode" id="cb6">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--use-singularity</span> DrexelMetadata/bj373514.json</span></code></pre>
-</div>
 </section><section id="bring-in-additional-rules-from-bgnn_core_workflow"><h2 class="section-heading">Bring in additional rules from BGNN_Core_Workflow<a class="anchor" aria-label="anchor" href="#bring-in-additional-rules-from-bgnn_core_workflow"></a>
 </h2>
 <hr class="half-width">
-<pre><code>use rule generate_metadata from bgnn_core
-use rule transform_metadata from bgnn_core
+<pre><code>use rule transform_metadata from bgnn_core
 use rule crop_image from bgnn_core
 use rule segment_image from bgnn_core</code></pre>
-<div class="codewrapper sourceCode" id="cb8">
+<div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--use-singularity</span> Segmented/hd529k3h_segmented.png</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--use-singularity</span> Segmented/hd529k3h_segmented.png</span></code></pre>
 </div>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
@@ -1591,7 +1546,7 @@ any links that you are not going to use.
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> Scripts/SummaryReport.R </span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> Scripts/SummaryReport.R</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1613,7 +1568,7 @@ any links that you are not going to use.
     inputs: config["summary_report"]</code></pre>
 <p>Add a new function that gathers the inputs for the summary rule and a
 <code>summary</code> rule:</p>
-<pre><code>def get_summary_inputs(wildcards):
+<pre><code>def get_seg_filenames(wildcards):
   filename = checkpoints.filter.get().output[0]
   df = pd.read_csv(filename)
   ark_ids = df["arkID"].tolist()
@@ -1622,8 +1577,7 @@ any links that you are not going to use.
 rule summary:
   input:
      script="Scripts/SummaryReport.R",
-     markdown="Scripts/Summary.Rmd",
-     morphology=get_summary_inputs
+     segmented=get_seg_filenames
   output: config["summary_report"]
   container: "docker://ghcr.io/rocker-org/tidyverse:4.2.2"
   shell: "Rscript {input.script}"</code></pre>
@@ -1634,7 +1588,7 @@ rule summary:
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--use-singularity</span> <span class="at">--dry-run</span></span></code></pre>
 </div></section><section id="aio-12_run_on_slurm"><p>Content from <a href="12_run_on_slurm.html">Run at Scale</a></p>
 <hr>
-<p> Last updated on 2023-03-16 | 
+<p> Last updated on 2023-03-20 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/12_run_on_slurm.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1648,9 +1602,7 @@ rule summary:
 <div class="inner">
 <h3 class="card-title">Questions</h3>
 <ul>
-<li>How can can I add memory, cpu, and gpu requirements to a rule?</li>
-<li>How can can I scale up my workflow in a cluster?</li>
-<li>What logs are created when running my workflow with a cluster?</li>
+<li>How can I efficently scale up my workflow in a cluster?</li>
 </ul>
 </div>
 </div>
@@ -1661,8 +1613,7 @@ rule summary:
 <h3 class="card-title">Objectives</h3>
 <ul>
 <li>Add a memory requirement to a rule</li>
-<li>Create sbatch script to run a workflow at scale</li>
-<li>Delete all outputs</li>
+<li>View a generic sbatch script to run a workflow at scale</li>
 <li>Run the workflow at scale</li>
 </ul>
 </div>
@@ -1670,20 +1621,10 @@ rule summary:
 </div>
 </div>
 </div>
-<section id="problems-with-way-we-have-been-running-snakemake"><h2 class="section-heading">Problems with way we have been running snakemake<a class="anchor" aria-label="anchor" href="#problems-with-way-we-have-been-running-snakemake"></a>
+<section id="running-with-slurm"><h2 class="section-heading">Running with Slurm<a class="anchor" aria-label="anchor" href="#running-with-slurm"></a>
 </h2>
 <hr class="half-width">
 <ul>
-<li>Only using a single node so limited scaling</li>
-<li>Must keep our terminal window connected or the job might stop</li>
-<li>Interactive job must request maximum resources needed for all jobs:
-threads, cpus, gpu</li>
-</ul></section><section id="running-with-slurm"><h2 class="section-heading">Running with Slurm<a class="anchor" aria-label="anchor" href="#running-with-slurm"></a>
-</h2>
-<hr class="half-width">
-<ul>
-<li>Configure snakemake to submit slurm jobs</li>
-<li>Run main snakemake job in a background job</li>
 <li>Ensure rules request appropriate resources
 <ul>
 <li>threads/cpus</li>
@@ -1691,6 +1632,8 @@ threads, cpus, gpu</li>
 <li>requires a gpu</li>
 </ul>
 </li>
+<li>Configure snakemake to submit slurm jobs</li>
+<li>Run main snakemake job in a background job</li>
 </ul>
 <p>See <a href="https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#threads" class="external-link">Snakemake
 threads/resources docs</a> for details on how to request different
@@ -1706,24 +1649,22 @@ resources such as threads, memory, and gpus.</p>
     resources:
         mem_mb=200
     shell: "head -n {params.rows} {input} &gt; {output}"</code></pre>
-</section><section id="create-sbatch-script"><h2 class="section-heading">Create sbatch script<a class="anchor" aria-label="anchor" href="#create-sbatch-script"></a>
+</section><section id="review-sbatch-script"><h2 class="section-heading">Review sbatch script<a class="anchor" aria-label="anchor" href="#review-sbatch-script"></a>
 </h2>
 <hr class="half-width">
-<p>Create a script name <code>run-workflow.sh</code> to run snakemake in
-the background.</p>
-<pre><code>#!/bin/bash
+<p>The <code>run-workflow.sh</code> script was copied into your
+<code>SnakemakeWorkflow</code> during the project setup step. Run the
+following command to view it:</p>
+<pre class="shell"><code>cat run-workflow.sh</code></pre>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>#!/bin/bash
 #SBATCH --account=PAS2136
 #SBATCH --time=00:30:00
 . Scripts/setup_env.sh
 JOBS=10
 snakemake --jobs $JOBS --use-singularity --profile slurm/</code></pre>
-</section><section id="delete-all-outputs"><h2 class="section-heading">Delete All Outputs<a class="anchor" aria-label="anchor" href="#delete-all-outputs"></a>
-</h2>
-<hr class="half-width">
-<div class="codewrapper sourceCode" id="cb3">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> c1 <span class="at">--delete-all-output</span></span></code></pre>
 </div>
 </section><section id="run-background-job-and-monitor-progress"><h2 class="section-heading">Run Background job and monitor progress<a class="anchor" aria-label="anchor" href="#run-background-job-and-monitor-progress"></a>
 </h2>
@@ -1734,18 +1675,24 @@ snakemake --jobs $JOBS --use-singularity --profile slurm/</code></pre>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> run-workflow.sh</span></code></pre>
 </div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>Submitted batch job 23985835</code></pre>
+</div>
 </section><section id="monitor-job"><h2 class="section-heading">Monitor job<a class="anchor" aria-label="anchor" href="#monitor-job"></a>
 </h2>
 <hr class="half-width">
 <pre><code><span><span class="va">squeue</span> <span class="op">-</span><span class="va">u</span> <span class="op">$</span><span class="va">LOGNAME</span></span></code></pre>
+<pre><code>tail -f slurm-&lt;sbatch_job_number&gt;.out</code></pre>
 </section><section id="notice-new-job-logs"><h2 class="section-heading">Notice new job logs<a class="anchor" aria-label="anchor" href="#notice-new-job-logs"></a>
 </h2>
 <hr class="half-width">
 <p>Where did my logs go?</p>
-<div class="codewrapper sourceCode" id="cb6">
+<div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> logs/</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> logs/</span></code></pre>
 </div>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete

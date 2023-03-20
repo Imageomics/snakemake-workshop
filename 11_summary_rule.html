@@ -85,11 +85,11 @@
   Imageomics Snakemake Workshop
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: 80%" class="percentage">
-    80%
+<aside class="col-md-12 lesson-progress"><div style="width: 82%" class="percentage">
+    82%
   </div>
   <div class="progress incubator">
-    <div class="progress-bar incubator" role="progressbar" style="width: 80%" aria-valuenow="80" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar incubator" role="progressbar" style="width: 82%" aria-valuenow="82" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -324,7 +324,7 @@
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> Scripts/SummaryReport.R </span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> Scripts/SummaryReport.R</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -346,7 +346,7 @@
     inputs: config["summary_report"]</code></pre>
 <p>Add a new function that gathers the inputs for the summary rule and a
 <code>summary</code> rule:</p>
-<pre><code>def get_summary_inputs(wildcards):
+<pre><code>def get_seg_filenames(wildcards):
   filename = checkpoints.filter.get().output[0]
   df = pd.read_csv(filename)
   ark_ids = df["arkID"].tolist()
@@ -355,8 +355,7 @@
 rule summary:
   input:
      script="Scripts/SummaryReport.R",
-     markdown="Scripts/Summary.Rmd",
-     morphology=get_summary_inputs
+     segmented=get_seg_filenames
   output: config["summary_report"]
   container: "docker://ghcr.io/rocker-org/tidyverse:4.2.2"
   shell: "Rscript {input.script}"</code></pre>
