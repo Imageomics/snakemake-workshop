@@ -55,7 +55,7 @@ ls
 ```
 Expected Output:
 ```output
-multimedia.csv  Scripts  slurm
+multimedia.csv  run-workflow.sh  Scripts  slurm
 ```
 
 ### Lesson Files
@@ -66,6 +66,7 @@ multimedia.csv  Scripts  slurm
   - __FilterImages.R__ - R script that filters a CSV for a target species
   - __SummaryReport.R__ - R script that builds a summary report of the workflow outputs
   - __Summary.Rmd__ - R markdown script used by SummaryReport.R to create a report
+- run-workflow.sh - sbatch script used to run the workflow using SLURM
 - __slurm/__ - Directory containing a config file used by Snakemake to run SLURM jobs
 
 ## Setup Snakemake Singularity Cache

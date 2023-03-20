@@ -1,17 +1,16 @@
 ---
 title: "Reuse another workflow"
-teaching: 10
+teaching: 7
 exercises: 2
 ---
 :::::::::::::::::::::::::::::::::::::: questions 
 
-- What do I need to do to re-use another Snakemake workflow?
+- What is needed to re-use another Snakemake workflow?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::: objectives
 
-- Add a module to our Snakefile to re-use parts of the BGNN_Core_Workflow workflow
-- Make changes so our workflow will be filename compatible
+- Re-use parts of the BGNN_Core_Workflow Snakemake Workflow
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -27,6 +26,8 @@ To re-use a workflow you generally need:
 See source code for the workflow
 https://github.com/hdr-bgnn/BGNN_Core_Workflow/blob/main/workflow/Snakefile#L19
 
+If there is a filename mismatch you can either change your workflow or override settings in the rule.
+
 ```
 module bgnn_core:
     snakefile:
@@ -39,50 +40,8 @@ use rule generate_metadata from bgnn_core
 snakemake -c1 --use-singularity DrexelMetadata/bj373514.json
 ```
 
-```output
-Building DAG of jobs...
-MissingInputException in rule generate_metadata in file https://raw.githubusercontent.com/hdr-bgnn/BGNN_Core_Workflow/1.0.0/workflow/Snakefile, line 19:
-Missing input files for rule generate_metadata:
-    output: DrexelMetadata/bj373514.json, Mask/bj373514_mask.png
-    wildcards: image=bj373514
-    affected files:
-        Images/bj373514.jpg
-```
-
-## Harmonize Filename Plans
-
-### Option 1: Override settings in the other workflow's rules
-```
-use rule generate_metadata from bgnn_core with:
-    input: "images/{image}.jpg"
-...
-use rule crop_image from bgnn_core with:
-    input:
-        image = 'images/{image}.jpg',
-        metadata = 'Metadata/{image}.json'
-```
-
-### Option 2: Change our filename plan to match theirs
-```
-...
-    return expand("Images/{ark_id}.jpg", ark_id=ark_ids)
-...
-rule download_image:
-    input: config["filter_multimedia"]
-    params: url=get_image_url
-    output: "Images/{ark_id}.jpg"
-    ...
-```
-
-## We will got with option 2
-
-```bash
-snakemake -c1 --use-singularity DrexelMetadata/bj373514.json
-```
-
 ## Bring in additional rules from BGNN_Core_Workflow
 ```
-use rule generate_metadata from bgnn_core
 use rule transform_metadata from bgnn_core
 use rule crop_image from bgnn_core
 use rule segment_image from bgnn_core
@@ -91,5 +50,3 @@ use rule segment_image from bgnn_core
 ```bash
 snakemake -c1 --use-singularity Segmented/hd529k3h_segmented.png
 ```
-
-

@@ -1,6 +1,6 @@
 ---
 title: "Add Summary Analysis"
-teaching: 10
+teaching: 4
 exercises: 2
 ---
 
@@ -19,7 +19,7 @@ exercises: 2
 
 Add summary_report to config.yaml:
 ```bash
-cat Scripts/SummaryReport.R 
+head Scripts/SummaryReport.R
 ```
 
 ```output
@@ -46,7 +46,7 @@ rule all:
 
 Add a new function that gathers the inputs for the summary rule and a `summary` rule:
 ```
-def get_summary_inputs(wildcards):
+def get_seg_filenames(wildcards):
   filename = checkpoints.filter.get().output[0]
   df = pd.read_csv(filename)
   ark_ids = df["arkID"].tolist()
@@ -55,8 +55,7 @@ def get_summary_inputs(wildcards):
 rule summary:
   input:
      script="Scripts/SummaryReport.R",
-     markdown="Scripts/Summary.Rmd",
-     morphology=get_summary_inputs
+     segmented=get_seg_filenames
   output: config["summary_report"]
   container: "docker://ghcr.io/rocker-org/tidyverse:4.2.2"
   shell: "Rscript {input.script}"
