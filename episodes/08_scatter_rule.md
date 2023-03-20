@@ -77,14 +77,13 @@ import pandas as pd
 Change the `get_image_url` function to read the CSV file and add the file as a rule input:
 ```
 def get_image_url(wildcards):
-    filename = config["filter_multimedia"]
+    filename = "multimedia.csv"
     df = pd.read_csv(filename)
     row = df[df["arkID"] == wildcards.ark_id]
     url = row["accessURI"].item()
     return url
 
 rule download_image:
-    input: config["filter_multimedia"]
     params: url=get_image_url    
     output: "images/{ark_id}.jpg"
     shell: "wget -O {output} {params.url}"
