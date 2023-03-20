@@ -63,8 +63,8 @@ NOTE: You must put the `container` line before the `shell` line.
 
 Delete an image then run snakemake passing the --use-singularity flag
 ```bash
-rm images/hd529k3h.jpg
-snakemake -c1 --use-singularity images/hd529k3h.jpg
+rm Images/hd529k3h.jpg
+snakemake -c1 --use-singularity Images/hd529k3h.jpg
 ```
 
 ```output

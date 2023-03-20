@@ -49,7 +49,7 @@ __arkID__ seems like a good identifier to use in our image filenames.
 
 For the multimedia row with arkID `dd216t3d` we will save the downloaded image as:
 ```
-images/dd216t3d.jpg
+Images/dd216t3d.jpg
 ```
 
 ## Use wget to download an image
@@ -66,7 +66,7 @@ def get_image_url(wildcards):
 
 rule download_image:
     params: url=get_image_url    
-    output: "images/dd216t3d.jpg"
+    output: "Images/dd216t3d.jpg"
     shell: "wget -O {output} {params.url}"
 ```
 
@@ -81,13 +81,13 @@ def get_image_url(wildcards):
 
 rule download_image:
     params: url=get_image_url    
-    output: "images/{ark_id}.jpg"
+    output: "Images/{ark_id}.jpg"
     shell: "wget -O {output} {params.url}"
 ```
 
 Run this rule:
 ```bash
-snakemake -c1 --dry-run images/hd529k3h.jpg
+snakemake -c1 --dry-run Images/hd529k3h.jpg
 ```
 
 ## Add python logic to lookup the URL
@@ -107,13 +107,13 @@ def get_image_url(wildcards):
 
 rule download_image:
     params: url=get_image_url    
-    output: "images/{ark_id}.jpg"
+    output: "Images/{ark_id}.jpg"
     shell: "wget -O {output} {params.url}"
 ```
 
-Run this rule for a couple files after deleting the images directory:
+Run snakemake:
 ```bash
-snakemake -c1 images/bj373514.jpg images/hd529k3h.jpg
+snakemake -c1 --dry-run Images/hd529k3h.jpg
 ```
 
 ## Updating all rule
@@ -122,7 +122,7 @@ def get_image_filenames(wildcards):
     filename = config["filter_multimedia"]
     df = pd.read_csv(filename)    
     ark_ids = df["arkID"].tolist()
-    return expand("images/{ark_id}.jpg", ark_id=ark_ids)
+    return expand("Images/{ark_id}.jpg", ark_id=ark_ids)
 
 rule all:
     input: get_image_filenames
@@ -134,7 +134,7 @@ snakemake -c1
 
 ## Test starting from scratch
 ```bash
-rm -rf reduce filter images
+rm -rf reduce filter Images
 snakemake -c1
 ```
 
@@ -161,7 +161,7 @@ def get_image_filenames(wildcards):
     filename = checkpoints.filter.get().output[0]
     df = pd.read_csv(filename)    
     ark_ids = df["arkID"].tolist()
-    return expand("images/{ark_id}.jpg", ark_id=ark_ids)  
+    return expand("Images/{ark_id}.jpg", ark_id=ark_ids)
 ...
 
 checkpoint filter:
@@ -175,13 +175,13 @@ checkpoint filter:
 
 ## Ensure the downloaded files are jpg
 ```bash
-file images/*
+file Images/*
 ```
 ```output
-images/88624536.jpg: JPEG image data, EXIF standard
-images/9x56f44c.jpg: JPEG image data, EXIF standard
-images/bj373514.jpg: JPEG image data, EXIF standard
-images/dp60604r.jpg: JPEG image data, EXIF standard
-images/hd529k3h.jpg: JPEG image data, EXIF standard
-images/t868dr68.jpg: JPEG image data, EXIF standard
+Images/88624536.jpg: JPEG image data, EXIF standard
+Images/9x56f44c.jpg: JPEG image data, EXIF standard
+Images/bj373514.jpg: JPEG image data, EXIF standard
+Images/dp60604r.jpg: JPEG image data, EXIF standard
+Images/hd529k3h.jpg: JPEG image data, EXIF standard
+Images/t868dr68.jpg: JPEG image data, EXIF standard
 ```
