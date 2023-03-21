@@ -69,9 +69,12 @@ multimedia.csv  run-workflow.sh  Scripts  slurm
 - run-workflow.sh - sbatch script used to run the workflow using SLURM
 - __slurm/__ - Directory containing a config file used by Snakemake to run SLURM jobs
 
+The main input file (`multimedia.csv`) was downloaded from https://bgnn.tulane.edu.
+
 ## Setup Snakemake Singularity Cache
 To avoid waiting for singularity containers to pull we will copy cached containers inline.
-```
+
+```bash
 mkdir -p .snakemake/singularity
 cp /fs/ess/PAS2136/Workshops/Snakemake/singularity_images/* .snakemake/singularity/.
 ```
