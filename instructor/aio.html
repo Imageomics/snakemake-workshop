@@ -1256,6 +1256,8 @@ rule download_image:
 </section><section id="updating-all-rule"><h2 class="section-heading">Updating all rule<a class="anchor" aria-label="anchor" href="#updating-all-rule"></a>
 </h2>
 <hr class="half-width">
+<p>Update the all rule adding a function that returns the list of all
+images that should be created.</p>
 <pre><code>def get_image_filenames(wildcards):
     filename = config["filter_multimedia"]
     df = pd.read_csv(filename)    
