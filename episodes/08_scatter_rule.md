@@ -36,7 +36,7 @@ To avoid this problem deciding on a plan for naming the files is important.
 
 The input CSV (`multimedia.csv`) was downloaded from https://bgnn.tulane.edu/userinterface/.
 This `multimedia.csv` file we are using is only meant to be used for this workshop and should not be used for any particular research purpose.
-To create a real world dataset you could use the tulane website.
+To create a real world dataset you could use the https://fishair.org/ website that replaces the website I used to download this file.
 
 When viewed within RStudio the data looks like this:
 ![multimedia CSV screenshot](files/multimedia.png)
