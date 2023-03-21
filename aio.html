@@ -1112,7 +1112,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-08_scatter_rule"><p>Content from <a href="08_scatter_rule.html">Process multiple files</a></p>
 <hr>
-<p> Last updated on 2023-03-20 | 
+<p> Last updated on 2023-03-21 | 
         
         <a href="https://github.com/Imageomics/snakemake-workshop/edit/main/episodes/08_scatter_rule.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1310,13 +1310,21 @@ checkpoint filter:
       fishes=config["reduce_multimedia"]
   output: config["filter_multimedia"]
   shell: "Rscript {input.script}"</code></pre>
-</section><section id="ensure-the-downloaded-files-are-jpg"><h2 class="section-heading">Ensure the downloaded files are jpg<a class="anchor" aria-label="anchor" href="#ensure-the-downloaded-files-are-jpg"></a>
+</section><section id="run-downloading-multiple-files"><h2 class="section-heading">Run downloading multiple files<a class="anchor" aria-label="anchor" href="#run-downloading-multiple-files"></a>
 </h2>
 <hr class="half-width">
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">file</span> Images/<span class="pp">*</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span></span></code></pre>
+</div>
+</section><section id="ensure-the-downloaded-files-are-jpg"><h2 class="section-heading">Ensure the downloaded files are jpg<a class="anchor" aria-label="anchor" href="#ensure-the-downloaded-files-are-jpg"></a>
+</h2>
+<hr class="half-width">
+<div class="codewrapper sourceCode" id="cb16">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">file</span> Images/<span class="pp">*</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
