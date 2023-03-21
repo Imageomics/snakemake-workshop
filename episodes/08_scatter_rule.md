@@ -172,6 +172,10 @@ checkpoint filter:
   shell: "Rscript {input.script}"
 ```
 
+## Run downloading multiple files
+```bash
+snakemake -c1
+```
 
 ## Ensure the downloaded files are jpg
 ```bash
