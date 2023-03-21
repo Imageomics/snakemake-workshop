@@ -117,6 +117,8 @@ snakemake -c1 --dry-run Images/hd529k3h.jpg
 ```
 
 ## Updating all rule
+Update the all rule adding a function that returns the list of all images that should be created.
+
 ```
 def get_image_filenames(wildcards):
     filename = config["filter_multimedia"]
