@@ -33,6 +33,8 @@ Using a general purpose language like bash or python can be challenging:
 - Scalable
 - Reusable
 
+List of workflow languages: https://workflows.community/systems
+
 ## Strengths of Snakemake
 - Readability
 - Only creates missing or out of date files
