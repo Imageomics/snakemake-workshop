@@ -349,7 +349,7 @@ running:</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sinteractive</span> <span class="at">-t</span> 01:00:00 <span class="at">-A</span> PAS2136</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">sinteractive</span> <span class="at">-t</span> 01:00:00 <span class="at">-A</span> PAS2136</span></code></pre>
 </div>
 </section><section id="software-environment-setup"><h2 class="section-heading">Software Environment Setup<a class="anchor" aria-label="anchor" href="#software-environment-setup"></a>
 </h2>
@@ -359,7 +359,7 @@ the “SnakemakeWorkflow” subdirectory.</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span> Scripts/setup_env.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="bu">.</span> Scripts/setup_env.sh</span></code></pre>
 </div>
 <p>NOTE: The leading dot followed by a space is important. This causes
 the settings in setup_env.sh to be applied to your current terminal
@@ -380,7 +380,7 @@ Configuring singularity to use a cache to speed up pulling containers.</code></p
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">--version</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">--version</span></span></code></pre>
 </div>
 <p>Expected Output:</p>
 <div class="codewrapper">
@@ -392,7 +392,7 @@ Configuring singularity to use a cache to speed up pulling containers.</code></p
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> <span class="at">--version</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="ex">R</span> <span class="at">--version</span></span></code></pre>
 </div>
 <p>Expected Output:</p>
 <div class="codewrapper">
@@ -400,13 +400,12 @@ Configuring singularity to use a cache to speed up pulling containers.</code></p
 </h3>
 <pre class="output" tabindex="0"><code>R version 4.2.1 ...</code></pre>
 </div>
-<div id="new-terminal-sessions" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="new-terminal-sessions" class="callout-inner">
-<h3 class="callout-title">New Terminal Sessions<a class="anchor" aria-label="anchor" href="#new-terminal-sessions"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="new-terminal-sessions">New Terminal Sessions<a class="anchor" aria-label="anchor" href="#new-terminal-sessions"></a></h3>
 <div class="callout-content">
 <p>If you close your terminal, create a new terminal, or reach the 1
 hour timeout you will need to setup your environment again. To do so
@@ -414,8 +413,8 @@ rerun the following two steps:</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sinteractive</span> <span class="at">-t</span> 01:00:00 <span class="at">-A</span> PAS2136</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span> Scripts/setup_env.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="ex">sinteractive</span> <span class="at">-t</span> 01:00:00 <span class="at">-A</span> PAS2136</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="bu">.</span> Scripts/setup_env.sh</span></code></pre>
 </div>
 </div>
 </div>
@@ -483,7 +482,7 @@ any links that you are not going to use.
   "identifier": "https://Imageomics.github.io/snakemake-workshop/instructor/03_setup_env.html",
   "dateCreated": "2023-03-22",
   "dateModified": "2023-03-20",
-  "datePublished": "2024-02-27"
+  "datePublished": "2024-03-05"
 }
 
   </script><script>
