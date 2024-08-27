@@ -363,10 +363,10 @@
             </div>
 
             <hr class="half-width">
-<div class="accordion accordion-flush resources" id="accordionFlush12">
+<div class="accordion accordion-flush lesson-resources" id="accordionFlush12">
               <div class="accordion-item">
                 <h2 class="accordion-header" id="flush-headingTwelve">
-                  <button class="accordion-button collapsed" id="resources" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwelve" aria-expanded="false" aria-controls="flush-collapseTwelve">
+                  <button class="accordion-button collapsed" id="lesson-resources" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwelve" aria-expanded="false" aria-controls="flush-collapseTwelve">
                     RESOURCES
                   </button>
                 </h2>
@@ -388,7 +388,7 @@
                 </div>
               </div>
             </div>
-            <hr class="half-width resources">
+            <hr class="half-width lesson-resources">
 <a href="aio.html">See all in one page</a>
 
 
@@ -451,7 +451,6 @@ writing workflows?</li>
 </div>
 </div>
 <section><h2 class="section-heading" id="workflow-challenges">Workflow Challenges<a class="anchor" aria-label="anchor" href="#workflow-challenges"></a>
-<a class="anchor" aria-label="anchor" href="#workflow-challenges"></a>
 </h2>
 <hr class="half-width">
 <p>Using a general purpose language like bash or python can be
@@ -462,7 +461,6 @@ challenging:</p>
 <li>Providing dependencies for tools</li>
 <li>Tracking progress of the workflow</li>
 </ul></section><section><h2 class="section-heading" id="workflow-language-features">Workflow language features<a class="anchor" aria-label="anchor" href="#workflow-language-features"></a>
-<a class="anchor" aria-label="anchor" href="#workflow-language-features"></a>
 </h2>
 <hr class="half-width">
 <ul>
@@ -473,7 +471,6 @@ challenging:</p>
 </ul>
 <p>List of workflow languages: <a href="https://workflows.community/systems" class="external-link uri">https://workflows.community/systems</a></p>
 </section><section><h2 class="section-heading" id="strengths-of-snakemake">Strengths of Snakemake<a class="anchor" aria-label="anchor" href="#strengths-of-snakemake"></a>
-<a class="anchor" aria-label="anchor" href="#strengths-of-snakemake"></a>
 </h2>
 <hr class="half-width">
 <ul>
@@ -488,14 +485,12 @@ challenging:</p>
 </ul>
 </li>
 </ul></section><section><h2 class="section-heading" id="weaknesses-of-snakemake">Weaknesses of Snakemake<a class="anchor" aria-label="anchor" href="#weaknesses-of-snakemake"></a>
-<a class="anchor" aria-label="anchor" href="#weaknesses-of-snakemake"></a>
 </h2>
 <hr class="half-width">
 <ul>
 <li>Requires learning rule based logic instead of procedural logic</li>
 <li>Requires some python code/knowledge for typical workflows</li>
 </ul></section><section><h2 class="section-heading" id="class-plan">Class Plan<a class="anchor" aria-label="anchor" href="#class-plan"></a>
-<a class="anchor" aria-label="anchor" href="#class-plan"></a>
 </h2>
 <hr class="half-width">
 <ul>
@@ -550,7 +545,6 @@ class?</li>
 </div>
 </div>
 <section><h2 class="section-heading" id="log-into-osc">Log into OSC<a class="anchor" aria-label="anchor" href="#log-into-osc"></a>
-<a class="anchor" aria-label="anchor" href="#log-into-osc"></a>
 </h2>
 <hr class="half-width">
 <ul>
@@ -568,7 +562,6 @@ Directory</strong>
 list of files and folders</li>
 <li>Click “Open in Terminal”</li>
 </ul></section><section><h2 class="section-heading" id="copy-lesson-files">Copy Lesson Files<a class="anchor" aria-label="anchor" href="#copy-lesson-files"></a>
-<a class="anchor" aria-label="anchor" href="#copy-lesson-files"></a>
 </h2>
 <hr class="half-width">
 <p>Some files are provided for this lesson. These files need to be
@@ -653,7 +646,6 @@ Snakemake to run SLURM jobs</li>
 <a href="https://bgnn.tulane.edu" class="external-link uri">https://bgnn.tulane.edu</a>.</p>
 </div>
 </section><section><h2 class="section-heading" id="setup-snakemake-singularity-cache">Setup Snakemake Singularity Cache<a class="anchor" aria-label="anchor" href="#setup-snakemake-singularity-cache"></a>
-<a class="anchor" aria-label="anchor" href="#setup-snakemake-singularity-cache"></a>
 </h2>
 <hr class="half-width">
 <p>To avoid waiting for singularity containers to pull we will copy
@@ -704,7 +696,6 @@ any links that you are not going to use.
 </div>
 </div>
 <section><h2 class="section-heading" id="start-interactive-session">Start Interactive Session<a class="anchor" aria-label="anchor" href="#start-interactive-session"></a>
-<a class="anchor" aria-label="anchor" href="#start-interactive-session"></a>
 </h2>
 <hr class="half-width">
 <p>Since we will be running some heavy processing starting an
@@ -718,7 +709,6 @@ running:</p>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">sinteractive</span> <span class="at">-t</span> 01:00:00 <span class="at">-A</span> PAS2136</span></code></pre>
 </div>
 </section><section><h2 class="section-heading" id="software-environment-setup">Software Environment Setup<a class="anchor" aria-label="anchor" href="#software-environment-setup"></a>
-<a class="anchor" aria-label="anchor" href="#software-environment-setup"></a>
 </h2>
 <hr class="half-width">
 <p>Run the following steps from within an OSC ondemand terminal within
@@ -773,8 +763,7 @@ Configuring singularity to use a cache to speed up pulling containers.</code></p
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="new-terminal-sessions" class="callout-inner">
-<h3 class="callout-title">New Terminal Sessions<a class="anchor" aria-label="anchor" href="#new-terminal-sessions"></a>
-</h3>
+<h3 class="callout-title">New Terminal Sessions</h3>
 <div class="callout-content">
 <p>If you close your terminal, create a new terminal, or reach the 1
 hour timeout you will need to setup your environment again. To do so
@@ -833,7 +822,6 @@ any links that you are not going to use.
 </div>
 </div>
 <section><h2 class="section-heading" id="snakemake-workflow">Snakemake Workflow<a class="anchor" aria-label="anchor" href="#snakemake-workflow"></a>
-<a class="anchor" aria-label="anchor" href="#snakemake-workflow"></a>
 </h2>
 <hr class="half-width">
 <p>A Snakemake workflow is a list of rules.</p>
@@ -863,7 +851,6 @@ within</li>
     shell: ...
 </code></pre>
 </section><section><h2 class="section-heading" id="create-a-snakemake-workflow">Create a Snakemake Workflow<a class="anchor" aria-label="anchor" href="#create-a-snakemake-workflow"></a>
-<a class="anchor" aria-label="anchor" href="#create-a-snakemake-workflow"></a>
 </h2>
 <hr class="half-width">
 <p>For our first step we will reduce the size of the
@@ -895,7 +882,6 @@ before running the shell command. A common pattern is to output files in
 a directory named after the rule. This will help you keep track of which
 rule created a specific file.</p>
 </section><section><h2 class="section-heading" id="run-the-workflow">Run the Workflow<a class="anchor" aria-label="anchor" href="#run-the-workflow"></a>
-<a class="anchor" aria-label="anchor" href="#run-the-workflow"></a>
 </h2>
 <hr class="half-width">
 <div class="codewrapper sourceCode" id="cb4">
@@ -963,7 +949,6 @@ output file reduce/multimedia.csv is missing.</p>
 Nothing to be done (all requested files are present and up to date).
 Complete log: .snakemake/log/2023-02-27T113325.906186.snakemake.log</code></pre>
 </section><section><h2 class="section-heading" id="reduce-duplication-using-wildcards">Reduce duplication using wildcards<a class="anchor" aria-label="anchor" href="#reduce-duplication-using-wildcards"></a>
-<a class="anchor" aria-label="anchor" href="#reduce-duplication-using-wildcards"></a>
 </h2>
 <hr class="half-width">
 <p>Within the <code>shell</code> command the <strong>input</strong> and
@@ -976,7 +961,6 @@ follows:</p>
     output: "reduce/multimedia.csv"
     shell: "head -n 11 {input} &gt; {output}"</code></pre>
 </section><section><h2 class="section-heading" id="represent-non-file-inputs-using-a-param">Represent non-file inputs using a param<a class="anchor" aria-label="anchor" href="#represent-non-file-inputs-using-a-param"></a>
-<a class="anchor" aria-label="anchor" href="#represent-non-file-inputs-using-a-param"></a>
 </h2>
 <hr class="half-width">
 <p>Currently the reduce rule grabs the top 11 rows. Since the meaning of
@@ -1052,7 +1036,6 @@ duplication</li>
 </div>
 </div>
 <section><h2 class="section-heading" id="rstudio-friendly-rules">RStudio friendly Rules<a class="anchor" aria-label="anchor" href="#rstudio-friendly-rules"></a>
-<a class="anchor" aria-label="anchor" href="#rstudio-friendly-rules"></a>
 </h2>
 <hr class="half-width">
 <p>Next we want to add an R script that will filter an input CSV file
@@ -1061,7 +1044,6 @@ runnable within RStudio. To accomplish this we want to avoid passing
 command line arguments to the R script as this is difficult to
 accommodate within RStudio.</p>
 </section><section><h2 class="section-heading" id="see-the-hard-coded-paths-in-the-r-script">See the hard coded paths in the R script<a class="anchor" aria-label="anchor" href="#see-the-hard-coded-paths-in-the-r-script"></a>
-<a class="anchor" aria-label="anchor" href="#see-the-hard-coded-paths-in-the-r-script"></a>
 </h2>
 <hr class="half-width">
 <div class="codewrapper sourceCode" id="cb1">
@@ -1077,7 +1059,6 @@ accommodate within RStudio.</p>
 <span><span class="va">...</span></span></code></pre>
 </div>
 </section><section><h2 class="section-heading" id="run-a-filtering-r-script">Run a filtering R script<a class="anchor" aria-label="anchor" href="#run-a-filtering-r-script"></a>
-<a class="anchor" aria-label="anchor" href="#run-a-filtering-r-script"></a>
 </h2>
 <hr class="half-width">
 <p>Add a new rule to the bottom of <code>Snakefile</code>:</p>
@@ -1102,7 +1083,6 @@ Complete log: .snakemake/log/2023-02-28T164348.500545.snakemake.log</code></pre>
 </div>
 <p>Snakemake didn’t create the <code>filter/multimedia.csv</code>.</p>
 </section><section><h2 class="section-heading" id="snakemake-target-files">Snakemake Target Files<a class="anchor" aria-label="anchor" href="#snakemake-target-files"></a>
-<a class="anchor" aria-label="anchor" href="#snakemake-target-files"></a>
 </h2>
 <hr class="half-width">
 <p>When Snakemake starts up it first determines a set of target files to
@@ -1111,7 +1091,6 @@ unless filenames are passed along the command line to snakemake. After
 determining the target files Snakemake looks through the rules and
 creates job plan (called a DAG) to create the desired target.</p>
 </section><section><h2 class="section-heading" id="create-a-desired-file">Create a desired file<a class="anchor" aria-label="anchor" href="#create-a-desired-file"></a>
-<a class="anchor" aria-label="anchor" href="#create-a-desired-file"></a>
 </h2>
 <hr class="half-width">
 <p>For our workflow the first rule is the <strong>reduce</strong> rule.
@@ -1126,7 +1105,6 @@ target.</p>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> filter/multimedia.csv</span></code></pre>
 </div>
 </section><section><h2 class="section-heading" id="run-snakemake-specifying-a-non-existant-target">Run snakemake specifying a non-existant target<a class="anchor" aria-label="anchor" href="#run-snakemake-specifying-a-non-existant-target"></a>
-<a class="anchor" aria-label="anchor" href="#run-snakemake-specifying-a-non-existant-target"></a>
 </h2>
 <hr class="half-width">
 <div class="codewrapper sourceCode" id="cb7">
@@ -1142,7 +1120,6 @@ MissingRuleException:
 No rule to produce winninglotterynumbers.txt (if you use input functions make sure that they don't raise unexpected exceptions).</code></pre>
 </div>
 </section><section><h2 class="section-heading" id="add-a-default-rule">Add a default rule<a class="anchor" aria-label="anchor" href="#add-a-default-rule"></a>
-<a class="anchor" aria-label="anchor" href="#add-a-default-rule"></a>
 </h2>
 <hr class="half-width">
 <p>At the top of Snakefile add a new rule</p>
@@ -1153,7 +1130,6 @@ with no target</p>
 <pre><code>rm filter/multimedia.csv
 snakemake -c1</code></pre>
 </section><section><h2 class="section-heading" id="see-how-the-r-script-reads-from-the-config-file">See how the R script reads from the config file:<a class="anchor" aria-label="anchor" href="#see-how-the-r-script-reads-from-the-config-file"></a>
-<a class="anchor" aria-label="anchor" href="#see-how-the-r-script-reads-from-the-config-file"></a>
 </h2>
 <hr class="half-width">
 <div class="codewrapper sourceCode" id="cb11">
@@ -1162,7 +1138,6 @@ snakemake -c1</code></pre>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">head</span> Scripts/FilterImages.R</span></code></pre>
 </div>
 </section><section><h2 class="section-heading" id="use-a-config-file-to-avoid-filename-duplication">Use a config file to avoid filename duplication<a class="anchor" aria-label="anchor" href="#use-a-config-file-to-avoid-filename-duplication"></a>
-<a class="anchor" aria-label="anchor" href="#use-a-config-file-to-avoid-filename-duplication"></a>
 </h2>
 <hr class="half-width">
 <p>A better option to allow easy changes to the rows param is to store
@@ -1244,7 +1219,6 @@ running a python function.</li>
 </div>
 </div>
 <section><h2 class="section-heading" id="snakemake-dry-run">Snakemake Dry Run<a class="anchor" aria-label="anchor" href="#snakemake-dry-run"></a>
-<a class="anchor" aria-label="anchor" href="#snakemake-dry-run"></a>
 </h2>
 <hr class="half-width">
 <p>When developing a workflow running the entire workflow after every
@@ -1253,7 +1227,6 @@ change can be time intensive. To help with this snakemake has a
 <code>Snakefile</code> and show what it would do. Try this now:</p>
 <pre><code><span><span class="va">snakemake</span> <span class="op">-</span><span class="va">c1</span> <span class="op">-</span><span class="op">-</span><span class="va">dry</span><span class="op">-</span><span class="va">run</span></span></code></pre>
 </section><section><h2 class="section-heading" id="create-a-filename-plan-to-save-images">Create a filename plan to save images<a class="anchor" aria-label="anchor" href="#create-a-filename-plan-to-save-images"></a>
-<a class="anchor" aria-label="anchor" href="#create-a-filename-plan-to-save-images"></a>
 </h2>
 <hr class="half-width">
 <p>When downloading images from the internet it is important to avoid
@@ -1276,7 +1249,6 @@ image filenames.</p>
 the downloaded image as:</p>
 <pre><code><span><span class="va">Images</span><span class="op">/</span><span class="va">dd216t3d.jpg</span></span></code></pre>
 </section><section><h2 class="section-heading" id="use-wget-to-download-an-image">Use wget to download an image<a class="anchor" aria-label="anchor" href="#use-wget-to-download-an-image"></a>
-<a class="anchor" aria-label="anchor" href="#use-wget-to-download-an-image"></a>
 </h2>
 <hr class="half-width">
 <div class="codewrapper sourceCode" id="cb3">
@@ -1285,7 +1257,6 @@ the downloaded image as:</p>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">wget</span> <span class="at">-O</span> test.jpg https://bgnn.tulane.edu/hdr-share/ftp/ark/89609/GLIN/FMNH/dd216t3d.jpg</span></code></pre>
 </div>
 </section><section><h2 class="section-heading" id="create-a-rule-that-uses-a-python-function">Create a rule that uses a python function<a class="anchor" aria-label="anchor" href="#create-a-rule-that-uses-a-python-function"></a>
-<a class="anchor" aria-label="anchor" href="#create-a-rule-that-uses-a-python-function"></a>
 </h2>
 <hr class="half-width">
 <p>Add a rule to download a single image that uses a python function
@@ -1301,7 +1272,6 @@ rule download_image:
 <p>NOTE: Make sure you are using <code>-O</code> and not <code>-o</code>
 for the <code>wget</code> argument.</p>
 </section><section><h2 class="section-heading" id="make-the-rule-generic-with-a-pattern-rule">Make the rule generic with a pattern rule<a class="anchor" aria-label="anchor" href="#make-the-rule-generic-with-a-pattern-rule"></a>
-<a class="anchor" aria-label="anchor" href="#make-the-rule-generic-with-a-pattern-rule"></a>
 </h2>
 <hr class="half-width">
 <p>Change this rule to be a pattern rule by adding a wildcard expression
@@ -1321,7 +1291,6 @@ rule download_image:
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--dry-run</span> Images/hd529k3h.jpg</span></code></pre>
 </div>
 </section><section><h2 class="section-heading" id="add-python-logic-to-lookup-the-url">Add python logic to lookup the URL<a class="anchor" aria-label="anchor" href="#add-python-logic-to-lookup-the-url"></a>
-<a class="anchor" aria-label="anchor" href="#add-python-logic-to-lookup-the-url"></a>
 </h2>
 <hr class="half-width">
 <p>Add a pandas import to the top of <code>Snakefile</code>:</p>
@@ -1346,7 +1315,6 @@ rule download_image:
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--dry-run</span> Images/hd529k3h.jpg</span></code></pre>
 </div>
 </section><section><h2 class="section-heading" id="updating-all-rule">Updating all rule<a class="anchor" aria-label="anchor" href="#updating-all-rule"></a>
-<a class="anchor" aria-label="anchor" href="#updating-all-rule"></a>
 </h2>
 <hr class="half-width">
 <p>Update the all rule adding a function that returns the list of all
@@ -1365,7 +1333,6 @@ rule all:
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span></span></code></pre>
 </div>
 </section><section><h2 class="section-heading" id="test-starting-from-scratch">Test starting from scratch<a class="anchor" aria-label="anchor" href="#test-starting-from-scratch"></a>
-<a class="anchor" aria-label="anchor" href="#test-starting-from-scratch"></a>
 </h2>
 <hr class="half-width">
 <div class="codewrapper sourceCode" id="cb12">
@@ -1383,7 +1350,6 @@ FileNotFoundError in file /users/PAS2136/jbradley/SnakemakeWorkflow/Snakefile, l
 ...</code></pre>
 </div>
 </section><section><h2 class="section-heading" id="require-a-file-exists-before-a-python-function-is-used">Require a file exists before a python function is used<a class="anchor" aria-label="anchor" href="#require-a-file-exists-before-a-python-function-is-used"></a>
-<a class="anchor" aria-label="anchor" href="#require-a-file-exists-before-a-python-function-is-used"></a>
 </h2>
 <hr class="half-width">
 <p>To fix the <strong>FileNotFoundError</strong> error we need to inform
@@ -1414,7 +1380,6 @@ checkpoint filter:
   output: config["filter_multimedia"]
   shell: "Rscript {input.script}"</code></pre>
 </section><section><h2 class="section-heading" id="run-downloading-multiple-files">Run downloading multiple files<a class="anchor" aria-label="anchor" href="#run-downloading-multiple-files"></a>
-<a class="anchor" aria-label="anchor" href="#run-downloading-multiple-files"></a>
 </h2>
 <hr class="half-width">
 <div class="codewrapper sourceCode" id="cb15">
@@ -1423,7 +1388,6 @@ checkpoint filter:
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span></span></code></pre>
 </div>
 </section><section><h2 class="section-heading" id="ensure-the-downloaded-files-are-jpg">Ensure the downloaded files are jpg<a class="anchor" aria-label="anchor" href="#ensure-the-downloaded-files-are-jpg"></a>
-<a class="anchor" aria-label="anchor" href="#ensure-the-downloaded-files-are-jpg"></a>
 </h2>
 <hr class="half-width">
 <div class="codewrapper sourceCode" id="cb16">
@@ -1482,7 +1446,6 @@ any links that you are not going to use.
 </div>
 </div>
 <section><h2 class="section-heading" id="snakemake-dependency-management">Snakemake dependency management<a class="anchor" aria-label="anchor" href="#snakemake-dependency-management"></a>
-<a class="anchor" aria-label="anchor" href="#snakemake-dependency-management"></a>
 </h2>
 <hr class="half-width">
 <ul>
@@ -1504,7 +1467,6 @@ any links that you are not going to use.
 </ul>
 </li>
 </ul></section><section><h2 class="section-heading" id="singularity-container-image-uri">Singularity Container Image URI<a class="anchor" aria-label="anchor" href="#singularity-container-image-uri"></a>
-<a class="anchor" aria-label="anchor" href="#singularity-container-image-uri"></a>
 </h2>
 <hr class="half-width">
 <p>Pulling a container with docker (won’t work on OSC):</p>
@@ -1523,7 +1485,6 @@ any links that you are not going to use.
 <p>Singularity supports multiple container types so you must prefix
 docker container image URIs with <code>docker://</code>.</p>
 </section><section><h2 class="section-heading" id="use-container-when-downloading-images">Use container when downloading images<a class="anchor" aria-label="anchor" href="#use-container-when-downloading-images"></a>
-<a class="anchor" aria-label="anchor" href="#use-container-when-downloading-images"></a>
 </h2>
 <hr class="half-width">
 <p>Update the download_image rule to use the docker container image URI
@@ -1591,7 +1552,6 @@ any links that you are not going to use.
 </div>
 </div>
 <section><h2 class="section-heading" id="reusing-another-workflow">Reusing Another Workflow<a class="anchor" aria-label="anchor" href="#reusing-another-workflow"></a>
-<a class="anchor" aria-label="anchor" href="#reusing-another-workflow"></a>
 </h2>
 <hr class="half-width">
 <p>To re-use a workflow you generally need:</p>
@@ -1617,7 +1577,6 @@ use rule generate_metadata from bgnn_core</code></pre>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--use-singularity</span> DrexelMetadata/bj373514.json</span></code></pre>
 </div>
 </section><section><h2 class="section-heading" id="bring-in-additional-rules-from-bgnn_core_workflow">Bring in additional rules from BGNN_Core_Workflow<a class="anchor" aria-label="anchor" href="#bring-in-additional-rules-from-bgnn_core_workflow"></a>
-<a class="anchor" aria-label="anchor" href="#bring-in-additional-rules-from-bgnn_core_workflow"></a>
 </h2>
 <hr class="half-width">
 <pre><code>use rule transform_metadata from bgnn_core
@@ -1746,7 +1705,6 @@ rule summary:
 </div>
 </div>
 <section><h2 class="section-heading" id="running-with-slurm">Running with Slurm<a class="anchor" aria-label="anchor" href="#running-with-slurm"></a>
-<a class="anchor" aria-label="anchor" href="#running-with-slurm"></a>
 </h2>
 <hr class="half-width">
 <ul>
@@ -1764,7 +1722,6 @@ rule summary:
 threads/resources docs</a> for details on how to request different
 resources such as threads, memory, and gpus.</p>
 </section><section><h2 class="section-heading" id="annotating-memory-requirements">Annotating memory requirements<a class="anchor" aria-label="anchor" href="#annotating-memory-requirements"></a>
-<a class="anchor" aria-label="anchor" href="#annotating-memory-requirements"></a>
 </h2>
 <hr class="half-width">
 <p>Update the reduce rule to request a specific amount of memory.</p>
@@ -1776,7 +1733,6 @@ resources such as threads, memory, and gpus.</p>
         mem_mb=200
     shell: "head -n {params.rows} {input} &gt; {output}"</code></pre>
 </section><section><h2 class="section-heading" id="review-sbatch-script">Review sbatch script<a class="anchor" aria-label="anchor" href="#review-sbatch-script"></a>
-<a class="anchor" aria-label="anchor" href="#review-sbatch-script"></a>
 </h2>
 <hr class="half-width">
 <p>The <code>run-workflow.sh</code> script was copied into your
@@ -1794,7 +1750,6 @@ JOBS=10
 snakemake --jobs $JOBS --use-singularity --profile slurm/</code></pre>
 </div>
 </section><section><h2 class="section-heading" id="run-background-job-and-monitor-progress">Run Background job and monitor progress<a class="anchor" aria-label="anchor" href="#run-background-job-and-monitor-progress"></a>
-<a class="anchor" aria-label="anchor" href="#run-background-job-and-monitor-progress"></a>
 </h2>
 <hr class="half-width">
 <p>Run snakemake in the background scaling up</p>
@@ -1809,13 +1764,11 @@ snakemake --jobs $JOBS --use-singularity --profile slurm/</code></pre>
 <pre class="output" tabindex="0"><code>Submitted batch job 23985835</code></pre>
 </div>
 </section><section><h2 class="section-heading" id="monitor-job">Monitor job<a class="anchor" aria-label="anchor" href="#monitor-job"></a>
-<a class="anchor" aria-label="anchor" href="#monitor-job"></a>
 </h2>
 <hr class="half-width">
 <pre><code><span><span class="va">squeue</span> <span class="op">-</span><span class="va">u</span> <span class="op">$</span><span class="va">LOGNAME</span></span></code></pre>
 <pre><code>tail -f slurm-&lt;sbatch_job_number&gt;.out</code></pre>
 </section><section><h2 class="section-heading" id="notice-new-job-logs">Notice new job logs<a class="anchor" aria-label="anchor" href="#notice-new-job-logs"></a>
-<a class="anchor" aria-label="anchor" href="#notice-new-job-logs"></a>
 </h2>
 <hr class="half-width">
 <p>Where did my logs go?</p>
@@ -1853,7 +1806,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.5" class="external-link">sandpaper (0.16.5)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.6" class="external-link">pegboard (0.7.6)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.3" class="external-link">varnish (1.0.3)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.6" class="external-link">sandpaper (0.16.6)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.6" class="external-link">pegboard (0.7.6)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.4" class="external-link">varnish (1.0.4)</a></p>
 			</div>
 		</footer>
 </div> <!-- / div.container -->
@@ -1876,8 +1829,8 @@ any links that you are not going to use.
   "url": "https://Imageomics.github.io/snakemake-workshop/aio.html",
   "identifier": "https://Imageomics.github.io/snakemake-workshop/aio.html",
   "dateCreated": "2023-03-22",
-  "dateModified": "2024-08-20",
-  "datePublished": "2024-08-20"
+  "dateModified": "2024-08-27",
+  "datePublished": "2024-08-27"
 }
 
   </script><script>
