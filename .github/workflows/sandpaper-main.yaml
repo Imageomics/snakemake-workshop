@@ -5,8 +5,6 @@ on:
     branches:
       - main
       - master
-  schedule:
-    - cron: '0 0 * * 2'
   workflow_dispatch:
     inputs:
       name:
@@ -21,7 +19,7 @@ on:
 jobs:
   full-build:
     name: "Build Full Site"
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     permissions:
       checks: write
       contents: write
